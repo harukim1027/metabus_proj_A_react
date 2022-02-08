@@ -7,8 +7,18 @@ function TopNav() {
   return (
     <>
       <div className="right-0">
-        <button className="inline-block px-2">로그인</button>
-        <button className="inline-block px-2">회원가입</button>
+        <button
+          onClick={() => navigate('/accounts/login/')}
+          className="inline-block px-2"
+        >
+          로그인
+        </button>
+        <button
+          onClick={() => navigate('/accounts/signup/')}
+          className="inline-block px-2"
+        >
+          회원가입
+        </button>
       </div>
       <div
         onClick={() => navigate('/')}
