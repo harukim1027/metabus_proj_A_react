@@ -1,25 +1,44 @@
 import { useApiAxios } from 'api/base';
-import { useAuth } from 'contexts/AuthContext';
+import { useAuth, auth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function INIT_FV() {
-  const [auth] = useAuth();
-  const INIT_FIELD_VALUES = {
-    user: auth,
-    adopt_assignment: '1',
-  };
-  return INIT_FIELD_VALUES;
-}
+// const INIT_FV = () => {
+//   const [auth] = useAuth();
+//   const [{ data: adass, loading, error }, refetch] = useApiAxios(
+//     {
+//       url: `/adopt_assignment/api/assignment/`,
+//     },
+//     { manual: true },
+//   );
+
+//   useEffect(() => {
+//     refetch();
+//   }, []);
+
+//   const INIT_FIELD_VALUES = {
+//     user: auth,
+//     adopt_assignment: `${adass.map((ass) => ass.assignment_no)}`,
+//   };
+//   return INIT_FIELD_VALUES;
+// };
+
+const INIT_FIELD_VALUES = {
+  title: '',
+  content: '',
+};
 
 function ReviewForm({ reviewId, handleDidSave }) {
   const navigate = useNavigate();
-  const [auth] = useAuth();
+  const { auth } = useAuth();
 
   const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
-    { url: `/review/api/reviews/${reviewId}/`, method: 'GET' },
+    {
+      url: `/review/api/reviews/${reviewId}/`,
+      method: 'GET',
+    },
     {
       manual: !reviewId,
     },
@@ -28,15 +47,30 @@ function ReviewForm({ reviewId, handleDidSave }) {
   const [{ loading: saveLoading, error: saveError }, saveRequest] = useApiAxios(
     {
       url: !reviewId
-        ? '/review/api/reviews/'
-        : `/review/api/reviews/${reviewId}/`,
+        ? '/adopt_review/api/reviews/'
+        : `/adopt_review/api/reviews/${reviewId}/`,
       method: !reviewId ? 'POST' : 'PUT',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
     },
     { manual: true },
   );
 
+  INIT_FIELD_VALUES.userID = auth.userID;
+  // 아래 주석 풀기 전이 adoptassignment FK 가 디폴트 1로 들어가는데까지 성공
+  // const [{ data: adass, loading: gLoading, error: gError }, refetch] =
+  //   useApiAxios({
+  //     url: `/review/api/reviews/${reviewId}/`,
+  //     method: 'GET',
+  //   });
+
+  // if (adass) {
+  //   INIT_FIELD_VALUES.assignment_no = adass.assignment_no;
+  // }
+
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    review || INIT_FV,
+    review || INIT_FIELD_VALUES,
   );
 
   useEffect(() => {

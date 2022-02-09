@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const INIT_FIELD_VALUES = {
   userID: '',
   nickname: '',
-  username: '',
+  name: '',
   phone_number: '',
   email: '',
   region: '',
@@ -89,13 +89,13 @@ function SignupForm() {
             사용자 이름
             <input
               type="text"
-              name="username"
-              value={fieldValues.username}
+              name="name"
+              value={fieldValues.name}
               onChange={handleFieldChange}
               placeholder="사용자 이름을 입력해주세요."
               className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
             />
-            {errorMessages.username?.map((message, index) => (
+            {errorMessages.name?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
@@ -202,7 +202,7 @@ function SignupForm() {
             <h5 className="text-xs text-blue-400">
               이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
             </h5>
-            {errorMessages.phone_number?.map((message, index) => (
+            {errorMessages.password_quiz_answer?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
