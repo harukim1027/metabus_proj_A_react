@@ -9,6 +9,7 @@ function PageReviewIndex() {
       <TopNav />
       <h2>포스팅 페이지</h2>
       <ReviewList />
+      <button onClick={() => navigate('/review/new')}>글쓰기</button>
     </div>
   );
 }
