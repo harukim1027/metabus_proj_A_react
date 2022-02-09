@@ -42,7 +42,7 @@ function SignupForm() {
 
   return (
     <div>
-      <h2 className="text-center pb-3"> 🐰 Sign Up</h2>
+      <h2 className="py-3 text-center pb-3"> 🐰 Sign Up</h2>
       <hr />
       {error?.response?.status === 401 && (
         <div className="text-red-400">회원가입에 실패했습니다.</div>
@@ -110,7 +110,7 @@ function SignupForm() {
               name="phone_number"
               value={fieldValues.phone_number}
               onChange={handleFieldChange}
-              placeholder="연락처를 입력해주세요."
+              placeholder="입력형식 예) 010-0000-0000"
               className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
             />
             {errorMessages.phone_number?.map((message, index) => (

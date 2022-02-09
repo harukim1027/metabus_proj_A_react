@@ -1,24 +1,31 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'contexts/AuthContext';
 
 function TopNav() {
   const navigate = useNavigate();
 
+  const [auth, , , logout] = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <>
-      <div className="right-0">
-        <button
-          onClick={() => navigate('/accounts/login/')}
-          className="inline-block px-2"
-        >
-          로그인
-        </button>
-        <button
-          onClick={() => navigate('/accounts/signup/')}
-          className="inline-block px-2"
-        >
-          회원가입
-        </button>
+      <div className="flex">
+        {!auth.isLoggedIn && (
+          <>
+            <MyLink to="/accounts/login/">로그인</MyLink>
+            <MyLink to="/accounts/signup/">회원가입</MyLink>
+          </>
+        )}
+        {auth.isLoggedIn && (
+          <>
+            <MyLink to="/accounts/profile/">프로필</MyLink>
+            <button onClick={handleLogout}>로그아웃</button>
+          </>
+        )}
       </div>
       <div
         onClick={() => navigate('/')}
