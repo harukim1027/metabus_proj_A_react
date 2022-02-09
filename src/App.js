@@ -6,6 +6,7 @@ import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
 import PageSignupForm from 'Pages/accounts/PageSignupForm';
 import PageReviewIndex from 'Pages/review/PageReviewIndex';
+import PageReviewDetail from 'Pages/review/PageReviewDetail';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
 
         {/* <Route path="" element={} /> */}
         <Route path="/review/" element={<PageReviewIndex />} />
+        <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
       </Routes>
       {/* <hr />
         윈도우 가로크기 : {windowWidth}px */}
