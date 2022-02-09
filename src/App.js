@@ -1,9 +1,10 @@
 import './App.css';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import PageMainScreen from 'Pages/PageMainScreen';
 import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
 import PageSignupForm from 'Pages/accounts/PageSignupForm';
+import PageReviewIndex from 'Pages/review/PageReviewIndex';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/accounts/signup/" element={<PageSignupForm />} />
 
         {/* <Route path="" element={} /> */}
+        <Route path="/review/" element={<PageReviewIndex />} />
       </Routes>
       {/* <hr />
         윈도우 가로크기 : {windowWidth}px */}
