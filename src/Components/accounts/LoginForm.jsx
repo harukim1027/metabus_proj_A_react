@@ -51,7 +51,7 @@ function LoginForm() {
 
   return (
     <div>
-      <h2 className="text-center pb-3"> 🐹 Login </h2>
+      <h2 className="py-3 text-center pb-3"> 🐹 Login </h2>
       <hr />
 
       {error?.response?.status === 401 && (
@@ -81,6 +81,7 @@ function LoginForm() {
         </div>
         <Button>로그인</Button>
       </form>
+      <p className="py-3 pb-3" />
       <DebugStates fieldValues={fieldValues} />
     </div>
   );
