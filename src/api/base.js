@@ -1,7 +1,11 @@
 import Axios from 'axios';
 import { makeUseAxios } from 'axios-hooks';
 import { API_HOST } from 'Constants';
+<<<<<<< HEAD
+import { useEffect, useState } from 'react';
+=======
 import { useCallback, useEffect, useState } from 'react';
+>>>>>>> a2eddcaa3ace1e28f32322dfa08c0db51e934b6c
 
 const axiosInstance = Axios.create({
   baseURL: API_HOST,
@@ -34,6 +38,9 @@ function useApiAxios(config, options) {
   ];
 }
 
+<<<<<<< HEAD
+export { axiosInstance, useApiAxios };
+=======
 function useRequest(resourceUrl, initialState, manual = false) {
   const [data, setData] = useState(initialState);
   const [loading, setLoading] = useState(false);
@@ -79,3 +86,4 @@ function useRequest(resourceUrl, initialState, manual = false) {
 }
 
 export { axiosInstance, useApiAxios, useRequest };
+>>>>>>> a2eddcaa3ace1e28f32322dfa08c0db51e934b6c
