@@ -9,11 +9,13 @@ import PageReviewIndex from 'Pages/review/PageReviewIndex';
 import PageReviewDetail from 'Pages/review/PageReviewDetail';
 import PageReviewForm from 'Pages/review/PageReviewForm';
 import { AuthProvider } from 'contexts/AuthContext';
+import PageADNoticeDetail from 'Pages/PageNotice/PageADNoticeDetail';
+import PageADNoticeForm from 'Pages/PageNotice/PageADNoticeForm';
 
 function App() {
   return (
-    <div className="app">
-      <AuthProvider>
+    <AuthProvider>
+      <div className="app">
         <Routes>
           <Route path="/" element={<PageMainScreen />} />
           {/* accounts */}
@@ -22,15 +24,17 @@ function App() {
           <Route path="/accounts/signup/" element={<PageSignupForm />} />
 
           {/* notice */}
-          <Route path="/admin/notice/" element={<PageADNoticeList />} />
+          <Route path="/notice/" element={<PageADNoticeList />} />
+          <Route path="/notice/:noticeId/" element={<PageADNoticeDetail />} />
+          <Route path="/notice/new/" element={<PageADNoticeForm />} />
 
           {/* <Route path="" element={} /> */}
           <Route path="/review/" element={<PageReviewIndex />} />
           <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
           <Route path="/review/new/" element={<PageReviewForm />} />
         </Routes>
-      </AuthProvider>
-    </div>
+      </div>
+    </AuthProvider>
   );
 }
 

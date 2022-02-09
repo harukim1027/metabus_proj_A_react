@@ -1,23 +1,34 @@
+import { Link } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useEffect, useState } from 'react';
 
 function NoticeList() {
   const [query, setQuery] = useState(null);
-  const [{ data: notices, loading, error }, refetch] = useApiAxios(
-    `/maple/api/character/${query ? '?query=' + query : ''}`,
+  const [{ data: noticeList, loading, error }, refetch] = useApiAxios(
+    `/notice/api/notices/${query ? '?query=' + query : ''}`,
     { manual: true },
   );
+
   useEffect(() => {
     refetch();
   }, []);
 
   return (
     <div>
-      {notices && (
+      {noticeList && (
         <table>
-          <tr>
-            <td>{notices.notice_no}</td>
-          </tr>
+          <tbody>
+            {noticeList.map((notice) => (
+              <tr>
+                <td>{notice.notice_no}</td>
+                <td>
+                  <Link to={`/notice/${notice.notice_no}/`}>
+                    {notice.title}
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       )}
     </div>
