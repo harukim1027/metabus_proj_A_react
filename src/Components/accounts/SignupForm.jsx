@@ -1,11 +1,10 @@
 import { useApiAxios } from 'api/base';
 import Button from 'Button';
-import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
 import { useNavigate } from 'react-router-dom';
 
-const INITIAL_FIELD_VALUES = {
+const INIT_FIELD_VALUES = {
   userID: '',
   nickname: '',
   username: '',
@@ -20,18 +19,15 @@ const INITIAL_FIELD_VALUES = {
 
 function SignupForm() {
   const navigate = useNavigate();
-
-  const auth = useAuth();
   const [{ loading, error, errorMessages }, requestToken] = useApiAxios(
     {
-      url: '/accounts/api/signup/', // postman에서 signup을 생성했음
+      url: `/accounts/api/signup/`, // postman에서 signup을 생성했음
       method: 'POST',
     },
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange } =
-    useFieldValues(INITIAL_FIELD_VALUES);
+  const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +35,7 @@ function SignupForm() {
     if (window.confirm('회원가입 하시겠습니까?')) {
       requestToken({ data: fieldValues }).then(() => {
         // 인증 후, 이동할 주소를 지정합니다.
-        navigate('/');
+        navigate('/accounts/login/');
       });
     }
   };
@@ -152,15 +148,16 @@ function SignupForm() {
               onChange={handleFieldChange}
               className="my-3 uppercase tracking-wide text-gray-700 text-m font-bold mb-3 overflow-scroll flex "
             >
-              <option>Seoul</option>
-              <option>Busan</option>
-              <option>Daegu</option>
-              <option>Incheon</option>
-              <option>Sejong</option>
-              <option>Gwangju</option>
-              <option>Ulsan</option>
-              <option>Jeju</option>
-              <option>Gangwon</option>
+              <option value="1">Seoul</option>
+              <option value="2">Busan</option>
+              <option value="3">Daegu</option>
+              <option value="4">Incheon</option>
+              <option value="5">Daejeon</option>
+              <option value="6">Sejong</option>
+              <option value="7">Gwangju</option>
+              <option value="8">Ulsan</option>
+              <option value="9">Jeju</option>
+              <option value="10">Gangwon</option>
             </select>
             {errorMessages.region?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
@@ -178,11 +175,11 @@ function SignupForm() {
               onChange={handleFieldChange}
               className="my-3 uppercase tracking-wide text-gray-700 text-m font-bold mb-3 overflow-scroll flex "
             >
-              <option>내 보물 1호는?</option>
-              <option>처음 키운 반려동물 이름은?</option>
-              <option>어머니 성함은?</option>
-              <option>아버지 성함은?</option>
-              <option>좋아하는 음식은?</option>
+              <option value="1">내 보물 1호는?</option>
+              <option value="2">처음 키운 반려동물 이름은?</option>
+              <option value="3">어머니 성함은?</option>
+              <option value="4">아버지 성함은?</option>
+              <option value="5">좋아하는 음식은?</option>
             </select>
             {errorMessages.password_quiz?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
@@ -255,11 +252,7 @@ function SignupForm() {
         </div>
       </form>
       <hr />
-      <DebugStates
-        auth={auth}
-        fieldValues={fieldValues}
-        non_field_errors={errorMessages}
-      />
+      <DebugStates fieldValues={fieldValues} non_field_errors={errorMessages} />
     </div>
   );
 }

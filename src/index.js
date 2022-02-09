@@ -1,4 +1,5 @@
 import App from './App';
+import './index.css';
 import { AuthProvider } from 'contexts/AuthContext';
 import { BrowserRouter } from 'react-router-dom';
 import ErrorBoundary from 'ErrorBoundary';

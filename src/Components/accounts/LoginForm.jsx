@@ -5,18 +5,21 @@ import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import Button from 'Button';
 
-const INITIAL_FIELD_VALUES = { username: '', password: '' };
+const INITIAL_FIELD_VALUES = { userID: '', password: '' };
 
 function LoginForm() {
   const navigate = useNavigate();
 
   // const [auth, _, login] = useAuth();
 
-  const login = useAuth();
+  const [auth, _, login, logout] = useAuth();
   const [{ loading, error }, requestToken] = useApiAxios(
     {
-      url: '/accounts/api/token/',
+      url: `/accounts/api/token/`,
       method: 'POST',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
     },
     { manual: true },
   );
@@ -28,20 +31,19 @@ function LoginForm() {
     e.preventDefault();
 
     requestToken({ data: fieldValues }).then((response) => {
-      const { access, refresh, username, nickname } = response.data;
+      const { access, refresh, userID } = response.data;
       // TODO: access/refresh token을 브라우저 어딘가에 저장해야 합니다.
       // 저장해서 페이지 새로고침이 발생하더라도 그 token이 유실되지 않아야 합니다.
       login({
         access,
         refresh,
-        username,
-        nickname,
+        userID,
       });
 
       console.log('access :', access);
       console.log('refresh :', refresh);
-      console.log('username :', username);
-      console.log('username :', nickname);
+      console.log('userID :', userID);
+
       // 인증 후, 이동할 주소를 지정합니다.
       navigate('/');
     });
@@ -60,10 +62,10 @@ function LoginForm() {
         <div className="my-3">
           <input
             type="text"
-            name="username"
-            value={fieldValues.username}
+            name="userID"
+            value={fieldValues.userID}
             onChange={handleFieldChange}
-            placeholder="username"
+            placeholder="userID"
             className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
           />
         </div>
@@ -73,7 +75,7 @@ function LoginForm() {
             name="password"
             value={fieldValues.password}
             onChange={handleFieldChange}
-            placeholder="passowrd"
+            placeholder="password"
             className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
           />
         </div>
