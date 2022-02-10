@@ -57,8 +57,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
     { manual: true },
   );
 
-  console.log('reviewId :', reviewId);
-
   INIT_FIELD_VALUES.userID = auth.userID;
 
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
