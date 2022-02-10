@@ -22,6 +22,7 @@ function AuthProvider({ children }) {
       region,
       password_quiz,
       password_quiz_answer,
+      is_staff,
     }) => {
       setAuth({
         isLoggedIn: true,
@@ -35,6 +36,7 @@ function AuthProvider({ children }) {
         region,
         password_quiz,
         password_quiz_answer,
+        is_staff,
       });
     },
     [setAuth],

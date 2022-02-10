@@ -2,7 +2,7 @@ import TopNav from 'Components/Main/TopNavi';
 import NoticeForm from 'Components/Notice/NoticeForm';
 import { useNavigate, useParams } from 'react-router-dom';
 
-function PageADNoticeForm() {
+function PageNoticeForm() {
   const { noticeId } = useParams();
   const navigate = useNavigate();
 
@@ -12,10 +12,12 @@ function PageADNoticeForm() {
       <h2>Notice Form</h2>
       <NoticeForm
         noticeId={noticeId}
-        handleDidSave={(savedPost) => navigate(`/notice/${savedPost.id}/`)}
+        handleDidSave={(savedPost) =>
+          navigate(`/notice/${savedPost.notice_no}/`)
+        }
       />
     </>
   );
 }
 
-export default PageADNoticeForm;
+export default PageNoticeForm;

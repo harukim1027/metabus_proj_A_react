@@ -5,26 +5,6 @@ import useFieldValues from 'hooks/useFieldValues';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// const INIT_FV = () => {
-//   const [auth] = useAuth();
-//   const [{ data: adass, loading, error }, refetch] = useApiAxios(
-//     {
-//       url: `/adopt_assignment/api/assignment/`,
-//     },
-//     { manual: true },
-//   );
-
-//   useEffect(() => {
-//     refetch();
-//   }, []);
-
-//   const INIT_FIELD_VALUES = {
-//     user: auth,
-//     adopt_assignment: `${adass.map((ass) => ass.assignment_no)}`,
-//   };
-//   return INIT_FIELD_VALUES;
-// };
-
 const INIT_FIELD_VALUES = {
   title: '',
   content: '',
