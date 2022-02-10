@@ -5,6 +5,7 @@ import PageADNoticeList from 'Pages/PageNotice/PageADNoticeList';
 import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
 import PageSignupForm from 'Pages/accounts/PageSignupForm';
+import PageCheckSignup from 'Pages/accounts/PageCheckSignup';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/accounts/login/" element={<PageLoginForm />} />
         <Route path="/accounts/profile/" element={<PageProfile />} />
         <Route path="/accounts/signup/" element={<PageSignupForm />} />
+        <Route path="/accounts/checksignup/" element={<PageCheckSignup />} />
 
         {/* notice */}
         <Route path="/admin/notice/" element={<PageADNoticeList />} />
