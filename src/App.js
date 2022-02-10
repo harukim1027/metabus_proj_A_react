@@ -19,6 +19,9 @@ import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagement
 import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
 import PageUserManagementForm from 'Pages/PageUserManagement/PageUserManagementForm';
 import PageAdminMain from 'Pages/PageAdmin/PageAdminMain';
+import PageInquiryIndex from 'Pages/inquiry/PageInquiryIndex';
+import PageInquiryDetail from 'Pages/inquiry/PageInquiryDetail';
+import PageInquiryForm from 'Pages/inquiry/PageInquiryForm';
 
 function App() {
   return (
@@ -64,6 +67,14 @@ function App() {
               path="/review/:reviewId/edit/"
               element={<PageReviewForm />}
             />
+
+            {/* inquiry */}
+            <Route path="/inquiry/" element={<PageInquiryIndex />} />
+            <Route
+              path="/inquiry/:inquiryId/"
+              element={<PageInquiryDetail />}
+            />
+            <Route path="/inquiry/new/" element={<PageInquiryForm />} />
 
             {/* admin */}
             <Route path="/admin/main/" element={<PageAdminMain />} />
