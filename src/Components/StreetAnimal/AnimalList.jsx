@@ -5,7 +5,7 @@ import AnimalSummary from './AnimalSummary';
 import { useAuth } from 'contexts/AuthContext';
 
 function AnimalList() {
-  const [auth] = useAuth();
+  const { auth } = useAuth();
 
   const [{ data: AnimalList, loading, error }, refetch] = useApiAxios(
     {

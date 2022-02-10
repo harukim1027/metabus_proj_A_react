@@ -18,18 +18,18 @@ const INIT_FIELD_VALUES = {
   image: '',
 };
 
-function AnimalForm({ animal_no, handleDidSave }) {
-  const [auth] = useAuth();
+function AnimalForm({ animalId, handleDidSave }) {
+  const { auth } = useAuth();
 
   const [{ data: Animal, loading: getLoading, error: getError }] = useApiAxios(
     {
-      url: `/streetanimal/api/animal/${animal_no}/`,
+      url: `/streetanimal/api/animal/${animalId}/`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
       },
     },
-    { manual: !animal_no },
+    { manual: !animalId },
   );
 
   const [
@@ -41,10 +41,10 @@ function AnimalForm({ animal_no, handleDidSave }) {
     saveRequest,
   ] = useApiAxios(
     {
-      url: !animal_no
+      url: !animalId
         ? '/streetanimal/api/animal/'
-        : `/streetanimal/api/animal/${animal_no}/`,
-      method: !animal_no ? 'POST' : 'PUT',
+        : `/streetanimal/api/animal/${animalId}/`,
+      method: !animalId ? 'POST' : 'PUT',
       headers: {
         Authorization: `Bearer ${auth.access}`,
       },
@@ -84,83 +84,101 @@ function AnimalForm({ animal_no, handleDidSave }) {
 
       <form onSubmit={handleSubmit}>
         <div className="my-3">
+          <span>크기 입력</span>
           <input
             name="size"
             value={fieldValues.size}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-gray-300"
           />
         </div>
 
         <div className="my-3">
+          <span>성별 입력</span>
           <input
             name="sex"
             value={fieldValues.sex}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-gray-300"
           />
         </div>
 
         <div className="my-3">
+          <span>나이 입력</span>
           <input
             name="age"
             value={fieldValues.age}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-gray-300"
           />
         </div>
 
         <div className="my-3">
+          <span>발견 날짜 입력</span>
           <input
             name="date_of_discovery"
             value={fieldValues.date_of_discovery}
             onChange={handleFieldChange}
             type="datetime-local"
+            className="border-2 border-gray-300"
           />
         </div>
 
         <div className="my-3">
+          <span>발견 장소 입력</span>
           <input
             name="place_of_discovery"
             value={fieldValues.place_of_discovery}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-gray-300"
           />
         </div>
 
         <div className="my-3">
+          <span>건강 상태 입력</span>
           <textarea
             name="physical_condition"
             value={fieldValues.physical_condition}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-gray-300"
           />
         </div>
 
         <div className="my-3">
+          <span>보호 시작날짜 입력</span>
           <input
             name="start_date"
             value={fieldValues.start_date}
             onChange={handleFieldChange}
             type="date"
+            className="border-2 border-gray-300"
           />
         </div>
 
         <div className="my-3">
+          <span>보호 종료날짜 입력</span>
           <input
             name="end_date"
             value={fieldValues.end_date}
             onChange={handleFieldChange}
             type="date"
+            className="border-2 border-gray-300"
           />
         </div>
 
         <div className="my-3">
+          <span>입양상태 입력</span>
           <input
             name="protection_status"
             value={fieldValues.protection_status}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-gray-300"
           />
         </div>
 
@@ -170,6 +188,7 @@ function AnimalForm({ animal_no, handleDidSave }) {
             accept=".png, .jpg, .jpeg"
             onChange={handleFieldChange}
             type="file"
+            className="border-2 border-gray-300"
           />
         </div>
 
@@ -179,7 +198,7 @@ function AnimalForm({ animal_no, handleDidSave }) {
       </form>
 
       <DebugStates
-        animal_no={animal_no}
+        animalId={animalId}
         getLoading={getLoading}
         getError={getError}
         saveErrorMessages={saveErrorMessages}

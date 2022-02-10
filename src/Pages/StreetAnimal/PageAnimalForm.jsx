@@ -4,12 +4,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 function PageAnimalForm() {
   const navigate = useNavigate();
 
-  const { animal_no } = useParams();
+  const { animalId } = useParams();
 
   return (
     <div>
       <AnimalForm
-        animal_no={animal_no}
+        animalId={animalId}
         handleDidSave={(savedPost) =>
           navigate(`/streetanimal/${savedPost.animal_no}/`)
         }

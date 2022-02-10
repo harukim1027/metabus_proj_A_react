@@ -5,7 +5,7 @@ import { useAuth } from 'contexts/AuthContext';
 function TopNav() {
   const navigate = useNavigate();
 
-  const [auth, , , logout] = useAuth();
+  const { auth, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -23,7 +23,12 @@ function TopNav() {
         {auth.isLoggedIn && (
           <>
             <MyLink to="/accounts/profile/">프로필</MyLink>
-            <button onClick={handleLogout}>로그아웃</button>
+            <button
+              onClick={handleLogout}
+              className="border-2 border-gray-300 py-2"
+            >
+              로그아웃
+            </button>
           </>
         )}
       </div>
@@ -36,7 +41,7 @@ function TopNav() {
       <div className="grid grid-cols-3 text-center">
         <MyLink to="/notice/">공지사항</MyLink>
         <MyLink to="/adoptassignment/">크루원 신청</MyLink>
-        <MyLink to="/community/">커뮤니티</MyLink>
+        <MyLink to="/review/">커뮤니티</MyLink>
       </div>
     </>
   );
