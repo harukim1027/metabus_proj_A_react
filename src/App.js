@@ -5,6 +5,9 @@ import PageMainScreen from 'Pages/PageMainScreen';
 import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
 import PageSignupForm from 'Pages/accounts/PageSignupForm';
+import PageAnimalList from 'Pages/StreetAnimal/PageAnimalList';
+import PageAnimalDetail from 'Pages/StreetAnimal/PageAnimalDetail';
+import PageAnimalForm from 'Pages/StreetAnimal/PageAnimalForm';
 import PageReviewIndex from 'Pages/review/PageReviewIndex';
 import PageReviewDetail from 'Pages/review/PageReviewDetail';
 import PageReviewForm from 'Pages/review/PageReviewForm';
@@ -12,6 +15,10 @@ import PageNoticeList from 'Pages/PageNotice/PageNoticeList';
 import PageNoticeDetail from 'Pages/PageNotice/PageNoticeDetail';
 import PageNoticeForm from 'Pages/PageNotice/PageNoticeForm';
 import PageAssignmentList from 'Pages/PageAssignment/PageAssignmentList';
+import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
+import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
+import PageUserManagementForm from 'Pages/PageUserManagement/PageUserManagementForm';
+import PageAdminMain from 'Pages/PageAdmin/PageAdminMain';
 
 function App() {
   return (
@@ -37,6 +44,18 @@ function App() {
             {/* assignment */}
             <Route path="/adoptassignment/" element={<PageAssignmentList />} />
 
+            {/* StreetAnimal */}
+            <Route path="/streetanimal/" element={<PageAnimalList />} />
+            <Route path="/streetanimal/new/" element={<PageAnimalForm />} />
+            <Route
+              path="/streetanimal/:animalId/"
+              element={<PageAnimalDetail />}
+            />
+            <Route
+              path="/streetanimal/:animalId/edit/"
+              element={<PageAnimalForm />}
+            />
+
             {/* review */}
             <Route path="/review/" element={<PageReviewIndex />} />
             <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
@@ -44,6 +63,20 @@ function App() {
             <Route
               path="/review/:reviewId/edit/"
               element={<PageReviewForm />}
+            />
+
+            {/* admin */}
+            <Route path="/admin/main/" element={<PageAdminMain />} />
+
+            {/* UserManagement */}
+            <Route path="/management/" element={<PageUserManagementIndex />} />
+            <Route
+              path="/management/:managementId/"
+              element={<PageUserManagementDetail />}
+            />
+            <Route
+              path="/management/:managementId/edit/"
+              element={<PageUserManagementForm />}
             />
           </Routes>
         </div>

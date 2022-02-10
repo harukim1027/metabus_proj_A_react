@@ -22,7 +22,12 @@ function TopNav() {
         )}
         {auth.isLoggedIn && (
           <>
-            <MyLink to="/accounts/profile/">프로필</MyLink>
+            {auth.is_staff ? (
+              <MyLink to="/admin/main/">사이트 관리</MyLink>
+            ) : (
+              <MyLink to="/accounts/profile/">마이 페이지</MyLink>
+            )}
+
             <button
               onClick={handleLogout}
               className="border-2 border-gray-300 py-2"
