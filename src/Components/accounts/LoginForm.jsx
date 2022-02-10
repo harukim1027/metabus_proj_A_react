@@ -39,6 +39,7 @@ function LoginForm() {
         region,
         password_quiz,
         password_quiz_answer,
+        is_staff,
       } = response.data;
       // TODO: access/refresh token을 브라우저 어딘가에 저장해야 합니다.
       // 저장해서 페이지 새로고침이 발생하더라도 그 token이 유실되지 않아야 합니다.
@@ -53,6 +54,7 @@ function LoginForm() {
         region,
         password_quiz,
         password_quiz_answer,
+        is_staff,
       });
 
       console.log('access :', access);
@@ -65,6 +67,7 @@ function LoginForm() {
       console.log('region :', region);
       console.log('password_quiz :', password_quiz);
       console.log('password_quiz_answer :', password_quiz_answer);
+      console.log('is_staff :', is_staff);
 
       // 인증 후, 이동할 주소를 지정합니다.
       navigate('/');

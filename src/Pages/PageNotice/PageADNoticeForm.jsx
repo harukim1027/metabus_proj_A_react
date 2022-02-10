@@ -12,7 +12,9 @@ function PageADNoticeForm() {
       <h2>Notice Form</h2>
       <NoticeForm
         noticeId={noticeId}
-        handleDidSave={(savedPost) => navigate(`/notice/${savedPost.id}/`)}
+        handleDidSave={(savedPost) =>
+          navigate(`/notice/${savedPost.notice_no}/`)
+        }
       />
     </>
   );
