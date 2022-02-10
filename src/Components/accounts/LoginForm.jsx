@@ -12,7 +12,7 @@ function LoginForm() {
 
   // const [auth, _, login] = useAuth();
 
-  const { auth, login, logout } = useAuth();
+  const { auth, login } = useAuth();
   const [{ loading, error }, requestToken] = useApiAxios(
     {
       url: `/accounts/api/token/`,
@@ -28,18 +28,43 @@ function LoginForm() {
     e.preventDefault();
 
     requestToken({ data: fieldValues }).then((response) => {
-      const { access, refresh, userID } = response.data;
+      const {
+        access,
+        refresh,
+        userID,
+        nickname,
+        name,
+        phone_number,
+        email,
+        region,
+        password_quiz,
+        password_quiz_answer,
+      } = response.data;
       // TODO: access/refresh token을 브라우저 어딘가에 저장해야 합니다.
       // 저장해서 페이지 새로고침이 발생하더라도 그 token이 유실되지 않아야 합니다.
       login({
         access,
         refresh,
         userID,
+        nickname,
+        name,
+        phone_number,
+        email,
+        region,
+        password_quiz,
+        password_quiz_answer,
       });
 
       console.log('access :', access);
       console.log('refresh :', refresh);
       console.log('userID :', userID);
+      console.log('nickname :', nickname);
+      console.log('name :', name);
+      console.log('phone_number :', phone_number);
+      console.log('email :', email);
+      console.log('region :', region);
+      console.log('password_quiz :', password_quiz);
+      console.log('password_quiz_answer :', password_quiz_answer);
 
       // 인증 후, 이동할 주소를 지정합니다.
       navigate('/');
