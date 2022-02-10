@@ -252,6 +252,7 @@ function SignupForm() {
         </div>
       </form>
       <hr />
+
       <DebugStates fieldValues={fieldValues} non_field_errors={errorMessages} />
     </div>
   );

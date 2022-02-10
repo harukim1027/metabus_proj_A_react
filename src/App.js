@@ -5,6 +5,7 @@ import PageMainScreen from 'Pages/PageMainScreen';
 import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
 import PageSignupForm from 'Pages/accounts/PageSignupForm';
+import PageCheckSignup from 'Pages/accounts/PageCheckSignup';
 import PageAnimalList from 'Pages/StreetAnimal/PageAnimalList';
 import PageAnimalDetail from 'Pages/StreetAnimal/PageAnimalDetail';
 import PageAnimalForm from 'Pages/StreetAnimal/PageAnimalForm';
@@ -34,6 +35,10 @@ function App() {
             <Route path="/accounts/login/" element={<PageLoginForm />} />
             <Route path="/accounts/profile/" element={<PageProfile />} />
             <Route path="/accounts/signup/" element={<PageSignupForm />} />
+            <Route
+              path="/accounts/checksignup/"
+              element={<PageCheckSignup />}
+            />
 
             {/* notice */}
             <Route path="/notice/" element={<PageNoticeList />} />
