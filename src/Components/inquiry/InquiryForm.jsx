@@ -10,26 +10,26 @@ const INIT_FIELD_VALUES = {
   content: '',
 };
 
-function ReviewForm({ reviewId, handleDidSave }) {
+function InquiryForm({ inquiryId, handleDidSave }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
 
-  const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
+  const [{ data: inquiry, loading: getLoading, error: getError }] = useApiAxios(
     {
-      url: `/adopt_review/api/reviews/${reviewId}/`,
+      url: `/inquiry_board/api/inquiry/${inquiryId}/`,
       method: 'GET',
     },
     {
-      manual: !reviewId,
+      manual: !inquiryId,
     },
   );
 
   const [{ loading: saveLoading, error: saveError }, saveRequest] = useApiAxios(
     {
-      url: !reviewId
-        ? '/adopt_review/api/reviews/'
-        : `/adopt_review/api/reviews/${reviewId}/`,
-      method: !reviewId ? 'POST' : 'PUT',
+      url: !inquiryId
+        ? '/inquiry_board/api/inquiry/'
+        : `/inquiry_board/api/inquiry/${inquiryId}/`,
+      method: !inquiryId ? 'POST' : 'PUT',
       headers: {
         Authorization: `Bearer ${auth.access}`,
       },
@@ -40,15 +40,14 @@ function ReviewForm({ reviewId, handleDidSave }) {
   INIT_FIELD_VALUES.userID = auth.userID;
 
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    review || INIT_FIELD_VALUES,
+    inquiry || INIT_FIELD_VALUES,
   );
 
   useEffect(() => {
     setFieldValues((prevFieldValues) => ({
       ...prevFieldValues,
-      image1: '',
     }));
-  }, [review]);
+  }, [inquiry]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,7 +66,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       data: formData,
     }).then((response) => {
       const savedPost = response.data;
-      navigate('/review/');
+      navigate('/inquiry/');
       window.location.reload();
 
       if (handleDidSave) handleDidSave(savedPost);
@@ -99,39 +98,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
             />
           </div>
 
-          <div className="my-3">
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image1"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image2"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image3"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image4"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image5"
-              onChange={handleFieldChange}
-            />
-          </div>
-
           <div>
             <button
               type="submit"
@@ -144,7 +110,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
         </form>
       </div>
       <DebugStates
-        review={review}
+        inquiry={inquiry}
         getLoading={getLoading}
         getError={getError}
         fieldValues={fieldValues}
@@ -153,4 +119,4 @@ function ReviewForm({ reviewId, handleDidSave }) {
   );
 }
 
-export default ReviewForm;
+export default InquiryForm;

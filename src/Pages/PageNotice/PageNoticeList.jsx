@@ -1,7 +1,7 @@
 import TopNav from 'Components/Main/TopNavi';
 import NoticeList from 'Components/Notice/NoticeList';
 
-function PageADNoticeList() {
+function PageNoticeList() {
   return (
     <>
       <TopNav />
@@ -11,4 +11,4 @@ function PageADNoticeList() {
   );
 }
 
-export default PageADNoticeList;
+export default PageNoticeList;

@@ -2,7 +2,7 @@ import TopNav from 'Components/Main/TopNavi';
 import NoticeDetail from 'Components/Notice/NoticeDetail';
 import { useParams } from 'react-router-dom';
 
-function PageADNoticeDetail() {
+function PageNoticeDetail() {
   const { noticeId } = useParams();
 
   return (
@@ -14,4 +14,4 @@ function PageADNoticeDetail() {
   );
 }
 
-export default PageADNoticeDetail;
+export default PageNoticeDetail;
