@@ -5,6 +5,9 @@ import PageADNoticeList from 'Pages/PageNotice/PageADNoticeList';
 import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
 import PageSignupForm from 'Pages/accounts/PageSignupForm';
+import PageAnimalList from 'Pages/StreetAnimal/PageAnimalList';
+import PageAnimalDetail from 'Pages/StreetAnimal/PageAnimalDetail';
+import PageAnimalForm from 'Pages/StreetAnimal/PageAnimalForm';
 
 function App() {
   return (
@@ -19,6 +22,14 @@ function App() {
         {/* notice */}
         <Route path="/admin/notice/" element={<PageADNoticeList />} />
 
+        {/* StreetAnimal */}
+        <Route path="/streetanimal/" element={<PageAnimalList />} />
+        <Route path="/streetanimal/new/" element={<PageAnimalForm />} />
+        <Route path="/streetanimal/:postId/" element={<PageAnimalDetail />} />
+        <Route
+          path="/streetanimal/:postId/edit/"
+          element={<PageAnimalForm />}
+        />
         {/* <Route path="" element={} /> */}
       </Routes>
       {/* <hr />
