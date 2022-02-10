@@ -1,17 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+// import Axios from 'axios';
 import Button from 'Button';
 
 function Contract(props) {
   let [all_check, set_all_check] = useState(false);
   let [contract_check, set_contract_check] = useState(false);
-  let [individual_check, set_individual_check] = useState(true);
+
+  // 1번 체크박스
+  const [firstCheckBoxActive, setFirstCheckBoxActive] = useState(false);
+  const isFirstCheckBoxClicked = () => {
+    setFirstCheckBoxActive(!firstCheckBoxActive);
+  };
+
+  // 2번 체크박스
+  const [secondCheckBoxActive, setSecondCheckBoxActive] = useState(false);
+  const isSecondCheckBoxClicked = () => {
+    setSecondCheckBoxActive(!secondCheckBoxActive);
+  };
+
+  // checkbox의 체크 상태를 확인할 수 있는 checked
+  // checked = true (체크 O) / checked = false (체크 x)
+
   const navigate = useNavigate();
 
   useEffect(() => {
     set_contract_check(all_check);
-    set_individual_check(all_check);
+  }, [all_check]);
+
+  useEffect(() => {
+    if (firstCheckBoxActive && secondCheckBoxActive) {
+      set_all_check(true);
+    } else set_all_check(false);
+  }, [firstCheckBoxActive, secondCheckBoxActive]);
+
+  useEffect(() => {
+    setFirstCheckBoxActive(all_check);
+    setSecondCheckBoxActive(all_check);
   }, [all_check]);
 
   return (
@@ -33,6 +58,7 @@ function Contract(props) {
             <label>
               모두 동의합니다
               <input
+                checked={all_check ? 'checked' : null}
                 type="checkbox"
                 onClick={() => {
                   set_all_check(!all_check);
@@ -44,28 +70,30 @@ function Contract(props) {
         <div>
           <div className="ml-5 mr-5">
             <div>
-              <label className="font-weight-bold">회원가입약관</label>
-              <textarea
-                className="border-2 w-full pb-3"
-                rows={5}
-                readOnly
-              ></textarea>
+              <label className="font-weight-bold">
+                회원 가입 약관 동의(필수)
+              </label>
             </div>
+            <textarea
+              className="border-2 w-full pb-3"
+              rows={5}
+              readOnly
+            ></textarea>
             <div className="text-right">
+              <label>회원 가입 이용 약관에 동의합니다</label>
               <input
                 type="checkbox"
-                label="개인정보 수집 및 이용에 동의합니다."
+                label="회원 가입 이용약관에 동의합니다."
                 checked={contract_check ? 'checked' : null}
-                onClick={() => {
-                  set_individual_check(individual_check);
-                }}
+                onClick={isFirstCheckBoxClicked}
+                required
               />
             </div>
             <hr className="pb-6" />
             <div>
               <div>
                 <label className="font-weight-bold">
-                  개인정보 수집 및 이용에 관한 동의 사항 (필수사항)
+                  개인정보 수집 및 이용에 관한 동의 사항(필수)
                 </label>
                 <br />
                 <textarea
@@ -74,32 +102,25 @@ function Contract(props) {
                   readOnly
                 ></textarea>
               </div>
-              <hr />
             </div>
-            <div className="text-right mb-5">
+            <div className="text-right pb-5">
+              <label>개인정보 수집 및 이용에 동의합니다</label>
               <input
                 type="checkbox"
                 label="개인정보 수집 및 이용에 동의합니다."
                 checked={contract_check ? 'checked' : null}
-                onClick={() => {
-                  set_individual_check(!individual_check);
-                }}
+                onClick={isSecondCheckBoxClicked}
+                required
               />
             </div>
-            <div className="text-center">
+            <hr />
+            <div className="text-center my-3">
               {all_check && (
-                <Button onClick={() => navigate('/accounts/signup/')}>
+                <Button onClick={() => navigate('/accounts/signup/')} disabled>
                   회원가입
                 </Button>
               )}
             </div>
-            {/* <div className="text-center">
-              {individual_check && (
-                <Button onClick={() => navigate('/accounts/signup/')}>
-                  회원가입
-                </Button>
-              )}
-            </div> */}
             <br />
           </div>
         </div>
