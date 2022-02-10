@@ -9,7 +9,7 @@ function ReviewSummary({ review }) {
         {review.image1 && <img src={review.image1} alt={review.title} />}
         <div>
           <h3>
-            {review.title} by: {review.user.userID}
+            {review.title} by: {review.user}
           </h3>
         </div>
       </div>

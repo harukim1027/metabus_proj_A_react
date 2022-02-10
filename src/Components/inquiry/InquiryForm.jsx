@@ -37,7 +37,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
     { manual: true },
   );
 
-  INIT_FIELD_VALUES.userID = auth.userID;
+  INIT_FIELD_VALUES.user = auth.userID;
 
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
     inquiry || INIT_FIELD_VALUES,
@@ -61,14 +61,10 @@ function InquiryForm({ inquiryId, handleDidSave }) {
         formData.append(name, value);
       }
     });
-
     saveRequest({
       data: formData,
     }).then((response) => {
       const savedPost = response.data;
-      navigate('/inquiry/');
-      window.location.reload();
-
       if (handleDidSave) handleDidSave(savedPost);
     });
   };

@@ -11,7 +11,9 @@ function PageInquiryForm() {
       <TopNav />
       <InquiryForm
         inquiryId={inquiryId}
-        handleDidSave={(savedPost) => navigate(`/inquiry/${savedPost.id}/`)}
+        handleDidSave={(savedPost) =>
+          navigate(`/inquiry/${savedPost.inquiry_no}/`)
+        }
       />
     </>
   );

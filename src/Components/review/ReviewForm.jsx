@@ -2,8 +2,9 @@ import { useApiAxios } from 'api/base';
 import { useAuth, auth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import produce from 'immer';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -24,6 +25,16 @@ function ReviewForm({ reviewId, handleDidSave }) {
     },
   );
 
+  const [{ data: assignmentList, loading, error }, refetch1] = useApiAxios(
+    {
+      url: `/adopt_assignment/api/assignment/`,
+      method: 'GET',
+    },
+    {
+      manual: false,
+    },
+  );
+
   const [{ loading: saveLoading, error: saveError }, saveRequest] = useApiAxios(
     {
       url: !reviewId
@@ -37,22 +48,30 @@ function ReviewForm({ reviewId, handleDidSave }) {
     { manual: true },
   );
 
-  INIT_FIELD_VALUES.userID = auth.userID;
-
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
     review || INIT_FIELD_VALUES,
   );
 
   useEffect(() => {
-    setFieldValues((prevFieldValues) => ({
-      ...prevFieldValues,
-      image1: '',
-    }));
-  }, [review]);
+    setFieldValues(
+      produce((draft) => {
+        draft.image1 = '';
+        draft.image2 = '';
+        draft.image3 = '';
+        draft.image4 = '';
+        draft.image5 = '';
+        draft.user = auth.userID;
+        draft.adoptassignment =
+          assignmentList &&
+          assignmentList
+            .filter((assignment) => assignment.user === auth.userID)
+            .map((assign) => assign.assignment_no);
+      }),
+    );
+  }, [assignmentList, review]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     Object.entries(fieldValues).forEach(([name, value]) => {
       if (Array.isArray(value)) {
@@ -62,14 +81,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
         formData.append(name, value);
       }
     });
-
     saveRequest({
       data: formData,
     }).then((response) => {
       const savedPost = response.data;
-      navigate('/review/');
-      window.location.reload();
-
       if (handleDidSave) handleDidSave(savedPost);
     });
   };

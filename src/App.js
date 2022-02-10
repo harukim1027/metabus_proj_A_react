@@ -81,7 +81,7 @@ function App() {
             />
             <Route path="/inquiry/new/" element={<PageInquiryForm />} />
 
-            {/* admin */}
+            {/* ------------admin------------ */}
             <Route path="/admin/main/" element={<PageAdminMain />} />
 
             {/* UserManagement */}
