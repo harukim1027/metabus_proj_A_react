@@ -5,7 +5,7 @@ import ReviewSummary from './ReviewSummary';
 function ReviewList() {
   const [{ data: reviewList }, refetch] = useApiAxios(
     {
-      url: `/review/api/reviews/`,
+      url: `/adopt_review/api/reviews/`,
       method: 'GET',
     },
     {

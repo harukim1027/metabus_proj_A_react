@@ -5,7 +5,7 @@ import TopNav from 'Components/Main/TopNavi';
 
 function ReviewDetail({ reviewId }) {
   const [{ data: review }, refetch] = useApiAxios(
-    `/review/api/reviews/${reviewId}/`,
+    `/adopt_review/api/reviews/${reviewId}/`,
     { manual: true },
   );
 

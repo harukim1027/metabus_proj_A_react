@@ -36,7 +36,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
   const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
     {
-      url: `/review/api/reviews/${reviewId}/`,
+      url: `/adopt_review/api/reviews/${reviewId}/`,
       method: 'GET',
     },
     {
@@ -57,17 +57,9 @@ function ReviewForm({ reviewId, handleDidSave }) {
     { manual: true },
   );
 
-  INIT_FIELD_VALUES.userID = auth.userID;
-  // 아래 주석 풀기 전이 adoptassignment FK 가 디폴트 1로 들어가는데까지 성공
-  // const [{ data: adass, loading: gLoading, error: gError }, refetch] =
-  //   useApiAxios({
-  //     url: `/review/api/reviews/${reviewId}/`,
-  //     method: 'GET',
-  //   });
+  console.log('reviewId :', reviewId);
 
-  // if (adass) {
-  //   INIT_FIELD_VALUES.assignment_no = adass.assignment_no;
-  // }
+  INIT_FIELD_VALUES.userID = auth.userID;
 
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
     review || INIT_FIELD_VALUES,
