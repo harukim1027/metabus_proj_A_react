@@ -1,17 +1,19 @@
+import { useApiAxios } from 'api/base';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function ReviewSummary({ review }) {
   return (
-    <div>
-      <Link to={`/review/${review.review_no}/`}>
+    <Link to={`/review/${review.review_no}/`}>
+      <div>
         {review.image1 && <img src={review.image1} alt={review.title} />}
         <div>
           <h3>
-            <Link to={`/review/${review.review_no}/`}>{review.title}</Link>
+            {review.title} by: {review.user.userID}
           </h3>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 export default ReviewSummary;

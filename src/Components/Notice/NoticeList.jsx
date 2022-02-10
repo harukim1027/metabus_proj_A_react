@@ -20,6 +20,7 @@ function NoticeList() {
   return (
     <div>
       {noticeList && (
+        // 테이블로 표현한 방식 (assignment와 다르게 해볼 예정)
         <table>
           <tbody>
             {noticeList.map((notice) => (

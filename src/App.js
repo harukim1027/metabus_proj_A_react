@@ -1,5 +1,6 @@
 import './App.css';
 import { Link, NavLink, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from 'contexts/AuthContext';
 import PageMainScreen from 'Pages/PageMainScreen';
 import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
@@ -7,10 +8,10 @@ import PageSignupForm from 'Pages/accounts/PageSignupForm';
 import PageReviewIndex from 'Pages/review/PageReviewIndex';
 import PageReviewDetail from 'Pages/review/PageReviewDetail';
 import PageReviewForm from 'Pages/review/PageReviewForm';
-import { AuthProvider } from 'contexts/AuthContext';
 import PageNoticeList from 'Pages/PageNotice/PageNoticeList';
 import PageNoticeDetail from 'Pages/PageNotice/PageNoticeDetail';
 import PageNoticeForm from 'Pages/PageNotice/PageNoticeForm';
+import PageAssignmentList from 'Pages/PageAssignment/PageAssignmentList';
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
               path="/notice/:noticeId/edit/"
               element={<PageNoticeForm />}
             />
+
+            {/* assignment */}
+            <Route path="/adoptassignment/" element={<PageAssignmentList />} />
 
             {/* review */}
             <Route path="/review/" element={<PageReviewIndex />} />
