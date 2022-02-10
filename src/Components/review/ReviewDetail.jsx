@@ -43,6 +43,10 @@ function ReviewDetail({ reviewId }) {
         <>
           <h1>{review.title}</h1>
           {review.image1 && <img src={review.image1} alt={review.image1} />}
+          {review.image2 && <img src={review.image2} alt={review.image2} />}
+          {review.image3 && <img src={review.image3} alt={review.image3} />}
+          {review.image4 && <img src={review.image4} alt={review.image4} />}
+          {review.image5 && <img src={review.image5} alt={review.image5} />}
           <h2>{review.content}</h2>
         </>
       )}
