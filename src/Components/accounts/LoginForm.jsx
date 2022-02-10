@@ -12,14 +12,11 @@ function LoginForm() {
 
   // const [auth, _, login] = useAuth();
 
-  const [auth, _, login, logout] = useAuth();
+  const { auth, login, logout } = useAuth();
   const [{ loading, error }, requestToken] = useApiAxios(
     {
       url: `/accounts/api/token/`,
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
-      },
     },
     { manual: true },
   );
@@ -82,7 +79,7 @@ function LoginForm() {
         <Button>로그인</Button>
       </form>
       <p className="py-3 pb-3" />
-      <DebugStates fieldValues={fieldValues} />
+      <DebugStates auth={auth} fieldValues={fieldValues} />
     </div>
   );
 }

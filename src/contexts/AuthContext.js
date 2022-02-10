@@ -11,12 +11,12 @@ function AuthProvider({ children }) {
   const [auth, setAuth] = useLocalStorage('auth', INITIAL_AUTH);
 
   const login = useCallback(
-    ({ access, refresh, nickname, username }) => {
+    ({ access, refresh, userID, username }) => {
       setAuth({
         isLoggedIn: true,
         access,
         refresh,
-        nickname,
+        userID,
         username,
       });
     },
@@ -32,7 +32,7 @@ function AuthProvider({ children }) {
   // 하위 컴포넌트에서 공유할 값/함수들을 value로 지정합니다.
 
   return (
-    <AuthContext.Provider value={[auth, setAuth, login, logout]}>
+    <AuthContext.Provider value={{ auth, setAuth, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

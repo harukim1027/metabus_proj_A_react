@@ -1,11 +1,16 @@
 import './App.css';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import PageMainScreen from 'Pages/PageMainScreen';
 import PageADNoticeList from 'Pages/PageNotice/PageADNoticeList';
 import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
 import PageSignupForm from 'Pages/accounts/PageSignupForm';
 import PageCheckSignup from 'Pages/accounts/PageCheckSignup';
+import PageADNoticeDetail from 'Pages/PageNotice/PageADNoticeDetail';
+import PageADNoticeForm from 'Pages/PageNotice/PageADNoticeForm';
+import PageReviewIndex from 'Pages/review/PageReviewIndex';
+import PageReviewDetail from 'Pages/review/PageReviewDetail';
+import PageReviewForm from 'Pages/review/PageReviewForm';
 
 function App() {
   return (
@@ -19,12 +24,15 @@ function App() {
         <Route path="/accounts/checksignup/" element={<PageCheckSignup />} />
 
         {/* notice */}
-        <Route path="/admin/notice/" element={<PageADNoticeList />} />
+        <Route path="/notice/" element={<PageADNoticeList />} />
+        <Route path="/notice/:noticeId/" element={<PageADNoticeDetail />} />
+        <Route path="/notice/new/" element={<PageADNoticeForm />} />
 
         {/* <Route path="" element={} /> */}
+        <Route path="/review/" element={<PageReviewIndex />} />
+        <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
+        <Route path="/review/new/" element={<PageReviewForm />} />
       </Routes>
-      {/* <hr />
-        윈도우 가로크기 : {windowWidth}px */}
     </div>
   );
 }
