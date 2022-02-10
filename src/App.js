@@ -11,7 +11,8 @@ import PageReviewForm from 'Pages/review/PageReviewForm';
 import { AuthProvider } from 'contexts/AuthContext';
 import PageADNoticeDetail from 'Pages/PageNotice/PageADNoticeDetail';
 import PageADNoticeForm from 'Pages/PageNotice/PageADNoticeForm';
-import PageInquiryIndex from 'Pages/inquiry/PageInqureyIndex';
+import PageInquiryIndex from 'Pages/inquiry/PageInquiryIndex';
+import PageInquiryDetail from 'Pages/inquiry/PageInquiryDetail';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
 
           {/* inquiry */}
           <Route path="/inquiry/" element={<PageInquiryIndex />} />
+          <Route path="/inquiry/:inquiryId/" element={<PageInquiryDetail />} />
         </Routes>
       </div>
     </AuthProvider>
