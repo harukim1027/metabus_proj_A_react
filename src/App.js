@@ -1,7 +1,6 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import PageMainScreen from 'Pages/PageMainScreen';
-import PageADNoticeList from 'Pages/PageNotice/PageADNoticeList';
 import PageLoginForm from 'Pages/accounts/PageLoginForm';
 import PageProfile from 'Pages/accounts/PageProfile';
 import PageSignupForm from 'Pages/accounts/PageSignupForm';
@@ -12,46 +11,69 @@ import PageReviewIndex from 'Pages/review/PageReviewIndex';
 import PageReviewDetail from 'Pages/review/PageReviewDetail';
 import PageReviewForm from 'Pages/review/PageReviewForm';
 import { AuthProvider } from 'contexts/AuthContext';
-import PageADNoticeDetail from 'Pages/PageNotice/PageADNoticeDetail';
-import PageADNoticeForm from 'Pages/PageNotice/PageADNoticeForm';
+import PageNoticeList from 'Pages/PageNotice/PageNoticeList';
+import PageNoticeDetail from 'Pages/PageNotice/PageNoticeDetail';
+import PageNoticeForm from 'Pages/PageNotice/PageNoticeForm';
+import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
+import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
+import PageUserManagementForm from 'Pages/PageUserManagement/PageUserManagementForm';
 
 function App() {
   return (
-    <AuthProvider>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<PageMainScreen />} />
-          {/* accounts */}
-          <Route path="/accounts/login/" element={<PageLoginForm />} />
-          <Route path="/accounts/profile/" element={<PageProfile />} />
-          <Route path="/accounts/signup/" element={<PageSignupForm />} />
+    <>
+      <AuthProvider>
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<PageMainScreen />} />
+            {/* accounts */}
+            <Route path="/accounts/login/" element={<PageLoginForm />} />
+            <Route path="/accounts/profile/" element={<PageProfile />} />
+            <Route path="/accounts/signup/" element={<PageSignupForm />} />
 
-          {/* notice */}
-          <Route path="/notice/" element={<PageADNoticeList />} />
-          <Route path="/notice/:noticeId/" element={<PageADNoticeDetail />} />
-          <Route path="/notice/new/" element={<PageADNoticeForm />} />
+            {/* notice */}
+            <Route path="/notice/" element={<PageNoticeList />} />
+            <Route path="/notice/new/" element={<PageNoticeForm />} />
+            <Route path="/notice/:noticeId/" element={<PageNoticeDetail />} />
+            <Route
+              path="/notice/:noticeId/edit/"
+              element={<PageNoticeForm />}
+            />
 
-          {/* StreetAnimal */}
-          <Route path="/streetanimal/" element={<PageAnimalList />} />
-          <Route path="/streetanimal/new/" element={<PageAnimalForm />} />
-          <Route
-            path="/streetanimal/:animalId/"
-            element={<PageAnimalDetail />}
-          />
-          <Route
-            path="/streetanimal/:animalId/edit/"
-            element={<PageAnimalForm />}
-          />
+            {/* StreetAnimal */}
+            <Route path="/streetanimal/" element={<PageAnimalList />} />
+            <Route path="/streetanimal/new/" element={<PageAnimalForm />} />
+            <Route
+              path="/streetanimal/:animalId/"
+              element={<PageAnimalDetail />}
+            />
+            <Route
+              path="/streetanimal/:animalId/edit/"
+              element={<PageAnimalForm />}
+            />
 
-          <Route path="/review/" element={<PageReviewIndex />} />
-          <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
-          <Route path="/review/new/" element={<PageReviewForm />} />
-          {/* <Route path="" element={} /> */}
-        </Routes>
-        {/* <hr />
-        윈도우 가로크기 : {windowWidth}px */}
-      </div>
-    </AuthProvider>
+            {/* review */}
+            <Route path="/review/" element={<PageReviewIndex />} />
+            <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
+            <Route path="/review/new/" element={<PageReviewForm />} />
+            <Route
+              path="/review/:reviewId/edit/"
+              element={<PageReviewForm />}
+            />
+
+            {/* UserManagement */}
+            <Route path="/management/" element={<PageUserManagementIndex />} />
+            <Route
+              path="/management/:managementId/"
+              element={<PageUserManagementDetail />}
+            />
+            <Route
+              path="/management/:managementId/edit/"
+              element={<PageUserManagementForm />}
+            />
+          </Routes>
+        </div>
+      </AuthProvider>
+    </>
   );
 }
 
