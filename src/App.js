@@ -11,6 +11,7 @@ import PageReviewForm from 'Pages/review/PageReviewForm';
 import { AuthProvider } from 'contexts/AuthContext';
 import PageADNoticeDetail from 'Pages/PageNotice/PageADNoticeDetail';
 import PageADNoticeForm from 'Pages/PageNotice/PageADNoticeForm';
+import ReviewForm from 'Components/review/ReviewForm';
 
 function App() {
   return (
@@ -28,10 +29,11 @@ function App() {
           <Route path="/notice/:noticeId/" element={<PageADNoticeDetail />} />
           <Route path="/notice/new/" element={<PageADNoticeForm />} />
 
-          {/* <Route path="" element={} /> */}
+          {/* review */}
           <Route path="/review/" element={<PageReviewIndex />} />
           <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
           <Route path="/review/new/" element={<PageReviewForm />} />
+          <Route path="/review/:reviewId/edit/" element={<PageReviewForm />} />
         </Routes>
       </div>
     </AuthProvider>
