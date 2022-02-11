@@ -1,5 +1,3 @@
-import { useApiAxios } from 'api/base';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function ReviewSummary({ review }) {
