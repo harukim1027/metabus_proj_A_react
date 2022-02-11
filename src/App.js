@@ -84,6 +84,7 @@ function App() {
               path="/inquiry/:inquiryId/edit/"
               element={<PageInquiryForm />}
             />
+            <Route path="/admin/main/inquiry/" element={<PageInquiryIndex />} />
 
             {/* ------------admin------------ */}
             <Route path="/admin/main/" element={<PageAdminMain />} />
