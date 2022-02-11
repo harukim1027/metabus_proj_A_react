@@ -17,12 +17,17 @@ function TopNav() {
         {!auth.isLoggedIn && (
           <>
             <MyLink to="/accounts/login/">로그인</MyLink>
-            <MyLink to="/accounts/signup/">회원가입</MyLink>
+            <MyLink to="/accounts/checksignup/">회원가입</MyLink>
           </>
         )}
         {auth.isLoggedIn && (
           <>
-            <MyLink to="/accounts/profile/">프로필</MyLink>
+            {auth.is_staff ? (
+              <MyLink to="/admin/main/">사이트 관리</MyLink>
+            ) : (
+              <MyLink to="/accounts/profile/">마이 페이지</MyLink>
+            )}
+
             <button
               onClick={handleLogout}
               className="border-2 border-gray-300 py-2"
@@ -40,7 +45,11 @@ function TopNav() {
       </div>
       <div className="grid grid-cols-3 text-center">
         <MyLink to="/notice/">공지사항</MyLink>
-        <MyLink to="/adoptassignment/">크루원 신청</MyLink>
+        {auth.is_staff ? (
+          <MyLink to="/admin/main/inquiry/">1:1 문의 현황</MyLink>
+        ) : (
+          <MyLink to="/adoptassignment/">크루원 신청</MyLink>
+        )}
         <MyLink to="/review/">커뮤니티</MyLink>
       </div>
     </>

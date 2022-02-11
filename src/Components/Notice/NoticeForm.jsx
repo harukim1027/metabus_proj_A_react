@@ -5,6 +5,7 @@ import useFieldValues from 'hooks/useFieldValues';
 import produce from 'immer';
 import { useEffect } from 'react';
 import LoadingIndicator from 'LoadingIndicator';
+import DebugStates from 'DebugStates';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -61,6 +62,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
         draft.file1 = '';
         draft.file2 = '';
         draft.file3 = '';
+        draft.user = auth.userID;
       }),
     );
   }, [noticeData]);
@@ -170,6 +172,12 @@ function NoticeForm({ noticeId, handleDidSave }) {
         </div>
         <button className="p-2 rounded bg-sky-300">저장하기</button>
       </form>
+      <DebugStates
+        noticeData={noticeData}
+        getLoading={getLoading}
+        getError={getError}
+        fieldValues={fieldValues}
+      />
     </>
   );
 }

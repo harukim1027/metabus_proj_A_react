@@ -61,14 +61,10 @@ function InquiryForm({ inquiryId, handleDidSave }) {
         formData.append(name, value);
       }
     });
-
     saveRequest({
       data: formData,
     }).then((response) => {
       const savedPost = response.data;
-      navigate('/inquiry/');
-      window.location.reload();
-
       if (handleDidSave) handleDidSave(savedPost);
     });
   };
