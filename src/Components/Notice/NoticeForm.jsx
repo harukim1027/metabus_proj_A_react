@@ -1,5 +1,3 @@
-import { createRef } from 'react';
-import UploadFiles from 'UploadFiles';
 import { useAuth } from 'contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
@@ -16,6 +14,8 @@ const INIT_FIELD_VALUES = {
 function NoticeForm({ noticeId, handleDidSave }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
+
+  // 조회
   const [{ data: noticeData, loading: getLoading, error: getError }] =
     useApiAxios(
       {
@@ -25,6 +25,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
       { manual: !noticeId },
     );
 
+  // 저장
   const [
     {
       loading: saveLoading,
@@ -57,10 +58,14 @@ function NoticeForm({ noticeId, handleDidSave }) {
         draft.image3 = '';
         draft.image4 = '';
         draft.image5 = '';
+        draft.file1 = '';
+        draft.file2 = '';
+        draft.file3 = '';
       }),
     );
   }, [noticeData]);
 
+  // 저장 버튼 기능
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -79,19 +84,6 @@ function NoticeForm({ noticeId, handleDidSave }) {
       if (handleDidSave) handleDidSave(savedPost);
     });
   };
-
-  // 여기부터 파일 업로드 기능
-  const uploadReferenece = createRef();
-
-  async function onClickSearch() {
-    await uploadReferenece.current
-      .upload()
-      .then(function (result) {
-        const files = result;
-        alert('저장 완료');
-      })
-      .catch(function (err) {});
-  }
 
   return (
     <>
@@ -121,6 +113,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
           />
         </div>
         <div>
+          <h2>최대 5개까지 이미지를 등록할 수 있습니다.</h2>
           <input
             type="file"
             accept=".png, .jpg, .jpeg, .jfif"
@@ -155,7 +148,25 @@ function NoticeForm({ noticeId, handleDidSave }) {
 
         {/* 파일업로드 */}
         <div>
-          <UploadFiles ref={uploadReferenece} />
+          <h2>파일 최대 3개까지 업로드 할 수 있습니다.</h2>
+          <input
+            type="file"
+            accept=".docx, .hwp, .xlsx, .pdf"
+            name="file1"
+            onChange={handleFieldChange}
+          />
+          <input
+            type="file"
+            accept=".docx, .hwp, .xlsx, .pdf"
+            name="file2"
+            onChange={handleFieldChange}
+          />
+          <input
+            type="file"
+            accept=".docx, .hwp, .xlsx, .pdf"
+            name="file3"
+            onChange={handleFieldChange}
+          />
         </div>
         <button className="p-2 rounded bg-sky-300">저장하기</button>
       </form>
