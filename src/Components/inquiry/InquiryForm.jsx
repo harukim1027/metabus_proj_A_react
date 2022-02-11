@@ -2,45 +2,34 @@ import { useApiAxios } from 'api/base';
 import { useAuth, auth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import produce from 'immer';
 
 const INIT_FIELD_VALUES = {
   title: '',
   content: '',
 };
 
-function ReviewForm({ reviewId, handleDidSave }) {
+function InquiryForm({ inquiryId, handleDidSave }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
 
-  const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
+  const [{ data: inquiry, loading: getLoading, error: getError }] = useApiAxios(
     {
-      url: `/adopt_review/api/reviews/${reviewId}/`,
+      url: `/inquiry_board/api/inquiry/${inquiryId}/`,
       method: 'GET',
     },
     {
-      manual: !reviewId,
-    },
-  );
-
-  const [{ data: assignmentList, loading, error }, refetch1] = useApiAxios(
-    {
-      url: `/adopt_assignment/api/assignment/`,
-      method: 'GET',
-    },
-    {
-      manual: false,
+      manual: !inquiryId,
     },
   );
 
   const [{ loading: saveLoading, error: saveError }, saveRequest] = useApiAxios(
     {
-      url: !reviewId
-        ? '/adopt_review/api/reviews/'
-        : `/adopt_review/api/reviews/${reviewId}/`,
-      method: !reviewId ? 'POST' : 'PUT',
+      url: !inquiryId
+        ? '/inquiry_board/api/inquiry/'
+        : `/inquiry_board/api/inquiry/${inquiryId}/`,
+      method: !inquiryId ? 'POST' : 'PUT',
       headers: {
         Authorization: `Bearer ${auth.access}`,
       },
@@ -48,30 +37,21 @@ function ReviewForm({ reviewId, handleDidSave }) {
     { manual: true },
   );
 
+  INIT_FIELD_VALUES.user = auth.userID;
+
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    review || INIT_FIELD_VALUES,
+    inquiry || INIT_FIELD_VALUES,
   );
 
   useEffect(() => {
-    setFieldValues(
-      produce((draft) => {
-        draft.image1 = '';
-        draft.image2 = '';
-        draft.image3 = '';
-        draft.image4 = '';
-        draft.image5 = '';
-        draft.user = auth.userID;
-        draft.adoptassignment =
-          assignmentList &&
-          assignmentList
-            .filter((assignment) => assignment.user === auth.userID)
-            .map((assign) => assign.assignment_no);
-      }),
-    );
-  }, [assignmentList, review]);
+    setFieldValues((prevFieldValues) => ({
+      ...prevFieldValues,
+    }));
+  }, [inquiry]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     Object.entries(fieldValues).forEach(([name, value]) => {
       if (Array.isArray(value)) {
@@ -114,39 +94,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
             />
           </div>
 
-          <div className="my-3">
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image1"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image2"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image3"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image4"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image5"
-              onChange={handleFieldChange}
-            />
-          </div>
-
           <div>
             <button
               type="submit"
@@ -159,7 +106,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
         </form>
       </div>
       <DebugStates
-        review={review}
+        inquiry={inquiry}
         getLoading={getLoading}
         getError={getError}
         fieldValues={fieldValues}
@@ -168,4 +115,4 @@ function ReviewForm({ reviewId, handleDidSave }) {
   );
 }
 
-export default ReviewForm;
+export default InquiryForm;

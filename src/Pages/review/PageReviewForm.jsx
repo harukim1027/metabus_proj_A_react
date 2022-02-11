@@ -12,7 +12,9 @@ function PageReviewForm() {
       <TopNav />
       <ReviewForm
         reviewId={reviewId}
-        handleDidSave={(savedPost) => navigate(`/review/${savedPost.id}/`)}
+        handleDidSave={(savedPost) =>
+          navigate(`/review/${savedPost.review_no}/`)
+        }
       />
     </>
   );
