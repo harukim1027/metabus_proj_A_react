@@ -34,7 +34,7 @@ function AnimalDetail({ animalId }) {
     );
 
   const handleDelete = () => {
-    if (window.confirm('Are you sure?')) {
+    if (window.confirm('정말 삭제 할까요?')) {
       deleteAnimal().then(() => {
         navigate('/streetanimal/');
       });
@@ -52,15 +52,80 @@ function AnimalDetail({ animalId }) {
 
       {animal && (
         <>
-          <p>{animal.size}</p>
-          <p>{animal.sex}</p>
-          <p>{animal.age}</p>
-          <p>{animal.date_of_discovery}</p>
-          <p>{animal.place_of_discovery}</p>
-          <p>{animal.physical_condition}</p>
-          <p>{animal.start_date}</p>
-          <p>{animal.end_date}</p>
-          <p>{animal.protection_status}</p>
+          <div className="my-3">
+            <span>지역번호</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.animal_reg_num}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>크기</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.size === 1 ? '소형' : 2 ? '중형' : '대형'}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>성별</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.sex === 1 ? '암컷' : '수컷'}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>나이</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.age}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>발견 날짜</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.date_of_discovery}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>발견 장소</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.place_of_discovery}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>건강 상태</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.physical_condition}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>보호 시작날짜</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.start_date}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>보호 종료날짜</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.end_date}
+            </span>
+          </div>
+
+          <div className="my-3">
+            <span>입양 상태</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.protection_status === 1
+                ? '입양 대기'
+                : 2
+                ? '입양 매칭 중'
+                : '입양 완료'}
+            </span>
+          </div>
+
           {animal.image && <img src={animal.image} alt={animal.animal_no} />}
         </>
       )}
