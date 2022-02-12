@@ -68,7 +68,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
             .map((assign) => assign.assignment_no);
       }),
     );
-  }, [assignmentList, review]);
+  }, [auth.userID, setFieldValues, assignmentList, review]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
