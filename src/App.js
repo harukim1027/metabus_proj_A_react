@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { AuthProvider } from 'contexts/AuthContext';
 // main
 import PageMainScreen from 'Pages/PageMainScreen';
