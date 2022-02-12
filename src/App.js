@@ -8,31 +8,32 @@ import PageLoginForm from 'Pages/PageAccounts/PageLoginForm';
 import PageProfile from 'Pages/PageAccounts/PageProfile';
 import PageSignupForm from 'Pages/PageAccounts/PageSignupForm';
 import PageCheckSignup from 'Pages/PageAccounts/PageCheckSignup';
-// animal
+// admin
+import PageAdminMain from 'Pages/PageAdmin/PageAdminMain';
+// admin/Animal
 import PageAnimalList from 'Pages/PageStreetanimal/PageAnimalList';
 import PageAnimalDetail from 'Pages/PageStreetanimal/PageAnimalDetail';
 import PageAnimalForm from 'Pages/PageStreetanimal/PageAnimalForm';
-// review
-import PageReviewIndex from 'Pages/PageReview/PageReviewIndex';
-import PageReviewDetail from 'Pages/PageReview/PageReviewDetail';
-import PageReviewForm from 'Pages/PageReview/PageReviewForm';
+// admin/UserManagement
+import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
+import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
+import PageUserManagementForm from 'Pages/PageUserManagement/PageUserManagementForm';
+// user/Assignment
+import PageAssignmentList from 'Pages/PageAssignment/PageAssignmentList';
+import PageAssignmentform from 'Pages/PageAssignment/PageAssignmentForm';
+import PageAssignComp from 'Pages/PageAssignment/PageAssignComp';
+// inquiry
+import PageInquiryIndex from 'Pages/PageInquiry/PageInquiryIndex';
+import PageInquiryDetail from 'Pages/PageInquiry/PageInquiryDetail';
+import PageInquiryForm from 'Pages/PageInquiry/PageInquiryForm';
 // notice
 import PageNoticeList from 'Pages/PageNotice/PageNoticeList';
 import PageNoticeDetail from 'Pages/PageNotice/PageNoticeDetail';
 import PageNoticeForm from 'Pages/PageNotice/PageNoticeForm';
-// assignment
-import PageAssignmentList from 'Pages/PageAssignment/PageAssignmentList';
-import PageAssignmentform from 'Pages/PageAssignment/PageAssignmentForm';
-// user management
-import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
-import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
-import PageUserManagementForm from 'Pages/PageUserManagement/PageUserManagementForm';
-// admin
-import PageAdminMain from 'Pages/PageAdmin/PageAdminMain';
-//inquiry
-import PageInquiryIndex from 'Pages/PageInquiry/PageInquiryIndex';
-import PageInquiryDetail from 'Pages/PageInquiry/PageInquiryDetail';
-import PageInquiryForm from 'Pages/PageInquiry/PageInquiryForm';
+// review
+import PageReviewIndex from 'Pages/PageReview/PageReviewIndex';
+import PageReviewDetail from 'Pages/PageReview/PageReviewDetail';
+import PageReviewForm from 'Pages/PageReview/PageReviewForm';
 
 function App() {
   return (
@@ -50,23 +51,10 @@ function App() {
               element={<PageCheckSignup />}
             />
 
-            {/* notice */}
-            <Route path="/notice/" element={<PageNoticeList />} />
-            <Route path="/notice/new/" element={<PageNoticeForm />} />
-            <Route path="/notice/:noticeId/" element={<PageNoticeDetail />} />
-            <Route
-              path="/notice/:noticeId/edit/"
-              element={<PageNoticeForm />}
-            />
+            {/* ------------admin------------ */}
+            <Route path="/admin/main/" element={<PageAdminMain />} />
 
-            {/* assignment */}
-            <Route path="/adoptassignment/" element={<PageAssignmentList />} />
-            <Route
-              path="/adoptassignment/new/"
-              element={<PageAssignmentform />}
-            />
-
-            {/* StreetAnimal */}
+            {/* admin/Animal */}
             <Route path="/streetanimal/" element={<PageAnimalList />} />
             <Route path="/streetanimal/new/" element={<PageAnimalForm />} />
             <Route
@@ -78,13 +66,26 @@ function App() {
               element={<PageAnimalForm />}
             />
 
-            {/* review */}
-            <Route path="/review/" element={<PageReviewIndex />} />
-            <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
-            <Route path="/review/new/" element={<PageReviewForm />} />
+            {/* admin/UserManagement */}
+            <Route path="/management/" element={<PageUserManagementIndex />} />
             <Route
-              path="/review/:reviewId/edit/"
-              element={<PageReviewForm />}
+              path="/management/:managementId/"
+              element={<PageUserManagementDetail />}
+            />
+            <Route
+              path="/management/:managementId/edit/"
+              element={<PageUserManagementForm />}
+            />
+
+            {/* Assignment */}
+            <Route path="/adoptassignment/" element={<PageAssignmentList />} />
+            <Route
+              path="/adoptassignment/new/"
+              element={<PageAssignmentform />}
+            />
+            <Route
+              path="/adoptassignment/complite/"
+              element={<PageAssignComp />}
             />
 
             {/* inquiry */}
@@ -95,18 +96,22 @@ function App() {
             />
             <Route path="/inquiry/new/" element={<PageInquiryForm />} />
 
-            {/* ------------admin------------ */}
-            <Route path="/admin/main/" element={<PageAdminMain />} />
-
-            {/* UserManagement */}
-            <Route path="/management/" element={<PageUserManagementIndex />} />
+            {/* notice */}
+            <Route path="/notice/" element={<PageNoticeList />} />
+            <Route path="/notice/new/" element={<PageNoticeForm />} />
+            <Route path="/notice/:noticeId/" element={<PageNoticeDetail />} />
             <Route
-              path="/management/:managementId/"
-              element={<PageUserManagementDetail />}
+              path="/notice/:noticeId/edit/"
+              element={<PageNoticeForm />}
             />
+
+            {/* review */}
+            <Route path="/review/" element={<PageReviewIndex />} />
+            <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
+            <Route path="/review/new/" element={<PageReviewForm />} />
             <Route
-              path="/management/:managementId/edit/"
-              element={<PageUserManagementForm />}
+              path="/review/:reviewId/edit/"
+              element={<PageReviewForm />}
             />
           </Routes>
         </div>

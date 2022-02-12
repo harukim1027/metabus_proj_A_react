@@ -1,6 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
+import './TopNavi.css';
 
 function TopNav() {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ function TopNav() {
   };
 
   return (
-    <>
-      <div className="flex">
+    <div className="header">
+      <div className="flex text-2xl">
         {!auth.isLoggedIn && (
           <>
             <MyLink to="/accounts/login/">로그인</MyLink>
@@ -39,11 +40,13 @@ function TopNav() {
       </div>
       <div
         onClick={() => navigate('/')}
-        className="w-full text-center text-2xl font-extrabold text-white py-20 bg-sky-200 cursor-pointer"
+        className="w-full text-white py-20 bg-sky-200 cursor-pointer"
       >
-        <h1>Street Animal Adopter</h1>
+        <h1 className="text-center text-7xl font-bold">
+          Street Animal Adopter
+        </h1>
       </div>
-      <div className="grid grid-cols-3 text-center">
+      <div className="grid grid-cols-3 text-center text-3xl font-semibold">
         <MyLink to="/notice/">공지사항</MyLink>
         {auth.is_staff ? (
           <MyLink to="/admin/main/inquiry/">1:1 문의 현황</MyLink>
@@ -52,7 +55,7 @@ function TopNav() {
         )}
         <MyLink to="/review/">커뮤니티</MyLink>
       </div>
-    </>
+    </div>
   );
 }
 

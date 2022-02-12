@@ -31,7 +31,7 @@ function InquiryList() {
           ))}
         </div>
       )}
-      {auth.is_staff && (
+      {!auth.is_staff && (
         <button onClick={() => navigate('/inquiry/new/')}>문의 작성</button>
       )}
     </div>
