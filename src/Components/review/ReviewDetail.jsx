@@ -51,8 +51,8 @@ function ReviewDetail({ reviewId }) {
         </>
       )}
       <Link to="/review/">목록으로</Link>
-      <Link to={`/review/${reviewId}/edit/`}>수정하기</Link>
-      <button onClick={handleDelete}>삭제하기</button>
+      {auth.is_staff || <Link to={`/review/${reviewId}/edit/`}>수정하기</Link>}
+      <button onClick={() => handleDelete()}>삭제하기</button>
     </div>
   );
 }

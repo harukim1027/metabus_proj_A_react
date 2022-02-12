@@ -4,8 +4,11 @@ import useFieldValues from 'hooks/useFieldValues';
 import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import Button from 'Button';
+import { useEffect } from 'react';
+import produce from 'immer';
 
 const INIT_FIELD_VALUES = {
+  animal_reg_num: '',
   size: '',
   sex: '',
   age: '',
@@ -52,9 +55,17 @@ function AnimalForm({ animalId, handleDidSave }) {
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange } = useFieldValues(
+  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
     Animal || INIT_FIELD_VALUES,
   );
+
+  useEffect(() => {
+    setFieldValues(
+      produce((draft) => {
+        draft.image = '';
+      }),
+    );
+  }, [Animal]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,25 +95,43 @@ function AnimalForm({ animalId, handleDidSave }) {
 
       <form onSubmit={handleSubmit}>
         <div className="my-3">
-          <span>크기 입력</span>
+          <span>지역번호 입력</span>
           <input
-            name="size"
-            value={fieldValues.size}
+            name="animal_reg_num"
+            value={fieldValues.animal_reg_num}
             onChange={handleFieldChange}
             type="text"
-            className="border-2 border-gray-300"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
         <div className="my-3">
+          <span>크기 입력</span>
+          <select
+            name="size"
+            value={fieldValues.size}
+            onChange={handleFieldChange}
+            type="text"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
+          >
+            <option value={1}>소형</option>
+            <option value={1}>중형</option>
+            <option value={1}>대형</option>
+          </select>
+        </div>
+
+        <div className="my-3">
           <span>성별 입력</span>
-          <input
+          <select
             name="sex"
             value={fieldValues.sex}
             onChange={handleFieldChange}
             type="text"
-            className="border-2 border-gray-300"
-          />
+            className="border-2 border-sky-400 rounded p-1 ml-2"
+          >
+            <option value={1}>암컷</option>
+            <option value={2}>수컷</option>
+          </select>
         </div>
 
         <div className="my-3">
@@ -111,8 +140,8 @@ function AnimalForm({ animalId, handleDidSave }) {
             name="age"
             value={fieldValues.age}
             onChange={handleFieldChange}
-            type="text"
-            className="border-2 border-gray-300"
+            type="number"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -123,7 +152,7 @@ function AnimalForm({ animalId, handleDidSave }) {
             value={fieldValues.date_of_discovery}
             onChange={handleFieldChange}
             type="datetime-local"
-            className="border-2 border-gray-300"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -134,7 +163,7 @@ function AnimalForm({ animalId, handleDidSave }) {
             value={fieldValues.place_of_discovery}
             onChange={handleFieldChange}
             type="text"
-            className="border-2 border-gray-300"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -145,7 +174,7 @@ function AnimalForm({ animalId, handleDidSave }) {
             value={fieldValues.physical_condition}
             onChange={handleFieldChange}
             type="text"
-            className="border-2 border-gray-300"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -156,7 +185,7 @@ function AnimalForm({ animalId, handleDidSave }) {
             value={fieldValues.start_date}
             onChange={handleFieldChange}
             type="date"
-            className="border-2 border-gray-300"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -167,19 +196,23 @@ function AnimalForm({ animalId, handleDidSave }) {
             value={fieldValues.end_date}
             onChange={handleFieldChange}
             type="date"
-            className="border-2 border-gray-300"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
         <div className="my-3">
           <span>입양상태 입력</span>
-          <input
+          <select
             name="protection_status"
             value={fieldValues.protection_status}
             onChange={handleFieldChange}
             type="text"
-            className="border-2 border-gray-300"
-          />
+            className="border-2 border-sky-400 rounded p-1 ml-2"
+          >
+            <option value={1}>입양 대기</option>
+            <option value={2}>입양 매칭 중</option>
+            <option value={3}>입양 완료</option>
+          </select>
         </div>
 
         <div className="my-3">
@@ -193,12 +226,12 @@ function AnimalForm({ animalId, handleDidSave }) {
         </div>
 
         <div className="my-3">
-          <Button>저장하기</Button>
+          <Button>저장</Button>
         </div>
       </form>
 
       <DebugStates
-        animalId={animalId}
+        Animal={Animal}
         getLoading={getLoading}
         getError={getError}
         saveErrorMessages={saveErrorMessages}
