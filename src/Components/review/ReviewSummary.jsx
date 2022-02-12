@@ -1,5 +1,3 @@
-import { useApiAxios } from 'api/base';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function ReviewSummary({ review }) {
@@ -8,9 +6,8 @@ function ReviewSummary({ review }) {
       <div>
         {review.image1 && <img src={review.image1} alt={review.title} />}
         <div>
-          <h3>
-            {review.title} by: {review.user}
-          </h3>
+          <h2>{review.title}</h2>
+          <h3>by: {review.user}</h3>
         </div>
       </div>
     </Link>

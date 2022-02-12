@@ -15,7 +15,9 @@ function ReviewForm({ reviewId, handleDidSave }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
 
-  const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
+  const [
+    { data: review, adoptassignmentList, loading: getLoading, error: getError },
+  ] = useApiAxios(
     {
       url: `/adopt_review/api/reviews/${reviewId}/`,
       method: 'GET',
@@ -94,6 +96,8 @@ function ReviewForm({ reviewId, handleDidSave }) {
       <div>
         <form onSubmit={handleSubmit}>
           <div className="my-3">
+            <h1>누구를 입양했나요</h1>
+
             <h2>제목을 입력</h2>
             <input
               name="title"
