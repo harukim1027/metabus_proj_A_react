@@ -48,7 +48,7 @@ function TopNav() {
         {auth.is_staff ? (
           <MyLink to="/admin/main/inquiry/">1:1 문의 현황</MyLink>
         ) : (
-          <MyLink to="/adoptassignment/">크루원 신청</MyLink>
+          <MyLink to="/adoptassignment/new/">크루원 신청</MyLink>
         )}
         <MyLink to="/review/">커뮤니티</MyLink>
       </div>
