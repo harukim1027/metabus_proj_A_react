@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 // import Axios from 'axios';
 import Button from 'Button';
 
+import Agreementation from './Agreementation';
+import SignupAgreementation from './SignupAgreementation';
+
 function Contract(props) {
   let [all_check, set_all_check] = useState(false);
   let [contract_check, set_contract_check] = useState(false);
@@ -47,7 +50,7 @@ function Contract(props) {
         </div>
         <div className="ml-5 mr-5">
           <div className="text-center">
-            <div className="font-weight-bold pb-3">
+            <div className="font-bold pb-3">
               <br />
               아래 약관 및 개인정보 처리방침에 대한 안내를 반드시 읽고,
               동의해주세요.
@@ -70,15 +73,15 @@ function Contract(props) {
         <div>
           <div className="ml-5 mr-5">
             <div>
-              <label className="font-weight-bold">
-                회원 가입 약관 동의(필수)
+              <label className="font-bold mb-2">
+                회원 가입 약관 동의 [ 필수 ]
               </label>
             </div>
-            <textarea
-              className="border-2 w-full pb-3"
-              rows={5}
-              readOnly
-            ></textarea>
+
+            <div>
+              <SignupAgreementation />
+            </div>
+
             <div className="text-right">
               <label>회원 가입 이용 약관에 동의합니다</label>
               <input
@@ -92,15 +95,13 @@ function Contract(props) {
             <hr className="pb-6" />
             <div>
               <div>
-                <label className="font-weight-bold">
-                  개인정보 수집 및 이용에 관한 동의 사항(필수)
+                <label className="font-bold">
+                  개인정보 수집 및 이용에 관한 동의 사항 [ 필수 ]
                 </label>
                 <br />
-                <textarea
-                  className="border-2 w-full pb-3"
-                  rows={5}
-                  readOnly
-                ></textarea>
+                <div>
+                  <Agreementation />
+                </div>
               </div>
             </div>
             <div className="text-right pb-5">
@@ -114,6 +115,10 @@ function Contract(props) {
               />
             </div>
             <hr />
+            <div className="text-red-300 text-center">
+              <br />
+              약관 동의를 해야 회원가입을 할 수 있어요 ! 🐰
+            </div>
             <div className="text-center my-3">
               {all_check && (
                 <Button onClick={() => navigate('/accounts/signup/')} disabled>

@@ -106,6 +106,11 @@ function LoginForm() {
         </div>
         <Button>로그인</Button>
       </form>
+      <div>
+        <p>아이디 찾기</p>
+        <p>비밀번호 찾기</p>
+      </div>
+
       <p className="py-3 pb-3" />
       <DebugStates auth={auth} fieldValues={fieldValues} />
     </div>
