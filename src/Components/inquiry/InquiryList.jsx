@@ -1,8 +1,13 @@
 import { useEffect } from 'react';
 import { useApiAxios } from 'api/base';
 import InquirySummary from './InquirySummary';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'contexts/AuthContext';
 
 function InquiryList() {
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+
   const [{ data: inquiryList }, refetch] = useApiAxios(
     {
       url: `/inquiry_board/api/inquiry/`,
@@ -21,7 +26,13 @@ function InquiryList() {
       {inquiryList && (
         <div className="flex space-x-1">
           {inquiryList.map((inquiry) => (
-            <div key={inquiry.inquiry_no}>
+            <div
+              key={inquiry.inquiry_no}
+              onClick={
+                auth.userID === inquiry.user &&
+                navigate(`/inquiry/${inquiry.inquiry_no}/`)
+              }
+            >
               <InquirySummary inquiry={inquiry} />
             </div>
           ))}
