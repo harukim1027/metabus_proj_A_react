@@ -12,6 +12,8 @@ const INIT_FIELD_VALUES = {
   residential_type: 'Apartment',
   have_pet_or_not: false,
   status: 1,
+  size: 1,
+  sex: 1,
 };
 
 function AssignmentForm({ handleDidSave }) {
@@ -35,6 +37,10 @@ function AssignmentForm({ handleDidSave }) {
     queryanimal();
   }, []);
 
+  // TODO: filtAnimal을 가지고 QueryAnimal에서 필터링해서 하나의 상태값에 저장
+  // 상태값을 버튼형식으로 표출 -> 클릭시 fieldValues에 그 동물의 pk가 들어가도록
+
+  // 저장 api 요청
   const [
     {
       loading: saveLoading,
@@ -88,44 +94,55 @@ function AssignmentForm({ handleDidSave }) {
       <h2 className="header text-4xl font-extrabold font-sans">크루원 모집</h2>
       <hr className="border-2" />
       {/* 동물 검색하는 부분 */}
-      <form
-        onSubmit={setFiltAnimal({
-          size: fieldValues.size,
-          sex: fieldValues.sex,
-        })}
-      >
-        <h2>크루원 검색</h2>
-        <div className="py-2">
-          <h2 className="inline">크루원의 사이즈 : </h2>
-          <select
-            name="size"
-            value={fieldValues.size}
-            onChange={handleFieldChange}
-            className="border-2 border-sky-400 rounded p-2"
-            defaultValue="1"
-          >
-            <option value="1">소형</option>
-            <option value="2">중형</option>
-            <option value="3">대형</option>
-          </select>
-        </div>
 
-        <div className="py-2">
-          <h2 className="inline">크루원의 성별 : </h2>
-          <select
-            name="sex"
-            value={fieldValues.sex}
-            onChange={handleFieldChange}
-            className="border-2 border-sky-400 rounded p-2"
-            defaultValue="1"
-          >
-            <option value="1">암컷</option>
-            <option value="2">수컷</option>
-          </select>
-        </div>
-        <button>검색하기</button>
-      </form>
+      <h2>크루원 검색</h2>
+      <div className="py-2">
+        <h2 className="inline">크루원의 사이즈 : </h2>
+        <select
+          name="size"
+          value={fieldValues.size}
+          onChange={handleFieldChange}
+          className="border-2 border-sky-400 rounded p-2"
+          defaultValue="1"
+        >
+          <option value="1">소형</option>
+          <option value="2">중형</option>
+          <option value="3">대형</option>
+        </select>
+      </div>
+
+      <div className="py-2">
+        <h2 className="inline">크루원의 성별 : </h2>
+        <select
+          name="sex"
+          value={fieldValues.sex}
+          onChange={handleFieldChange}
+          className="border-2 border-sky-400 rounded p-2"
+          defaultValue="1"
+        >
+          <option value="1">암컷</option>
+          <option value="2">수컷</option>
+        </select>
+      </div>
+      <button
+        onClick={() =>
+          setFiltAnimal({
+            size: fieldValues.size,
+            sex: fieldValues.sex,
+          })
+        }
+      >
+        검색하기
+      </button>
+
+      {/* 검색한 동물 보여주기 */}
+      {filtAnimal && (
+        <h2>
+          {filtAnimal.size}, {filtAnimal.sex}
+        </h2>
+      )}
       {/* ----------------------------- */}
+
       <hr className="border-2" />
       <form onSubmit={handleSubmit}>
         <div className="py-2">
