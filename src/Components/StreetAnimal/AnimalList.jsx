@@ -51,6 +51,7 @@ function AnimalList() {
         placeholder="검색어를 입력해주세요."
         onChange={handleChange}
         onKeyPress={handleKeyPress}
+        className="mt-3 ml-3 border-2 border-gray-300"
       />
 
       <div className="my-5">
