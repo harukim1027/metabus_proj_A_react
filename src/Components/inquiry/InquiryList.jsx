@@ -26,14 +26,10 @@ function InquiryList() {
       {inquiryList && (
         <div className="flex space-x-1">
           {inquiryList.map((inquiry) => (
-            <div
-              key={inquiry.inquiry_no}
-              onClick={
-                auth.userID === inquiry.user &&
-                navigate(`/inquiry/${inquiry.inquiry_no}/`)
-              }
-            >
-              <InquirySummary inquiry={inquiry} />
+            <div key={inquiry.inquiry_no}>
+              {auth.userID === inquiry.user && (
+                <InquirySummary inquiry={inquiry} />
+              )}
             </div>
           ))}
         </div>

@@ -4,8 +4,7 @@ function SignupAgreementation() {
       className="border-2 w-full pb-3 "
       rows={5}
       readOnly
-      value="
-      제 1 장 총 칙 제 1 조 (목적) 이 약관은 [ metabus ](이하  '메타버스 '라
+      value="제 1 장 총 칙 제 1 조 (목적) 이 약관은 [ metabus ](이하  '메타버스 '라
       합니다)에서 제공하는 인터넷서비스(이하  '서비스 '라 합니다)의 이용 조건 및
       절차에 관한 기본적인 사항을 규정함을 목적으로 합니다. 제 2 조 (약관의 효력
       및 변경) ① 이 약관은 서비스 화면이나 기타의 방법으로 이용고객에게
