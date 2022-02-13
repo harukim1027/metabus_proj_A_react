@@ -1,25 +1,17 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
-function UserManagementDetail({ usermanagementId }) {
+function UserManagementDetail({}) {
   const { auth } = useAuth();
   const navigate = useNavigate();
+  const { managementId } = useParams();
 
-  const [{ data: usermanagement, loading, error }, refetch] = useApiAxios(
-    `/accounts/api/users/${usermanagementId}/`,
-    { manual: true },
-  );
-
-  useEffect(() => {
-    refetch();
-  }, []);
-
-  const [{}, deleteUser] = useApiAxios(
+  const [{ data: management, loading, error }, refetch] = useApiAxios(
     {
-      url: `/accounts/api/users/${usermanagementId}/`,
-      method: 'DELETE',
+      url: `/accounts/api/users/${managementId}/`,
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
       },
@@ -27,61 +19,85 @@ function UserManagementDetail({ usermanagementId }) {
     { manual: true },
   );
 
+  const [{ loading: deleteLoading, error: deleteError }, deleteUser] =
+    useApiAxios(
+      {
+        url: `/accounts/api/users/${managementId}/`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${auth.access}`,
+        },
+      },
+      { manual: true },
+    );
+
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
       deleteUser().then(() => {
-        navigate('/usermanagement/');
+        navigate('/management/');
       });
     }
   };
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <div>
       <h2>UserManagementDetail</h2>
 
-      {usermanagement && (
+      {management && (
         <>
-          <p>유저아이디</p>
-          <div className="p-1 bg-white border-2 border-gray-300">
-            {usermanagement.userID}
+          <div className="my-3">
+            <span>유저아이디</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {management.userID}
+            </span>
           </div>
-          <p>이름</p>
-          <div className="p-1 bg-white border-2 border-gray-300">
-            {usermanagement.name}
+
+          <div className="my-3">
+            <span>이름</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {management.name}
+            </span>
           </div>
-          <p>닉네임</p>
-          <div className="p-1 bg-white border-2 border-gray-300">
-            {usermanagement.nickname}
+
+          <div className="my-3">
+            <span>닉네임</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {management.nickname}
+            </span>
           </div>
-          <p>연락처</p>
-          <div className="p-1 bg-white border-2 border-gray-300">
-            {usermanagement.phone_number}
+
+          <div className="my-3">
+            <span>연락처</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {management.phone_number}
+            </span>
           </div>
-          <p>이메일</p>
-          <div className="p-1 bg-white border-2 border-gray-300">
-            {usermanagement.email}
+
+          <div className="my-3">
+            <span>이메일</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {management.email}
+            </span>
           </div>
-          <p>거주지역</p>
-          <div className="p-1 bg-white border-2 border-gray-300">
-            {usermanagement.region === 1
-              ? 'Seoul'
-              : 2
-              ? 'Busan'
-              : 3
-              ? 'Daegu'
-              : 4
-              ? 'Incheon'
-              : 5
-              ? 'Daejeon'
-              : 6
-              ? 'Sejong'
-              : 7
-              ? 'Gwangju'
-              : 8
-              ? 'Ulsan'
-              : 9
-              ? 'Jeju'
-              : 'Gangwon'}
+
+          <div className="my-3">
+            <span>거주지역</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {management.region === 1 && 'Seoul'}
+              {management.region === 2 && 'Busan'}
+              {management.region === 3 && 'Daegu'}
+              {management.region === 4 && 'Incheon'}
+              {management.region === 5 && 'Daejeon'}
+              {management.region === 6 && 'Sejong'}
+              {management.region === 7 && 'Gwangju'}
+              {management.region === 8 && 'Ulsan'}
+              {management.region === 9 && 'Jeju'}
+              {management.region === 10 && 'Gangwon'}
+            </span>
           </div>
         </>
       )}
@@ -91,12 +107,12 @@ function UserManagementDetail({ usermanagementId }) {
           삭제
         </button>
         <Link
-          to={`/usermanagement/${usermanagementId}/edit/`}
+          to={`/management/${managementId}/edit/`}
           className="hover:text-red-400"
         >
           수정
         </Link>
-        <Link to="/usermanagement/" className="hover:text-red-400">
+        <Link to="/management/" className="hover:text-red-400">
           목록
         </Link>
       </div>

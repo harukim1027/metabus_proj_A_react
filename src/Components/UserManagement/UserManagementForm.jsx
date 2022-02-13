@@ -14,20 +14,18 @@ const INIT_FIELD_VALUES = {
   region: '',
 };
 
-function UserManagementForm({ usermanagementId, handleDidSave }) {
+function UserManagementForm({ managementId, handleDidSave }) {
   const { auth } = useAuth();
 
   // 조회
-  const [
-    { data: usermanagement, loading: getLoading, error: getError },
-    refetch,
-  ] = useApiAxios(
-    {
-      url: `/accounts/api/users/${usermanagementId}/`,
-      method: 'GET',
-    },
-    { manual: !usermanagementId },
-  );
+  const [{ data: management, loading: getLoading, error: getError }, refetch] =
+    useApiAxios(
+      {
+        url: `/accounts/api/users/${managementId}/`,
+        method: 'GET',
+      },
+      { manual: !managementId },
+    );
 
   // 저장
   const [
@@ -39,10 +37,10 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
     saveRequest,
   ] = useApiAxios(
     {
-      url: !usermanagementId
+      url: !managementId
         ? `/accounts/api/users/`
-        : `/accounts/api/users/${usermanagementId}/`,
-      method: !usermanagementId ? 'POST' : 'PUT',
+        : `/accounts/api/users/${managementId}/`,
+      method: !managementId ? 'POST' : 'PUT',
       headers: {
         Authorization: `Bearer ${auth.access}`,
       },
@@ -51,7 +49,7 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
   );
 
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    usermanagement || INIT_FIELD_VALUES,
+    management || INIT_FIELD_VALUES,
   );
 
   useEffect(() => {
@@ -150,7 +148,7 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
       </form>
 
       <DebugStates
-        usermanagement={usermanagement}
+        management={management}
         getLoading={getLoading}
         getError={getError}
         saveErrorMessages={saveErrorMessages}
