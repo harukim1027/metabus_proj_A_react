@@ -81,6 +81,7 @@ function AssignmentForm({ handleDidSave }) {
       data: formData,
     }).then((response) => {
       const savedPost = response.data;
+      console.log(savedPost);
       if (handleDidSave) handleDidSave(savedPost);
     });
   };
@@ -173,7 +174,7 @@ function AssignmentForm({ handleDidSave }) {
       <div>
         {filtAnimal.map((a) => (
           <div
-            className="inline-block p-2 m-2 rounded border-2 border-sky-400 w-1/5"
+            className="inline-block p-2 m-2 rounded border-2 border-sky-400 w-1/5 cursor-pointer hover:scale-110"
             onClick={() => setSelanimal(a.animal_no)}
           >
             <div className="flex h-36 items-center">
@@ -234,18 +235,13 @@ function AssignmentForm({ handleDidSave }) {
         </div>
         {/* 처리해야할 부분 */}
         <div className="py-2">
-          <div className="inline-block border-2 border-purple-500 rounded-lg mr-2 w-40 p-2">
-            <h2>반려동물 유무</h2>
-            <label className="switch-button">
-              <input
-                type="checkbox"
-                onChange={handleFieldChange}
-                name="have_pet_or_not"
-                checked={fieldValues.have_pet_or_not}
-              />
-              <span className="onoff-switch"></span>
-            </label>
-          </div>
+          <h2 className="inline">반려동물 유무 : </h2>
+          <input
+            type="checkbox"
+            onChange={handleFieldChange}
+            name="have_pet_or_not"
+            checked={fieldValues.have_pet_or_not}
+          />
         </div>
         <div className="py-2">
           <h2>거주지 사진</h2>

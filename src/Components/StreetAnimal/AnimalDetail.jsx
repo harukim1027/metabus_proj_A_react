@@ -63,7 +63,9 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>크기</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.size === '1' ? '소형' : '2' ? '중형' : '3' ? '대형' : ''}
+              {animal.size === '1' && '소형'}
+              {animal.size === '2' && '중형'}
+              {animal.size === '3' && '대형'}
             </span>
           </div>
 
@@ -119,21 +121,19 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>입양 상태</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.protection_status === '1'
-                ? '입양 대기'
-                : '2'
-                ? '입양 매칭 중'
-                : '3'
-                ? '입양 완료'
-                : ''}
+              {animal.protection_status === '1' && '입양 대기'}
+              {animal.protection_status === '2' && '입양 매칭 중'}
+              {animal.protection_status === '3' && '입양 완료'}
             </span>
           </div>
 
-          {animal.image && <img src={animal.image} alt={animal.animal_no} />}
+          {animal.image && (
+            <img src={animal.image} alt={animal.animal_no} className="mr-1" />
+          )}
         </>
       )}
 
-      <div>
+      <div className="flex gap-4 mt-3 mb-10 ml-10">
         <button
           disabled={deleteLoading}
           onClick={handleDelete}
