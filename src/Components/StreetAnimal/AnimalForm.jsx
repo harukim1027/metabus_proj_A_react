@@ -115,8 +115,8 @@ function AnimalForm({ animalId, handleDidSave }) {
             className="border-2 border-sky-400 rounded p-1 ml-2"
           >
             <option value={1}>소형</option>
-            <option value={1}>중형</option>
-            <option value={1}>대형</option>
+            <option value={2}>중형</option>
+            <option value={3}>대형</option>
           </select>
         </div>
 
@@ -209,9 +209,9 @@ function AnimalForm({ animalId, handleDidSave }) {
             type="text"
             className="border-2 border-sky-400 rounded p-1 ml-2"
           >
-            <option value={1}>입양 대기</option>
-            <option value={2}>입양 매칭 중</option>
-            <option value={3}>입양 완료</option>
+            <option value="1">입양 대기</option>
+            <option value="2">입양 매칭 중</option>
+            <option value="3">입양 완료</option>
           </select>
         </div>
 

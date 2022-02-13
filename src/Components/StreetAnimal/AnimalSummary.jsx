@@ -18,12 +18,12 @@ function AnimalSummary({ animal }) {
         </div>
 
         <span>{animal.age}</span>
-        <span>{animal.sex === 1 ? '암컷' : '수컷'}</span>
+        <span>{animal.sex === '1' ? '암컷' : '수컷'}</span>
         <span>{animal.place_of_discovery}</span>
         <span>
-          {animal.protection_status === 1
+          {animal.protection_status === '1'
             ? '입양 대기'
-            : 2
+            : '2'
             ? '입양 매칭 중'
             : '입양 완료'}
         </span>
