@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
+import DebugStates from 'DebugStates';
 
 function AnimalDetail({ animalId }) {
   const { auth } = useAuth();
@@ -76,7 +77,7 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>나이</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.age}
+              {animal.age}세
             </span>
           </div>
 
@@ -118,7 +119,7 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>입양 상태</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal && animal.protection_status === '1'
+              {animal.protection_status === '1'
                 ? '입양 대기'
                 : '2'
                 ? '입양 매칭 중'

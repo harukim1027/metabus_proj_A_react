@@ -1,24 +1,30 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import useFieldValues from 'hooks/useFieldValues';
-import SearchAnimal from './SearchAnimal';
-import './Assignment.css';
 import DebugStates from 'DebugStates';
 import { useEffect, useState } from 'react';
+import './Assignment.css';
+import './AssignmentForm.css';
 
 const INIT_FIELD_VALUES = {
   adopter_name: '',
   monthly_income: '',
   residential_type: 'Apartment',
   have_pet_or_not: false,
-  status: 1,
-  size: 1,
-  sex: 1,
+  status: '1',
+  protection_status: '1',
+  size: '1',
+  sex: '1',
 };
 
 function AssignmentForm({ handleDidSave }) {
   const { auth } = useAuth();
-  const [filtAnimal, setFiltAnimal] = useState({});
+  const [filter, setFilter] = useState({});
+  const [filtAnimal, setFiltAnimal] = useState([]);
+  const [selanimal, setSelanimal] = useState('');
+
+  INIT_FIELD_VALUES.user = auth.userID;
+  INIT_FIELD_VALUES.animal = selanimal;
   const { fieldValues, handleFieldChange, setFieldValues } =
     useFieldValues(INIT_FIELD_VALUES);
 
@@ -79,6 +85,7 @@ function AssignmentForm({ handleDidSave }) {
     });
   };
 
+  // 이름 폼에 현재 로그인한 이름 입력
   const putAuthName = (e) => {
     e.preventDefault();
     setFieldValues((prevFieldValues) => {
@@ -88,6 +95,11 @@ function AssignmentForm({ handleDidSave }) {
       };
     });
   };
+
+  console.log('---------------');
+  console.log('QueryAnimal: ', QueryAnimal);
+  console.log('filter: ', filter);
+  console.log('filtAnimal: ', filtAnimal);
 
   return (
     <>
@@ -125,22 +137,55 @@ function AssignmentForm({ handleDidSave }) {
         </select>
       </div>
       <button
-        onClick={() =>
-          setFiltAnimal({
+        onClick={() => {
+          setFilter({
+            protection_status: '1',
             size: fieldValues.size,
             sex: fieldValues.sex,
-          })
-        }
+          });
+        }}
+        className="bg-sky-400 p-2 m-2 rounded-lg"
       >
         검색하기
       </button>
+      <h2 className="inline">{`<< 클릭 후, 클릭 >>`}</h2>
+      <button
+        onClick={() =>
+          QueryAnimal &&
+          setFiltAnimal(
+            filter &&
+              QueryAnimal.filter(
+                (animal) =>
+                  animal.size === filter.size &&
+                  animal.sex === filter.sex &&
+                  animal.protection_status === '1',
+              ),
+          )
+        }
+        className="bg-sky-400 p-2 m-2 rounded-lg"
+      >
+        검색한 동물 보기
+      </button>
 
       {/* 검색한 동물 보여주기 */}
-      {filtAnimal && (
-        <h2>
-          {filtAnimal.size}, {filtAnimal.sex}
-        </h2>
-      )}
+      {/*   TODO: filtAnimal을 가지고 QueryAnimal에서 필터링해서 하나의 상태값에 저장
+  상태값을 버튼형식으로 표출 -> 클릭시 fieldValues에 그 동물의 pk가 들어가도록 */}
+      <div>
+        {filtAnimal.map((a) => (
+          <div
+            className="inline-block p-2 m-2 rounded border-2 border-sky-400 w-1/5"
+            onClick={() => setSelanimal(a.animal_no)}
+          >
+            <div className="flex h-36 items-center">
+              <img src={a.image} alt="" />
+            </div>
+            <h2>나이 : {a.age} 세</h2>
+            <h2>발견 장소 : {a.place_of_discovery}</h2>
+            <h2>건강 상태 : {a.physical_condition}</h2>
+          </div>
+        ))}
+      </div>
+
       {/* ----------------------------- */}
 
       <hr className="border-2" />
@@ -187,14 +232,20 @@ function AssignmentForm({ handleDidSave }) {
             <option value="Officetel">오피스텔</option>
           </select>
         </div>
+        {/* 처리해야할 부분 */}
         <div className="py-2">
-          <h2>반려동물 유무</h2>
-          <input
-            type="checkbox"
-            onChange={handleFieldChange}
-            name="have_pet_or_not"
-            checked={fieldValues.have_pet_or_not}
-          />
+          <div className="inline-block border-2 border-purple-500 rounded-lg mr-2 w-40 p-2">
+            <h2>반려동물 유무</h2>
+            <label className="switch-button">
+              <input
+                type="checkbox"
+                onChange={handleFieldChange}
+                name="have_pet_or_not"
+                checked={fieldValues.have_pet_or_not}
+              />
+              <span className="onoff-switch"></span>
+            </label>
+          </div>
         </div>
         <div className="py-2">
           <h2>거주지 사진</h2>
