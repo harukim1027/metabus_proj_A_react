@@ -4,7 +4,6 @@ import useFieldValues from 'hooks/useFieldValues';
 import DebugStates from 'DebugStates';
 import { useEffect, useState } from 'react';
 import './Assignment.css';
-import './AssignmentForm.css';
 
 const INIT_FIELD_VALUES = {
   adopter_name: '',
@@ -106,7 +105,9 @@ function AssignmentForm({ handleDidSave }) {
 
   return (
     <>
-      <h2 className="header text-4xl font-extrabold font-sans">크루원 모집</h2>
+      <div className="header">
+        <h2 className="text-6xl font-extrabold">크루원 모집</h2>
+      </div>
       <hr className="border-2" />
 
       {/* 동물 검색하는 부분 */}

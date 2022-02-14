@@ -21,7 +21,7 @@ function PageAssignComp() {
   return (
     <>
       <TopNav />
-      <AssignComp assginId={assignId} assignData={assignData && assignData} />
+      <AssignComp assginId={assignId} assignData={assignData} />
     </>
   );
 }

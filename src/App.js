@@ -33,6 +33,7 @@ import PageNoticeForm from 'Pages/PageNotice/PageNoticeForm';
 import PageReviewIndex from 'Pages/PageReview/PageReviewIndex';
 import PageReviewDetail from 'Pages/PageReview/PageReviewDetail';
 import PageReviewForm from 'Pages/PageReview/PageReviewForm';
+import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
 
 function App() {
   return (
@@ -77,6 +78,10 @@ function App() {
             />
 
             {/* Assignment */}
+            <Route
+              path="/adoptassignment/check/"
+              element={<PageAssignCheck />}
+            />
             <Route
               path="/adoptassignment/new/"
               element={<PageAssignmentform />}
