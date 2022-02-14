@@ -30,6 +30,7 @@ function InquiryList() {
               {auth.userID === inquiry.user && (
                 <InquirySummary inquiry={inquiry} />
               )}
+              {auth.is_staff && <InquirySummary inquiry={inquiry} />}
             </div>
           ))}
         </div>
