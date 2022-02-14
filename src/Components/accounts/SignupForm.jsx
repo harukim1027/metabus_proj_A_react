@@ -2,7 +2,10 @@ import { useApiAxios } from 'api/base';
 import Button from 'Button';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
+import { useEffect, useState, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Listbox, Transition } from '@headlessui/react'; // yarn add @headlessui/react
+import { CheckIcon } from '@heroicons/react/solid'; // yarn add i @heroicons/react
 
 const INIT_FIELD_VALUES = {
   userID: '',
@@ -19,13 +22,29 @@ const INIT_FIELD_VALUES = {
 
 function SignupForm() {
   const navigate = useNavigate();
+
+  // 회원가입 폼 생성을 위한 api 데이터 post 요청
   const [{ loading, error, errorMessages }, requestToken] = useApiAxios(
     {
-      url: `/accounts/api/signup/`, // postman에서 signup을 생성했음
-      method: 'POST',
+      url: `/accounts/api/signup/`,
+      method: 'POST', // postman에서 signup을 생성했음
     },
     { manual: true },
   );
+
+  // 중복입력 대조를 위한 api 데이터 get 요청
+  const [{ data: userList }, refetch] = useApiAxios(
+    {
+      url: `/accounts/api/users/`,
+      method: 'GET',
+    },
+    {
+      manual: true,
+    },
+  );
+  useEffect(() => {
+    refetch();
+  }, [userList]);
 
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
 
@@ -40,219 +59,309 @@ function SignupForm() {
     }
   };
 
+  // 중복값 대조를 위한 상탯값 지정
+  const [nameValue, setNameValue] = useState({ userID: '', nickname: '' });
+  const clickButton = (e) => {
+    e.preventDefault(); //form 안에 submit 역할을 하는 버튼을 눌렀어도 실행하지 않도록 막음
+    setNameValue({
+      userID: fieldValues.userID,
+      nickname: fieldValues.nickname,
+    });
+  };
+
   return (
-    <div>
-      <h2 className="py-3 text-center pb-3"> 🐰 Sign Up</h2>
-      <hr />
+    <div className="w-full max-w-m shadow-md">
+      <h2 className="py-3 text-center pb-3 "> 🐰 Sign Up</h2>
+      <hr className="mb-3" />
       {error?.response?.status === 401 && (
         <div className="text-red-400">회원가입에 실패했습니다.</div>
       )}
-      <form onSubmit={handleSubmit}>
-        <div className="my-3 pb-2">
-          <label>
-            사용자 ID
+      <form onSubmit={handleSubmit} className=" w-full max-w-lg">
+        <div className="ml-3 flex flex-wrap -mx-3 mb-6">
+          <div className="w-full px-3">
+            <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
+              사용자 ID{' '}
+            </span>
             <input
               type="text"
               name="userID"
               value={fieldValues.userID}
               onChange={handleFieldChange}
               placeholder="사용자 ID를 입력해주세요."
-              className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
+              className="rounded p-3 text-sm  bg-gray-100 focus:outline-none focus:border focus:border-gray-400  w-full md:w-1/2 px-3 mb-6 md:mb-0"
             />
+            {/* preventDefault를 위한 e 이벤트 객체 지정  */}
+            <button
+              className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              readOnly
+              onClick={(e) => clickButton(e)}
+            >
+              중복확인
+            </button>
+            {userList &&
+              userList.filter((user) => user.userID === nameValue.userID)
+                .length > 0 && (
+                <p className="text-m text-red-400">
+                  동일한 아이디가 존재합니다. 다른 아이디를 입력해주세요.
+                </p>
+              )}
             {errorMessages.userID?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
         </div>
-        <div className="my-3 pb-2">
-          <label>
-            닉네임
+        <div className="ml-3 flex flex-wrap -mx-3 mb-6 ">
+          <div className="w-full px-3">
+            <span className="mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
+              닉네임{' '}
+            </span>
             <input
               type="text"
               name="nickname"
               value={fieldValues.nickname}
               onChange={handleFieldChange}
               placeholder="사용하실 닉네임을 입력해주세요."
-              className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
+              className="rounded p-3 bg-gray-100 focus:outline-none focus:border text-sm focus:border-gray-400 w-full md:w-1/2 px-3 mb-6 md:mb-0"
             />
+            {/* preventDefault를 위한 e 이벤트 객체 지정  */}
+            <button
+              className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              onClick={(e) => clickButton(e)}
+              readOnly
+            >
+              중복확인
+            </button>
+            {userList &&
+              userList.filter((user) => user.nickname === nameValue.nickname)
+                .length > 0 && (
+                <p className="text-m text-red-400">
+                  동일한 닉네임이 존재합니다. 다른 닉네임을 입력해주세요.
+                </p>
+              )}
             {errorMessages.nickname?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
         </div>
-        <div className="my-3 pb-2">
-          <label>
-            사용자 이름
+        <div className="ml-3 flex flex-wrap -mx-3 mb-6">
+          <div className="w-full px-3">
+            <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700 pb-2">
+              사용자 이름{' '}
+            </span>
             <input
               type="text"
               name="name"
               value={fieldValues.name}
               onChange={handleFieldChange}
               placeholder="사용자 이름을 입력해주세요."
-              className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
+              className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
             />
             {errorMessages.name?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
         </div>
-        <div className="my-3 pb-2">
-          <label>
-            연락처
+        <div className="ml-3 flex flex-wrap -mx-3 mb-6">
+          <div className="w-full px-3">
+            <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700 pb-2">
+              연락처{' '}
+            </span>
             <input
               type="text"
               name="phone_number"
               value={fieldValues.phone_number}
               onChange={handleFieldChange}
               placeholder="입력형식 예) 010-0000-0000"
-              className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
+              className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
             />
             {errorMessages.phone_number?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
         </div>
-        <div className="my-3 pb-2">
-          <label>
-            이메일
+        <div className="ml-3 flex flex-wrap -mx-3 mb-6">
+          <div className="w-full px-3">
+            <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
+              이메일{' '}
+            </span>
             <input
               type="text"
               name="email"
               value={fieldValues.email}
               onChange={handleFieldChange}
               placeholder="입력형식 예 ) user@email.com"
-              className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
+              className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
             />
             {errorMessages.email?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
         </div>
+        <div className="ml-3 flex flex-wrap -mx-3 mb-6">
+          <div className="ml-4 inline-block relative w-64 pb-2">
+            <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
+              거주지역{' '}
+            </span>
+            <div className="relative">
+              <select
+                name="region"
+                value={fieldValues.region}
+                onChange={handleFieldChange}
+                className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              >
+                <option value="1">Seoul</option>
+                <option value="2">Busan</option>
+                <option value="3">Daegu</option>
+                <option value="4">Incheon</option>
+                <option value="5">Daejeon</option>
+                <option value="6">Sejong</option>
+                <option value="7">Gwangju</option>
+                <option value="8">Ulsan</option>
+                <option value="9">Jeju</option>
+                <option value="10">Gangwon</option>
+              </select>
 
-        <div className="inline-block relative w-64 pb-2">
-          <label>
-            거주지역
-            <select
-              name="region"
-              value={fieldValues.region}
-              onChange={handleFieldChange}
-              className="my-3 uppercase tracking-wide text-gray-700 text-m font-bold mb-3 overflow-scroll flex "
-            >
-              <option value="1">Seoul</option>
-              <option value="2">Busan</option>
-              <option value="3">Daegu</option>
-              <option value="4">Incheon</option>
-              <option value="5">Daejeon</option>
-              <option value="6">Sejong</option>
-              <option value="7">Gwangju</option>
-              <option value="8">Ulsan</option>
-              <option value="9">Jeju</option>
-              <option value="10">Gangwon</option>
-            </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  class="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+
             {errorMessages.region?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
         </div>
-        <div className="inline-block relative w-64 pb-2">
-          <label>
-            비밀번호 퀴즈
-            <select
-              name="password_quiz"
-              value={fieldValues.password_quiz}
-              onChange={handleFieldChange}
-              className="my-3 uppercase tracking-wide text-gray-700 text-m font-bold mb-3 overflow-scroll flex "
-            >
-              <option value="1">내 보물 1호는?</option>
-              <option value="2">처음 키운 반려동물 이름은?</option>
-              <option value="3">어머니 성함은?</option>
-              <option value="4">아버지 성함은?</option>
-              <option value="5">좋아하는 음식은?</option>
-            </select>
+        <div className="ml-3 flex flex-wrap -mx-3 mb-2">
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
+              비밀번호 퀴즈{' '}
+            </span>
+            <div className="relative">
+              <select
+                name="password_quiz"
+                value={fieldValues.password_quiz}
+                onChange={handleFieldChange}
+                className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              >
+                <option value="1">내 보물 1호는?</option>
+                <option value="2">처음 키운 반려동물 이름은?</option>
+                <option value="3">어머니 성함은?</option>
+                <option value="4">아버지 성함은?</option>
+                <option value="5">좋아하는 음식은?</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  class="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                </svg>
+              </div>
+            </div>
+
             {errorMessages.password_quiz?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
-        </div>
-        <div className="my-3 pb-2">
-          <label>
-            비밀번호 퀴즈 정답
+          </div>
+
+          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
+              비밀번호 퀴즈 정답{' '}
+            </span>
             <input
               type="text"
               name="password_quiz_answer"
               value={fieldValues.password_quiz_answer}
               onChange={handleFieldChange}
               placeholder="퀴즈 정답을 입력해주세요."
-              className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
+              className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
             />
-            <h5 className="text-xs text-blue-400">
-              이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
-            </h5>
+
             {errorMessages.password_quiz_answer?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
+          <h5 className="ml-5 text-xs mb-3 text-blue-400">
+            이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
+          </h5>
         </div>
-
-        <div className="my-3 py-3">
-          <label>
-            비밀번호
+        <div className="ml-4 flex flex-wrap -mx-3 mb-6">
+          <div className="w-full px-3">
+            <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
+              비밀번호{' '}
+            </span>
             <input
               type="password"
               name="password"
               value={fieldValues.password}
               onChange={handleFieldChange}
-              placeholder="비밀번호를 입력해주세요."
-              className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
+              placeholder="******************"
+              className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
             />
             {errorMessages.password?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
         </div>
-        <hr />
-        <div className="my-3 py-3">
-          <label>
-            비밀번호 확인
+
+        <hr className="mb-3" />
+        <div className="ml-3 flex flex-wrap -mx-3 mb-6">
+          <div className="w-full px-3">
+            <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
+              비밀번호 확인{' '}
+            </span>
             <input
               type="password"
               name="password2"
               value={fieldValues.password2}
               onChange={handleFieldChange}
-              placeholder="비밀번호를 다시 입력해주세요."
-              className="p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full"
+              placeholder="******************"
+              className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
             />
             {errorMessages.password2?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
               </p>
             ))}
-          </label>
+          </div>
+          <h5 className="ml-5 text-xs mb-3 text-blue-400">
+            입력하신 비밀번호를 다시 입력해주세요 !
+          </h5>
         </div>
+
         <div className="my-3 py-3 text-center">
           <Button>회원가입</Button>
         </div>
       </form>
       <hr />
-
+      <p class="text-center text-gray-500 text-xs">
+        &copy;2022 METABUS Corp. All rights reserved.
+      </p>
       <DebugStates fieldValues={fieldValues} non_field_errors={errorMessages} />
     </div>
   );
