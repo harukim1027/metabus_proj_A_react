@@ -8,7 +8,7 @@ function UserManagementIndex() {
   const [query, setQuery] = useState(null);
   const { auth } = useAuth();
 
-  const [{ data: usermanagementIndex, loading, error }, refetch] = useApiAxios(
+  const [{ data: managementIndex, loading, error }, refetch] = useApiAxios(
     {
       url: '/accounts/api/users/',
       method: 'GET',
@@ -45,45 +45,37 @@ function UserManagementIndex() {
         placeholder="검색어를 입력해주세요."
         onChange={handleChange}
         onKeyPress={handleKeyPress}
+        className="mt-3 ml-3 border-2 border-gray-300"
       />
 
-      {usermanagementIndex && (
+      {managementIndex && (
         <div>
-          {usermanagementIndex.map((usermanagement) => (
+          {managementIndex.map((management) => (
             <div>
-              <Link to={`/usermanagement/${usermanagement.userID}/`}>
-                {usermanagement.userID}
+              <Link to={`/management/${management.userID}/`}>
+                {management.userID}
               </Link>
 
-              <Link to={`/usermanagement/${usermanagement.userID}/`}>
-                {usermanagement.name}
+              <Link to={`/management/${management.userID}/`}>
+                {management.name}
               </Link>
 
-              <Link to={`/usermanagement/${usermanagement.userID}/`}>
-                {usermanagement.nickname}
+              <Link to={`/management/${management.userID}/`}>
+                {management.nickname}
               </Link>
-              <span>{usermanagement.phone_number}</span>
-              <span>{usermanagement.email}</span>
+              <span>{management.phone_number}</span>
+              <span>{management.email}</span>
               <span>
-                {usermanagement.region === 1
-                  ? 'Seoul'
-                  : 2
-                  ? 'Busan'
-                  : 3
-                  ? 'Daegu'
-                  : 4
-                  ? 'Incheon'
-                  : 5
-                  ? 'Daejeon'
-                  : 6
-                  ? 'Sejong'
-                  : 7
-                  ? 'Gwangju'
-                  : 8
-                  ? 'Ulsan'
-                  : 9
-                  ? 'Jeju'
-                  : 'Gangwon'}
+                {management.region === 1 && 'Seoul'}
+                {management.region === 2 && 'Busan'}
+                {management.region === 3 && 'Daegu'}D
+                {management.region === 4 && 'Incheon'}
+                {management.region === 5 && 'Daejeon'}
+                {management.region === 6 && 'Sejong'}
+                {management.region === 7 && 'Gwangju'}
+                {management.region === 8 && 'Ulsan'}
+                {management.region === 9 && 'Jeju'}
+                {management.region === 10 && 'Gangwon'}
               </span>
             </div>
           ))}

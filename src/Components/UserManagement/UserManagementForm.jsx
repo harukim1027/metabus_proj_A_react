@@ -4,6 +4,7 @@ import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const INIT_FIELD_VALUES = {
   userID: '',
@@ -14,20 +15,19 @@ const INIT_FIELD_VALUES = {
   region: '',
 };
 
-function UserManagementForm({ usermanagementId, handleDidSave }) {
+function UserManagementForm({ handleDidSave }) {
   const { auth } = useAuth();
+  const { managementId } = useParams();
 
   // 조회
-  const [
-    { data: usermanagement, loading: getLoading, error: getError },
-    refetch,
-  ] = useApiAxios(
-    {
-      url: `/accounts/api/users/${usermanagementId}/`,
-      method: 'GET',
-    },
-    { manual: !usermanagementId },
-  );
+  const [{ data: management, loading: getLoading, error: getError }, refetch] =
+    useApiAxios(
+      {
+        url: `/accounts/api/users/${managementId}/`,
+        method: 'GET',
+      },
+      { manual: !managementId },
+    );
 
   // 저장
   const [
@@ -39,10 +39,10 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
     saveRequest,
   ] = useApiAxios(
     {
-      url: !usermanagementId
+      url: !managementId
         ? `/accounts/api/users/`
-        : `/accounts/api/users/${usermanagementId}/`,
-      method: !usermanagementId ? 'POST' : 'PUT',
+        : `/accounts/api/users/${managementId}/`,
+      method: !managementId ? 'POST' : 'PUT',
       headers: {
         Authorization: `Bearer ${auth.access}`,
       },
@@ -51,7 +51,7 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
   );
 
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    usermanagement || INIT_FIELD_VALUES,
+    management || INIT_FIELD_VALUES,
   );
 
   useEffect(() => {
@@ -91,6 +91,7 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
             value={fieldValues.userID}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -101,6 +102,7 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
             value={fieldValues.name}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -111,6 +113,7 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
             value={fieldValues.nickname}
             onChange={handleFieldChange}
             type="text"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -121,6 +124,7 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
             value={fieldValues.phone_number}
             onChange={handleFieldChange}
             type="tel"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
@@ -131,17 +135,30 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
             value={fieldValues.email}
             onChange={handleFieldChange}
             type="email"
+            className="border-2 border-sky-400 rounded p-1 ml-2"
           />
         </div>
 
         <div className="my-3">
           <span>거주지역 입력</span>
-          <input
+          <select
             name="region"
             value={fieldValues.region}
             onChange={handleFieldChange}
             type="text"
-          />
+            className="border-2 border-sky-400 rounded p-1 ml-2"
+          >
+            <option value="1">Seoul</option>
+            <option value="2">Busan</option>
+            <option value="3">Daegu</option>
+            <option value="4">Incheon</option>
+            <option value="5">Daejeon</option>
+            <option value="6">Sejong</option>
+            <option value="7">Gwangju</option>
+            <option value="8">Ulsan</option>
+            <option value="9">Jeju</option>
+            <option value="10">Gangwon</option>
+          </select>
         </div>
 
         <div className="my-3">
@@ -150,7 +167,7 @@ function UserManagementForm({ usermanagementId, handleDidSave }) {
       </form>
 
       <DebugStates
-        usermanagement={usermanagement}
+        management={management}
         getLoading={getLoading}
         getError={getError}
         saveErrorMessages={saveErrorMessages}

@@ -14,12 +14,23 @@ function TopNav() {
 
   return (
     <div className="header">
-      <div className="flex text-2xl">
+      <div className="flex text-2xl place-content-between">
+        <div></div>
         {!auth.isLoggedIn && (
-          <>
-            <MyLink to="/accounts/login/">로그인</MyLink>
-            <MyLink to="/accounts/checksignup/">회원가입</MyLink>
-          </>
+          <div className="flex">
+            <NavLink
+              to="/accounts/login/"
+              className="border-2 border-blue-300 py-2 rounded w-20 text-center"
+            >
+              로그인
+            </NavLink>
+            <NavLink
+              to="/accounts/checksignup/"
+              className="border-2 border-blue-300 py-2 rounded w-20 text-center"
+            >
+              회원가입
+            </NavLink>
+          </div>
         )}
         {auth.isLoggedIn && (
           <>
@@ -66,6 +77,6 @@ function MyLink({ to, children }) {
     </NavLink>
   );
 }
-const BaseClassName = 'border-2 border-gray-300 py-2';
+const BaseClassName = 'border-2 border-blue-300 py-2';
 
 export default TopNav;
