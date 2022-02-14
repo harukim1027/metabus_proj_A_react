@@ -21,12 +21,14 @@ function AssignmentForm({ handleDidSave }) {
   const { auth } = useAuth();
   const [filter, setFilter] = useState({});
   const [filtAnimal, setFiltAnimal] = useState([]);
-  const [selanimal, setSelanimal] = useState('');
+  const [selanimal, setSelanimal] = useState(null);
 
   INIT_FIELD_VALUES.user = auth.userID;
-  INIT_FIELD_VALUES.animal = selanimal;
+
   const { fieldValues, handleFieldChange, setFieldValues } =
     useFieldValues(INIT_FIELD_VALUES);
+
+  fieldValues.animal = selanimal;
 
   const [
     { data: QueryAnimal, loading: getLoading, error: getError },
@@ -170,7 +172,7 @@ function AssignmentForm({ handleDidSave }) {
 
       {/* 검색한 동물 보여주기 */}
       {/*   TODO: filtAnimal을 가지고 QueryAnimal에서 필터링해서 하나의 상태값에 저장
-  상태값을 버튼형식으로 표출 -> 클릭시 fieldValues에 그 동물의 pk가 들어가도록 */}
+      상태값을 버튼형식으로 표출 -> 클릭시 fieldValues에 그 동물의 pk가 들어가도록 */}
       <div>
         {filtAnimal.map((a) => (
           <div
