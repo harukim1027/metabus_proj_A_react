@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import AnimalSummary from './AnimalSummary';
 import { useAuth } from 'contexts/AuthContext';
 import { useState } from 'react';
-import Button from 'Button';
 
 function AnimalList() {
   const { auth } = useAuth();
@@ -60,13 +59,23 @@ function AnimalList() {
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
       <div className="my-5">
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>이미지</th>
+              <th>지역번호</th>
+              <th>나이</th>
+              <th>성별</th>
+              <th>발견장소</th>
+              <th>입양 상태</th>
+            </tr>
+          </thead>
+        </table>
         {AnimalList && (
-          <div className="flex space-x-1">
+          <div>
             {AnimalList.map((animal, index) => (
-              <div
-                key={index}
-                className="w-full md:w-1/4 l:w-1/3 px-4 transition-transform "
-              >
+              <div key={index}>
                 <AnimalSummary animal={animal} key={index} />
               </div>
             ))}

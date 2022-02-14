@@ -54,23 +54,30 @@ function UserManagementIndex() {
       </button>
 
       {managementIndex && (
-        <div>
+        <div className="mt-5 ml-10">
           {managementIndex.map((management) => (
             <div>
-              <Link to={`/management/${management.userID}/`}>
-                {management.userID}
-              </Link>
+              <span className="p-1 ml-2">
+                <Link to={`/management/${management.userID}/`}>
+                  {management.userID}
+                </Link>
+              </span>
 
-              <Link to={`/management/${management.userID}/`}>
-                {management.name}
-              </Link>
+              <span className="p-1 ml-2">
+                <Link to={`/management/${management.userID}/`}>
+                  {management.name}
+                </Link>
+              </span>
 
-              <Link to={`/management/${management.userID}/`}>
-                {management.nickname}
-              </Link>
-              <span>{management.phone_number}</span>
-              <span>{management.email}</span>
-              <span>
+              <span className="p-1 ml-2">
+                <Link to={`/management/${management.userID}/`}>
+                  {management.nickname}
+                </Link>
+              </span>
+
+              <span className="p-1 ml-2">{management.phone_number}</span>
+              <span className="p-1 ml-2">{management.email}</span>
+              <span className="p-1 ml-2">
                 {management.region === 1 && 'Seoul'}
                 {management.region === 2 && 'Busan'}
                 {management.region === 3 && 'Daegu'}
