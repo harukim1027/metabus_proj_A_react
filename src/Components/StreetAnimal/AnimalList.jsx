@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import AnimalSummary from './AnimalSummary';
 import { useAuth } from 'contexts/AuthContext';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function AnimalList() {
   const { auth } = useAuth();
@@ -59,28 +60,48 @@ function AnimalList() {
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
       <div className="my-5">
-        <table>
-          <thead>
+        <table className="border-2">
+          <thead className="border-2">
             <tr>
-              <th>번호</th>
-              <th>이미지</th>
-              <th>지역번호</th>
-              <th>나이</th>
-              <th>성별</th>
-              <th>발견장소</th>
-              <th>입양 상태</th>
+              <th className="border-2">번호</th>
+              <th className="border-2">이미지</th>
+              <th className="border-2">등록번호</th>
+              <th className="border-2">나이</th>
+              <th className="border-2">성별</th>
+              <th className="border-2">발견장소</th>
+              <th className="border-2">입양 상태</th>
             </tr>
           </thead>
+
+          <tbody>
+            {AnimalList &&
+              AnimalList.map((animal) => (
+                <tr>
+                  <td>
+                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                      {animal.animal_no}
+                    </Link>
+                  </td>
+                  <td>
+                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                      <img src={animal.image} alt="" className="w-10 h-10" />
+                    </Link>
+                  </td>
+                  <Link to={`/streetanimal/${animal.animal_no}/`}>
+                    <td>{animal.animal_reg_num}</td>
+                  </Link>
+                  <td>{animal.age}</td>
+                  <td>{animal.sex === '1' ? '암컷' : '수컷'}</td>
+                  <td>{animal.place_of_discovery}</td>
+                  <td>
+                    {animal.protection_status === '1' && '입양 대기'}
+                    {animal.protection_status === '2' && '입양 매칭 중'}
+                    {animal.protection_status === '3' && '입양 완료'}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
         </table>
-        {AnimalList && (
-          <div>
-            {AnimalList.map((animal, index) => (
-              <div key={index}>
-                <AnimalSummary animal={animal} key={index} />
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   );
