@@ -20,33 +20,46 @@ function TopNav() {
           <div className="flex">
             <NavLink
               to="/accounts/login/"
-              className="border-2 border-blue-300 py-2 rounded w-20 text-center"
+              className="border-2 border-blue-300 py-1 rounded w-20 text-center"
             >
               로그인
             </NavLink>
             <NavLink
               to="/accounts/checksignup/"
-              className="border-2 border-blue-300 py-2 rounded w-20 text-center"
+              className="border-2 border-blue-300 py-1 rounded w-20 text-center"
             >
               회원가입
             </NavLink>
           </div>
         )}
+      </div>
+      <div className="flex text-2xl place-content-between">
+        <div></div>
         {auth.isLoggedIn && (
-          <>
+          <div className="flex">
             {auth.is_staff ? (
-              <MyLink to="/admin/main/">사이트 관리</MyLink>
+              <NavLink
+                to="/admin/main/"
+                className="border-2 border-blue-300 py-1 rounded w-20 text-center"
+              >
+                사이트 관리
+              </NavLink>
             ) : (
-              <MyLink to="/accounts/profile/">마이 페이지</MyLink>
+              <NavLink
+                to="/accounts/profile/"
+                className="border-2 border-blue-300 py-1 rounded w-20 text-center"
+              >
+                마이 페이지
+              </NavLink>
             )}
 
             <button
               onClick={handleLogout}
-              className="border-2 border-gray-300 py-2"
+              className="border-2 border-blue-300 py-1 rounded w-20 text-center"
             >
               로그아웃
             </button>
-          </>
+          </div>
         )}
       </div>
       <div

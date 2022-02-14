@@ -108,8 +108,8 @@ function AssignmentForm({ handleDidSave }) {
     <>
       <h2 className="header text-4xl font-extrabold font-sans">크루원 모집</h2>
       <hr className="border-2" />
-      {/* 동물 검색하는 부분 */}
 
+      {/* 동물 검색하는 부분 */}
       <h2>크루원 검색</h2>
       <div className="py-2">
         <h2 className="inline">크루원의 사이즈 : </h2>
@@ -190,7 +190,7 @@ function AssignmentForm({ handleDidSave }) {
       </div>
 
       {/* ----------------------------- */}
-
+      {/* 신청하는 폼 */}
       <hr className="border-2" />
       <form onSubmit={handleSubmit}>
         <div className="py-2">

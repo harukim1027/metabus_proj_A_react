@@ -19,7 +19,6 @@ import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagement
 import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
 import PageUserManagementForm from 'Pages/PageUserManagement/PageUserManagementForm';
 // user/Assignment
-import PageAssignmentList from 'Pages/PageAssignment/PageAssignmentList';
 import PageAssignmentform from 'Pages/PageAssignment/PageAssignmentForm';
 import PageAssignComp from 'Pages/PageAssignment/PageAssignComp';
 // inquiry
@@ -78,13 +77,12 @@ function App() {
             />
 
             {/* Assignment */}
-            <Route path="/adoptassignment/" element={<PageAssignmentList />} />
             <Route
               path="/adoptassignment/new/"
               element={<PageAssignmentform />}
             />
             <Route
-              path="/adoptassignment/complite/"
+              path="/adoptassignment/complite/:assignId/"
               element={<PageAssignComp />}
             />
 
