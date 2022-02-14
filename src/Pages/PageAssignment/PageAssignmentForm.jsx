@@ -9,7 +9,9 @@ function PageAssignmentform() {
       <TopNav />
       <h2>입양 신청 페이지</h2>
       <AssignmentForm
-        handleDidSave={(savedAssign) => navigate(`/assigncomp/complite/`)}
+        handleDidSave={(savedAssign) =>
+          navigate(`/assigncomp/complite/${savedAssign.assignment_no}`)
+        }
       />
     </>
   );
