@@ -48,11 +48,16 @@ function ReviewDetail({ reviewId }) {
           {review.image4 && <img src={review.image4} alt={review.image4} />}
           {review.image5 && <img src={review.image5} alt={review.image5} />}
           <h2>{review.content}</h2>
+
+          <Link to="/review/">목록으로</Link>
+          {auth.userId === review.user && (
+            <Link to={`/review/${reviewId}/edit/`}>수정하기</Link>
+          )}
+          {auth.userId === review.user && (
+            <button onClick={() => handleDelete()}>삭제하기</button>
+          )}
         </>
       )}
-      <Link to="/review/">목록으로</Link>
-      {auth.is_staff || <Link to={`/review/${reviewId}/edit/`}>수정하기</Link>}
-      <button onClick={() => handleDelete()}>삭제하기</button>
     </div>
   );
 }

@@ -7,7 +7,7 @@ function ReviewList() {
   const [query, setQuery] = useState('');
   const [{ data: reviewList }, refetch] = useApiAxios(
     {
-      url: `/adopt_review/api/reviews/`,
+      url: `/adopt_review/api/reviews/${query ? '?query=' + query : ''}`,
       method: 'GET',
     },
     {
@@ -17,14 +17,13 @@ function ReviewList() {
 
   const handleChange = (e) => {
     const value = e.target.value;
-    console.log(value);
+    setQuery(value);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
+      refetch();
       console.log('ENTER');
-      const value = e.target.value;
-      setQuery(value);
     }
   };
 
@@ -40,6 +39,9 @@ function ReviewList() {
         onChange={handleChange}
         onKeyPress={handleKeyPress}
       />
+      <button type="submit" onClick={() => refetch()}>
+        검색
+      </button>
       <div className="my-5 ">
         {reviewList && (
           <div className="flex space-x-1">
