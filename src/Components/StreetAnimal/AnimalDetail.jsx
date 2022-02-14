@@ -54,7 +54,7 @@ function AnimalDetail({ animalId }) {
       {animal && (
         <>
           <div className="my-3">
-            <span>지역번호</span>
+            <span>등록번호</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
               {animal.animal_reg_num}
             </span>

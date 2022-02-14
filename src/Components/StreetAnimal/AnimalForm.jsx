@@ -95,7 +95,7 @@ function AnimalForm({ animalId, handleDidSave }) {
 
       <form onSubmit={handleSubmit}>
         <div className="my-3">
-          <span>지역번호 입력</span>
+          <span>등록번호 입력</span>
           <input
             name="animal_reg_num"
             value={fieldValues.animal_reg_num}
