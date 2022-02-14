@@ -83,12 +83,18 @@ function AnimalList() {
                   </td>
                   <td>
                     <Link to={`/streetanimal/${animal.animal_no}/`}>
-                      <img src={animal.image} alt="" className="w-10 h-10" />
+                      <img
+                        src={animal.image}
+                        alt={animal.animal_no}
+                        className="w-10 h-10"
+                      />
                     </Link>
                   </td>
-                  <Link to={`/streetanimal/${animal.animal_no}/`}>
-                    <td>{animal.animal_reg_num}</td>
-                  </Link>
+                  <td>
+                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                      {animal.animal_reg_num}
+                    </Link>
+                  </td>
                   <td>{animal.age}</td>
                   <td>{animal.sex === '1' ? '암컷' : '수컷'}</td>
                   <td>{animal.place_of_discovery}</td>
