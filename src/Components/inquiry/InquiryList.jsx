@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
 import { useApiAxios } from 'api/base';
 import InquirySummary from './InquirySummary';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import { useState } from 'react';
 
 function InquiryList() {
   const { auth } = useAuth();
   const [query, setQuery] = useState('');
-  const navigate = useNavigate();
 
   const [{ data: inquiryList }, refetch] = useApiAxios(
     {

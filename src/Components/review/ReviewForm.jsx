@@ -15,9 +15,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
 
-  const [
-    { data: review, adoptassignmentList, loading: getLoading, error: getError },
-  ] = useApiAxios(
+  const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
     {
       url: `/adopt_review/api/reviews/${reviewId}/`,
       method: 'GET',
@@ -27,7 +25,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
     },
   );
 
-  const [{ data: assignmentList, loading, error }, refetch1] = useApiAxios(
+  const [{ data: assignmentList, loading, error }, refetch] = useApiAxios(
     {
       url: `/adopt_assignment/api/assignment/`,
       method: 'GET',
