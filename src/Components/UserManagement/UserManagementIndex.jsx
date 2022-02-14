@@ -10,7 +10,7 @@ function UserManagementIndex() {
 
   const [{ data: managementIndex, loading, error }, refetch] = useApiAxios(
     {
-      url: '/accounts/api/users/',
+      url: `/accounts/api/users/${query ? '?query=' + query : ''}`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -20,15 +20,13 @@ function UserManagementIndex() {
   );
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    console.log(value);
+    const { value } = e.target;
+    setQuery(value);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      console.log('ENTER');
-      const value = e.target.value;
-      setQuery(value);
+      refetch();
     }
   };
 
@@ -47,6 +45,13 @@ function UserManagementIndex() {
         onKeyPress={handleKeyPress}
         className="mt-3 ml-3 border-2 border-gray-300"
       />
+      <button
+        type="submit"
+        onClick={() => refetch()}
+        className="font-bold py-2 px-4 rounded cursor-pointer ml-1 bg-blue-500 hover:bg-blue-300 text-white"
+      >
+        검색
+      </button>
 
       {managementIndex && (
         <div>
@@ -68,7 +73,7 @@ function UserManagementIndex() {
               <span>
                 {management.region === 1 && 'Seoul'}
                 {management.region === 2 && 'Busan'}
-                {management.region === 3 && 'Daegu'}D
+                {management.region === 3 && 'Daegu'}
                 {management.region === 4 && 'Incheon'}
                 {management.region === 5 && 'Daejeon'}
                 {management.region === 6 && 'Sejong'}
