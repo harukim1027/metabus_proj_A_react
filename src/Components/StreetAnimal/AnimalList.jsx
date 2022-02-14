@@ -1,7 +1,6 @@
 import { useApiAxios } from 'api/base';
 import TopNav from 'Components/Main/TopNavi';
 import { useEffect } from 'react';
-import AnimalSummary from './AnimalSummary';
 import { useAuth } from 'contexts/AuthContext';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
