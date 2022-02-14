@@ -73,30 +73,35 @@ function InquiryForm({ inquiryId, handleDidSave }) {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <div className="my-3">
-            <h2>제목 입력</h2>
-            <input
-              name="title"
-              value={fieldValues.title}
-              onChange={handleFieldChange}
-              type="text"
-              className="border-2 border-gray-300"
-            />
-          </div>
+          {auth.isLoggedIn && !auth.is_staff && (
+            <>
+              <div className="my-3">
+                <h2>제목 입력</h2>
+                <input
+                  name="title"
+                  value={fieldValues.title}
+                  onChange={handleFieldChange}
+                  type="text"
+                  className="border-2 border-gray-300"
+                />
+              </div>
 
-          <div className="my-3">
-            <h2>내용 입력</h2>
-            <textarea
-              name="content"
-              value={fieldValues.content}
-              onChange={handleFieldChange}
-              className="border-2 border-gray-300"
-            />
-          </div>
-
-          {auth.isLoggedIn && auth.is_staff && (
+              <div className="my-3">
+                <h2>내용 입력</h2>
+                <textarea
+                  name="content"
+                  value={fieldValues.content}
+                  onChange={handleFieldChange}
+                  className="border-2 border-gray-300"
+                />
+              </div>
+            </>
+          )}
+          {auth.isLoggedIn && auth.is_staff && inquiry && (
             <div className="my-3">
-              <h2>답변 입력</h2>
+              <h1>{inquiry.title}</h1>
+              <h2>{inquiry.content}</h2>
+              <h3>답변 입력</h3>
               <textarea
                 name="admin_answer"
                 value={fieldValues.admin_answer}
