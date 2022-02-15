@@ -8,12 +8,12 @@ import './Assignment.css';
 const INIT_FIELD_VALUES = {
   adopter_name: '',
   monthly_income: '',
-  residential_type: 'Apartment',
+  residential_type: '아파트',
   have_pet_or_not: false,
-  status: '1',
-  protection_status: '1',
-  size: '1',
-  sex: '1',
+  status: '신청',
+  protection_status: '입양 대기',
+  size: '소형',
+  sex: '암컷',
 };
 
 function AssignmentForm({ handleDidSave }) {
@@ -119,11 +119,11 @@ function AssignmentForm({ handleDidSave }) {
           value={fieldValues.size}
           onChange={handleFieldChange}
           className="border-2 border-sky-400 rounded p-2"
-          defaultValue="1"
+          defaultValue="소형"
         >
-          <option value="1">소형</option>
-          <option value="2">중형</option>
-          <option value="3">대형</option>
+          <option value="소형">소형</option>
+          <option value="중형">중형</option>
+          <option value="대형">대형</option>
         </select>
       </div>
 
@@ -134,16 +134,16 @@ function AssignmentForm({ handleDidSave }) {
           value={fieldValues.sex}
           onChange={handleFieldChange}
           className="border-2 border-sky-400 rounded p-2"
-          defaultValue="1"
+          defaultValue="암컷"
         >
-          <option value="1">암컷</option>
-          <option value="2">수컷</option>
+          <option value="암컷">암컷</option>
+          <option value="수컷">수컷</option>
         </select>
       </div>
       <button
         onClick={() => {
           setFilter({
-            protection_status: '1',
+            protection_status: '입양 대기',
             size: fieldValues.size,
             sex: fieldValues.sex,
           });
@@ -162,7 +162,7 @@ function AssignmentForm({ handleDidSave }) {
                 (animal) =>
                   animal.size === filter.size &&
                   animal.sex === filter.sex &&
-                  animal.protection_status === '1',
+                  animal.protection_status === '입양 대기',
               ),
           )
         }

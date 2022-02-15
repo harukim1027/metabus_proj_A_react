@@ -32,9 +32,9 @@ function AssignList() {
         </thead>
         <tbody>
           {assignData?.map((assign) => (
-            <tr className="cursor-pointer">
+            <tr className="">
               <td
-                className="border-2 border-gray-400"
+                className="border-2 border-gray-400 text-center cursor-pointer"
                 onClick={() =>
                   navigate(`/admin/assignmanage/${assign.assignment_no}/`)
                 }
@@ -42,24 +42,29 @@ function AssignList() {
                 {assign.assignment_no}
               </td>
               <td
-                className="border-2 border-gray-400"
+                className="border-2 border-gray-400 text-center cursor-pointer"
                 onClick={() =>
                   navigate(`/admin/usermanage/${assign.user.userID}/`)
                 }
               >
                 {assign.adopter_name}
               </td>
-              <td className="border-2 border-gray-400">
+              <td className="border-2 border-gray-400 text-center">
                 {assign.monthly_income}
               </td>
-              <td className="border-2 border-gray-400">
-                {assign.residential_type === 'Apartment' && '아파트'}
-                {assign.residential_type === 'Villa' && '빌라'}
-                {assign.residential_type === 'Housing' && '주택'}
-                {assign.residential_type === 'Oneroom' && '원룸'}
-                {assign.residential_type === 'Officetel' && '오피스텔'}
+              <td className="border-2 border-gray-400 text-center">
+                {assign.residential_type === '아파트' && '아파트'}
+                {assign.residential_type === '빌라' && '빌라'}
+                {assign.residential_type === '주택' && '주택'}
+                {assign.residential_type === '원룸' && '원룸'}
+                {assign.residential_type === '오피스텔' && '오피스텔'}
               </td>
-              <td className="border-2 border-gray-400">
+              <td
+                className="border-2 border-gray-400 text-center cursor-pointer"
+                onClick={() =>
+                  navigate(`/admin/animal/${assign.animal.animal_no}/`)
+                }
+              >
                 {assign.animal.animal_reg_num}
               </td>
             </tr>

@@ -10,7 +10,7 @@ function AssignComp({ assignId, assignData }) {
     {
       url: `/streetanimal/api/animal/${assignData?.animal.animal_no}/`,
       method: 'PATCH',
-      data: { protection_status: '2' },
+      data: { protection_status: '입양 매칭 중' },
     },
     { manual: true },
   );
