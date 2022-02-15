@@ -35,15 +35,15 @@ function ReviewList() {
     <>
       {/* 검색 필드 + CSS */}
 
-      <div class="relative mx-20">
+      <div className="relative mx-20">
         <input
-          class="appearance-none border-2 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-pink-200 focus:border-pink-200 focus:shadow-outline"
+          className="appearance-none border-2 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-pink-200 focus:border-pink-200 focus:shadow-outline"
           type="text"
           placeholder="검색어를 입력해주세요."
           onChange={handleChange}
           onKeyPress={handleKeyPress}
         />
-        <div class="absolute left-0 inset-y-0 flex items-center">
+        <div className="absolute left-0 inset-y-0 flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6 ml-3 text-gray-400 hover:text-gray-500"

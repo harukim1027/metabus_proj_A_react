@@ -37,15 +37,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
     },
   );
 
-  const [{ data: animalList }, refetch] = useApiAxios(
-    {
-      url: `/streetanimal/api/animal/`,
-      method: 'GET',
-    },
-
-    { manual: true },
-  );
-
   const [{ loading: saveLoading, error: saveError }, saveRequest] = useApiAxios(
     {
       url: !reviewId
@@ -78,10 +69,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
     );
   }, [auth.userID, setFieldValues, review, selectanimal]);
 
-  useEffect(() => {
-    refetch();
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -103,8 +90,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
   console.log('filtAssign', filtAssign);
   // console.log('fieldValues', fieldValues);
-  console.log('animalList', animalList);
-
   // console.log('setSelanimal', setSelanimal);
 
   return (
@@ -131,16 +116,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
             >
               1. 입양 신청 필터링
             </button>
-            <button
-              onClick={() =>
-                setFiltAssignedAni(
-                  animalList.filter((animal) =>
-                    filtAssign.includes(animal.animal_no),
-                  ),
-                )
-              }
-              className="bg-pink-100 p-2 m-2 rounded-lg"
-            >
+            <button className="bg-pink-100 p-2 m-2 rounded-lg">
               2. 입양한 동물 보기
             </button>
             <div>

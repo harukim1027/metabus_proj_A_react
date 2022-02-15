@@ -286,6 +286,14 @@ function AssignmentForm({ handleDidSave }) {
             <option value="Busan">부산 동물보호센터</option>
           </select>
         </div>
+        <div className="py-2">
+          <input
+            type="date"
+            name="date_to_meet"
+            onChange={handleFieldChange}
+            className="border-2 border-gray-300 p-2 rounded-lg"
+          />
+        </div>
         <button>신청하기</button>
       </form>
       <hr className="border-2" />
