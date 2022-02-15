@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
 
 .header {
-  font-family: 'Dongle', sans-serif;
+  font-family: 'Hahmlet', serif;
+  background-color: #faeddc;
 }
