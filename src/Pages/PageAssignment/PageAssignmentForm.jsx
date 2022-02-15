@@ -10,7 +10,7 @@ function PageAssignmentform() {
       <TopNav />
       <AssignmentForm
         handleDidSave={(savedPost) => {
-          navigate(`/adoptassignment/complite/${savedPost.assignment_no}/`);
+          navigate(`/assignment/complite/${savedPost.assignment_no}/`);
         }}
       />
     </>

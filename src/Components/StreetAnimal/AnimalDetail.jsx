@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
-import DebugStates from 'DebugStates';
 
 function AnimalDetail({ animalId }) {
   const { auth } = useAuth();
@@ -14,9 +13,9 @@ function AnimalDetail({ animalId }) {
     {
       url: `/streetanimal/api/animal/${animalId}/`,
       method: 'GET',
-      // headers: {
-      //   Authorization: `Bearer ${auth.access}`,
-      // },
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
     },
 
     { manual: true },
@@ -37,7 +36,7 @@ function AnimalDetail({ animalId }) {
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
       deleteAnimal().then(() => {
-        navigate('/streetanimal/');
+        navigate('/admin/animal/');
       });
     }
   };
@@ -142,12 +141,12 @@ function AnimalDetail({ animalId }) {
           삭제
         </button>
         <Link
-          to={`/streetanimal/${animalId}/edit/`}
+          to={`/admin/animal/${animalId}/edit/`}
           className="hover:text-red-400"
         >
           수정
         </Link>
-        <Link to="/streetanimal/" className="hover:text-red-400">
+        <Link to="/admin/animal/" className="hover:text-red-400">
           목록
         </Link>
       </div>

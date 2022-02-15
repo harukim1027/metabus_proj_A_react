@@ -9,8 +9,9 @@ import produce from 'immer';
 
 const INIT_FIELD_VALUES = {
   animal_reg_num: '',
-  size: '',
-  sex: '',
+  category: 1,
+  size: 1,
+  sex: 1,
   age: '',
   date_of_discovery: '',
   place_of_discovery: '',
@@ -95,6 +96,20 @@ function AnimalForm({ animalId, handleDidSave }) {
 
       <form onSubmit={handleSubmit}>
         <div className="my-3">
+          <span>동물 종 선택</span>
+          <select
+            name="category"
+            value={fieldValues.category}
+            onChange={handleFieldChange}
+            className="border-2 border-sky-400 rounded p-1 ml-2"
+          >
+            <option value="1">강아지</option>
+            <option value="2">고양이</option>
+            <option value="3">기타동물</option>
+          </select>
+        </div>
+
+        <div className="my-3">
           <span>등록번호 입력</span>
           <input
             name="animal_reg_num"
@@ -111,8 +126,8 @@ function AnimalForm({ animalId, handleDidSave }) {
             name="size"
             value={fieldValues.size}
             onChange={handleFieldChange}
-            type="text"
             className="border-2 border-sky-400 rounded p-1 ml-2"
+            defaultValue="1"
           >
             <option value="1">소형</option>
             <option value="2">중형</option>
@@ -126,8 +141,8 @@ function AnimalForm({ animalId, handleDidSave }) {
             name="sex"
             value={fieldValues.sex}
             onChange={handleFieldChange}
-            type="text"
             className="border-2 border-sky-400 rounded p-1 ml-2"
+            defaultValue="1"
           >
             <option value="1">암컷</option>
             <option value="2">수컷</option>
