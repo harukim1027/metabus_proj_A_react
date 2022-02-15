@@ -110,7 +110,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
   return (
     <>
       <div>
-        <div className="my-3">
+        <div className="my-3 mx-20">
           <>
             <h1>누구를 입양했나요</h1>
 
@@ -162,28 +162,44 @@ function ReviewForm({ reviewId, handleDidSave }) {
               )}
             </div>
           </>
+        </div>
 
-          <h2>제목을 입력</h2>
+        <label className="p-2 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
           <input
+            type="text"
             name="title"
             value={fieldValues.title}
             onChange={handleFieldChange}
-            type="text"
-            className="border-2 border-gray-300"
+            placeholder="제목을 입력해주세요."
+            className="p-2 w-full bg-transparent focus:outline-none text-gray-700"
           />
-        </div>
+          <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
+            <span className="flex h-3 w-3 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
+            </span>
+          </div>
+        </label>
+        <br />
 
-        <div className="my-3">
-          <h2>내용을 입력</h2>
-          <textarea
+        <label className="p-10 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
+          <input
+            type="text"
             name="content"
             value={fieldValues.content}
             onChange={handleFieldChange}
-            className="border-2 border-gray-300"
+            placeholder="내용을 입력해주세요."
+            className="p-10 w-full bg-transparent focus:outline-none text-gray-700"
           />
-        </div>
+          <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
+            <span className="flex h-3 w-3 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
+            </span>
+          </div>
+        </label>
 
-        <div className="my-3">
+        <div className="my-3 mx-20">
           <input
             type="file"
             accept=".png, .jpg, .jpeg"
@@ -202,6 +218,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
             name="image3"
             onChange={handleFieldChange}
           />
+          <br />
           <input
             type="file"
             accept=".png, .jpg, .jpeg"
@@ -219,7 +236,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
         <div>
           <button
             type="submit"
-            className="bg-blue-100 my-3"
+            className="bg-pink-100 mx-20 p-2 m-2 rounded-lg"
             onClick={(e) => handleSubmit(e)}
             onSubmit={handleSubmit}
           >
