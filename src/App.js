@@ -34,6 +34,7 @@ import PageReviewIndex from 'Pages/PageReview/PageReviewIndex';
 import PageReviewDetail from 'Pages/PageReview/PageReviewDetail';
 import PageReviewForm from 'Pages/PageReview/PageReviewForm';
 import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
+import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
 
 function App() {
   const { auth } = useAuth();
@@ -66,6 +67,9 @@ function App() {
                 path="/admin/animal/:animalId/edit/"
                 element={<PageAnimalForm />}
               />
+
+              {/* /admin/assignmanage/ */}
+              <Route path="/admin/assignmanage/" element={<PageAssignList />} />
 
               {/* admin/UserManagement */}
               <Route

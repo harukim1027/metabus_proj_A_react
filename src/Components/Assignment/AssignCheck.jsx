@@ -121,10 +121,7 @@ function AssignCheck(props) {
             </div>
             <div className="text-center my-3">
               {all_check && (
-                <Button
-                  onClick={() => navigate('/adoptassignment/new/')}
-                  disabled
-                >
+                <Button onClick={() => navigate('/assignment/new/')} disabled>
                   회원가입
                 </Button>
               )}
