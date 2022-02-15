@@ -9,7 +9,7 @@ function PageAnimalList() {
     <div>
       <AnimalList />
 
-      <Button onClick={() => navigate('/streetanimal/new/')}>
+      <Button onClick={() => navigate('/admin/animal/new/')}>
         새로 등록하기
       </Button>
     </div>

@@ -1,7 +1,7 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function UserManagementDetail({ userId }) {
   const { auth } = useAuth();
@@ -105,9 +105,9 @@ function UserManagementDetail({ userId }) {
         <button onClick={handleDelete} className="hover:text-red-400">
           삭제
         </button>
-        <Link to={`/management/${userId}/edit/`} className="hover:text-red-400">
+        {/* <Link to={`/management/${userId}/edit/`} className="hover:text-red-400">
           수정
-        </Link>
+        </Link> */}
         <Link to="/management/" className="hover:text-red-400">
           목록
         </Link>

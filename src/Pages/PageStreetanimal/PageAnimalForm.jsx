@@ -11,7 +11,7 @@ function PageAnimalForm() {
       <AnimalForm
         animalId={animalId}
         handleDidSave={(savedPost) =>
-          navigate(`/streetanimal/${savedPost.animal_no}/`)
+          navigate(`/admin/animal/${savedPost.animal_no}/`)
         }
       />
     </div>
