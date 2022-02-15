@@ -227,13 +227,13 @@ function AssignmentForm({ handleDidSave }) {
             value={fieldValues.residential_type}
             onChange={handleFieldChange}
             className="border-2 border-sky-400 rounded p-2"
-            defaultValue="Apartment"
+            defaultValue="아파트"
           >
-            <option value="Apartment">아파트</option>
-            <option value="Villa">빌라</option>
-            <option value="Housing">주택</option>
-            <option value="Oneroom">원룸</option>
-            <option value="Officetel">오피스텔</option>
+            <option value="아파트">아파트</option>
+            <option value="빌라">빌라</option>
+            <option value="주택">주택</option>
+            <option value="원룸">원룸</option>
+            <option value="오피스텔">오피스텔</option>
           </select>
         </div>
         {/* 처리해야할 부분 */}
@@ -277,13 +277,19 @@ function AssignmentForm({ handleDidSave }) {
             value={fieldValues.place_to_meet}
             onChange={handleFieldChange}
             className="border-2 border-sky-400 rounded p-2"
-            defaultValue="Seoul"
+            defaultValue="서울 강동구청 반려동물팀"
           >
-            <option value="Seoul">서울 강동구청 반려동물팀</option>
-            <option value="Daejeon">대전 동물 보호 센터</option>
-            <option value="Saejong">세종 유기동물 보호센터</option>
-            <option value="Daegu">대구 유기동물 보호 협회</option>
-            <option value="Busan">부산 동물보호센터</option>
+            <option value="서울 강동구청 반려동물팀">
+              서울 강동구청 반려동물팀
+            </option>
+            <option value="대전 동물 보호 센터">대전 동물 보호 센터</option>
+            <option value="세종 유기동물 보호센터">
+              세종 유기동물 보호센터
+            </option>
+            <option value="대구 유기동물 보호 협회">
+              대구 유기동물 보호 협회
+            </option>
+            <option value="부산 동물보호센터">부산 동물보호센터</option>
           </select>
         </div>
         <div className="py-2">

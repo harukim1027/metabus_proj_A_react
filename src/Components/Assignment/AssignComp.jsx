@@ -8,7 +8,7 @@ function AssignComp({ assignId, assignData }) {
   console.log('assignData: ', assignData);
   const [{ loading, error }, changeAPS] = useApiAxios(
     {
-      url: `/streetanimal/api/animal/${assignData?.animal}/`,
+      url: `/streetanimal/api/animal/${assignData?.animal.animal_no}/`,
       method: 'PATCH',
       data: { protection_status: '2' },
     },
@@ -17,7 +17,7 @@ function AssignComp({ assignId, assignData }) {
 
   const [{ data: adaniData }, refetch] = useApiAxios(
     {
-      url: `/streetanimal/api/animal/${assignData?.animal}/`,
+      url: `/streetanimal/api/animal/${assignData?.animal.animal_no}/`,
       method: 'GET',
     },
     { manual: true },

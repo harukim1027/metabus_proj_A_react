@@ -35,6 +35,7 @@ import PageReviewDetail from 'Pages/PageReview/PageReviewDetail';
 import PageReviewForm from 'Pages/PageReview/PageReviewForm';
 import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
 import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
+import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
 
 function App() {
   const { auth } = useAuth();
@@ -70,7 +71,10 @@ function App() {
 
               {/* /admin/assignmanage/ */}
               <Route path="/admin/assignmanage/" element={<PageAssignList />} />
-
+              <Route
+                path="/admin/assignmanage/:assignId/"
+                element={<PageAssignDetail />}
+              />
               {/* admin/UserManagement */}
               <Route
                 path="/admin/usermanage/"
@@ -93,6 +97,7 @@ function App() {
               />
             </>
           )}
+          {/* ----------------------------------------- */}
 
           {/* Assignment */}
           <Route path="/assignment/check/" element={<PageAssignCheck />} />
