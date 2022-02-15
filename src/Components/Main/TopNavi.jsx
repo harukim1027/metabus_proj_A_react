@@ -14,26 +14,26 @@ function TopNav() {
 
   return (
     <div className="header">
-      <div className="flex text-m place-content-between">
+      <div className="flex text-xl place-content-between">
         <div></div>
         {!auth.isLoggedIn && (
           <div className="flex">
             <NavLink
               to="/accounts/login/"
-              className="border-2 bg-red-300  py-1 rounded w-20 text-center"
+              className="border-2 bg-red-300  py-2 rounded w-20 text-center"
             >
               로그인
             </NavLink>
             <NavLink
               to="/accounts/checksignup/"
-              className="border-2 bg-blue-300 py-1 rounded w-20 text-center"
+              className="border-2 bg-blue-300 py-2 rounded w-20 text-center"
             >
               회원가입
             </NavLink>
           </div>
         )}
       </div>
-      <div className="flex text-m place-content-between">
+      <div className="flex text-xl place-content-between">
         <div></div>
         {auth.isLoggedIn && (
           <div className="flex">
@@ -76,7 +76,7 @@ function TopNav() {
       >
         <img src="/main06.png" alt="Street Animal Adopter"></img>
       </div>
-      <div className="grid grid-cols-3 text-center text-m font-semibold">
+      <div className="grid grid-cols-3 text-center text-xl font-semibold">
         <MyLink to="/notice/">공지사항</MyLink>
         {auth.is_staff ? (
           <MyLink to="/admin/main/inquiry/">1:1 문의 현황</MyLink>
