@@ -69,11 +69,11 @@ function App() {
             {/* admin/UserManagement */}
             <Route path="/management/" element={<PageUserManagementIndex />} />
             <Route
-              path="/management/:managementId/"
+              path="/management/:userId/"
               element={<PageUserManagementDetail />}
             />
             <Route
-              path="/management/:managementId/edit/"
+              path="/management/:userId/edit/"
               element={<PageUserManagementForm />}
             />
 
