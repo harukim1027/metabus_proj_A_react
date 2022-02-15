@@ -105,6 +105,11 @@ function SignupForm() {
                   동일한 아이디가 존재합니다. 다른 아이디를 입력해주세요.
                 </p>
               )}
+            {userList &&
+              userList.filter((user) => user.userID === nameValue.userID)
+                .length === 0 && (
+                <p className="text-m text-red-400">사용가능한 아이디입니다.</p>
+              )}
             {errorMessages.userID?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
                 {message}
@@ -139,6 +144,11 @@ function SignupForm() {
                 <p className="text-m text-red-400">
                   동일한 닉네임이 존재합니다. 다른 닉네임을 입력해주세요.
                 </p>
+              )}
+            {userList &&
+              userList.filter((user) => user.nickname === nameValue.nickname)
+                .length === 0 && (
+                <p className="text-m text-red-400">사용가능한 닉네임입니다.</p>
               )}
             {errorMessages.nickname?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
