@@ -28,6 +28,7 @@ function AssignList() {
             <th className="border-2 border-gray-400">월 수입</th>
             <th className="border-2 border-gray-400">주거 형태</th>
             <th className="border-2 border-gray-400">신청한 동물 번호</th>
+            <th className="border-2 border-gray-400">입양 희망 날짜</th>
           </tr>
         </thead>
         <tbody>
@@ -66,6 +67,9 @@ function AssignList() {
                 }
               >
                 {assign.animal.animal_reg_num}
+              </td>
+              <td className="border-2 border-gray-400 text-center">
+                {assign.date_to_meet}
               </td>
             </tr>
           ))}

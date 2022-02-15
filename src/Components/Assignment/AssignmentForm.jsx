@@ -271,7 +271,7 @@ function AssignmentForm({ handleDidSave }) {
           />
         </div>
         <div className="py-2">
-          <h2 className="inline">크루 접선 장소</h2>
+          <h2 className="inline">만남 희망 장소</h2>
           <select
             name="place_to_meet"
             value={fieldValues.place_to_meet}
@@ -293,6 +293,7 @@ function AssignmentForm({ handleDidSave }) {
           </select>
         </div>
         <div className="py-2">
+          <h2 className="inline">만남 희망 날짜</h2>
           <input
             type="date"
             name="date_to_meet"
