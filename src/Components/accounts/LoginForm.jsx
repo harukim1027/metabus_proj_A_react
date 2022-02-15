@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import Button from 'Button';
+import '../../App.css';
 
 const INITIAL_FIELD_VALUES = { userID: '', password: '' };
 
@@ -75,7 +76,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="">
+    <div className="header">
       <h2 className="text-center py-3 pb-3"> 🐹 Login </h2>
       <hr />
 
