@@ -1,12 +1,14 @@
 import { createContext, useCallback, useContext } from 'react';
 
 import useLocalStorage from 'hooks/useLocalStorage';
+import { useNavigate } from 'react-router-dom';
 
 const INITIAL_AUTH = { isLoggedIn: false };
 
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
+  const navigate = useNavigate();
   // 공유할 상탯값을 정의
   const [auth, setAuth] = useLocalStorage('auth', INITIAL_AUTH);
 
@@ -46,6 +48,7 @@ function AuthProvider({ children }) {
     setAuth({
       isLoggedIn: false,
     });
+    navigate('/');
   }, [setAuth]);
 
   // 하위 컴포넌트에서 공유할 값/함수들을 value로 지정합니다.

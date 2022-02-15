@@ -42,9 +42,10 @@ function SignupForm() {
       manual: true,
     },
   );
+
   useEffect(() => {
     refetch();
-  }, [userList]);
+  }, []);
 
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
 
@@ -68,6 +69,7 @@ function SignupForm() {
       nickname: fieldValues.nickname,
     });
   };
+  console.log(nameValue);
 
   return (
     <div className="w-full max-w-m shadow-md">
@@ -98,17 +100,21 @@ function SignupForm() {
             >
               중복확인
             </button>
-            {userList &&
+            {nameValue.userID !== '' &&
+              userList &&
               userList.filter((user) => user.userID === nameValue.userID)
                 .length > 0 && (
                 <p className="text-m text-red-400">
                   동일한 아이디가 존재합니다. 다른 아이디를 입력해주세요.
                 </p>
               )}
-            {userList &&
+            {nameValue.userID !== '' &&
+              userList &&
               userList.filter((user) => user.userID === nameValue.userID)
                 .length === 0 && (
-                <p className="text-m text-red-400">사용가능한 아이디입니다.</p>
+                <h2 className="text-m text-green-400">
+                  사용가능한 아이디입니다.
+                </h2>
               )}
             {errorMessages.userID?.map((message, index) => (
               <p key={index} className="text-m text-red-400">
@@ -138,17 +144,21 @@ function SignupForm() {
             >
               중복확인
             </button>
-            {userList &&
+            {nameValue.nickname !== '' &&
+              userList &&
               userList.filter((user) => user.nickname === nameValue.nickname)
                 .length > 0 && (
                 <p className="text-m text-red-400">
                   동일한 닉네임이 존재합니다. 다른 닉네임을 입력해주세요.
                 </p>
               )}
-            {userList &&
+            {nameValue.nickname !== '' &&
+              userList &&
               userList.filter((user) => user.nickname === nameValue.nickname)
                 .length === 0 && (
-                <p className="text-m text-red-400">사용가능한 닉네임입니다.</p>
+                <p className="text-m text-green-400">
+                  사용가능한 닉네임입니다.
+                </p>
               )}
             {errorMessages.nickname?.map((message, index) => (
               <p key={index} className="text-m text-red-400">

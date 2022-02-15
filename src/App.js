@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { AuthProvider } from 'contexts/AuthContext';
+import { AuthProvider, useAuth } from 'contexts/AuthContext';
 // main
 import PageMainScreen from 'Pages/PageMainScreen';
 // accounts
@@ -36,94 +36,109 @@ import PageReviewForm from 'Pages/PageReview/PageReviewForm';
 import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
 
 function App() {
+  const { auth } = useAuth();
   return (
     <>
-      <AuthProvider>
-        <div className="app">
-          <Routes>
-            <Route path="/" element={<PageMainScreen />} />
-            {/* accounts */}
-            <Route path="/accounts/login/" element={<PageLoginForm />} />
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<PageMainScreen />} />
+          {/* accounts */}
+          <Route path="/accounts/login/" element={<PageLoginForm />} />
+          {auth?.isLoggedIn && (
             <Route path="/accounts/profile/" element={<PageProfile />} />
-            <Route path="/accounts/signup/" element={<PageSignupForm />} />
-            <Route
-              path="/accounts/checksignup/"
-              element={<PageCheckSignup />}
-            />
+          )}
+          <Route path="/accounts/signup/" element={<PageSignupForm />} />
+          <Route path="/accounts/checksignup/" element={<PageCheckSignup />} />
 
-            {/* ------------admin------------ */}
-            <Route path="/admin/main/" element={<PageAdminMain />} />
+          {/* ------------admin------------ */}
+          {auth?.isLoggedIn && auth?.is_staff && (
+            <>
+              <Route path="/admin/main/" element={<PageAdminMain />} />
 
-            {/* admin/Animal */}
-            <Route path="/streetanimal/" element={<PageAnimalList />} />
-            <Route path="/streetanimal/new/" element={<PageAnimalForm />} />
-            <Route
-              path="/streetanimal/:animalId/"
-              element={<PageAnimalDetail />}
-            />
-            <Route
-              path="/streetanimal/:animalId/edit/"
-              element={<PageAnimalForm />}
-            />
+              {/* admin/Animal */}
+              <Route path="/admin/animal/" element={<PageAnimalList />} />
+              <Route path="/admin/animal/new/" element={<PageAnimalForm />} />
+              <Route
+                path="/admin/animal/:animalId/"
+                element={<PageAnimalDetail />}
+              />
+              <Route
+                path="/admin/animal/:animalId/edit/"
+                element={<PageAnimalForm />}
+              />
 
-            {/* admin/UserManagement */}
-            <Route path="/management/" element={<PageUserManagementIndex />} />
-            <Route
-              path="/management/:userId/"
-              element={<PageUserManagementDetail />}
-            />
-            <Route
-              path="/management/:userId/edit/"
-              element={<PageUserManagementForm />}
-            />
+              {/* admin/UserManagement */}
+              <Route
+                path="/admin/usermanage/"
+                element={<PageUserManagementIndex />}
+              />
+              <Route
+                path="/admin/usermanage/:userId/"
+                element={<PageUserManagementDetail />}
+              />
+              {/* admin/inquiry */}
+              <Route
+                path="/admin/inquiry/:inquiryId/edit/"
+                element={<PageInquiryForm />}
+              />
+              {/* admin/notice */}
+              <Route path="/admin/notice/new/" element={<PageNoticeForm />} />
+              <Route
+                path="/admin/notice/:noticeId/edit/"
+                element={<PageNoticeForm />}
+              />
+            </>
+          )}
 
-            {/* Assignment */}
-            <Route
-              path="/adoptassignment/check/"
-              element={<PageAssignCheck />}
-            />
-            <Route
-              path="/adoptassignment/new/"
-              element={<PageAssignmentform />}
-            />
-            <Route
-              path="/adoptassignment/complite/:assignId/"
-              element={<PageAssignComp />}
-            />
+          {/* Assignment */}
+          <Route path="/assignment/check/" element={<PageAssignCheck />} />
+          <Route path="/assignment/new/" element={<PageAssignmentform />} />
+          <Route
+            path="/assignment/complite/:assignId/"
+            element={<PageAssignComp />}
+          />
 
-            {/* inquiry */}
-            <Route path="/inquiry/" element={<PageInquiryIndex />} />
-            <Route
-              path="/inquiry/:inquiryId/"
-              element={<PageInquiryDetail />}
-            />
-            <Route path="/inquiry/new/" element={<PageInquiryForm />} />
-            <Route
-              path="/inquiry/:inquiryId/edit/"
-              element={<PageInquiryForm />}
-            />
-            <Route path="/admin/main/inquiry/" element={<PageInquiryIndex />} />
+          {/* inquiry */}
+          {auth?.isLoggedIn && (
+            <>
+              <Route path="/inquiry/" element={<PageInquiryIndex />} />
+              <Route
+                path="/inquiry/:inquiryId/"
+                element={<PageInquiryDetail />}
+              />
+              <Route path="/inquiry/new/" element={<PageInquiryForm />} />
+            </>
+          )}
 
-            {/* notice */}
-            <Route path="/notice/" element={<PageNoticeList />} />
-            <Route path="/notice/new/" element={<PageNoticeForm />} />
-            <Route path="/notice/:noticeId/" element={<PageNoticeDetail />} />
-            <Route
-              path="/notice/:noticeId/edit/"
-              element={<PageNoticeForm />}
-            />
+          {/* notice */}
+          <Route path="/notice/" element={<PageNoticeList />} />
 
-            {/* review */}
-            <Route path="/review/" element={<PageReviewIndex />} />
-            <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
-            <Route path="/review/new/" element={<PageReviewForm />} />
-            <Route
-              path="/review/:reviewId/edit/"
-              element={<PageReviewForm />}
-            />
-          </Routes>
-        </div>
-      </AuthProvider>
+          <Route path="/notice/:noticeId/" element={<PageNoticeDetail />} />
+
+          {/* review */}
+          <Route path="/review/" element={<PageReviewIndex />} />
+          <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
+          {auth?.isLoggedIn && (
+            <>
+              <Route path="/review/new/" element={<PageReviewForm />} />
+              <Route
+                path="/review/:reviewId/edit/"
+                element={<PageReviewForm />}
+              />
+            </>
+          )}
+
+          {/* mypage */}
+          {auth?.isLoggedIn && (
+            <>
+              <Route path="/mypage/userinfo/" element={''} />
+              <Route path="/mypage/assigninfo/" element={''} />
+              <Route path="/mypage/myposts/" element={''} />
+              <Route path="/mypage/myinquiry/" element={''} />
+            </>
+          )}
+        </Routes>
+      </div>
     </>
   );
 }
