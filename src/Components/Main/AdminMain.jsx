@@ -24,7 +24,7 @@ function AdminMain() {
         <div className="justify-center mx-4">
           <button
             className="w-full p-5 text-2xl m-3 bg-yellow-400 hover:bg-yellow-700 hover:text-white rounded-2xl"
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/admin/assignmanage/')}
           >
             입양신청 관리
           </button>

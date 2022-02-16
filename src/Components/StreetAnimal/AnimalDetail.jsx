@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
-import DebugStates from 'DebugStates';
 
 function AnimalDetail({ animalId }) {
   const { auth } = useAuth();
@@ -14,9 +13,9 @@ function AnimalDetail({ animalId }) {
     {
       url: `/streetanimal/api/animal/${animalId}/`,
       method: 'GET',
-      // headers: {
-      //   Authorization: `Bearer ${auth.access}`,
-      // },
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
     },
 
     { manual: true },
@@ -37,7 +36,7 @@ function AnimalDetail({ animalId }) {
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
       deleteAnimal().then(() => {
-        navigate('/streetanimal/');
+        navigate('/admin/animal/');
       });
     }
   };
@@ -54,6 +53,14 @@ function AnimalDetail({ animalId }) {
       {animal && (
         <>
           <div className="my-3">
+            <span>동물 종</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.category.name === '강아지' && '강아지'}
+              {animal.category.name === '고양이' && '고양이'}
+            </span>
+          </div>
+
+          <div className="my-3">
             <span>등록번호</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
               {animal.animal_reg_num}
@@ -63,16 +70,16 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>크기</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.size === '1' && '소형'}
-              {animal.size === '2' && '중형'}
-              {animal.size === '3' && '대형'}
+              {animal.size === '소형' && '소형'}
+              {animal.size === '중형' && '중형'}
+              {animal.size === '대형' && '대형'}
             </span>
           </div>
 
           <div className="my-3">
             <span>성별</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.sex === '1' ? '암컷' : '수컷'}
+              {animal.sex === '암컷' ? '암컷' : '수컷'}
             </span>
           </div>
 
@@ -121,9 +128,9 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>입양 상태</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.protection_status === '1' && '입양 대기'}
-              {animal.protection_status === '2' && '입양 매칭 중'}
-              {animal.protection_status === '3' && '입양 완료'}
+              {animal.protection_status === '입양 대기' && '입양 대기'}
+              {animal.protection_status === '입양 매칭 중' && '입양 매칭 중'}
+              {animal.protection_status === '입양 완료' && '입양 완료'}
             </span>
           </div>
 
@@ -142,12 +149,12 @@ function AnimalDetail({ animalId }) {
           삭제
         </button>
         <Link
-          to={`/streetanimal/${animalId}/edit/`}
+          to={`/admin/animal/${animalId}/edit/`}
           className="hover:text-red-400"
         >
           수정
         </Link>
-        <Link to="/streetanimal/" className="hover:text-red-400">
+        <Link to="/admin/animal/" className="hover:text-red-400">
           목록
         </Link>
       </div>

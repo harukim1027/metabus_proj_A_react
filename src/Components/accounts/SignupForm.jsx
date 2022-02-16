@@ -14,8 +14,8 @@ const INIT_FIELD_VALUES = {
   name: '',
   phone_number: '',
   email: '',
-  region: '',
-  password_quiz: '',
+  region: 1,
+  password_quiz: 1,
   password_quiz_answer: '',
   password: '',
   password2: '',
@@ -252,16 +252,16 @@ function SignupForm() {
                       onChange={handleFieldChange}
                       className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     >
-                      <option value="1">Seoul</option>
-                      <option value="2">Busan</option>
-                      <option value="3">Daegu</option>
-                      <option value="4">Incheon</option>
-                      <option value="5">Daejeon</option>
-                      <option value="6">Sejong</option>
-                      <option value="7">Gwangju</option>
-                      <option value="8">Ulsan</option>
-                      <option value="9">Jeju</option>
-                      <option value="10">Gangwon</option>
+                      <option value="서울">서울</option>
+                      <option value="인천">인천</option>
+                      <option value="대전">대전</option>
+                      <option value="세종">세종</option>
+                      <option value="대구">대구</option>
+                      <option value="부산">부산</option>
+                      <option value="광주">광주</option>
+                      <option value="울산">울산</option>
+                      <option value="제주">제주</option>
+                      <option value="강원">강원</option>
                     </select>
 
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -294,11 +294,13 @@ function SignupForm() {
                       onChange={handleFieldChange}
                       className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     >
-                      <option value="1">내 보물 1호는?</option>
-                      <option value="2">처음 키운 반려동물 이름은?</option>
-                      <option value="3">어머니 성함은?</option>
-                      <option value="4">아버지 성함은?</option>
-                      <option value="5">좋아하는 음식은?</option>
+                      <option value="내 보물 1호는?">내 보물 1호는?</option>
+                      <option value="처음 키운 반려동물 이름은?">
+                        처음 키운 반려동물 이름은?
+                      </option>
+                      <option value="어머니 성함은?">어머니 성함은?</option>
+                      <option value="아버지 성함은?">아버지 성함은?</option>
+                      <option value="좋아하는 음식은?">좋아하는 음식은?</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg

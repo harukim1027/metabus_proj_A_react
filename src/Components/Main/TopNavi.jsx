@@ -78,9 +78,9 @@ function TopNav() {
       <div className="grid grid-cols-3 text-center text-xl font-semibold">
         <MyLink to="/notice/">공지사항</MyLink>
         {auth.is_staff ? (
-          <MyLink to="/admin/main/inquiry/">1:1 문의 현황</MyLink>
+          <MyLink to="/inquiry/">1:1 문의 현황</MyLink>
         ) : (
-          <MyLink to="/adoptassignment/check/">크루원 신청</MyLink>
+          <MyLink to="/assignment/check/">크루원 신청</MyLink>
         )}
         <MyLink to="/review/">커뮤니티</MyLink>
       </div>

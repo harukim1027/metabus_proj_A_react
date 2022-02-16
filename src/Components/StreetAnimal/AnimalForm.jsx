@@ -9,8 +9,9 @@ import produce from 'immer';
 
 const INIT_FIELD_VALUES = {
   animal_reg_num: '',
-  size: '',
-  sex: '',
+  category: '강아지',
+  size: 1,
+  sex: 1,
   age: '',
   date_of_discovery: '',
   place_of_discovery: '',
@@ -95,6 +96,19 @@ function AnimalForm({ animalId, handleDidSave }) {
 
       <form onSubmit={handleSubmit}>
         <div className="my-3">
+          <span>동물 종 선택</span>
+          <select
+            name="category"
+            value={fieldValues.category}
+            onChange={handleFieldChange}
+            className="border-2 border-sky-400 rounded p-1 ml-2"
+          >
+            <option value="강아지">강아지</option>
+            <option value="고양이">고양이</option>
+          </select>
+        </div>
+
+        <div className="my-3">
           <span>등록번호 입력</span>
           <input
             name="animal_reg_num"
@@ -106,31 +120,31 @@ function AnimalForm({ animalId, handleDidSave }) {
         </div>
 
         <div className="my-3">
-          <span>크기 입력</span>
+          <span>크기 선택</span>
           <select
             name="size"
             value={fieldValues.size}
             onChange={handleFieldChange}
-            type="text"
             className="border-2 border-sky-400 rounded p-1 ml-2"
+            defaultValue="1"
           >
-            <option value="1">소형</option>
-            <option value="2">중형</option>
-            <option value="3">대형</option>
+            <option value="소형">소형</option>
+            <option value="중형">중형</option>
+            <option value="대형">대형</option>
           </select>
         </div>
 
         <div className="my-3">
-          <span>성별 입력</span>
+          <span>성별 선택</span>
           <select
             name="sex"
             value={fieldValues.sex}
             onChange={handleFieldChange}
-            type="text"
             className="border-2 border-sky-400 rounded p-1 ml-2"
+            defaultValue="1"
           >
-            <option value="1">암컷</option>
-            <option value="2">수컷</option>
+            <option value="암컷">암컷</option>
+            <option value="수컷">수컷</option>
           </select>
         </div>
 
@@ -209,9 +223,9 @@ function AnimalForm({ animalId, handleDidSave }) {
             type="text"
             className="border-2 border-sky-400 rounded p-1 ml-2"
           >
-            <option value="1">입양 대기</option>
-            <option value="2">입양 매칭 중</option>
-            <option value="3">입양 완료</option>
+            <option value="입양 대기">입양 대기</option>
+            <option value="입양 매칭 중">입양 매칭 중</option>
+            <option value="입양 완료">입양 완료</option>
           </select>
         </div>
 

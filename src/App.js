@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { AuthProvider, useAuth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 // main
 import PageMainScreen from 'Pages/PageMainScreen';
 // accounts
@@ -17,7 +17,6 @@ import PageAnimalForm from 'Pages/PageStreetanimal/PageAnimalForm';
 // admin/UserManagement
 import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
 import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
-import PageUserManagementForm from 'Pages/PageUserManagement/PageUserManagementForm';
 // user/Assignment
 import PageAssignmentform from 'Pages/PageAssignment/PageAssignmentForm';
 import PageAssignComp from 'Pages/PageAssignment/PageAssignComp';
@@ -34,6 +33,8 @@ import PageReviewIndex from 'Pages/PageReview/PageReviewIndex';
 import PageReviewDetail from 'Pages/PageReview/PageReviewDetail';
 import PageReviewForm from 'Pages/PageReview/PageReviewForm';
 import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
+import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
+import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
 
 function App() {
   const { auth } = useAuth();
@@ -67,6 +68,12 @@ function App() {
                 element={<PageAnimalForm />}
               />
 
+              {/* /admin/assignmanage/ */}
+              <Route path="/admin/assignmanage/" element={<PageAssignList />} />
+              <Route
+                path="/admin/assignmanage/:assignId/"
+                element={<PageAssignDetail />}
+              />
               {/* admin/UserManagement */}
               <Route
                 path="/admin/usermanage/"
@@ -89,6 +96,7 @@ function App() {
               />
             </>
           )}
+          {/* ----------------------------------------- */}
 
           {/* Assignment */}
           <Route path="/assignment/check/" element={<PageAssignCheck />} />

@@ -43,7 +43,7 @@ function AnimalList() {
 
       <input
         type="text"
-        placeholder="검색어를 입력해주세요."
+        placeholder="등록번호로 검색"
         onChange={handleChange}
         onKeyPress={handleKeyPress}
         className="mt-3 ml-3 border-2 border-gray-300"
@@ -63,6 +63,7 @@ function AnimalList() {
           <thead className="border-2">
             <tr>
               <th className="border-2">번호</th>
+              <th className="border-2">동물 종</th>
               <th className="border-2">이미지</th>
               <th className="border-2">등록번호</th>
               <th className="border-2">나이</th>
@@ -77,12 +78,16 @@ function AnimalList() {
               AnimalList.map((animal) => (
                 <tr>
                   <td>
-                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                    <Link to={`/admin/animal/${animal.animal_no}/`}>
                       {animal.animal_no}
                     </Link>
                   </td>
                   <td>
-                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                    {animal.category.name === '강아지' && '강아지'}
+                    {animal.category.name === '고양이' && '고양이'}
+                  </td>
+                  <td>
+                    <Link to={`/admin/animal/${animal.animal_no}/`}>
                       <img
                         src={animal.image}
                         alt={animal.animal_no}
@@ -91,17 +96,18 @@ function AnimalList() {
                     </Link>
                   </td>
                   <td>
-                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                    <Link to={`/admin/animal/${animal.animal_no}/`}>
                       {animal.animal_reg_num}
                     </Link>
                   </td>
                   <td>{animal.age}</td>
-                  <td>{animal.sex === '1' ? '암컷' : '수컷'}</td>
+                  <td>{animal.sex === '암컷' ? '암컷' : '수컷'}</td>
                   <td>{animal.place_of_discovery}</td>
                   <td>
-                    {animal.protection_status === '1' && '입양 대기'}
-                    {animal.protection_status === '2' && '입양 매칭 중'}
-                    {animal.protection_status === '3' && '입양 완료'}
+                    {animal.protection_status === '입양 대기' && '입양 대기'}
+                    {animal.protection_status === '입양 매칭 중' &&
+                      '입양 매칭 중'}
+                    {animal.protection_status === '입양 완료' && '입양 완료'}
                   </td>
                 </tr>
               ))}

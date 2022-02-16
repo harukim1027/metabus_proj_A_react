@@ -1,9 +1,8 @@
 import { useApiAxios } from 'api/base';
-import { useAuth, auth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import produce from 'immer';
 
 const INIT_FIELD_VALUES = {
@@ -12,7 +11,9 @@ const INIT_FIELD_VALUES = {
 };
 
 function ReviewForm({ reviewId, handleDidSave }) {
-  const navigate = useNavigate();
+  const [filtAssign, setFiltAssign] = useState([]);
+  const [filtAssignedAni, setFiltAssignedAni] = useState([]);
+  const [selectanimal, setSelectanimal] = useState(null);
   const { auth } = useAuth();
 
   const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
@@ -25,10 +26,11 @@ function ReviewForm({ reviewId, handleDidSave }) {
     },
   );
 
-  const [{ data: assignmentList, loading, error }, refetch] = useApiAxios(
+  const [{ data: assignmentList, loading, error }] = useApiAxios(
     {
       url: `/adopt_assignment/api/assignment/`,
       method: 'GET',
+      data: { user: auth.userID },
     },
     {
       manual: false,
@@ -48,9 +50,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
-    review || INIT_FIELD_VALUES,
-  );
+  const { fieldValues, handleFieldChange, setFieldValues } =
+    useFieldValues(INIT_FIELD_VALUES);
+
+  // fieldValues.adoptassignment = filtAnimal;
 
   useEffect(() => {
     setFieldValues(
@@ -61,14 +64,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
         draft.image4 = '';
         draft.image5 = '';
         draft.user = auth.userID;
-        draft.adoptassignment =
-          assignmentList &&
-          assignmentList
-            .filter((assignment) => assignment.user === auth.userID)
-            .map((assign) => assign.assignment_no);
+        draft.adoptassignment = selectanimal;
       }),
     );
-  }, [auth.userID, setFieldValues, assignmentList, review]);
+  }, [auth.userID, setFieldValues, review, selectanimal]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -89,76 +88,137 @@ function ReviewForm({ reviewId, handleDidSave }) {
     });
   };
 
+  console.log('filtAssign', filtAssign);
+  // console.log('fieldValues', fieldValues);
+  // console.log('setSelanimal', setSelanimal);
+
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit}>
-          <div className="my-3">
+        <div className="my-3 mx-20">
+          <>
             <h1>누구를 입양했나요</h1>
 
-            <h2>제목을 입력</h2>
-            <input
-              name="title"
-              value={fieldValues.title}
-              onChange={handleFieldChange}
-              type="text"
-              className="border-2 border-gray-300"
-            />
-          </div>
-
-          <div className="my-3">
-            <h2>내용을 입력</h2>
-            <textarea
-              name="content"
-              value={fieldValues.content}
-              onChange={handleFieldChange}
-              className="border-2 border-gray-300"
-            />
-          </div>
-
-          <div className="my-3">
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image1"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image2"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image3"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image4"
-              onChange={handleFieldChange}
-            />
-            <input
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              name="image5"
-              onChange={handleFieldChange}
-            />
-          </div>
-
-          <div>
             <button
-              type="submit"
-              className="bg-blue-100 my-3"
-              onClick={(e) => handleSubmit(e)}
+              onClick={() =>
+                assignmentList &&
+                setFiltAssign(
+                  assignmentList
+                    .filter(
+                      (assignment) =>
+                        assignment.status === '1' &&
+                        assignment.user === auth.userID,
+                    )
+                    .map((a) => a.animal),
+                )
+              }
+              className="bg-pink-100 p-2 m-2 rounded-lg"
             >
-              저장하기
+              1. 입양 신청 필터링
             </button>
+            <button className="bg-pink-100 p-2 m-2 rounded-lg">
+              2. 입양한 동물 보기
+            </button>
+            <div>
+              {filtAssignedAni && (
+                <>
+                  {filtAssignedAni.map((ani) => (
+                    <div
+                      className="inline-block p-2 m-2 rounded border-2 border-pink-200 w-1/5 cursor-pointer hover:scale-110"
+                      onClick={() => setSelectanimal(ani.animal_no)}
+                    >
+                      <div className="flex h-36 items-center">
+                        <img src={ani.image} alt="" />
+                      </div>
+                      <h2>나이 : {ani.age} 세</h2>
+                      <h3>{ani.animal_reg_num}</h3>
+                    </div>
+                  ))}
+                </>
+              )}
+            </div>
+          </>
+        </div>
+
+        <label className="p-2 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
+          <input
+            type="text"
+            name="title"
+            value={fieldValues.title}
+            onChange={handleFieldChange}
+            placeholder="제목을 입력해주세요."
+            className="p-2 w-full bg-transparent focus:outline-none text-gray-700"
+          />
+          <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
+            <span className="flex h-3 w-3 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
+            </span>
           </div>
-        </form>
+        </label>
+        <br />
+
+        <label className="p-10 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
+          <input
+            type="text"
+            name="content"
+            value={fieldValues.content}
+            onChange={handleFieldChange}
+            placeholder="내용을 입력해주세요."
+            className="p-10 w-full bg-transparent focus:outline-none text-gray-700"
+          />
+          <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
+            <span className="flex h-3 w-3 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
+            </span>
+          </div>
+        </label>
+
+        <div className="my-3 mx-20">
+          <input
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="image1"
+            onChange={handleFieldChange}
+          />
+          <input
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="image2"
+            onChange={handleFieldChange}
+          />
+          <input
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="image3"
+            onChange={handleFieldChange}
+          />
+          <br />
+          <input
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="image4"
+            onChange={handleFieldChange}
+          />
+          <input
+            type="file"
+            accept=".png, .jpg, .jpeg"
+            name="image5"
+            onChange={handleFieldChange}
+          />
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            className="bg-pink-100 mx-20 p-2 m-2 rounded-lg"
+            onClick={(e) => handleSubmit(e)}
+            onSubmit={handleSubmit}
+          >
+            저장하기
+          </button>
+        </div>
       </div>
       <DebugStates
         review={review}
