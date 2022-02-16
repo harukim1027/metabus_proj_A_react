@@ -18,7 +18,7 @@ function AssignList() {
   }, []);
 
   return (
-    <>
+    <div className="mb-20">
       <h2>입양신청 관리</h2>
       <table>
         <thead>
@@ -29,6 +29,7 @@ function AssignList() {
             <th className="border-2 border-gray-400">주거 형태</th>
             <th className="border-2 border-gray-400">신청한 동물 번호</th>
             <th className="border-2 border-gray-400">입양 희망 날짜</th>
+            <th className="border-2 border-gray-400">상태</th>
           </tr>
         </thead>
         <tbody>
@@ -71,11 +72,14 @@ function AssignList() {
               <td className="border-2 border-gray-400 text-center">
                 {assign.date_to_meet}
               </td>
+              <td className="border-2 border-gray-400 text-center">
+                <h2>{assign.status}</h2>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 
