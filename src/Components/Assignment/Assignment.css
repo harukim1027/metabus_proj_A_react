@@ -13,3 +13,10 @@
   font-family: 'Hahmlet', serif;
   background-color: #dbf1f6;
 }
+
+.assign_explanation {
+  width: 600px;
+  height: 400px;
+  margin: 1rem;
+  margin-right: 2ch;
+}

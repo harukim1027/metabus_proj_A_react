@@ -46,20 +46,20 @@ function CheckSignup(props) {
 
   return (
     <>
-      <div className="header">
-        <div className="justify-center shadow-md rounded px-20 pt-6 pb-8 mb-4">
-          <div className="accounts_header">
+      <div className="header flex justify-center ">
+        <div className="flex flex-wrap max-w-m justify-center rounded pt-6 pb-8 mb-4">
+          <div className="accounts_header shadow-md  flex flex-wrap justify-center w-full max-w-m">
             <main className="" role="main">
-              <h1 className="mt-5 font-semibold text-m text-center p-2">
+              <h1 className="mt-5 font-semibold text-2xl text-center p-2">
                 {' '}
                 🐼 약관동의
               </h1>
 
-              <div className="ml-5 mr-5 ">
+              <div className="ml-10 mr-10 ">
                 <div className="text-center">
                   <div className="font-bold pb-3">
                     <br />
-                    <blockquote class="text-2xl font-semibold italic text-center text-slate-900">
+                    <blockquote class="text-3xl font-semibold italic text-center text-slate-900">
                       <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
                         <span class="relative text-white">
                           " 약관 및 개인정보 처리방침 "
@@ -67,15 +67,16 @@ function CheckSignup(props) {
                       </span>
                       <p className="mt-3 mb-3">
                         {' '}
-                        안내를 반드시 읽고, 동의해주세요.
+                        안내를 반드시 읽고, 동의해주세요 !
                       </p>
                     </blockquote>
                   </div>
                 </div>
                 <hr />
-                <div className=" pb-3 text-right">
-                  <label>
-                    모두 동의합니다{''}
+                <br />
+                <div className=" pb-3 text-right ">
+                  <label className="text-m bg-yellow-100 font-bold">
+                    모두 동의합니다{'  '}
                     <input
                       checked={all_check ? 'checked' : null}
                       type="checkbox"
@@ -86,19 +87,19 @@ function CheckSignup(props) {
                   </label>
                 </div>
               </div>
-              <div className=" justify-center w-full max-w-m shadow-md">
-                <div className="ml-5 mr-5">
+              <div className="w-full">
+                <div className="">
                   <div>
-                    <label className="font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                       회원 가입 약관 동의 [ 필수 ]
-                    </label>
+                    </span>
                   </div>
 
-                  <div>
+                  <div className="w-full">
                     <SignupAgreementation />
                   </div>
 
-                  <div className="text-right">
+                  <div className="text-right mb-3">
                     <label>회원 가입 이용 약관에 동의합니다 </label>
                     <input
                       type="checkbox"
@@ -111,11 +112,11 @@ function CheckSignup(props) {
                   <hr className="pb-6" />
                   <div>
                     <div>
-                      <label className="font-bold">
+                      <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                         개인정보 수집 및 이용에 관한 동의 사항 [ 필수 ]
-                      </label>
-                      <br />
-                      <div>
+                      </span>
+
+                      <div className="w-full">
                         <Agreementation />
                       </div>
                     </div>
@@ -131,7 +132,7 @@ function CheckSignup(props) {
                     />
                   </div>
                   <hr />
-                  <div className="text-red-300 text-center">
+                  <div className="text-xl text-red-400 text-center">
                     <br />
                     약관 동의를 해야 회원가입을 할 수 있어요 ! 🐰
                   </div>

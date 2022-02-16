@@ -5,7 +5,6 @@ import DebugStates from 'DebugStates';
 import { useEffect, useState } from 'react';
 import './Assignment.css';
 import '../../App.css';
-import Button from 'Button';
 
 const INIT_FIELD_VALUES = {
   adopter_name: '',
