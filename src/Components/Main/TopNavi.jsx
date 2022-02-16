@@ -37,12 +37,11 @@ function TopNav() {
         {auth.isLoggedIn && (
           <div className="flex">
             {auth.is_staff ? (
-              <NavLink
-                to="/admin/main/"
-                className="border-2 border-blue-300 py-1 rounded w-20 text-center"
-              >
-                사이트 관리
-              </NavLink>
+              <button className="icon_size">
+                <NavLink to="/admin/main/">
+                  <img src="/manageicon1.png" alt="button"></img>
+                </NavLink>
+              </button>
             ) : (
               <>
                 <NavLink
@@ -60,11 +59,8 @@ function TopNav() {
               </>
             )}
 
-            <button
-              onClick={handleLogout}
-              className="border-2 border-blue-300 py-1 rounded w-20 text-center"
-            >
-              로그아웃
+            <button className="icon_size" onClick={handleLogout}>
+              <img src="/logouticon1.png" alt="button"></img>
             </button>
           </div>
         )}
