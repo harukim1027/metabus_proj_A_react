@@ -35,6 +35,7 @@ import PageReviewForm from 'Pages/PageReview/PageReviewForm';
 import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
 import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
 import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
+import PageMyinfo from 'Pages/PageMypage/PageMyinfo';
 
 function App() {
   const { auth } = useAuth();
@@ -45,9 +46,6 @@ function App() {
           <Route path="/" element={<PageMainScreen />} />
           {/* accounts */}
           <Route path="/accounts/login/" element={<PageLoginForm />} />
-          {auth?.isLoggedIn && (
-            <Route path="/accounts/profile/" element={<PageProfile />} />
-          )}
           <Route path="/accounts/signup/" element={<PageSignupForm />} />
           <Route path="/accounts/checksignup/" element={<PageCheckSignup />} />
 
@@ -139,7 +137,7 @@ function App() {
           {/* mypage */}
           {auth?.isLoggedIn && (
             <>
-              <Route path="/mypage/userinfo/" element={''} />
+              <Route path="/mypage/userinfo/" element={<PageMyinfo />} />
               <Route path="/mypage/assigninfo/" element={''} />
               <Route path="/mypage/myposts/" element={''} />
               <Route path="/mypage/myinquiry/" element={''} />
