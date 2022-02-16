@@ -53,6 +53,15 @@ function AnimalDetail({ animalId }) {
       {animal && (
         <>
           <div className="my-3">
+            <span>동물 종</span>
+            <span className="border-2 border-sky-400 rounded p-1 ml-2">
+              {animal.category.id === 1 && '강아지'}
+              {animal.category.id === 2 && '고양이'}
+              {animal.category.id === 3 && '기타동물'}
+            </span>
+          </div>
+
+          <div className="my-3">
             <span>등록번호</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
               {animal.animal_reg_num}

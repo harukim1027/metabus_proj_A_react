@@ -105,7 +105,6 @@ function AnimalForm({ animalId, handleDidSave }) {
           >
             <option value="1">강아지</option>
             <option value="2">고양이</option>
-            <option value="3">기타동물</option>
           </select>
         </div>
 
@@ -121,7 +120,7 @@ function AnimalForm({ animalId, handleDidSave }) {
         </div>
 
         <div className="my-3">
-          <span>크기 입력</span>
+          <span>크기 선택</span>
           <select
             name="size"
             value={fieldValues.size}
@@ -136,7 +135,7 @@ function AnimalForm({ animalId, handleDidSave }) {
         </div>
 
         <div className="my-3">
-          <span>성별 입력</span>
+          <span>성별 선택</span>
           <select
             name="sex"
             value={fieldValues.sex}

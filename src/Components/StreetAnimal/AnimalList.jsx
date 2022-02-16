@@ -43,7 +43,7 @@ function AnimalList() {
 
       <input
         type="text"
-        placeholder="검색어를 입력해주세요."
+        placeholder="등록번호로 검색"
         onChange={handleChange}
         onKeyPress={handleKeyPress}
         className="mt-3 ml-3 border-2 border-gray-300"
@@ -63,6 +63,7 @@ function AnimalList() {
           <thead className="border-2">
             <tr>
               <th className="border-2">번호</th>
+              <th className="border-2">동물 종</th>
               <th className="border-2">이미지</th>
               <th className="border-2">등록번호</th>
               <th className="border-2">나이</th>
@@ -77,12 +78,17 @@ function AnimalList() {
               AnimalList.map((animal) => (
                 <tr>
                   <td>
-                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                    <Link to={`/admin/animal/${animal.animal_no}/`}>
                       {animal.animal_no}
                     </Link>
                   </td>
                   <td>
-                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                    {animal.category.id === 1 && '강아지'}
+                    {animal.category.id === 2 && '고양이'}
+                    {animal.category.id === 3 && '기타동물'}
+                  </td>
+                  <td>
+                    <Link to={`/admin/animal/${animal.animal_no}/`}>
                       <img
                         src={animal.image}
                         alt={animal.animal_no}
@@ -91,7 +97,7 @@ function AnimalList() {
                     </Link>
                   </td>
                   <td>
-                    <Link to={`/streetanimal/${animal.animal_no}/`}>
+                    <Link to={`/admin/animal/${animal.animal_no}/`}>
                       {animal.animal_reg_num}
                     </Link>
                   </td>

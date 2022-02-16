@@ -33,7 +33,7 @@ function UserManagementDetail({ userId }) {
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
       deleteUser().then(() => {
-        navigate('/management/');
+        navigate('/admin/usermanage/');
       });
     }
   };
@@ -108,7 +108,7 @@ function UserManagementDetail({ userId }) {
         {/* <Link to={`/management/${userId}/edit/`} className="hover:text-red-400">
           수정
         </Link> */}
-        <Link to="/management/" className="hover:text-red-400">
+        <Link to="/admin/usermanage/" className="hover:text-red-400">
           목록
         </Link>
       </div>
