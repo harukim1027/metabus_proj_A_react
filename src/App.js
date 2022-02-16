@@ -5,7 +5,6 @@ import { useAuth } from 'contexts/AuthContext';
 import PageMainScreen from 'Pages/PageMainScreen';
 // accounts
 import PageLoginForm from 'Pages/PageAccounts/PageLoginForm';
-import PageProfile from 'Pages/PageAccounts/PageProfile';
 import PageSignupForm from 'Pages/PageAccounts/PageSignupForm';
 import PageCheckSignup from 'Pages/PageAccounts/PageCheckSignup';
 // admin
@@ -17,7 +16,11 @@ import PageAnimalForm from 'Pages/PageStreetanimal/PageAnimalForm';
 // admin/UserManagement
 import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
 import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
+// admin/assignment
+import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
+import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
 // user/Assignment
+import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
 import PageAssignmentform from 'Pages/PageAssignment/PageAssignmentForm';
 import PageAssignComp from 'Pages/PageAssignment/PageAssignComp';
 // inquiry
@@ -32,9 +35,9 @@ import PageNoticeForm from 'Pages/PageNotice/PageNoticeForm';
 import PageReviewIndex from 'Pages/PageReview/PageReviewIndex';
 import PageReviewDetail from 'Pages/PageReview/PageReviewDetail';
 import PageReviewForm from 'Pages/PageReview/PageReviewForm';
-import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
-import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
-import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
+import ReviewListDog from 'Components/review/ReviewListDog';
+import ReviewListCat from 'Components/review/ReviewListCat';
+// mypage
 import PageMyinfo from 'Pages/PageMypage/PageMyinfo';
 
 function App() {
@@ -113,6 +116,10 @@ function App() {
                 element={<PageInquiryDetail />}
               />
               <Route path="/inquiry/new/" element={<PageInquiryForm />} />
+              <Route
+                path="/inquiry/:inquiryId/edit/"
+                element={<PageInquiryForm />}
+              />
             </>
           )}
 
@@ -133,6 +140,8 @@ function App() {
               />
             </>
           )}
+          <Route path="/review/dog/" element={<ReviewListDog />} />
+          <Route path="/review/cat/" element={<ReviewListCat />} />
 
           {/* mypage */}
           {auth?.isLoggedIn && (

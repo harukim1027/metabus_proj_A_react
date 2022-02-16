@@ -4,8 +4,13 @@ import '../../App.css';
 import ReviewList from 'Components/review/ReviewList';
 import CrewList from './CrewList';
 import './MainCrew.css';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function MainScreen() {
+  const navigate = useNavigate();
+  const [category, setCategory] = useState('');
+
   return (
     <>
       <div className="header">
@@ -15,13 +20,13 @@ function MainScreen() {
         <div>
           <div className="flex justify-center mt-10">
             <div className="crew_header hover:scale-110 duration-500">
-              <button>
+              <button onClick={() => navigate('/review/dog/')}>
                 <img src="/4.png" alt="dog crew"></img>
               </button>
             </div>
             <div className="crew_header hover:scale-110 duration-500">
-              <button>
-                <img src="/cat3.png" alt="dog crew"></img>
+              <button onClick={() => navigate('/review/cat/')}>
+                <img src="/cat3.png" alt="cat crew"></img>
               </button>
             </div>
           </div>

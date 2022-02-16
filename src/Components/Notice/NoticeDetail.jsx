@@ -71,7 +71,7 @@ function NoticeDetail({ noticeId }) {
         <div className="my-5">
           <button onClick={() => navigate('/notice/')}>목록으로</button>
           {auth.is_staff && (
-            <button onClick={() => navigate(`/notice/${noticeId}/edit/`)}>
+            <button onClick={() => navigate(`/admin/notice/${noticeId}/edit/`)}>
               수정하기
             </button>
           )}
