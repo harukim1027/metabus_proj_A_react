@@ -123,7 +123,7 @@ function LoginForm() {
         </div>
       </div>
 
-      <p class="text-center text-gray-500 text-xs">
+      <p class="mt-3 text-center text-gray-500 text-xs">
         &copy;2022 METABUS Corp. All rights reserved.
       </p>
       <p className="py-3 pb-3" />

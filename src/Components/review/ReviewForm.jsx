@@ -36,15 +36,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
     },
   );
 
-  const [{ data: animalList }, refetch] = useApiAxios(
-    {
-      url: `/streetanimal/api/animal/`,
-      method: 'GET',
-    },
-
-    { manual: true },
-  );
-
   const [{ loading: saveLoading, error: saveError }, saveRequest] = useApiAxios(
     {
       url: !reviewId
@@ -77,10 +68,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
     );
   }, [auth.userID, setFieldValues, selectanimal]);
 
-  useEffect(() => {
-    refetch();
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -101,10 +88,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
   };
 
   console.log('filtAssign', filtAssign);
-  console.log('fieldValues', fieldValues);
-  console.log('assignmentList', assignmentList);
-  console.log('auth', auth);
-
+  // console.log('fieldValues', fieldValues);
   // console.log('setSelanimal', setSelanimal);
 
   return (
@@ -118,16 +102,21 @@ function ReviewForm({ reviewId, handleDidSave }) {
               onClick={() =>
                 assignmentList &&
                 setFiltAssign(
-                  assignmentList.filter(
-                    (assignment) =>
-                      assignment.status === '1' &&
-                      assignment.user.userID === auth.userID,
-                  ),
+                  assignmentList
+                    .filter(
+                      (assignment) =>
+                        assignment.status === '1' &&
+                        assignment.user === auth.userID,
+                    )
+                    .map((a) => a.animal),
                 )
               }
               className="bg-pink-100 p-2 m-2 rounded-lg"
             >
               1. 입양 신청 필터링
+            </button>
+            <button className="bg-pink-100 p-2 m-2 rounded-lg">
+              2. 입양한 동물 보기
             </button>
 
             <div>

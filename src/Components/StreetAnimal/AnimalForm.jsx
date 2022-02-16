@@ -9,7 +9,7 @@ import produce from 'immer';
 
 const INIT_FIELD_VALUES = {
   animal_reg_num: '',
-  category: 1,
+  category: '강아지',
   size: 1,
   sex: 1,
   age: '',
@@ -103,9 +103,8 @@ function AnimalForm({ animalId, handleDidSave }) {
             onChange={handleFieldChange}
             className="border-2 border-sky-400 rounded p-1 ml-2"
           >
-            <option value="1">강아지</option>
-            <option value="2">고양이</option>
-            <option value="3">기타동물</option>
+            <option value="강아지">강아지</option>
+            <option value="고양이">고양이</option>
           </select>
         </div>
 
