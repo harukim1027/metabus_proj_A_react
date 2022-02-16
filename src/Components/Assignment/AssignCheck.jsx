@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import Axios from 'axios';
 import Button from 'Button';
+import '../../App.css';
+import './Assignment.css';
 
 import Agreementation from './Agreementation';
 import SignupAgreementation from './SignupAgreementation';
@@ -44,92 +46,119 @@ function AssignCheck(props) {
 
   return (
     <>
-      <main className="" role="main">
-        <div className="m-5">
-          <h1> 🐼 약관동의</h1>
-        </div>
-        <div className="ml-5 mr-5">
-          <div className="text-center">
-            <div className="font-bold pb-3">
-              <br />
-              아래 약관 및 개인정보 처리방침에 대한 안내를 반드시 읽고,
-              동의해주세요.
-            </div>
-          </div>
-          <hr />
-          <div className=" pb-3 text-right">
-            <label>
-              모두 동의합니다
-              <input
-                checked={all_check ? 'checked' : null}
-                type="checkbox"
-                onClick={() => {
-                  set_all_check(!all_check);
-                }}
-              />
-            </label>
-          </div>
-        </div>
-        <div>
-          <div className="ml-5 mr-5">
-            <div>
-              <label className="font-bold mb-2">
-                회원 가입 약관 동의 [ 필수 ]
-              </label>
-            </div>
+      <div className="header flex justify-center ">
+        <div className="flex flex-wrap max-w-m justify-center rounded pt-6 pb-8 mb-4">
+          <div className="accounts_header shadow-md  flex flex-wrap justify-center w-full max-w-m">
+            <main className="" role="main">
+              <h1 className="mt-5 font-semibold text-2xl text-center p-2">
+                {' '}
+                🐼 크루 신청하기
+              </h1>
 
-            <div>
-              <SignupAgreementation />
-            </div>
-
-            <div className="text-right">
-              <label>회원 가입 이용 약관에 동의합니다</label>
-              <input
-                type="checkbox"
-                label="회원 가입 이용약관에 동의합니다."
-                checked={contract_check ? 'checked' : null}
-                onClick={isFirstCheckBoxClicked}
-                required
-              />
-            </div>
-            <hr className="pb-6" />
-            <div>
-              <div>
-                <label className="font-bold">
-                  개인정보 수집 및 이용에 관한 동의 사항 [ 필수 ]
-                </label>
+              <div className="ml-10 mr-10 ">
+                <div className="text-center">
+                  <div className="font-bold pb-3">
+                    <br />
+                    <blockquote class="text-3xl font-semibold italic text-center text-slate-900">
+                      <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                        <span class="relative text-white">
+                          " 입양 절차, 입양 전 주의사항 "
+                        </span>
+                      </span>
+                      <p className="mt-3 mb-3">
+                        {' '}
+                        안내를 반드시 읽고, 동의해주세요 !
+                      </p>
+                    </blockquote>
+                  </div>
+                </div>
+                <hr />
                 <br />
-                <div>
-                  <Agreementation />
+                <div className=" pb-3 text-right ">
+                  <label className="text-m bg-yellow-100 font-bold">
+                    모두 동의합니다{'  '}
+                    <input
+                      checked={all_check ? 'checked' : null}
+                      type="checkbox"
+                      onClick={() => {
+                        set_all_check(!all_check);
+                      }}
+                    />
+                  </label>
                 </div>
               </div>
-            </div>
-            <div className="text-right pb-5">
-              <label>개인정보 수집 및 이용에 동의합니다</label>
-              <input
-                type="checkbox"
-                label="개인정보 수집 및 이용에 동의합니다."
-                checked={contract_check ? 'checked' : null}
-                onClick={isSecondCheckBoxClicked}
-                required
-              />
-            </div>
-            <hr />
-            <div className="text-red-300 text-center">
-              <br />
-              약관 동의를 해야 회원가입을 할 수 있어요 ! 🐰
-            </div>
-            <div className="text-center my-3">
-              {all_check && (
-                <Button onClick={() => navigate('/assignment/new/')} disabled>
-                  회원가입
-                </Button>
-              )}
-            </div>
-            <br />
+              <div className="w-full">
+                <div className="">
+                  <div>
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                      입양 절차
+                    </span>
+                  </div>
+                  <div className="assign_explanation">
+                    <img src="/assigncheck.png" alt="dog crew"></img>
+                  </div>
+
+                  <div className="w-full">
+                    <SignupAgreementation />
+                  </div>
+
+                  <div className="text-right mb-3">
+                    <label>회원 가입 이용 약관에 동의합니다 </label>
+                    <input
+                      type="checkbox"
+                      label="회원 가입 이용약관에 동의합니다."
+                      checked={contract_check ? 'checked' : null}
+                      onClick={isFirstCheckBoxClicked}
+                      required
+                    />
+                  </div>
+                  <hr className="pb-6" />
+                  <div>
+                    <div>
+                      <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                        개인정보 수집 및 이용에 관한 동의 사항 [ 필수 ]
+                      </span>
+
+                      <div className="w-full">
+                        <Agreementation />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right pb-5">
+                    <label>개인정보 수집 및 이용에 동의합니다 </label>
+                    <input
+                      type="checkbox"
+                      label="개인정보 수집 및 이용에 동의합니다."
+                      checked={contract_check ? 'checked' : null}
+                      onClick={isSecondCheckBoxClicked}
+                      required
+                    />
+                  </div>
+                  <hr />
+                  <div className="text-xl text-red-400 text-center">
+                    <br />
+                    약관 동의를 해야 회원가입을 할 수 있어요 ! 🐰
+                  </div>
+                  <div className="text-center my-3">
+                    {all_check && (
+                      <Button
+                        onClick={() => navigate('/accounts/signup/')}
+                        disabled
+                      >
+                        회원가입
+                      </Button>
+                    )}
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </main>
           </div>
+          <p class="mt-3 text-center text-gray-500 text-xs">
+            &copy;2022 METABUS Corp. All rights reserved.
+          </p>
         </div>
-      </main>
+      </div>
     </>
   );
 }

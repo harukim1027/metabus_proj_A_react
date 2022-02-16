@@ -1,9 +1,8 @@
 import { useApiAxios } from 'api/base';
-import { useAuth, auth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -11,7 +10,6 @@ const INIT_FIELD_VALUES = {
 };
 
 function InquiryForm({ inquiryId, handleDidSave }) {
-  const navigate = useNavigate();
   const { auth } = useAuth();
 
   const [{ data: inquiry, loading: getLoading, error: getError }] = useApiAxios(
@@ -37,7 +35,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
     { manual: true },
   );
 
-  INIT_FIELD_VALUES.user = auth.userID;
+  INIT_FIELD_VALUES.userID = auth.userID;
 
   const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
     inquiry || INIT_FIELD_VALUES,

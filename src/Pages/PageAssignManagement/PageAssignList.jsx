@@ -5,7 +5,7 @@ function PageAssignList() {
   return (
     <>
       <TopNav />
-      <h2>입양신천 관리 페이지</h2>
+      <h2>입양신청 관리 페이지</h2>
       <AssignList />
     </>
   );

@@ -1,11 +1,10 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { AuthProvider, useAuth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 // main
 import PageMainScreen from 'Pages/PageMainScreen';
 // accounts
 import PageLoginForm from 'Pages/PageAccounts/PageLoginForm';
-import PageProfile from 'Pages/PageAccounts/PageProfile';
 import PageSignupForm from 'Pages/PageAccounts/PageSignupForm';
 import PageCheckSignup from 'Pages/PageAccounts/PageCheckSignup';
 // admin
@@ -20,7 +19,11 @@ import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagemen
 import PageUserAssignList from 'Pages/PageUserManagement/PageUserAssignList';
 import PageUserReviewList from 'Pages/PageUserManagement/PageUserReviewList';
 import PageUserInquiryList from 'Pages/PageUserManagement/PageUserInquiryList';
+// admin/assignment
+import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
+import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
 // user/Assignment
+import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
 import PageAssignmentform from 'Pages/PageAssignment/PageAssignmentForm';
 import PageAssignComp from 'Pages/PageAssignment/PageAssignComp';
 // inquiry
@@ -35,9 +38,10 @@ import PageNoticeForm from 'Pages/PageNotice/PageNoticeForm';
 import PageReviewIndex from 'Pages/PageReview/PageReviewIndex';
 import PageReviewDetail from 'Pages/PageReview/PageReviewDetail';
 import PageReviewForm from 'Pages/PageReview/PageReviewForm';
-import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
-import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
-import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
+import ReviewListDog from 'Components/review/ReviewListDog';
+import ReviewListCat from 'Components/review/ReviewListCat';
+// mypage
+import PageMyinfo from 'Pages/PageMypage/PageMyinfo';
 
 function App() {
   const { auth } = useAuth();
@@ -48,9 +52,6 @@ function App() {
           <Route path="/" element={<PageMainScreen />} />
           {/* accounts */}
           <Route path="/accounts/login/" element={<PageLoginForm />} />
-          {auth?.isLoggedIn && (
-            <Route path="/accounts/profile/" element={<PageProfile />} />
-          )}
           <Route path="/accounts/signup/" element={<PageSignupForm />} />
           <Route path="/accounts/checksignup/" element={<PageCheckSignup />} />
 
@@ -133,6 +134,10 @@ function App() {
                 element={<PageInquiryDetail />}
               />
               <Route path="/inquiry/new/" element={<PageInquiryForm />} />
+              <Route
+                path="/inquiry/:inquiryId/edit/"
+                element={<PageInquiryForm />}
+              />
             </>
           )}
 
@@ -153,11 +158,13 @@ function App() {
               />
             </>
           )}
+          <Route path="/review/dog/" element={<ReviewListDog />} />
+          <Route path="/review/cat/" element={<ReviewListCat />} />
 
           {/* mypage */}
           {auth?.isLoggedIn && (
             <>
-              <Route path="/mypage/userinfo/" element={''} />
+              <Route path="/mypage/userinfo/" element={<PageMyinfo />} />
               <Route path="/mypage/assigninfo/" element={''} />
               <Route path="/mypage/myposts/" element={''} />
               <Route path="/mypage/myinquiry/" element={''} />

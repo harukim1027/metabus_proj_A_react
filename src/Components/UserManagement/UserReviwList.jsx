@@ -1,7 +1,7 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function UserReviewList() {
   const { auth } = useAuth();
@@ -32,19 +32,21 @@ function UserReviewList() {
             <th className="border-2">제목</th>
             <th className="border-2">등록 일시</th>
           </tr>
-
-          <tbody>
-            {UserReviewData?.map((review) => (
-              <tr>
-                <td>{review.review_no}</td>
-
-                <td>{review.title}</td>
-
-                <td>{review.created_at}</td>
-              </tr>
-            ))}
-          </tbody>
         </thead>
+
+        <tbody>
+          {UserReviewData?.map((review) => (
+            <tr>
+              <td>{review.review_no}</td>
+
+              <td>
+                <Link to={`/review/${review.review_no}/`}>{review.title}</Link>
+              </td>
+
+              <td>{review.created_at}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

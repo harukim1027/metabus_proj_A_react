@@ -2,13 +2,16 @@ import { useApiAxios } from 'api/base';
 import { useEffect } from 'react';
 import ReviewSummary from './ReviewSummary';
 import { useState } from 'react';
+import TopNav from 'Components/Main/TopNavi';
+import { useAuth } from 'contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import useFieldValues from 'hooks/useFieldValues';
 
 const INIT_FIELD_VALUES = { category: '' };
 
-function ReviewList() {
+function ReviewListCat() {
   const [query, setQuery] = useState('');
+  const { auth } = useAuth();
   const navigate = useNavigate();
   const [{ data: reviewList }, refetch] = useApiAxios(
     {
@@ -50,6 +53,10 @@ function ReviewList() {
 
   return (
     <>
+      <TopNav />
+
+      <h1 className="relative mx-20">입양 후기</h1>
+
       <div className="relative mx-20">
         <form onSubmit={() => moveCategory()}>
           <select
@@ -107,18 +114,31 @@ function ReviewList() {
       <div className="my-5 ">
         {reviewList && (
           <div className="flex space-x-1">
-            {reviewList.map((review) => (
-              <div
-                key={review.review_no}
-                className="mx-20 md:w-1/4 l:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300 "
-              >
-                <ReviewSummary review={review} />
-              </div>
-            ))}
+            {reviewList
+              .filter((a) => a.adoptassignment.animal.category === '고양이')
+              .map((review) => (
+                <div
+                  key={review.review_no}
+                  className="mx-20 md:w-1/4 l:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300 "
+                >
+                  <ReviewSummary review={review} />
+                </div>
+              ))}
           </div>
         )}
       </div>
+      {auth.isLoggedIn && !auth.is_staff && (
+        <div className="flex place-content-between">
+          <div></div>
+          <button
+            onClick={() => navigate('/review/new/')}
+            className="mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+          >
+            글쓰기
+          </button>
+        </div>
+      )}
     </>
   );
 }
-export default ReviewList;
+export default ReviewListCat;

@@ -51,7 +51,7 @@ function TopNav() {
                   1:1 문의
                 </NavLink>
                 <NavLink
-                  to="/accounts/profile/"
+                  to="/mypage/userinfo/"
                   className="border-2 border-blue-300 py-1 rounded w-20 text-center"
                 >
                   마이 페이지
