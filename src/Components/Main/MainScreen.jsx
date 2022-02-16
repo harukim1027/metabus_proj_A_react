@@ -20,18 +20,18 @@ function MainScreen() {
         <div>
           <div className="flex justify-center mt-10">
             <div className="crew_header hover:scale-110 duration-500">
-              <button>
+              <button onClick={() => navigate('/review/dog/')}>
                 <img src="/dog5.png" alt="dog crew"></img>
               </button>
             </div>
             <div className="crew_header hover:scale-110 duration-500">
-              <button>
+              <button onClick={() => navigate('/review/cat/')}>
                 <img src="/cat4.png" alt="dog crew"></img>
               </button>
             </div>
           </div>
         </div>
-        <p class="mt-3 text-center text-gray-500 text-xs">
+        <p className="mt-3 text-center text-gray-500 text-xs">
           &copy;2022 METABUS Corp. All rights reserved.
         </p>
       </div>

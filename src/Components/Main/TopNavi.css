@@ -8,7 +8,7 @@
 .icon_size {
   width: 130px;
   height: 100px;
-  margin: 1rem;
+  /* margin: 1rem; */
   margin-right: 2ch;
 }
 
@@ -16,5 +16,12 @@
   width: 90px;
   height: 90px;
   margin: 1rem;
+  margin-right: 2ch;
+}
+
+.icon_size3 {
+  width: 130px;
+  height: 100px;
+  margin: 18px;
   margin-right: 2ch;
 }
