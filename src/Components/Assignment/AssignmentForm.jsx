@@ -182,7 +182,7 @@ function AssignmentForm({ handleDidSave }) {
                     </div>
                     {/* 버튼 클릭 부분 */}
                     <div>
-                      <div className="px-3 mb-6 md:mb-0  hover:scale-110 duration-500">
+                      <div className="px-3 mb-6 md:mb-0">
                         <button
                           onClick={() => {
                             setFilter({
@@ -191,7 +191,7 @@ function AssignmentForm({ handleDidSave }) {
                               sex: fieldValues.sex,
                             });
                           }}
-                          className="icon_size2"
+                          className="icon_size2 hover:scale-110 duration-500"
                           readOnly
                         >
                           <img src="/searchicon2.png" alt="button"></img>
@@ -210,7 +210,7 @@ function AssignmentForm({ handleDidSave }) {
                                 ),
                             )
                           }
-                          className="icon_size2"
+                          className="icon_size2 hover:scale-110 duration-500"
                           readOnly
                         >
                           <img src="/searchicon2.png" alt="button"></img>

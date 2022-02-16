@@ -137,15 +137,15 @@ function AssignCheck(props) {
                   <hr />
                   <div className="text-xl text-red-400 text-center">
                     <br />
-                    약관 동의를 해야 회원가입을 할 수 있어요 ! 🐰
+                    약관 동의를 해야 입양 신청을 할 수 있어요 ! 🐰
                   </div>
                   <div className="text-center my-3">
                     {all_check && (
                       <Button
-                        onClick={() => navigate('/accounts/signup/')}
+                        onClick={() => navigate('/assignment/new/')}
                         disabled
                       >
-                        회원가입
+                        신청하기
                       </Button>
                     )}
                   </div>
