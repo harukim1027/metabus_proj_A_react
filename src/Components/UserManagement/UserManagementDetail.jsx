@@ -86,16 +86,16 @@ function UserManagementDetail({ userId }) {
           <div className="my-3">
             <span>거주지역</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {userData?.region === '1' && 'Seoul'}
-              {userData?.region === '2' && 'Busan'}
-              {userData?.region === '3' && 'Daegu'}
-              {userData?.region === '4' && 'Incheon'}
-              {userData?.region === '5' && 'Daejeon'}
-              {userData?.region === '6' && 'Sejong'}
-              {userData?.region === '7' && 'Gwangju'}
-              {userData?.region === '8' && 'Ulsan'}
-              {userData?.region === '9' && 'Jeju'}
-              {userData?.region === '10' && 'Gangwon'}
+              {userData?.region === '서울' && '서울'}
+              {userData?.region === '인천' && '인천'}
+              {userData?.region === '대전' && '대전'}
+              {userData?.region === '세종' && '세종'}
+              {userData?.region === '대구' && '대구'}
+              {userData?.region === '부산' && '부산'}
+              {userData?.region === '광주' && '광주'}
+              {userData?.region === '울산' && '울산'}
+              {userData?.region === '제주' && '제주'}
+              {userData?.region === '강원' && '강원'}
             </span>
           </div>
         </>

@@ -83,9 +83,8 @@ function AnimalList() {
                     </Link>
                   </td>
                   <td>
-                    {animal.category.id === 1 && '강아지'}
-                    {animal.category.id === 2 && '고양이'}
-                    {animal.category.id === 3 && '기타동물'}
+                    {animal.category.name === '강아지' && '강아지'}
+                    {animal.category.name === '고양이' && '고양이'}
                   </td>
                   <td>
                     <Link to={`/admin/animal/${animal.animal_no}/`}>
@@ -102,12 +101,13 @@ function AnimalList() {
                     </Link>
                   </td>
                   <td>{animal.age}</td>
-                  <td>{animal.sex === '1' ? '암컷' : '수컷'}</td>
+                  <td>{animal.sex === '암컷' ? '암컷' : '수컷'}</td>
                   <td>{animal.place_of_discovery}</td>
                   <td>
-                    {animal.protection_status === '1' && '입양 대기'}
-                    {animal.protection_status === '2' && '입양 매칭 중'}
-                    {animal.protection_status === '3' && '입양 완료'}
+                    {animal.protection_status === '입양 대기' && '입양 대기'}
+                    {animal.protection_status === '입양 매칭 중' &&
+                      '입양 매칭 중'}
+                    {animal.protection_status === '입양 완료' && '입양 완료'}
                   </td>
                 </tr>
               ))}

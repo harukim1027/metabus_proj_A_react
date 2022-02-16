@@ -92,16 +92,16 @@ function UserManagementIndex() {
                 <td>{user.email}</td>
 
                 <td>
-                  {user.region === 1 && 'Seoul'}
-                  {user.region === 2 && 'Busan'}
-                  {user.region === 3 && 'Daegu'}
-                  {user.region === 4 && 'Incheon'}
-                  {user.region === 5 && 'Daejeon'}
-                  {user.region === 6 && 'Sejong'}
-                  {user.region === 7 && 'Gwangju'}
-                  {user.region === 8 && 'Ulsan'}
-                  {user.region === 9 && 'Jeju'}
-                  {user.region === 10 && 'Gangwon'}
+                  {user?.region === '서울' && '서울'}
+                  {user?.region === '인천' && '인천'}
+                  {user?.region === '대전' && '대전'}
+                  {user?.region === '세종' && '세종'}
+                  {user?.region === '대구' && '대구'}
+                  {user?.region === '부산' && '부산'}
+                  {user?.region === '광주' && '광주'}
+                  {user?.region === '울산' && '울산'}
+                  {user?.region === '제주' && '제주'}
+                  {user?.region === '강원' && '강원'}
                 </td>
               </tr>
             ))}

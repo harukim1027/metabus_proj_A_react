@@ -103,8 +103,8 @@ function AnimalForm({ animalId, handleDidSave }) {
             onChange={handleFieldChange}
             className="border-2 border-sky-400 rounded p-1 ml-2"
           >
-            <option value="1">강아지</option>
-            <option value="2">고양이</option>
+            <option value="강아지">강아지</option>
+            <option value="고양이">고양이</option>
           </select>
         </div>
 
@@ -128,9 +128,9 @@ function AnimalForm({ animalId, handleDidSave }) {
             className="border-2 border-sky-400 rounded p-1 ml-2"
             defaultValue="1"
           >
-            <option value="1">소형</option>
-            <option value="2">중형</option>
-            <option value="3">대형</option>
+            <option value="소형">소형</option>
+            <option value="중형">중형</option>
+            <option value="대형">대형</option>
           </select>
         </div>
 
@@ -143,8 +143,8 @@ function AnimalForm({ animalId, handleDidSave }) {
             className="border-2 border-sky-400 rounded p-1 ml-2"
             defaultValue="1"
           >
-            <option value="1">암컷</option>
-            <option value="2">수컷</option>
+            <option value="암컷">암컷</option>
+            <option value="수컷">수컷</option>
           </select>
         </div>
 
@@ -223,9 +223,9 @@ function AnimalForm({ animalId, handleDidSave }) {
             type="text"
             className="border-2 border-sky-400 rounded p-1 ml-2"
           >
-            <option value="1">입양 대기</option>
-            <option value="2">입양 매칭 중</option>
-            <option value="3">입양 완료</option>
+            <option value="입양 대기">입양 대기</option>
+            <option value="입양 매칭 중">입양 매칭 중</option>
+            <option value="입양 완료">입양 완료</option>
           </select>
         </div>
 

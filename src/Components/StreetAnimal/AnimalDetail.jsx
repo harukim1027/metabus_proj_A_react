@@ -55,9 +55,8 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>동물 종</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.category.id === 1 && '강아지'}
-              {animal.category.id === 2 && '고양이'}
-              {animal.category.id === 3 && '기타동물'}
+              {animal.category.name === '강아지' && '강아지'}
+              {animal.category.name === '고양이' && '고양이'}
             </span>
           </div>
 
@@ -71,16 +70,16 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>크기</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.size === '1' && '소형'}
-              {animal.size === '2' && '중형'}
-              {animal.size === '3' && '대형'}
+              {animal.size === '소형' && '소형'}
+              {animal.size === '중형' && '중형'}
+              {animal.size === '대형' && '대형'}
             </span>
           </div>
 
           <div className="my-3">
             <span>성별</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.sex === '1' ? '암컷' : '수컷'}
+              {animal.sex === '암컷' ? '암컷' : '수컷'}
             </span>
           </div>
 
@@ -129,9 +128,9 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>입양 상태</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.protection_status === '1' && '입양 대기'}
-              {animal.protection_status === '2' && '입양 매칭 중'}
-              {animal.protection_status === '3' && '입양 완료'}
+              {animal.protection_status === '입양 대기' && '입양 대기'}
+              {animal.protection_status === '입양 매칭 중' && '입양 매칭 중'}
+              {animal.protection_status === '입양 완료' && '입양 완료'}
             </span>
           </div>
 
