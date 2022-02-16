@@ -74,7 +74,7 @@ function TopNav() {
         onClick={() => navigate('/')}
         className="w-full text-white  cursor-pointer"
       >
-        <img src="/main06.png" alt="Street Animal Adopter"></img>
+        <img src="/main08.png" alt="Street Animal Adopter"></img>
       </div>
       <div className="grid grid-cols-3 text-center text-xl font-semibold">
         <MyLink to="/notice/">공지사항</MyLink>

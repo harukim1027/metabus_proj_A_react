@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { useAuth } from 'contexts/AuthContext';
+import { AuthProvider, useAuth } from 'contexts/AuthContext';
 // main
 import PageMainScreen from 'Pages/PageMainScreen';
 // accounts
@@ -74,6 +74,7 @@ function App() {
                 path="/admin/assignmanage/:assignId/"
                 element={<PageAssignDetail />}
               />
+
               {/* admin/UserManagement */}
               <Route
                 path="/admin/usermanage/"
@@ -83,6 +84,10 @@ function App() {
                 path="/admin/usermanage/:userId/"
                 element={<PageUserManagementDetail />}
               />
+              <Route path="/admin/usermanage/:usrId/assigninfo/" element={''} />
+
+              <Route path="/admin/usermanage/posts/" element={''} />
+
               {/* admin/inquiry */}
               <Route
                 path="/admin/inquiry/:inquiryId/edit/"
@@ -96,7 +101,6 @@ function App() {
               />
             </>
           )}
-          {/* ----------------------------------------- */}
 
           {/* Assignment */}
           <Route path="/assignment/check/" element={<PageAssignCheck />} />
