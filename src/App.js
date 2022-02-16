@@ -35,6 +35,8 @@ import PageReviewForm from 'Pages/PageReview/PageReviewForm';
 import PageAssignCheck from 'Pages/PageAssignment/PageAssignCheck';
 import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
 import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
+import ReviewListDog from 'Components/review/ReviewListDog';
+import ReviewListCat from 'Components/review/ReviewListCat';
 
 function App() {
   const { auth } = useAuth();
@@ -139,6 +141,8 @@ function App() {
               />
             </>
           )}
+          <Route path="/review/dog/" element={<ReviewListDog />} />
+          <Route path="/review/cat/" element={<ReviewListCat />} />
 
           {/* mypage */}
           {auth?.isLoggedIn && (
