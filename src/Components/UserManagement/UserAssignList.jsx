@@ -2,6 +2,7 @@ import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function UserAssignList() {
   const { auth } = useAuth();
@@ -37,7 +38,11 @@ function UserAssignList() {
         <tbody>
           {AssignStatusData?.map((assign) => (
             <tr>
-              <td>{assign.assignment_no}</td>
+              <td>
+                <Link to={`/admin/assignmanage/:assignId/`}>
+                  {assign.assignment_no}
+                </Link>
+              </td>
 
               <td>{assign.animal.animal_reg_num}</td>
 
