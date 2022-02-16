@@ -51,7 +51,7 @@ function InquiryDetail({ inquiryId }) {
       )}
 
       {auth.isLoggedIn && auth.is_staff && (
-        <Link to={`/inquiry/${inquiryId}/edit/`}>답변하기</Link>
+        <Link to={`/admin/inquiry/${inquiryId}/edit/`}>답변하기</Link>
       )}
       <button onClick={handleDelete}>삭제하기</button>
     </div>
