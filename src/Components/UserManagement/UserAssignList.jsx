@@ -39,12 +39,16 @@ function UserAssignList() {
           {AssignStatusData?.map((assign) => (
             <tr>
               <td>
-                <Link to={`/admin/assignmanage/:assignId/`}>
+                <Link to={`/admin/assignmanage/${assign.assignment_no}/`}>
                   {assign.assignment_no}
                 </Link>
               </td>
 
-              <td>{assign.animal.animal_reg_num}</td>
+              <td>
+                <Link to={`/admin/animal/${assign.animal.animal_no}`}>
+                  {assign.animal.animal_reg_num}
+                </Link>
+              </td>
 
               <td>{assign.created_at}</td>
 
