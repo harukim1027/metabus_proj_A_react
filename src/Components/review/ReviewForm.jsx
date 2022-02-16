@@ -12,7 +12,6 @@ const INIT_FIELD_VALUES = {
 
 function ReviewForm({ reviewId, handleDidSave }) {
   const [filtAssign, setFiltAssign] = useState([]);
-  const [filtAssignedAni, setFiltAssignedAni] = useState([]);
   const [selectanimal, setSelectanimal] = useState(null);
   const { auth } = useAuth();
 
@@ -72,11 +71,11 @@ function ReviewForm({ reviewId, handleDidSave }) {
         draft.image3 = '';
         draft.image4 = '';
         draft.image5 = '';
-        draft.user = auth.userID;
+        draft.userID = auth.userID;
         draft.adoptassignment = selectanimal;
       }),
     );
-  }, [auth.userID, setFieldValues, review, selectanimal]);
+  }, [auth.userID, setFieldValues, selectanimal]);
 
   useEffect(() => {
     refetch();
@@ -102,8 +101,9 @@ function ReviewForm({ reviewId, handleDidSave }) {
   };
 
   console.log('filtAssign', filtAssign);
-  // console.log('fieldValues', fieldValues);
-  console.log('animalList', animalList);
+  console.log('fieldValues', fieldValues);
+  console.log('assignmentList', assignmentList);
+  console.log('auth', auth);
 
   // console.log('setSelanimal', setSelanimal);
 
@@ -118,44 +118,31 @@ function ReviewForm({ reviewId, handleDidSave }) {
               onClick={() =>
                 assignmentList &&
                 setFiltAssign(
-                  assignmentList
-                    .filter(
-                      (assignment) =>
-                        assignment.status === '1' &&
-                        assignment.user === auth.userID,
-                    )
-                    .map((a) => a.animal),
+                  assignmentList.filter(
+                    (assignment) =>
+                      assignment.status === '1' &&
+                      assignment.user.userID === auth.userID,
+                  ),
                 )
               }
               className="bg-pink-100 p-2 m-2 rounded-lg"
             >
               1. 입양 신청 필터링
             </button>
-            <button
-              onClick={() =>
-                setFiltAssignedAni(
-                  animalList.filter((animal) =>
-                    filtAssign.includes(animal.animal_no),
-                  ),
-                )
-              }
-              className="bg-pink-100 p-2 m-2 rounded-lg"
-            >
-              2. 입양한 동물 보기
-            </button>
+
             <div>
-              {filtAssignedAni && (
+              {assignmentList && (
                 <>
-                  {filtAssignedAni.map((ani) => (
+                  {assignmentList.map((ani) => (
                     <div
                       className="inline-block p-2 m-2 rounded border-2 border-pink-200 w-1/5 cursor-pointer hover:scale-110"
-                      onClick={() => setSelectanimal(ani.animal_no)}
+                      onClick={() => setSelectanimal(ani.animal.animal_no)}
                     >
                       <div className="flex h-36 items-center">
-                        <img src={ani.image} alt="" />
+                        <img src={ani.animal.image} alt="" />
                       </div>
-                      <h2>나이 : {ani.age} 세</h2>
-                      <h3>{ani.animal_reg_num}</h3>
+                      <h2>나이 : {ani.animal.age} 세</h2>
+                      <h3>{ani.animal.animal_reg_num}</h3>
                     </div>
                   ))}
                 </>

@@ -5,7 +5,7 @@ function PageProfile() {
     <>
       <TopNav />
       <div>
-        <h2>Profile</h2>
+        <h2>Profile 페이지</h2>
       </div>
     </>
   );

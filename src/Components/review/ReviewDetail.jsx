@@ -50,10 +50,10 @@ function ReviewDetail({ reviewId }) {
           <h2>{review.content}</h2>
 
           <Link to="/review/">목록으로</Link>
-          {auth.userID === review.user && (
+          {auth.userID === review.user.userID && (
             <Link to={`/review/${reviewId}/edit/`}>수정하기</Link>
           )}
-          {auth.userID === review.user && (
+          {auth.userID === review.user.userID && (
             <button onClick={() => handleDelete()}>삭제하기</button>
           )}
         </>
