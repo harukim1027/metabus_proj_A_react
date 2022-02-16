@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { AuthProvider, useAuth } from 'contexts/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 // main
 import PageMainScreen from 'Pages/PageMainScreen';
 // accounts
@@ -17,7 +17,6 @@ import PageAnimalForm from 'Pages/PageStreetanimal/PageAnimalForm';
 // admin/UserManagement
 import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
 import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
-import PageUserManagementForm from 'Pages/PageUserManagement/PageUserManagementForm';
 // user/Assignment
 import PageAssignmentform from 'Pages/PageAssignment/PageAssignmentForm';
 import PageAssignComp from 'Pages/PageAssignment/PageAssignComp';
