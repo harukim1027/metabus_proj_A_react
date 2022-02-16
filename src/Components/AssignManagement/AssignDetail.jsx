@@ -1,12 +1,14 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import produce from 'immer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AssignStatus from './AssignStatus';
 
 function AssignDetail({ assignId }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
+  const [clicked, setClicked] = useState(false);
   const [{ data: assignData }, refetch] = useApiAxios(
     {
       url: `/adopt_assignment/api/assignment/${assignId}/`,
@@ -71,7 +73,21 @@ function AssignDetail({ assignId }) {
         <img src={assignData?.picture_of_residence3} alt="" />
         <h2>만남 희망 장소 : {assignData?.place_to_meet}</h2>
         <h2>만남 희망일 : {assignData?.date_to_meet}</h2>
-        <h2>진행 상태 : {assignData?.status}</h2>
+        <div>
+          <h2 onClick={() => setClicked(!clicked)}>
+            진행 상태 : {assignData?.status}
+          </h2>
+          {clicked && assignData && (
+            <AssignStatus
+              assignId={assignId}
+              assignData={assignData}
+              handleDidSave={(savedPost) => {
+                savedPost && window.location.reload();
+                savedPost && setClicked(0);
+              }}
+            />
+          )}
+        </div>
         <h2>--------------------♥--------------------</h2>
         <h2>동물 정보</h2>
         <h2>등록번호 : {assignData?.animal.animal_reg_num}</h2>
