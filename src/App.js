@@ -18,6 +18,8 @@ import PageAnimalForm from 'Pages/PageStreetanimal/PageAnimalForm';
 import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
 import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
 import PageUserAssignList from 'Pages/PageUserManagement/PageUserAssignList';
+import PageUserReviewList from 'Pages/PageUserManagement/PageUserReviewList';
+import PageUserInquiryList from 'Pages/PageUserManagement/PageUserInquiryList';
 // user/Assignment
 import PageAssignmentform from 'Pages/PageAssignment/PageAssignmentForm';
 import PageAssignComp from 'Pages/PageAssignment/PageAssignComp';
@@ -90,7 +92,15 @@ function App() {
                 element={<PageUserAssignList />}
               />
 
-              <Route path="/admin/usermanage/posts/" element={''} />
+              <Route
+                path="/admin/usermanage/:userId/userreview/"
+                element={<PageUserReviewList />}
+              />
+
+              <Route
+                path="/admin/usermanage/:userId/userinquiry/"
+                element={<PageUserInquiryList />}
+              />
 
               {/* admin/inquiry */}
               <Route
