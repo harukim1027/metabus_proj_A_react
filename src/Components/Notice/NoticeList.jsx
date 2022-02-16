@@ -57,7 +57,9 @@ function NoticeList() {
           </table>
         )}
         {auth.is_staff && (
-          <button onClick={() => navigate('/notice/new/')}>공지 작성</button>
+          <button onClick={() => navigate('/admin/notice/new/')}>
+            공지 작성
+          </button>
         )}
       </div>
     </>

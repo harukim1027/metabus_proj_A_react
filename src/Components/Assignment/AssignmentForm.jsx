@@ -8,12 +8,12 @@ import './Assignment.css';
 const INIT_FIELD_VALUES = {
   adopter_name: '',
   monthly_income: '',
-  residential_type: 'Apartment',
+  residential_type: '아파트',
   have_pet_or_not: false,
-  status: '1',
-  protection_status: '1',
-  size: '1',
-  sex: '1',
+  status: '신청',
+  protection_status: '입양 대기',
+  size: '소형',
+  sex: '암컷',
 };
 
 function AssignmentForm({ handleDidSave }) {
@@ -119,11 +119,11 @@ function AssignmentForm({ handleDidSave }) {
           value={fieldValues.size}
           onChange={handleFieldChange}
           className="border-2 border-sky-400 rounded p-2"
-          defaultValue="1"
+          defaultValue="소형"
         >
-          <option value="1">소형</option>
-          <option value="2">중형</option>
-          <option value="3">대형</option>
+          <option value="소형">소형</option>
+          <option value="중형">중형</option>
+          <option value="대형">대형</option>
         </select>
       </div>
 
@@ -134,16 +134,16 @@ function AssignmentForm({ handleDidSave }) {
           value={fieldValues.sex}
           onChange={handleFieldChange}
           className="border-2 border-sky-400 rounded p-2"
-          defaultValue="1"
+          defaultValue="암컷"
         >
-          <option value="1">암컷</option>
-          <option value="2">수컷</option>
+          <option value="암컷">암컷</option>
+          <option value="수컷">수컷</option>
         </select>
       </div>
       <button
         onClick={() => {
           setFilter({
-            protection_status: '1',
+            protection_status: '입양 대기',
             size: fieldValues.size,
             sex: fieldValues.sex,
           });
@@ -162,7 +162,7 @@ function AssignmentForm({ handleDidSave }) {
                 (animal) =>
                   animal.size === filter.size &&
                   animal.sex === filter.sex &&
-                  animal.protection_status === '1',
+                  animal.protection_status === '입양 대기',
               ),
           )
         }
@@ -227,13 +227,13 @@ function AssignmentForm({ handleDidSave }) {
             value={fieldValues.residential_type}
             onChange={handleFieldChange}
             className="border-2 border-sky-400 rounded p-2"
-            defaultValue="Apartment"
+            defaultValue="아파트"
           >
-            <option value="Apartment">아파트</option>
-            <option value="Villa">빌라</option>
-            <option value="Housing">주택</option>
-            <option value="Oneroom">원룸</option>
-            <option value="Officetel">오피스텔</option>
+            <option value="아파트">아파트</option>
+            <option value="빌라">빌라</option>
+            <option value="주택">주택</option>
+            <option value="원룸">원룸</option>
+            <option value="오피스텔">오피스텔</option>
           </select>
         </div>
         {/* 처리해야할 부분 */}
@@ -271,20 +271,35 @@ function AssignmentForm({ handleDidSave }) {
           />
         </div>
         <div className="py-2">
-          <h2 className="inline">크루 접선 장소</h2>
+          <h2 className="inline">만남 희망 장소</h2>
           <select
             name="place_to_meet"
             value={fieldValues.place_to_meet}
             onChange={handleFieldChange}
             className="border-2 border-sky-400 rounded p-2"
-            defaultValue="Seoul"
+            defaultValue="서울 강동구청 반려동물팀"
           >
-            <option value="Seoul">서울 강동구청 반려동물팀</option>
-            <option value="Daejeon">대전 동물 보호 센터</option>
-            <option value="Saejong">세종 유기동물 보호센터</option>
-            <option value="Daegu">대구 유기동물 보호 협회</option>
-            <option value="Busan">부산 동물보호센터</option>
+            <option value="서울 강동구청 반려동물팀">
+              서울 강동구청 반려동물팀
+            </option>
+            <option value="대전 동물 보호 센터">대전 동물 보호 센터</option>
+            <option value="세종 유기동물 보호센터">
+              세종 유기동물 보호센터
+            </option>
+            <option value="대구 유기동물 보호 협회">
+              대구 유기동물 보호 협회
+            </option>
+            <option value="부산 동물보호센터">부산 동물보호센터</option>
           </select>
+        </div>
+        <div className="py-2">
+          <h2 className="inline">만남 희망 날짜</h2>
+          <input
+            type="date"
+            name="date_to_meet"
+            onChange={handleFieldChange}
+            className="border-2 border-gray-300 p-2 rounded-lg"
+          />
         </div>
         <button>신청하기</button>
       </form>

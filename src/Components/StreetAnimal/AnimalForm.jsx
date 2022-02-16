@@ -9,7 +9,7 @@ import produce from 'immer';
 
 const INIT_FIELD_VALUES = {
   animal_reg_num: '',
-  category: 1,
+  category: '강아지',
   size: 1,
   sex: 1,
   age: '',

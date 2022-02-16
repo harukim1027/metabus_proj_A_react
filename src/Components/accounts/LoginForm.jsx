@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import Button from 'Button';
+import '../../App.css';
 
 const INITIAL_FIELD_VALUES = { userID: '', password: '' };
 
@@ -75,7 +76,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="">
+    <div className="header">
       <h2 className="text-center py-3 pb-3"> 🐹 Login </h2>
       <hr />
 
@@ -122,7 +123,7 @@ function LoginForm() {
         </div>
       </div>
 
-      <p class="text-center text-gray-500 text-xs">
+      <p class="mt-3 text-center text-gray-500 text-xs">
         &copy;2022 METABUS Corp. All rights reserved.
       </p>
       <p className="py-3 pb-3" />
