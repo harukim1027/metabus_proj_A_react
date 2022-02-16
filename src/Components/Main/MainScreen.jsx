@@ -31,7 +31,7 @@ function MainScreen() {
             </div>
           </div>
         </div>
-        <p class="mt-3 text-center text-gray-500 text-xs">
+        <p className="mt-3 text-center text-gray-500 text-xs">
           &copy;2022 METABUS Corp. All rights reserved.
         </p>
       </div>

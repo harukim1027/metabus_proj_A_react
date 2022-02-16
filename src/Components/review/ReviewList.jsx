@@ -81,7 +81,7 @@ function ReviewList() {
           <div className="absolute left-0 inset-y-0 flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 ml-3 text-gray-400 hover:text-gray-500"
+              className="h-6 w-6 ml-3 text-gray-400 hover:text-gray-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

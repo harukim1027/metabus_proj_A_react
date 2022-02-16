@@ -59,9 +59,9 @@ function AssignCheck(props) {
                 <div className="text-center">
                   <div className="font-bold pb-3">
                     <br />
-                    <blockquote class="text-3xl font-semibold italic text-center text-slate-900">
-                      <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-                        <span class="relative text-white">
+                    <blockquote className="text-3xl font-semibold italic text-center text-slate-900">
+                      <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                        <span className="relative text-white">
                           " 입양 절차, 입양 전 주의사항 "
                         </span>
                       </span>
@@ -154,7 +154,7 @@ function AssignCheck(props) {
               </div>
             </main>
           </div>
-          <p class="mt-3 text-center text-gray-500 text-xs">
+          <p className="mt-3 text-center text-gray-500 text-xs">
             &copy;2022 METABUS Corp. All rights reserved.
           </p>
         </div>
