@@ -7,7 +7,7 @@ function PageAssignDetail() {
   return (
     <>
       <TopNav />
-      <AssignDetail assignId={assignId} />
+      {assignId && <AssignDetail assignId={assignId} />}
     </>
   );
 }

@@ -15,7 +15,7 @@ const INIT_FIELD_VALUES = {
   phone_number: '',
   email: '',
   region: 1,
-  password_quiz: 1,
+  password_quiz: '내 보물 1호는?',
   password_quiz_answer: '',
   password: '',
   password2: '',
