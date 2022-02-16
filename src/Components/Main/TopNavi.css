@@ -2,5 +2,12 @@
 
 .header {
   font-family: 'Hahmlet', serif;
-  background-color: #faeddc;
+  background-color: #dbf1f6;
+}
+
+.icon_size {
+  width: 130px;
+  height: 100px;
+  margin: 1rem;
+  margin-right: 2ch;
 }

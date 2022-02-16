@@ -73,7 +73,7 @@ function AssignList() {
                 {assign.date_to_meet}
               </td>
               <td className="border-2 border-gray-400 text-center">
-                {assign.status}
+                <h2>{assign.status}</h2>
               </td>
             </tr>
           ))}
