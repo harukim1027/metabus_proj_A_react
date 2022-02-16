@@ -20,13 +20,13 @@ function MainScreen() {
         <div>
           <div className="flex justify-center mt-10">
             <div className="crew_header hover:scale-110 duration-500">
-              <button onClick={() => navigate('/review/dog/')}>
-                <img src="/4.png" alt="dog crew"></img>
+              <button>
+                <img src="/dog5.png" alt="dog crew"></img>
               </button>
             </div>
             <div className="crew_header hover:scale-110 duration-500">
-              <button onClick={() => navigate('/review/cat/')}>
-                <img src="/cat3.png" alt="cat crew"></img>
+              <button>
+                <img src="/cat4.png" alt="dog crew"></img>
               </button>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { useApiAxios } from 'api/base';
 import { useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
-import SidebarItem from './SidebarItem';
+import Sidebar from './Sidebar';
 
 function Myinfo() {
   const { auth } = useAuth();
@@ -20,7 +20,7 @@ function Myinfo() {
   return (
     <>
       <div className="w-full h-screen bg-blue-100">
-        <SidebarItem />
+        <Sidebar />
         <div className="inline-block">
           <h2>마이페이지 내 정보</h2>
           <h2>이름 : {userData?.name}</h2>
