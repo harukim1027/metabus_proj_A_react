@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../App.css';
 import './accounts.css';
+import Captcha from './Captcha';
 
 const INIT_FIELD_VALUES = {
   userID: '',
@@ -384,6 +385,9 @@ function SignupForm() {
                 <h5 className="ml-5 text-xs mb-3 text-blue-400">
                   입력하신 비밀번호를 다시 입력해주세요 !
                 </h5>
+              </div>
+              <div className="flex justify-center">
+                <Captcha />
               </div>
 
               <div className="my-3 py-3 text-center">
