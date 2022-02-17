@@ -45,9 +45,10 @@ function AssignDetail({ assignId }) {
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
       deleteAssign().then(() => {
-        changeAPS();
-        navigate('/admin/assignmanage/');
-        window.location.reload();
+        changeAPS().then(() => {
+          navigate('/admin/assignmanage/');
+          window.location.reload();
+        });
       });
     }
   };
