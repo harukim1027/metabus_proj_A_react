@@ -51,10 +51,8 @@ function MyAssignInfo() {
                 </td>
 
                 <td>
-                  {/* <Link to={}> */}
                   {assign.status}
                   {assign.status === '입양 완료' && <button>후기 작성</button>}
-                  {/* </Link> */}
                 </td>
               </tr>
             ))}

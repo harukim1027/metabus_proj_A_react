@@ -141,22 +141,27 @@ function AnimalDetail({ animalId }) {
       )}
 
       <div className="flex gap-4 mt-3 mb-10 ml-10">
-        <button
-          disabled={deleteLoading}
-          onClick={handleDelete}
-          className="hover:text-red-400"
-        >
-          삭제
-        </button>
-        <Link
-          to={`/admin/animal/${animalId}/edit/`}
-          className="hover:text-red-400"
-        >
-          수정
-        </Link>
-        <Link to="/admin/animal/" className="hover:text-red-400">
-          목록
-        </Link>
+        {auth.is_staff && (
+          <>
+            <button
+              disabled={deleteLoading}
+              onClick={handleDelete}
+              className="hover:text-red-400"
+            >
+              삭제
+            </button>
+            <Link
+              to={`/admin/animal/${animalId}/edit/`}
+              className="hover:text-red-400"
+            >
+              수정
+            </Link>
+
+            <Link to="/admin/animal/" className="hover:text-red-400">
+              목록
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

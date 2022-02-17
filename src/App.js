@@ -65,10 +65,7 @@ function App() {
               {/* admin/Animal */}
               <Route path="/admin/animal/" element={<PageAnimalList />} />
               <Route path="/admin/animal/new/" element={<PageAnimalForm />} />
-              <Route
-                path="/admin/animal/:animalId/"
-                element={<PageAnimalDetail />}
-              />
+
               <Route
                 path="/admin/animal/:animalId/edit/"
                 element={<PageAnimalForm />}
@@ -173,6 +170,10 @@ function App() {
               />
               <Route path="/mypage/myposts/" element={<PageMyPageReview />} />
               <Route path="/mypage/myinquiry/" element={<PageInquiryIndex />} />
+              <Route
+                path="/admin/animal/:animalId/"
+                element={<PageAnimalDetail />}
+              />
             </>
           )}
         </Routes>
