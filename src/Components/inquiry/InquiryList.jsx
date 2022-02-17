@@ -40,66 +40,74 @@ function InquiryList() {
     <>
       <div className="w-full h-screen bg-blue-100">
         <Sidebar />
-        <input
-          type="text"
-          placeholder="검색어를 입력해주세요."
-          onChange={handleChange}
-          onKeyPress={handleKeyPress}
-        />
-        <button type="submit" onClick={() => refetch()}>
-          검색
-        </button>
+        <div className="inline-block">
+          <input
+            type="text"
+            placeholder="검색어를 입력해주세요."
+            onChange={handleChange}
+            onKeyPress={handleKeyPress}
+          />
+          <button type="submit" onClick={() => refetch()}>
+            검색
+          </button>
 
-        <table className="m-2">
-          <thead>
-            <tr>
-              <th className="border-2 border-gray-400 p-2">문의 번호</th>
-              <th className="border-2 border-gray-400 p-2">아이디</th>
-              <th className="border-2 border-gray-400 p-2">제목</th>
-              <th className="border-2 border-gray-400 p-2">문의 일자</th>
-              <th className="border-2 border-gray-400 p-2">답변 상태</th>
-            </tr>
-          </thead>
-          {inquiryList && (
-            <tbody>
-              {inquiryList?.map((inquiry) => (
-                <>
-                  {(auth.userID === inquiry.user || auth.is_staff) && (
-                    <tr>
-                      <td
-                        className="border-2 border-gray-400 text-center cursor-pointer p-2"
-                        onClick={() =>
-                          navigate(`/inquiry/${inquiry.inquiry_no}/`)
-                        }
-                      >
-                        {inquiry.inquiry_no}
-                      </td>
-                      <td className="border-2 border-gray-400 text-center p-2">
-                        {inquiry.user}
-                      </td>
-                      <td
-                        className="border-2 border-gray-400 text-center cursor-pointer p-2"
-                        onClick={() =>
-                          navigate(`/inquiry/${inquiry.inquiry_no}/`)
-                        }
-                      >
-                        {inquiry.title}
-                      </td>
-                      <td className="border-2 border-gray-400 text-center p-2">
-                        {inquiry.created_at}
-                      </td>
-                      <td className="border-2 border-gray-400 text-center p-2">
-                        {/* <h2>{inquiry.status}</h2> */}
-                        {(inquiry.admin_answer.length > 0 && 'O') ||
-                          (inquiry.admin_answer === '' && 'X')}
-                      </td>
-                    </tr>
-                  )}
-                </>
-              ))}
-            </tbody>
-          )}
-        </table>
+          <table className="m-2">
+            <thead>
+              <tr>
+                <th className="border-2 border-gray-400 p-2">문의 번호</th>
+                <th className="border-2 border-gray-400 p-2">아이디</th>
+                <th className="border-2 border-gray-400 p-2">제목</th>
+                <th className="border-2 border-gray-400 p-2">문의 일자</th>
+                <th className="border-2 border-gray-400 p-2">답변 상태</th>
+              </tr>
+            </thead>
+            {inquiryList && (
+              <tbody>
+                {inquiryList?.map((inquiry) => (
+                  <>
+                    {(auth.userID === inquiry.user || auth.is_staff) && (
+                      <tr>
+                        <td
+                          className="border-2 border-gray-400 text-center cursor-pointer p-2"
+                          onClick={() =>
+                            navigate(`/inquiry/${inquiry.inquiry_no}/`)
+                          }
+                        >
+                          {inquiry.inquiry_no}
+                        </td>
+                        <td className="border-2 border-gray-400 text-center p-2">
+                          {inquiry.user}
+                        </td>
+                        <td
+                          className="border-2 border-gray-400 text-center cursor-pointer p-2"
+                          onClick={() =>
+                            navigate(`/inquiry/${inquiry.inquiry_no}/`)
+                          }
+                        >
+                          {inquiry.title}
+                        </td>
+                        <td className="border-2 border-gray-400 text-center p-2">
+                          {inquiry.created_at}
+                        </td>
+
+                        <td className="border-2 border-gray-400 text-center p-2">
+                          <div className="flex justify-center">
+                            {/* <h2>{inquiry.status}</h2> */}
+                            {inquiry.admin_answer.length > 0 ? (
+                              <img src="/check.png" width="17" />
+                            ) : (
+                              <img src="/nocheck.png" width="17" />
+                            )}
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </>
+                ))}
+              </tbody>
+            )}
+          </table>
+        </div>
       </div>
     </>
   );
