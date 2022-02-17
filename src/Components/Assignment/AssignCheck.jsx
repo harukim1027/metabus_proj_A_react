@@ -5,9 +5,6 @@ import Button from 'Button';
 import '../../App.css';
 import './Assignment.css';
 
-import Agreementation from './Agreementation';
-import SignupAgreementation from './SignupAgreementation';
-
 function AssignCheck(props) {
   let [all_check, set_all_check] = useState(false);
   let [contract_check, set_contract_check] = useState(false);
