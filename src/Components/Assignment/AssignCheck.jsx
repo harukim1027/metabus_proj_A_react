@@ -60,7 +60,7 @@ function AssignCheck(props) {
                   <div className="font-bold pb-3">
                     <br />
                     <blockquote class="text-3xl font-semibold italic text-center text-slate-900">
-                      <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                      <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
                         <span class="relative text-white">
                           " 입양 절차, 입양 전 주의사항 "
                         </span>
@@ -88,25 +88,19 @@ function AssignCheck(props) {
                 </div>
               </div>
               <div className="w-full">
-                <div className="">
-                  <div>
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                      입양 절차
-                    </span>
-                  </div>
+                <div>
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                    입양 절차
+                  </span>
+
                   <div className="assign_explanation">
                     <img src="/assigncheck.png" alt="dog crew"></img>
                   </div>
 
-                  <div className="w-full">
-                    <SignupAgreementation />
-                  </div>
-
-                  <div className="text-right mb-3">
-                    <label>회원 가입 이용 약관에 동의합니다 </label>
+                  <div className="text-right mb-3 mt-8">
+                    <label>입양 절차를 숙지했습니다 </label>
                     <input
                       type="checkbox"
-                      label="회원 가입 이용약관에 동의합니다."
                       checked={contract_check ? 'checked' : null}
                       onClick={isFirstCheckBoxClicked}
                       required
