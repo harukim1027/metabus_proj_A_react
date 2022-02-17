@@ -1,7 +1,8 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 // import style from './style.jsx';
 
-function SidebarItem() {
+function Sidebar() {
   const menus = [
     { name: '내 정보', path: '/mypage/userinfo/' },
     { name: '입양 신청 현황', path: '/mypage/assigninfo/' },
@@ -14,7 +15,7 @@ function SidebarItem() {
         {menus.map((a) => (
           <li className="block cursor-pointer p-2 hover:bg-blue-300 hover:text-pink-700">
             <i className="w-8 fas fa-search p-2 bg-orange-300 rounded-full mx-2">
-              {a.name}
+              <NavLink to={a.path}>{a.name}</NavLink>
             </i>
           </li>
         ))}
@@ -23,4 +24,4 @@ function SidebarItem() {
   );
 }
 
-export default SidebarItem;
+export default Sidebar;
