@@ -117,24 +117,16 @@ function ReviewList() {
                     </div>
                   </div>
 
-                  <div className=" rounded overflow-hidden">
-                    <div
-                      className="my-5 flex flex-nowrap flexDirection-row rounded-xl ml-5  mb-3  w-1/3  overflow-hidden shadow-lg"
-                      style={{ flexDirection: 'row' }}
-                    >
-                      {reviewList && (
-                        <div className="">
-                          {reviewList.map((review) => (
-                            <div
-                              key={review.review_no}
-                              className="transition-transform hover:-translate-y-5 duration-300 "
-                            >
-                              <ReviewSummary review={review} />
-                            </div>
-                          ))}
+                  <div className="flex rounded overflow-hidden">
+                    {reviewList &&
+                      reviewList.map((review) => (
+                        <div
+                          key={review.review_no}
+                          className="transition-transform hover:-translate-y-5 duration-300 my-5 rounded-xl ml-5 mb-3 w-1/5 overflow-hidden shadow-lg inline"
+                        >
+                          <ReviewSummary review={review} />
                         </div>
-                      )}
-                    </div>
+                      ))}
                   </div>
                 </div>
               </div>
