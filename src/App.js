@@ -42,6 +42,7 @@ import ReviewListDog from 'Components/review/ReviewListDog';
 import ReviewListCat from 'Components/review/ReviewListCat';
 // mypage
 import PageMyinfo from 'Pages/PageMypage/PageMyinfo';
+import PageMyAssignInfo from 'Pages/PageMypage/PageMyAssignInfo';
 
 function App() {
   const { auth } = useAuth();
@@ -165,7 +166,10 @@ function App() {
           {auth?.isLoggedIn && (
             <>
               <Route path="/mypage/userinfo/" element={<PageMyinfo />} />
-              <Route path="/mypage/assigninfo/" element={''} />
+              <Route
+                path="/mypage/assigninfo/"
+                element={<PageMyAssignInfo />}
+              />
               <Route path="/mypage/myposts/" element={''} />
               <Route path="/mypage/myinquiry/" element={''} />
             </>
