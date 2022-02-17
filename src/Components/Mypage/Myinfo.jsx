@@ -22,7 +22,7 @@ function Myinfo() {
       <div className="w-full h-screen bg-blue-100">
         <Sidebar />
         <div className="inline-block">
-          <h2>마이페이지 내 정보</h2>
+          <h2>내 정보</h2>
           <h2>이름 : {userData?.name}</h2>
           <h2>아이디 : {userData?.userID}</h2>
           <h2>닉네임 : {userData?.nickname}</h2>

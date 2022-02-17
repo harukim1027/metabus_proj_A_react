@@ -3,6 +3,7 @@ import { useApiAxios } from 'api/base';
 import InquirySummary from './InquirySummary';
 import { useAuth } from 'contexts/AuthContext';
 import { useState } from 'react';
+import Sidebar from 'Components/Mypage/Sidebar';
 
 function InquiryList() {
   const { auth } = useAuth();
@@ -36,28 +37,31 @@ function InquiryList() {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="검색어를 입력해주세요."
-        onChange={handleChange}
-        onKeyPress={handleKeyPress}
-      />
-      <button type="submit" onClick={() => refetch()}>
-        검색
-      </button>
-      <div className="my-5 ">
-        {inquiryList && (
-          <div className="flex space-x-1">
-            {inquiryList.map((inquiry) => (
-              <div key={inquiry.inquiry_no}>
-                {auth.userID === inquiry.user && (
-                  <InquirySummary inquiry={inquiry} />
-                )}
-                {auth.is_staff && <InquirySummary inquiry={inquiry} />}
-              </div>
-            ))}
-          </div>
-        )}
+      <div className="w-full h-screen bg-blue-100">
+        <Sidebar />
+        <input
+          type="text"
+          placeholder="검색어를 입력해주세요."
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+        />
+        <button type="submit" onClick={() => refetch()}>
+          검색
+        </button>
+        <div className="inline-block">
+          {inquiryList && (
+            <div className="flex space-x-1">
+              {inquiryList.map((inquiry) => (
+                <div key={inquiry.inquiry_no}>
+                  {auth.userID === inquiry.user && (
+                    <InquirySummary inquiry={inquiry} />
+                  )}
+                  {auth.is_staff && <InquirySummary inquiry={inquiry} />}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
