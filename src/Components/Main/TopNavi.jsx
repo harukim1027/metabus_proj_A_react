@@ -45,7 +45,7 @@ function TopNav() {
             ) : (
               <>
                 <NavLink
-                  to="/inquiry/"
+                  to="/inquiry/new/"
                   className="border-2 border-blue-300 py-1 rounded w-20 text-center"
                 >
                   1:1 문의

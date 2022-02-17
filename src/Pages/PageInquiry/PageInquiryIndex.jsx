@@ -11,7 +11,6 @@ function PageInquiryIndex() {
   return (
     <div>
       <TopNav />
-      <h2>1:1 문의</h2>
       <InquiryList />
       {auth.isLoggedIn && !auth.is_staff && (
         <button onClick={() => navigate('/inquiry/new/')}>글쓰기</button>

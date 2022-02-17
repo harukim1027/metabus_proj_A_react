@@ -2,15 +2,14 @@ import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
 import Sidebar from './Sidebar';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function MyAssignInfo() {
   const { auth } = useAuth();
-  const { userId } = useParams();
 
   const [{ data: MyAssignData }, refetch] = useApiAxios(
     {
-      url: `/adopt_assignment/api/assignment/?query=${userId}`,
+      url: `/adopt_assignment/api/assignment/?query=${auth.userID}`,
       method: 'GET',
     },
     { manual: true },
@@ -38,22 +37,23 @@ function MyAssignInfo() {
             {MyAssignData?.map((assign) => (
               <tr>
                 <td>
-                  {/* <Link to={`/assignment/complite/${assign.assignment_no}/`}> */}
-                  {assign.assignment_no}
-                  {/* </Link> */}
+                  <Link to={`/assignment/complite/${assign.assignment_no}/`}>
+                    {assign.assignment_no}
+                  </Link>
                 </td>
 
                 <td>{assign.created_at}</td>
 
                 <td>
-                  {/* <Link to={`/admin/animal/${assign.animal.animal_no}`}> */}
-                  {assign.animal.animal_reg_num}
-                  {/* </Link> */}
+                  <Link to={`/admin/animal/${assign.animal.animal_no}`}>
+                    {assign.animal.animal_reg_num}
+                  </Link>
                 </td>
 
                 <td>
                   {/* <Link to={}> */}
                   {assign.status}
+                  {assign.status === '입양 완료' && <button>후기 작성</button>}
                   {/* </Link> */}
                 </td>
               </tr>

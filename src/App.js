@@ -43,6 +43,7 @@ import ReviewListCat from 'Components/review/ReviewListCat';
 // mypage
 import PageMyinfo from 'Pages/PageMypage/PageMyinfo';
 import PageMyAssignInfo from 'Pages/PageMypage/PageMyAssignInfo';
+import PageMyPageReview from 'Pages/PageMypage/PageMyPageReview';
 
 function App() {
   const { auth } = useAuth();
@@ -170,8 +171,8 @@ function App() {
                 path="/mypage/assigninfo/"
                 element={<PageMyAssignInfo />}
               />
-              <Route path="/mypage/myposts/" element={''} />
-              <Route path="/mypage/myinquiry/" element={''} />
+              <Route path="/mypage/myposts/" element={<PageMyPageReview />} />
+              <Route path="/mypage/myinquiry/" element={<PageInquiryIndex />} />
             </>
           )}
         </Routes>
