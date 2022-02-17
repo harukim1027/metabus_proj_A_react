@@ -8,7 +8,7 @@ function PageNoticeDetail() {
   return (
     <>
       <TopNav />
-      <h2>admin noticeDetail</h2>
+
       <NoticeDetail noticeId={noticeId} />
     </>
   );

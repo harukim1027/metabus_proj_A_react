@@ -5,7 +5,7 @@ function PageNoticeList() {
   return (
     <>
       <TopNav />
-      <h2>admin noticeList</h2>
+
       <NoticeList />
     </>
   );

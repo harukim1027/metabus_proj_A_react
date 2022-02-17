@@ -5,9 +5,6 @@ import Button from 'Button';
 import '../../App.css';
 import './Assignment.css';
 
-import Agreementation from './Agreementation';
-import SignupAgreementation from './SignupAgreementation';
-
 function AssignCheck(props) {
   let [all_check, set_all_check] = useState(false);
   let [contract_check, set_contract_check] = useState(false);
@@ -59,9 +56,9 @@ function AssignCheck(props) {
                 <div className="text-center">
                   <div className="font-bold pb-3">
                     <br />
-                    <blockquote className="text-3xl font-semibold italic text-center text-slate-900">
-                      <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-                        <span className="relative text-white">
+                    <blockquote class="text-3xl font-semibold italic text-center text-slate-900">
+                      <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
+                        <span class="relative text-white">
                           " 입양 절차, 입양 전 주의사항 "
                         </span>
                       </span>
@@ -88,25 +85,19 @@ function AssignCheck(props) {
                 </div>
               </div>
               <div className="w-full">
-                <div className="">
-                  <div>
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                      입양 절차
-                    </span>
-                  </div>
+                <div className="justify-center">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                    입양 절차
+                  </span>
+
                   <div className="assign_explanation">
-                    <img src="/assigncheck.png" alt="dog crew"></img>
+                    <img src="/assigncheck.png" alt="dog crew" />
                   </div>
 
-                  <div className="w-full">
-                    <SignupAgreementation />
-                  </div>
-
-                  <div className="text-right mb-3">
-                    <label>회원 가입 이용 약관에 동의합니다 </label>
+                  <div className="text-right mb-3 mt-8 font-bold">
+                    <label>입양 절차를 숙지했습니다 </label>
                     <input
                       type="checkbox"
-                      label="회원 가입 이용약관에 동의합니다."
                       checked={contract_check ? 'checked' : null}
                       onClick={isFirstCheckBoxClicked}
                       required
@@ -116,19 +107,18 @@ function AssignCheck(props) {
                   <div>
                     <div>
                       <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                        개인정보 수집 및 이용에 관한 동의 사항 [ 필수 ]
+                        입양 전 주의 사항
                       </span>
+                    </div>
 
-                      <div className="w-full">
-                        <Agreementation />
-                      </div>
+                    <div className="assign_explanation2">
+                      <img src="/list.png" alt="dog crew" />
                     </div>
                   </div>
-                  <div className="text-right pb-5">
-                    <label>개인정보 수집 및 이용에 동의합니다 </label>
+                  <div className="text-right pb-5 font-bold">
+                    <label>입양 전 주의사항을 숙지했습니다 </label>
                     <input
                       type="checkbox"
-                      label="개인정보 수집 및 이용에 동의합니다."
                       checked={contract_check ? 'checked' : null}
                       onClick={isSecondCheckBoxClicked}
                       required
@@ -137,7 +127,7 @@ function AssignCheck(props) {
                   <hr />
                   <div className="text-xl text-red-400 text-center">
                     <br />
-                    약관 동의를 해야 입양 신청을 할 수 있어요 ! 🐰
+                    동의를 해야 입양 신청을 할 수 있어요 ! 🐰
                   </div>
                   <div className="text-center my-3">
                     {all_check && (
