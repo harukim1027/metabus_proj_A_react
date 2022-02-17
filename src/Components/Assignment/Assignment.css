@@ -16,5 +16,10 @@
 
 .assign_explanation {
   width: 600px;
-  height: 300px;
+  height: auto;
+}
+
+.assign_explanation2 {
+  width: 600px;
+  height: auto;
 }

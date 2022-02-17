@@ -88,13 +88,13 @@ function AssignCheck(props) {
                 </div>
               </div>
               <div className="w-full">
-                <div>
+                <div className="justify-center">
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                     입양 절차
                   </span>
 
                   <div className="assign_explanation">
-                    <img src="/assigncheck.png" alt="dog crew"></img>
+                    <img src="/assigncheck.png" alt="dog crew" />
                   </div>
 
                   <div className="text-right mb-3 mt-8 font-bold">
@@ -114,15 +114,14 @@ function AssignCheck(props) {
                       </span>
                     </div>
 
-                    <div className="assign_explanation">
-                      <img src="/list.png" alt="dog crew"></img>
+                    <div className="assign_explanation2">
+                      <img src="/list.png" alt="dog crew" />
                     </div>
                   </div>
-                  <div className="text-right pb-5">
-                    <label>개인정보 수집 및 이용에 동의합니다 </label>
+                  <div className="text-right pb-5 font-bold">
+                    <label>입양 전 주의사항을 숙지했습니다 </label>
                     <input
                       type="checkbox"
-                      label="개인정보 수집 및 이용에 동의합니다."
                       checked={contract_check ? 'checked' : null}
                       onClick={isSecondCheckBoxClicked}
                       required
