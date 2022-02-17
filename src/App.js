@@ -57,6 +57,16 @@ function App() {
           <Route path="/accounts/signup/" element={<PageSignupForm />} />
           <Route path="/accounts/checksignup/" element={<PageCheckSignup />} />
 
+          {/* notice */}
+          <Route path="/notice/" element={<PageNoticeList />} />
+          <Route path="/notice/:noticeId/" element={<PageNoticeDetail />} />
+
+          {/* review */}
+          <Route path="/review/" element={<PageReviewIndex />} />
+          <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
+          <Route path="/review/dog/" element={<ReviewListDog />} />
+          <Route path="/review/cat/" element={<ReviewListCat />} />
+
           {/* ------------admin------------ */}
           {auth?.isLoggedIn && auth?.is_staff && (
             <>
@@ -116,17 +126,17 @@ function App() {
             </>
           )}
 
-          {/* Assignment */}
-          <Route path="/assignment/check/" element={<PageAssignCheck />} />
-          <Route path="/assignment/new/" element={<PageAssignmentform />} />
-          <Route
-            path="/assignment/complite/:assignId/"
-            element={<PageAssignComp />}
-          />
-
-          {/* inquiry */}
           {auth?.isLoggedIn && (
             <>
+              {/* Assignment */}
+              <Route path="/assignment/check/" element={<PageAssignCheck />} />
+              <Route path="/assignment/new/" element={<PageAssignmentform />} />
+              <Route
+                path="/assignment/complite/:assignId/"
+                element={<PageAssignComp />}
+              />
+
+              {/* inquiry */}
               <Route path="/inquiry/" element={<PageInquiryIndex />} />
               <Route
                 path="/inquiry/:inquiryId/"
@@ -137,32 +147,8 @@ function App() {
                 path="/inquiry/:inquiryId/edit/"
                 element={<PageInquiryForm />}
               />
-            </>
-          )}
 
-          {/* notice */}
-          <Route path="/notice/" element={<PageNoticeList />} />
-
-          <Route path="/notice/:noticeId/" element={<PageNoticeDetail />} />
-
-          {/* review */}
-          <Route path="/review/" element={<PageReviewIndex />} />
-          <Route path="/review/:reviewId/" element={<PageReviewDetail />} />
-          {auth?.isLoggedIn && (
-            <>
-              <Route path="/review/new/" element={<PageReviewForm />} />
-              <Route
-                path="/review/:reviewId/edit/"
-                element={<PageReviewForm />}
-              />
-            </>
-          )}
-          <Route path="/review/dog/" element={<ReviewListDog />} />
-          <Route path="/review/cat/" element={<ReviewListCat />} />
-
-          {/* mypage */}
-          {auth?.isLoggedIn && (
-            <>
+              {/* mypage */}
               <Route path="/mypage/userinfo/" element={<PageMyinfo />} />
               <Route
                 path="/mypage/assigninfo/"
@@ -170,9 +156,12 @@ function App() {
               />
               <Route path="/mypage/myposts/" element={<PageMyPageReview />} />
               <Route path="/mypage/myinquiry/" element={<PageInquiryIndex />} />
+
+              {/* review */}
+              <Route path="/review/new/" element={<PageReviewForm />} />
               <Route
-                path="/admin/animal/:animalId/"
-                element={<PageAnimalDetail />}
+                path="/review/:reviewId/edit/"
+                element={<PageReviewForm />}
               />
             </>
           )}
