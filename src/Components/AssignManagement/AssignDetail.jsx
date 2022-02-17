@@ -45,9 +45,10 @@ function AssignDetail({ assignId }) {
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
       deleteAssign().then(() => {
-        changeAPS();
-        navigate('/admin/assignmanage/');
-        window.location.reload();
+        changeAPS().then(() => {
+          navigate('/admin/assignmanage/');
+          window.location.reload();
+        });
       });
     }
   };
@@ -74,7 +75,11 @@ function AssignDetail({ assignId }) {
         <h2>만남 희망 장소 : {assignData?.place_to_meet}</h2>
         <h2>만남 희망일 : {assignData?.date_to_meet}</h2>
         <div>
-          <h2 onClick={() => setClicked(!clicked)}>
+          <h2
+            onClick={() => {
+              auth.is_staff && setClicked(!clicked);
+            }}
+          >
             진행 상태 : {assignData?.status}
           </h2>
           {clicked && assignData && (
@@ -100,8 +105,17 @@ function AssignDetail({ assignId }) {
         <h2>보호 시작일 : {assignData?.animal.start_date}</h2>
         <h2>보호 종료일 : {assignData?.animal.end_date}</h2>
       </div>
-      <button onClick={() => handleDelete()}>삭제</button>
-      <button onClick={() => navigate(`/admin/assignmanage/`)}>목록</button>
+      {auth.is_staff && <button onClick={() => handleDelete()}>삭제</button>}
+
+      <button
+        onClick={() => {
+          auth.is_staff
+            ? navigate(`/admin/assignmanage/`)
+            : navigate(`/mypage/assigninfo/`);
+        }}
+      >
+        목록
+      </button>
     </>
   );
 }
