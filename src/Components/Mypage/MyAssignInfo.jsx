@@ -2,10 +2,12 @@ import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
 import Sidebar from './Sidebar';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function MyAssignInfo() {
   const { auth } = useAuth();
+  const navigate = useNavigate();
 
   const [{ data: MyAssignData }, refetch] = useApiAxios(
     {
@@ -37,7 +39,7 @@ function MyAssignInfo() {
             {MyAssignData?.map((assign) => (
               <tr>
                 <td>
-                  <Link to={`/assignment/complite/${assign.assignment_no}/`}>
+                  <Link to={`/assignment/${assign.assignment_no}/`}>
                     {assign.assignment_no}
                   </Link>
                 </td>
@@ -53,7 +55,10 @@ function MyAssignInfo() {
                 <td>
                   {assign.status}
                   {assign.status === '입양 완료' && (
-                    <button onClick={() => Navigate('/review/new/')}>
+                    <button
+                      className="ml-3"
+                      onClick={() => navigate('/review/new/')}
+                    >
                       후기 작성
                     </button>
                   )}
