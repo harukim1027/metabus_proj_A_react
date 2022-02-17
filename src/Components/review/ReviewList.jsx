@@ -53,16 +53,17 @@ function ReviewList() {
   return (
     <>
       <div className="header">
-        <div className="justify-center rounded mb-5 ">
+        <div className="justify-center rounded">
           <div className="flex flex-wrap justify-center ">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 relative mx-20">
-              <div className="shadow-md py-2 align-middle inline-block min-w-full lg:px-8">
-                <div className="review_header">
+              <div className="shadow-md py-2 align-middle inline-block min-w-full ">
+                <div className="review_header shadow-md ">
                   <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
                     <span class="mt-7 mb-6 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
                       <span class="relative text-white">" 입양 후기 "</span>
                     </span>
                   </blockquote>
+                  <hr />
                   <div className="ml-10 mb-3 mt-3">
                     <form onSubmit={() => moveCategory()}>
                       <select
@@ -81,8 +82,7 @@ function ReviewList() {
                   </div>
 
                   {/* 검색 필드 + CSS */}
-                  <div className="flex place-content-between">
-                    <div></div>
+                  <div className="">
                     <div className="relative mx-10">
                       <input
                         className="appearance-none border-2 mr-3 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-pink-200 focus:border-pink-200 focus:shadow-outline"
@@ -117,14 +117,17 @@ function ReviewList() {
                     </div>
                   </div>
 
-                  <div className="max-w-sm rounded overflow-hidden shadow-md">
-                    <div className="my-5 ">
+                  <div className=" rounded overflow-hidden">
+                    <div
+                      className="my-5 flex flex-nowrap flexDirection-row rounded-xl ml-5  mb-3  w-1/3  overflow-hidden shadow-lg"
+                      style={{ flexDirection: 'row' }}
+                    >
                       {reviewList && (
-                        <div className="flex space-x-1">
+                        <div className="">
                           {reviewList.map((review) => (
                             <div
                               key={review.review_no}
-                              className="mx-20 md:w-1/4 l:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300 "
+                              className="transition-transform hover:-translate-y-5 duration-300 "
                             >
                               <ReviewSummary review={review} />
                             </div>
