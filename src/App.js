@@ -139,6 +139,10 @@ function App() {
                 path="/assignment/complite/:assignId/"
                 element={<PageAssignComp />}
               />
+              <Route
+                path="/assignment/:assignId/"
+                element={<PageAssignDetail />}
+              />
 
               {/* inquiry */}
               <Route path="/inquiry/" element={<PageInquiryIndex />} />
