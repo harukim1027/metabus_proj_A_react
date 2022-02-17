@@ -2,7 +2,7 @@ import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
 import Sidebar from './Sidebar';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 function MyAssignInfo() {
   const { auth } = useAuth();
@@ -52,7 +52,11 @@ function MyAssignInfo() {
 
                 <td>
                   {assign.status}
-                  {assign.status === '입양 완료' && <button>후기 작성</button>}
+                  {assign.status === '입양 완료' && (
+                    <button onClick={() => Navigate('/review/new/')}>
+                      후기 작성
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

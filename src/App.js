@@ -75,7 +75,6 @@ function App() {
               {/* admin/Animal */}
               <Route path="/admin/animal/" element={<PageAnimalList />} />
               <Route path="/admin/animal/new/" element={<PageAnimalForm />} />
-
               <Route
                 path="/admin/animal/:animalId/edit/"
                 element={<PageAnimalForm />}
@@ -128,6 +127,11 @@ function App() {
 
           {auth?.isLoggedIn && (
             <>
+              {/* animalDetail */}
+              <Route
+                path="/admin/animal/:animalId/"
+                element={<PageAnimalDetail />}
+              />
               {/* Assignment */}
               <Route path="/assignment/check/" element={<PageAssignCheck />} />
               <Route path="/assignment/new/" element={<PageAssignmentform />} />
