@@ -111,9 +111,9 @@ function AssignmentForm({ handleDidSave }) {
         <div className="justify-center rounded ">
           <div className=" flex flex-wrap justify-center  max-w-m">
             <br />
-            <blockquote class="mt-10 mb-3 text-2xl font-semibold italic text-center text-slate-900">
-              <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block text-6xl font-extrabold">
-                <span class="relative text-white">" 크루원 모집"</span>
+            <blockquote className="mt-10 mb-3 text-2xl font-semibold italic text-center text-slate-900">
+              <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block text-6xl font-extrabold">
+                <span className="relative text-white">" 크루원 모집"</span>
               </span>
             </blockquote>
             <br />
@@ -147,9 +147,9 @@ function AssignmentForm({ handleDidSave }) {
                       <option value="중형">중형</option>
                       <option value="대형">대형</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700 pt-5">
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700 pt-5">
                       <svg
-                        class="fill-current h-5 w-5"
+                        className="fill-current h-5 w-5"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                       >
@@ -171,9 +171,9 @@ function AssignmentForm({ handleDidSave }) {
                       <option value="암컷">암컷</option>
                       <option value="수컷">수컷</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700 pt-5">
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700 pt-5">
                       <svg
-                        class="fill-current h-5 w-5"
+                        className="fill-current h-5 w-5"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                       >
@@ -182,7 +182,7 @@ function AssignmentForm({ handleDidSave }) {
                     </div>
                     {/* 버튼 클릭 부분 */}
                     <div>
-                      <div className="px-3 mb-6 md:mb-0  hover:scale-110 duration-500">
+                      <div className="px-3 mb-6 md:mb-0">
                         <button
                           onClick={() => {
                             setFilter({
@@ -191,7 +191,7 @@ function AssignmentForm({ handleDidSave }) {
                               sex: fieldValues.sex,
                             });
                           }}
-                          className="icon_size2"
+                          className="icon_size2 hover:scale-110 duration-500"
                           readOnly
                         >
                           <img src="/searchicon2.png" alt="button"></img>
@@ -210,7 +210,7 @@ function AssignmentForm({ handleDidSave }) {
                                 ),
                             )
                           }
-                          className="icon_size2"
+                          className="icon_size2 hover:scale-110 duration-500"
                           readOnly
                         >
                           <img src="/searchicon2.png" alt="button"></img>
@@ -328,9 +328,9 @@ function AssignmentForm({ handleDidSave }) {
                       <option value="원룸">원룸</option>
                       <option value="오피스텔">오피스텔</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg
-                        class="fill-current h-5 w-5"
+                        className="fill-current h-5 w-5"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20"
                       >
@@ -422,9 +422,9 @@ function AssignmentForm({ handleDidSave }) {
                     </option>
                     <option value="부산 동물보호센터">부산 동물보호센터</option>
                   </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700 pt-5">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700 pt-5">
                     <svg
-                      class="fill-current h-5 w-5"
+                      className="fill-current h-5 w-5"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                     >

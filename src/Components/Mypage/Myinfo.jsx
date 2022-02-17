@@ -29,7 +29,8 @@ function Myinfo() {
           <h2>이메일 : {userData?.email}</h2>
           <h2>연락처 : {userData?.phone_number}</h2>
           <h2>거주지 : {userData?.region}</h2>
-          <h2></h2>
+          <h2>비밀번호 퀴즈 : {userData?.password_quiz}</h2>
+          <h2>비밀번호 퀴즈 정답 : {userData?.password_quiz_answer}</h2>
         </div>
       </div>
     </>

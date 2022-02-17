@@ -37,7 +37,7 @@ function TopNav() {
         {auth.isLoggedIn && (
           <div className="flex">
             {auth.is_staff ? (
-              <button className="icon_size">
+              <button className="icon_size3">
                 <NavLink to="/admin/main/">
                   <img src="/manageicon1.png" alt="button"></img>
                 </NavLink>
@@ -59,7 +59,7 @@ function TopNav() {
               </>
             )}
 
-            <button className="icon_size" onClick={handleLogout}>
+            <button className="icon_size3" onClick={handleLogout}>
               <img src="/logouticon1.png" alt="button"></img>
             </button>
           </div>
