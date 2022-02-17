@@ -42,7 +42,7 @@ function InquiryDetail({ inquiryId }) {
           <h1>{inquiry.title}</h1>
           <h2>{inquiry.content}</h2>
           <h3>{inquiry.user}</h3>
-          <h4>{inquiry.admin_answer}</h4>
+          <h4>답변입니다. : {inquiry.admin_answer}</h4>
         </>
       )}
       <Link to="/inquiry/">목록으로</Link>

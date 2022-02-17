@@ -64,7 +64,7 @@ function InquiryList() {
             <tbody>
               {inquiryList?.map((inquiry) => (
                 <>
-                  {auth.userID === inquiry.user && (
+                  {(auth.userID === inquiry.user || auth.is_staff) && (
                     <tr>
                       <td
                         className="border-2 border-gray-400 text-center cursor-pointer p-2"
@@ -90,6 +90,8 @@ function InquiryList() {
                       </td>
                       <td className="border-2 border-gray-400 text-center p-2">
                         {/* <h2>{inquiry.status}</h2> */}
+                        {(inquiry.admin_answer.length > 0 && 'O') ||
+                          (inquiry.admin_answer === '' && 'X')}
                       </td>
                     </tr>
                   )}
