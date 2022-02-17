@@ -38,7 +38,7 @@ function NoticeList() {
               <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div className="notice_header ">
                   <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
-                    <span class="mt-5 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+                    <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
                       <span class="relative text-white">" 공지사항 "</span>
                     </span>
                   </blockquote>
