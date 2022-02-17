@@ -11,7 +11,7 @@ function PageReviewIndex() {
   return (
     <div>
       <TopNav />
-      <h2 className="mx-20">입양 후기</h2>
+
       <ReviewList />
       {auth.isLoggedIn && !auth.is_staff && (
         <div className="flex place-content-between">

@@ -9,7 +9,7 @@ function PageNoticeForm() {
   return (
     <>
       <TopNav />
-      <h2>Notice Form</h2>
+
       <NoticeForm
         noticeId={noticeId}
         handleDidSave={(savedPost) =>
