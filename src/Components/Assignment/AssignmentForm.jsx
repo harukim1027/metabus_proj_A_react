@@ -117,8 +117,8 @@ function AssignmentForm({ handleDidSave }) {
 
   return (
     <>
-      <div className="header">
-        <div className="justify-center rounded-xl ">
+      <div className="header ">
+        <div className="justify-center ">
           <div className=" flex flex-wrap justify-center  max-w-m">
             <br />
             <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
@@ -132,19 +132,19 @@ function AssignmentForm({ handleDidSave }) {
       </div>
       <div className="header">
         {/* 동물 검색하는 부분 */}
-        <div className="assignments_header rounded-xl">
+        <div className="assignments_header ">
           <div className=" header justify-center px-20 pt-6  mb-4">
             <div className=" px-20 justify-center w-full max-w-m">
-              <div className="bg-white shadow-md  px-20 pt-6 pb-8 mb-4">
-                <span className="mb-6 block uppercase tracking-wide text-gray-700 text-2xl font-bold text-center">
-                  🐶 크루원 검색 하기 🐱
+              <div className="bg-white rounded-xl shadow-md  px-20 pt-6 pb-8 mb-4">
+                <span className="mb-6 block uppercase tracking-wide text-gray-700 text-3xl font-bold text-center">
+                  🐶 크루원 선택 하기 🐱
                 </span>
                 <hr className="mb-3 mt-3" readOnly />
 
                 <div className="ml-3 mt-3">
                   <div className="w-full px-3 mb-10 md:mb-0">
                     {/* 크루 선택 (개/고양이) */}
-                    <span className=" block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                    <span className=" block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
                       크루원 타입
                     </span>
                     <div className="relative">
@@ -152,7 +152,7 @@ function AssignmentForm({ handleDidSave }) {
                         name="category"
                         value={fieldValues.category}
                         onChange={handleFieldChange}
-                        className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="text-xl block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         defaultValue="강아지"
                       >
                         <option value="강아지">강아지</option>
@@ -170,7 +170,7 @@ function AssignmentForm({ handleDidSave }) {
                     </div>
                     <br />
                     {/* 크루원 덩치 선택 */}
-                    <span className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                    <span className="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
                       크루원 덩치
                     </span>
                     <div className="relative">
@@ -178,7 +178,7 @@ function AssignmentForm({ handleDidSave }) {
                         name="size"
                         value={fieldValues.size}
                         onChange={handleFieldChange}
-                        className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="text-xl block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         defaultValue="소형"
                       >
                         <option value="소형">소형</option>
@@ -198,7 +198,7 @@ function AssignmentForm({ handleDidSave }) {
 
                     <br />
                     {/* 크루원 성별 선택 */}
-                    <span className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                    <span className="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
                       크루원 성별
                     </span>
                     <div className="relative">
@@ -206,7 +206,7 @@ function AssignmentForm({ handleDidSave }) {
                         name="sex"
                         value={fieldValues.sex}
                         onChange={handleFieldChange}
-                        className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="text-xl block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         defaultValue="암컷"
                       >
                         <option value="암컷">암컷</option>
@@ -224,7 +224,11 @@ function AssignmentForm({ handleDidSave }) {
                     </div>
 
                     {/* 버튼 클릭 부분 */}
-                    <div className="">
+                    <div className="mt-5">
+                      <p className="text-center text-blue-900 font-bold text-xl mb-5">
+                        {' '}
+                        ① 하단의 검색 버튼을 눌러주세요 ⬇{' '}
+                      </p>
                       <div className="flex px-3 mb-6 md:mb-0 justify-center p-5">
                         <button
                           onClick={() =>
@@ -248,10 +252,15 @@ function AssignmentForm({ handleDidSave }) {
                       {/* 검색한 동물 보여주기 */}
                       <div className="container">
                         <div className=" box ">
-                          <p className="text-center text-blue-900 font-bold">
-                            {' '}
-                            검색 후, 원하시는 크루원을 선택해주세요!{' '}
-                          </p>
+                          {/* 필터가 됐을 시에 노출 문구  */}
+                          {filtAnimal.length !== 0 ? (
+                            <p className="text-center text-blue-900 font-bold text-xl mb-5">
+                              {' '}
+                              ② 원하시는 크루원을 아래에서 선택해주세요 ⬇{' '}
+                            </p>
+                          ) : (
+                            ''
+                          )}
                           {filtAnimal.map((a) => (
                             <div className="">
                               <div
@@ -319,10 +328,18 @@ function AssignmentForm({ handleDidSave }) {
               className="assignments_header shadow-md mt-10 rounded-xl px-20 pt-6 pb-8 mb-4"
               onSubmit={handleSubmit}
             >
+              {fieldValues.animal && (
+                <p className="text-center text-blue-900 font-bold mb-10 mt-3 text-xl">
+                  {' '}
+                  ③ 크루원을 선택하셨으면, 신청자님의 정보를 입력해주세요!{' '}
+                </p>
+              )}
+
+              <hr />
               {/* 신청자 이름 */}
-              <div className="ml-3 -mx-3 mb-6">
+              <div className="ml-3 -mx-3 mb-6 mt-5">
                 <div className="ml-3 mb-3 w-full">
-                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
                     신청자 이름
                   </span>
                   <input
@@ -331,11 +348,11 @@ function AssignmentForm({ handleDidSave }) {
                     value={fieldValues.adopter_name}
                     onChange={handleFieldChange}
                     placeholder="신청자 이름을 입력해주세요."
-                    className="rounded p-3 text-sm  bg-gray-100 focus:outline-none focus:border focus:border-gray-400  w-full md:w-1/2 px-3 mb-6 md:mb-0"
+                    className="mt-3 rounded p-3 text-xl  bg-gray-100 focus:outline-none focus:border focus:border-gray-400  w-full md:w-1/2 px-3 mb-6 md:mb-0"
                   />
                   <button
                     onClick={(e) => putAuthName(e)}
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white py-1 px-2 rounded"
                     readOnly
                   >
                     회원 정보와 동일
@@ -345,8 +362,8 @@ function AssignmentForm({ handleDidSave }) {
 
               {/* 신청자 월 수입 */}
               <div className="ml-3 flex flex-wrap -mx-3 mb-6 ">
-                <div className="mb-3 ml-3 w-full">
-                  <span className="mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-xl font-extrabold text-slate-700">
+                <div className=" font-bold text-xl mb-3 ml-3 w-full">
+                  <span className="mt-4 mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700">
                     월 수입{' '}
                     <button onClick={() => setHelp(!help)}>
                       {' '}
@@ -356,8 +373,8 @@ function AssignmentForm({ handleDidSave }) {
                       <div className="mt-1 justify-center">
                         <p className="bg-yellow-100 text-red-300">* 알림 *</p>
                         <p className="bg-yellow-100 text-m text-blue-300">
-                          반려동물도 정기적으로 건강 관리가 필요하며, <br />
-                          그에 따른 비용을 고려해야 합니다.
+                          반려동물도 정기적으로 건강 관리가 필요하며, 그에 따른
+                          비용을 고려해야 합니다.
                         </p>
                         <p className="bg-yellow-100 text-gray-400">
                           ( 월 수입을 10,000원 단위로 입력해주세요.)
@@ -372,14 +389,14 @@ function AssignmentForm({ handleDidSave }) {
                     onChange={handleFieldChange}
                     className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   />
-                  {'  '}만원
+                  {'    '}만 원
                 </div>
               </div>
 
               {/* 주거형태 */}
               <div className="ml-3 flex flex-wrap -mx-3 mb-6">
                 <div className="mb-3 ml-4 inline-block relative w-64 pb-2">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-xl font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700">
                     주거 형태{' '}
                   </span>
                   <div className="relative">
@@ -387,7 +404,7 @@ function AssignmentForm({ handleDidSave }) {
                       name="residential_type"
                       value={fieldValues.residential_type}
                       onChange={handleFieldChange}
-                      className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="text-xl mt-3 block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       defaultValue="아파트"
                     >
                       <option value="아파트">아파트</option>
@@ -411,8 +428,8 @@ function AssignmentForm({ handleDidSave }) {
 
               {/* 반려동물 유무 */}
               <div className="ml-3 flex flex-wrap -mx-3 mb-2">
-                <div className="mb-3 w-full md:w-1/2 px-3 mb-6 ">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-xl font-extrabold text-slate-700">
+                <div className=" w-full md:w-1/2 px-3 mb-6 ">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700">
                     반려동물 키움 여부{' '}
                     <input
                       type="checkbox"
@@ -429,10 +446,10 @@ function AssignmentForm({ handleDidSave }) {
               {/* 거주지 사진 */}
               <div className="ml-3 flex flex-wrap -mx-3 mb-6">
                 <div className="mb-3 w-full px-3">
-                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-xl font-extrabold text-slate-700 pb-2">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700 pb-2">
                     거주지 사진{' '}
                   </span>
-                  <p className="text-s text-blue-900 mb-1">
+                  <p className="text-m text-blue-900 mb-1">
                     ( 최소 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다!
                     )
                   </p>
@@ -441,7 +458,7 @@ function AssignmentForm({ handleDidSave }) {
                     {/* 거주지 파일 첨부 인풋박스 ul태그 시작 부분*/}
                     <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
                       {/* 거주지 파일 input 박스 1  */}
-                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-m">
                         <input
                           type="file"
                           name="picture_of_residence1"
@@ -451,7 +468,7 @@ function AssignmentForm({ handleDidSave }) {
                       </li>
 
                       {/* 거주지 파일 input 박스 2 */}
-                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-m">
                         <input
                           type="file"
                           name="picture_of_residence2"
@@ -461,7 +478,7 @@ function AssignmentForm({ handleDidSave }) {
                       </li>
 
                       {/* 거주지 파일 input 박스 3 */}
-                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-m">
                         <input
                           type="file"
                           name="picture_of_residence3"
@@ -477,7 +494,7 @@ function AssignmentForm({ handleDidSave }) {
               {/* 만남 희망 장소 */}
               <div className="ml-3 flex flex-wrap -mx-3 mb-6">
                 <div className="ml-4 inline-block relative w-64 pb-2">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-xl font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700">
                     만남 희망 장소{' '}
                   </span>
                   <select
@@ -516,7 +533,7 @@ function AssignmentForm({ handleDidSave }) {
               {/* 만남 희망 날짜 */}
               <div className="ml-3 flex flex-wrap -mx-3 mb-6">
                 <div className="ml-4 inline-block relative w-64 pb-2">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-xl font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700">
                     만남 희망 날짜{' '}
                   </span>
 
