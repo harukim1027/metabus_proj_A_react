@@ -195,6 +195,17 @@ function InquiryList() {
                         </div>
                       </div>
                     </div>
+                    <div className="flex place-content-between">
+                      <div></div>
+                      {auth.isLoggedIn && !auth.is_staff && (
+                        <button
+                          onClick={() => navigate('/inquiry/new/')}
+                          className=" mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                        >
+                          글쓰기
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
