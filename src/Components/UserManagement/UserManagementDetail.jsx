@@ -1,11 +1,14 @@
 import { useApiAxios } from 'api/base';
+import AssignmentForm from 'Components/Assignment/AssignmentForm';
 import { useAuth } from 'contexts/AuthContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 function UserManagementDetail({ userId }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
+
+  const [assignArray, setAssignArray] = useState([]);
 
   const [{ data: userData, loading, error }, refetch] = useApiAxios(
     {
@@ -17,6 +20,24 @@ function UserManagementDetail({ userId }) {
     },
     { manual: true },
   );
+
+  const [{ data: assignList }, refetch1] = useApiAxios(
+    {
+      url: `/adopt_assignment/api/assignment/`,
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    },
+    { manual: true },
+  );
+
+  useEffect(() => {
+    const userAssign = assignList?.filter(
+      (assignment) => assignment.user.userID === userData.userID,
+    );
+    setAssignArray(userAssign);
+  }, [assignList, userData]);
 
   const [{ loading: deleteLoading, error: deleteError }, deleteUser] =
     useApiAxios(
@@ -40,7 +61,8 @@ function UserManagementDetail({ userId }) {
 
   useEffect(() => {
     refetch();
-  }, [userId]);
+    refetch1();
+  }, []);
 
   return (
     <div>
@@ -98,6 +120,39 @@ function UserManagementDetail({ userId }) {
               {userData?.region === '강원' && '강원'}
             </span>
           </div>
+
+          <div>
+            {assignArray?.map((assign) => {
+              return (
+                <>
+                  <div>신청일</div>
+                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
+                    {assign.user.created_at}
+                  </span>
+                  <div>신청번호</div>
+                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
+                    {assign.assignment_no}
+                  </span>
+                  <div>신청동물</div>
+                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
+                    {assign.animal.category.name}
+                  </span>
+                  <div>만남장소</div>
+                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
+                    {assign.place_to_meet}
+                  </span>
+                  <div>만남날짜</div>
+                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
+                    {assign.date_to_meet}
+                  </span>
+                  <div>신청상태</div>
+                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
+                    {assign.status}
+                  </span>
+                </>
+              );
+            })}
+          </div>
         </>
       )}
 
@@ -105,9 +160,7 @@ function UserManagementDetail({ userId }) {
         <button onClick={handleDelete} className="hover:text-red-400">
           삭제
         </button>
-        {/* <Link to={`/management/${userId}/edit/`} className="hover:text-red-400">
-          수정
-        </Link> */}
+
         <Link to="/admin/usermanage/" className="hover:text-red-400">
           목록
         </Link>
