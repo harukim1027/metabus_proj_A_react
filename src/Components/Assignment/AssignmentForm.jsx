@@ -13,6 +13,7 @@ const INIT_FIELD_VALUES = {
   have_pet_or_not: false,
   status: '신청',
   protection_status: '입양 대기',
+  category: '강아지',
   size: '소형',
   sex: '암컷',
 };
@@ -49,6 +50,7 @@ function AssignmentForm({ handleDidSave }) {
   useEffect(() => {
     setFilter({
       protection_status: '입양 대기',
+      category: fieldValues.category,
       size: fieldValues.size,
       sex: fieldValues.sex,
     });
@@ -138,9 +140,36 @@ function AssignmentForm({ handleDidSave }) {
                   🐶 크루원 검색 하기 🐱
                 </span>
                 <hr readOnly />
-                {/* 크루원 덩치 선택 */}
+
                 <div className="ml-3 mt-3">
                   <div className="w-full px-3 mb-6 md:mb-0">
+                    {/* 크루 선택 (개/고양이) */}
+                    <span className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                      크루원 타입
+                    </span>
+                    <div className="relative">
+                      <select
+                        name="category"
+                        value={fieldValues.category}
+                        onChange={handleFieldChange}
+                        className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        defaultValue="강아지"
+                      >
+                        <option value="강아지">강아지</option>
+                        <option value="고양이">고양이</option>
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
+                        <svg
+                          className="fill-current h-5 w-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <br />
+                    {/* 크루원 덩치 선택 */}
                     <span className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                       크루원 덩치
                     </span>
@@ -202,6 +231,7 @@ function AssignmentForm({ handleDidSave }) {
                             setFiltAnimal(
                               QueryAnimal?.filter(
                                 (animal) =>
+                                  animal.category.name === filter.category &&
                                   animal.size === filter.size &&
                                   animal.sex === filter.sex &&
                                   animal.protection_status === '입양 대기',
@@ -218,7 +248,7 @@ function AssignmentForm({ handleDidSave }) {
                       <div className="px-3 mb-6 md:mb-0">
                         {filtAnimal.map((a) => (
                           <div
-                            className="inline-block p-2 m-2 w-1/6 rounded border-2 border-sky-400 cursor-pointer hover:scale-110 overflow-hidden"
+                            className="inline-block p-2 m-2 w-40 rounded border-2 border-sky-400 cursor-pointer hover:scale-110 overflow-hidden"
                             onClick={() => setSelanimal(a.animal_no)}
                           >
                             <div className="flex justify-center h-44">
