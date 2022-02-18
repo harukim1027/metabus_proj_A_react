@@ -1,8 +1,6 @@
 import { useApiAxios } from 'api/base';
-import ReviewSummary from 'Components/review/ReviewSummary';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import Sidebar from './Sidebar';
 import { useAuth } from 'contexts/AuthContext';
 
 function MyPageReview() {
@@ -23,7 +21,6 @@ function MyPageReview() {
 
   return (
     <>
-      <Sidebar />
       <div className="w-full h-screen bg-blue-100">
         <div className="flex justify-center">
           <div className="inline-block mt-10">

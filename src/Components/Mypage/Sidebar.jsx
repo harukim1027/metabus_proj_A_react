@@ -1,30 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-// import style from './style.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function Sidebar() {
-  const menus = [
-    { name: '내 정보', path: '/mypage/userinfo/' },
-    { name: '입양 신청 현황', path: '/mypage/assigninfo/' },
-    { name: '내가 쓴 글', path: '/mypage/myposts/' },
-    { name: '1:1 문의 글', path: '/mypage/myinquiry/' },
-  ];
+  const navigate = useNavigate();
+
   return (
-    <>
-      <div className="flex left relative">
-        <div className="inline-block absolute top-20 left-10">
-          <ul className="text-black">
-            {menus.map((a) => (
-              <li className="block cursor-pointer p-2 hover:bg-blue-300 hover:text-pink-700">
-                <i className="w-8 fas fa-search p-2 bg-orange-300 rounded-full mx-2">
-                  <NavLink to={a.path}>{a.name}</NavLink>
-                </i>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </>
+    <div className="bg-sky-100">
+      <ul className="flex flex-col items-center w-full">
+        <li onClick={() => navigate(`/mypage/userinfo/`)}>내 회원정보</li>
+        <li onClick={() => navigate(`/mypage/assigninfo/`)}>내 입양신청</li>
+        <li onClick={() => navigate(`/mypage/myposts/`)}>내 입양후기</li>
+        <li onClick={() => navigate(`/mypage/myinquiry/`)}>내 문의사항</li>
+      </ul>
+    </div>
   );
 }
 

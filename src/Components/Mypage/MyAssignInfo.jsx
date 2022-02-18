@@ -1,7 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
-import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +22,6 @@ function MyAssignInfo() {
 
   return (
     <>
-      <Sidebar />
       <div className="w-full h-screen bg-blue-100">
         <div className="flex justify-center">
           <div className="inline-block mt-10">

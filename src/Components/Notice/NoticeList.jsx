@@ -32,11 +32,11 @@ function NoticeList() {
   return (
     <>
       <div className="header">
-        <div className="justify-center rounded ">
+        <div className="justify-center  ">
           <div className="flex flex-wrap justify-center w-full max-w-m">
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div className="notice_header ">
+                <div className="notice_header rounded-xl shadow-md ">
                   <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
                     <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
                       <span class="relative text-white">" 공지사항 "</span>
@@ -71,7 +71,7 @@ function NoticeList() {
                       </button>
                     </div>
                   </div>
-                  <div className="mb-5 shadow-md overflow-hidden border-b border-gray-200">
+                  <div className="mb-5 overflow-hidden border-b border-gray-200">
                     {noticeList && (
                       // 테이블로 표현한 방식 (assignment와 다르게 해볼 예정)
                       <table className="mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">

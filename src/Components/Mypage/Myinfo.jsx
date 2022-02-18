@@ -1,7 +1,7 @@
 import { useApiAxios } from 'api/base';
 import { useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
-import Sidebar from './Sidebar';
+import Sidebar from 'Components/Mypage/Sidebar';
 
 function Myinfo() {
   const { auth } = useAuth();
@@ -18,8 +18,7 @@ function Myinfo() {
   }, []);
 
   return (
-    <>
-      <Sidebar />
+    <div>
       <div className="w-full h-screen bg-blue-100">
         <div className="flex justify-center">
           <div className="inline-block mt-10">
@@ -35,7 +34,7 @@ function Myinfo() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

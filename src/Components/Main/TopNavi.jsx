@@ -39,18 +39,19 @@ function TopNav() {
             {auth.is_staff ? (
               <button className="icon_size4">
                 <NavLink to="/admin/main/">
-                  <img src="/manageicon1.png" alt="button"></img>
+                  <img src="/manageicon1.png" alt="manageiconbutton"></img>
                 </NavLink>
               </button>
             ) : (
-              <>
-                <NavLink
-                  to="/mypage/userinfo/"
-                  className="border-2 border-blue-300 py-1 rounded w-20 text-center"
-                >
-                  마이 페이지
+              <button className="icon_size4">
+                <NavLink to="/mypage/userinfo/">
+                  <img
+                    className="mt-6"
+                    src="/mypageicon1.png"
+                    alt="mypagebutton"
+                  ></img>
                 </NavLink>
-              </>
+              </button>
             )}
 
             <button className="icon_size4" onClick={handleLogout}>
