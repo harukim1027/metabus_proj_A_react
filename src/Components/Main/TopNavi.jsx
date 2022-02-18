@@ -82,26 +82,30 @@ function TopNav() {
       >
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
-      <div className="bg-white grid grid-cols-3 text-center text-xl font-semibold">
-        <MyLink to="/notice/">공지사항</MyLink>
+      <div className="py-4 bg-white grid grid-cols-3 text-center text-3xl font-bold">
+        <div className="hover:text-white hover:bg-green-400 ">
+          <MyLink to="/notice/">공지사항</MyLink>
+        </div>
+
         {auth.is_staff ? (
-          <MyLink to="/inquiry/">1:1 문의 현황</MyLink>
+          <div className="hover:text-white hover:bg-green-400 ">
+            <MyLink to="/inquiry/">1:1 문의 현황</MyLink>
+          </div>
         ) : (
-          <MyLink to="/assignment/check/">크루원 신청</MyLink>
+          <div className="hover:text-white hover:bg-blue-500 ">
+            <MyLink to="/assignment/check/">크루원 신청</MyLink>
+          </div>
         )}
-        <MyLink to="/review/">커뮤니티</MyLink>
+        <div className="hover:text-white hover:bg-purple-400 ">
+          <MyLink to="/review/">커뮤니티</MyLink>
+        </div>
       </div>
     </div>
   );
 }
 
 function MyLink({ to, children }) {
-  return (
-    <NavLink to={to} className={BaseClassName}>
-      {children}
-    </NavLink>
-  );
+  return <NavLink to={to}>{children}</NavLink>;
 }
-const BaseClassName = 'border-2 border-blue-300 py-2';
 
 export default TopNav;
