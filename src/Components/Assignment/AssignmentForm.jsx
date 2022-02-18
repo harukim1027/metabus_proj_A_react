@@ -138,9 +138,10 @@ function AssignmentForm({ handleDidSave }) {
                   🐶 크루원 검색 하기 🐱
                 </span>
                 <hr readOnly />
-                {/* 크루원 덩치 선택 */}
+
                 <div className="ml-3 mt-3">
                   <div className="w-full px-3 mb-6 md:mb-0">
+                    {/* 크루원 덩치 선택 */}
                     <span className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                       크루원 덩치
                     </span>

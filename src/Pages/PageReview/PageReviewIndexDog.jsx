@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
-import ReviewList from 'Components/review/ReviewList';
+import ReviewListDog from 'Components/review/ReviewListDog';
 import TopNav from 'Components/Main/TopNavi';
 import { useAuth } from 'contexts/AuthContext';
 import { useApiAxios } from 'api/base';
 
-function PageReviewIndex() {
+function PageReviewIndexDog() {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ function PageReviewIndex() {
     <div>
       <TopNav />
 
-      <ReviewList />
+      <ReviewListDog />
       {auth.isLoggedIn && !auth.is_staff && (
         <div className="flex place-content-between">
           <div></div>
@@ -28,4 +28,4 @@ function PageReviewIndex() {
   );
 }
 
-export default PageReviewIndex;
+export default PageReviewIndexDog;
