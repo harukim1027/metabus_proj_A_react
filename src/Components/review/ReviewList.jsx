@@ -119,7 +119,7 @@ function ReviewList() {
 
                   <div className=" rounded overflow-hidden">
                     <div
-                      className="my-5 flex flex-nowrap flexDirection-row rounded-xl ml-5  mb-3  w-1/3  overflow-hidden shadow-lg"
+                      className="my-5  flex flex-nowrap flexDirection-row rounded-xl ml-5  mb-3  w-1/3  overflow-hidden shadow-lg"
                       style={{ flexDirection: 'row' }}
                     >
                       {reviewList && (
