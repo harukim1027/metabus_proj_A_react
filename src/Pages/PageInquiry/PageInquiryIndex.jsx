@@ -12,9 +12,6 @@ function PageInquiryIndex() {
     <div>
       <TopNav />
       <InquiryList />
-      {auth.isLoggedIn && !auth.is_staff && (
-        <button onClick={() => navigate('/inquiry/new/')}>글쓰기</button>
-      )}
     </div>
   );
 }
