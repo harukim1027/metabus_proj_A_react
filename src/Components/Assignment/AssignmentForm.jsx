@@ -122,7 +122,7 @@ function AssignmentForm({ handleDidSave }) {
           <div className=" flex flex-wrap justify-center  max-w-m">
             <br />
             <blockquote className="mt-10 mb-3 text-2xl font-semibold italic text-center text-slate-900">
-              <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block text-6xl font-extrabold">
+              <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-6xl font-extrabold">
                 <span className="relative text-white">" 크루원 모집"</span>
               </span>
             </blockquote>
@@ -244,31 +244,60 @@ function AssignmentForm({ handleDidSave }) {
                           <img src="/searchicon2.png" alt="button"></img>
                         </button>
                       </div>
+
                       {/* 검색한 동물 보여주기 */}
-                      <div className="px-3 mb-6 md:mb-0">
-                        {filtAnimal.map((a) => (
-                          <div
-                            className="inline-block p-2 m-2 w-40 rounded border-2 border-sky-400 cursor-pointer hover:scale-110 overflow-hidden"
-                            onClick={() => setSelanimal(a.animal_no)}
-                          >
-                            <div className="flex justify-center h-44">
-                              <img
-                                src={a.image}
-                                alt=""
-                                className="object-cover hover:object-contain w-full"
-                              />
+                      <div className="container">
+                        <div className=" box ">
+                          {filtAnimal.map((a) => (
+                            <div className="">
+                              <div
+                                className="border border-gray-100 inline-block  assign_table rounded-md shadow-md  cursor-pointer hover:scale-110 overflow-hidden"
+                                onClick={() => setSelanimal(a.animal_no)}
+                              >
+                                <div className="back flex justify-center">
+                                  <img
+                                    src={a.image}
+                                    alt="동물 이미지"
+                                    className="assign_photo"
+                                  />
+                                  <hr />
+                                  <div className="assign_table">
+                                    <ul className="mt-6 assign_table_bg border border-gray-200 divide-y divide-gray-200">
+                                      <li className="assign_table_bg pl-3 pr-5 py-4 flex items-center justify-between text-sm">
+                                        <span className="bg-blue-100 font-bold">
+                                          나이{' '}
+                                        </span>
+                                        <span> {a.age} 살</span>
+                                      </li>
+
+                                      <li className="assign_table_bg pl-3 pr-5 py-3 flex items-center justify-between text-sm">
+                                        <span className="bg-blue-100 font-bold">
+                                          발견 장소{' '}
+                                        </span>
+                                        <span>
+                                          {a.place_of_discovery.length > 4
+                                            ? a.place_of_discovery.substr(
+                                                0,
+                                                3,
+                                              ) + '...'
+                                            : a.place_of_discovery}
+                                        </span>
+                                      </li>
+                                      <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm">
+                                        <span className="bg-blue-100 font-bold">
+                                          건강 상태{' '}
+                                        </span>
+                                        <span>{a.physical_condition}</span>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <h2>나이 : {a.age} 세</h2>
-                            <h2>
-                              발견 장소 :
-                              {a.place_of_discovery.length > 4
-                                ? a.place_of_discovery.substr(0, 3) + '...'
-                                : a.place_of_discovery}
-                            </h2>
-                            <h2>건강 상태 : {a.physical_condition}</h2>
-                          </div>
-                        ))}
+                          ))}
+                        </div>
                       </div>
+                      {/* 컨테이너 끝 */}
                     </div>
                   </div>
                 </div>
@@ -399,33 +428,44 @@ function AssignmentForm({ handleDidSave }) {
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-xl font-extrabold text-slate-700 pb-2">
                     거주지 사진{' '}
                   </span>
-                  <p className="text-blue-400 mb-1">
-                    최소 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다!
+                  <p className="text-s text-blue-900 mb-1">
+                    ( 최소 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다!
+                    )
                   </p>
-                  <div>
-                    <input
-                      type="file"
-                      name="picture_of_residence1"
-                      accept=".png, .jpg, .jpeg, .jfif"
-                      onChange={handleFieldChange}
-                      className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 text-sm"
-                    />
-                    <br />
-                    <input
-                      type="file"
-                      name="picture_of_residence2"
-                      accept=".png, .jpg, .jpeg, .jfif"
-                      onChange={handleFieldChange}
-                      className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 text-sm"
-                    />
-                    <br />
-                    <input
-                      type="file"
-                      name="picture_of_residence3"
-                      accept=".png, .jpg, .jpeg, .jfif"
-                      onChange={handleFieldChange}
-                      className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 text-sm"
-                    />
+
+                  <div className="bg-white px-4 py-5 sm:grid  sm:gap-4 sm:px-6">
+                    {/* 거주지 파일 첨부 인풋박스 ul태그 시작 부분*/}
+                    <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                      {/* 거주지 파일 input 박스 1  */}
+                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                        <input
+                          type="file"
+                          name="picture_of_residence1"
+                          accept=".png, .jpg, .jpeg, .jfif"
+                          onChange={handleFieldChange}
+                        />
+                      </li>
+
+                      {/* 거주지 파일 input 박스 2 */}
+                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                        <input
+                          type="file"
+                          name="picture_of_residence2"
+                          accept=".png, .jpg, .jpeg, .jfif"
+                          onChange={handleFieldChange}
+                        />
+                      </li>
+
+                      {/* 거주지 파일 input 박스 3 */}
+                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                        <input
+                          type="file"
+                          name="picture_of_residence3"
+                          accept=".png, .jpg, .jpeg, .jfif"
+                          onChange={handleFieldChange}
+                        />
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>

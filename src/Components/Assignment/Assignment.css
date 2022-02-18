@@ -19,7 +19,16 @@
   height: auto;
 }
 
-.assign_explanation2 {
-  width: 600px;
-  height: auto;
+.assign_table_bg {
+  background-color: #ffffff;
+}
+
+.assign_photo {
+  width: 130px;
+  height: 200px;
+}
+
+.assign_table {
+  width: 300px;
+  height: 200px;
 }
