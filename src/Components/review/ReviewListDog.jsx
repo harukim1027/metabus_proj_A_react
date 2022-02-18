@@ -93,7 +93,7 @@ function ReviewList() {
                       onChange={handleChange}
                       onKeyPress={handleKeyPress}
                     />
-                    <div className="absolute left-0 inset-y-0 mb-9 flex items-center">
+                    <div className="absolute left-0 inset-y-0 mb-9 flex items-center mt-5">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6 ml-3 text-gray-400 hover:text-gray-500"
@@ -121,7 +121,7 @@ function ReviewList() {
                     {auth.isLoggedIn && !auth.is_staff && (
                       <button
                         onClick={() => navigate('/review/new/')}
-                        className="mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 mb-10"
+                        className="mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                       >
                         글쓰기
                       </button>
