@@ -118,10 +118,10 @@ function AssignmentForm({ handleDidSave }) {
   return (
     <>
       <div className="header">
-        <div className="justify-center rounded ">
+        <div className="justify-center rounded-xl ">
           <div className=" flex flex-wrap justify-center  max-w-m">
             <br />
-            <blockquote className="mt-10 mb-3 text-2xl font-semibold italic text-center text-slate-900">
+            <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
               <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-6xl font-extrabold">
                 <span className="relative text-white">" 크루원 모집"</span>
               </span>
@@ -132,19 +132,19 @@ function AssignmentForm({ handleDidSave }) {
       </div>
       <div className="header">
         {/* 동물 검색하는 부분 */}
-        <div className="assignments_header">
-          <div className=" header justify-center rounded px-20 pt-6  mb-4">
-            <div className=" flex flex-wrap justify-center w-full max-w-m">
-              <div className="bg-white shadow-md  rounded px-20 pt-6 pb-8 mb-4">
-                <span className="mb-3 block uppercase tracking-wide text-gray-700 text-2xl font-bold text-center">
+        <div className="assignments_header rounded-xl">
+          <div className=" header justify-center px-20 pt-6  mb-4">
+            <div className=" px-20 justify-center w-full max-w-m">
+              <div className="bg-white shadow-md  px-20 pt-6 pb-8 mb-4">
+                <span className="mb-6 block uppercase tracking-wide text-gray-700 text-2xl font-bold text-center">
                   🐶 크루원 검색 하기 🐱
                 </span>
-                <hr readOnly />
+                <hr className="mb-3 mt-3" readOnly />
 
                 <div className="ml-3 mt-3">
-                  <div className="w-full px-3 mb-6 md:mb-0">
+                  <div className="w-full px-3 mb-10 md:mb-0">
                     {/* 크루 선택 (개/고양이) */}
-                    <span className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
+                    <span className=" block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                       크루원 타입
                     </span>
                     <div className="relative">
@@ -152,7 +152,7 @@ function AssignmentForm({ handleDidSave }) {
                         name="category"
                         value={fieldValues.category}
                         onChange={handleFieldChange}
-                        className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-xl leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         defaultValue="강아지"
                       >
                         <option value="강아지">강아지</option>
@@ -247,7 +247,11 @@ function AssignmentForm({ handleDidSave }) {
 
                       {/* 검색한 동물 보여주기 */}
                       <div className="container">
-                        <div className="box">
+                        <div className=" box ">
+                          <p className="text-center text-blue-900 font-bold">
+                            {' '}
+                            검색 후, 원하시는 크루원을 선택해주세요!{' '}
+                          </p>
                           {filtAnimal.map((a) => (
                             <div className="">
                               <div
@@ -310,9 +314,9 @@ function AssignmentForm({ handleDidSave }) {
         {/* 신청하는 폼 */}
 
         <div className="header ">
-          <div className="flex flex-wrap justify-center max-w-m">
+          <div className="px-20 justify-center max-w-m">
             <form
-              className="assignments_header shadow-md  rounded px-20 pt-6 pb-8 mb-4"
+              className="assignments_header shadow-md mt-10 rounded-xl px-20 pt-6 pb-8 mb-4"
               onSubmit={handleSubmit}
             >
               {/* 신청자 이름 */}

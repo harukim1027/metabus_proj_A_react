@@ -5,6 +5,10 @@ import useFieldValues from 'hooks/useFieldValues';
 import { useEffect, useState } from 'react';
 import produce from 'immer';
 
+import './Review.css';
+import '../../App.css';
+import LoadingIndicator from 'LoadingIndicator';
+
 const INIT_FIELD_VALUES = {
   title: '',
   content: '',
@@ -93,27 +97,45 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
   return (
     <>
-      <div>
-        <div className="my-3 mx-20">
-          <>
-            <h1>누구를 입양했나요</h1>
+      {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
+      {saveError &&
+        `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
 
-            <button
-              onClick={() =>
-                assignmentList &&
-                setFiltAssign(
-                  assignmentList.filter(
-                    (assignment) =>
-                      assignment.status === '신청' &&
-                      assignment.user.userID === auth.userID,
-                  ),
-                )
-              }
-              className="bg-pink-100 p-2 m-2 rounded-lg"
-            >
-              리뷰할 크루 선택하기
-            </button>
+      {/* 전체 감싸는 header : 배경 색 */}
+      <div className="header ">
+        {/* 영역을 나누어지주는 flex */}
+        <div className="flex flex-wrap justify-center max-w-m ">
+          {/* 페이지 이름 */}
 
+          {/* review_header : 배경 흰색 */}
+          <div className="review_header rounded-2xl">
+            <blockquote class="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
+              <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block text-3xl font-extrabold">
+                <span class="relative text-white">" 누구를 입양했나요 ? "</span>
+              </span>
+            </blockquote>
+            <hr />
+
+            {/* 리뷰할 크루 선택 버튼 */}
+            <div className="flex flex-wrap justify-center max-w-m">
+              <button
+                onClick={() =>
+                  assignmentList &&
+                  setFiltAssign(
+                    assignmentList.filter(
+                      (assignment) =>
+                        assignment.status === '신청' &&
+                        assignment.user.userID === auth.userID,
+                    ),
+                  )
+                }
+                className="bg-pink-100 p-2 m-2 rounded-lg"
+              >
+                리뷰할 크루 선택하기
+              </button>
+            </div>
+
+            {/* 선택 후 나오는 정보 박스 */}
             <div>
               {filtAssign && (
                 <>
@@ -132,87 +154,104 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 </>
               )}
             </div>
-          </>
-        </div>
-
-        <label className="p-2 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
-          <input
-            type="text"
-            name="title"
-            value={fieldValues.title}
-            onChange={handleFieldChange}
-            placeholder="제목을 입력해주세요."
-            className="p-2 w-full bg-transparent focus:outline-none text-gray-700"
-          />
-          <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
-            <span className="flex h-3 w-3 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
-            </span>
           </div>
-        </label>
-        <br />
 
-        <label className="p-10 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
-          <input
-            type="text"
-            name="content"
-            value={fieldValues.content}
-            onChange={handleFieldChange}
-            placeholder="내용을 입력해주세요."
-            className="p-10 w-full bg-transparent focus:outline-none text-gray-700"
-          />
-          <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
-            <span className="flex h-3 w-3 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
-            </span>
+          {/* 제목 입력 input 박스 */}
+          <div className="flex flex-wrap justify-center max-w-m">
+            <form onSubmit={handleSubmit}>
+              <div className="ml-3 -mx-3 mb-6">
+                <div className="ml-3 mb-3 w-full">
+                  <label className="p-2 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
+                    <input
+                      type="text"
+                      name="title"
+                      value={fieldValues.title}
+                      onChange={handleFieldChange}
+                      placeholder="제목을 입력해주세요."
+                      className="rounded p-3 text-sm   focus:outline-none focus:border focus:border-gray-400  w-full px-3 mb-6"
+                    />
+                    <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
+                      <span className="flex h-3 w-3 relative">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
+                      </span>
+                    </div>
+                  </label>
+                  <br />
+                </div>
+              </div>
+
+              {/* 내용 입력 input 박스 */}
+              <div className="ml-3 -mx-3 mb-6">
+                <div className="ml-3 mb-3 w-full ">
+                  <span className="p-10 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
+                    {' '}
+                    내용{' '}
+                  </span>
+
+                  <input
+                    type="text"
+                    name="content"
+                    value={fieldValues.content}
+                    onChange={handleFieldChange}
+                    placeholder="내용을 입력해주세요."
+                    className="rounded p-3 text-sm   focus:outline-none focus:border focus:border-gray-400  w-full px-3 mb-6"
+                  />
+                  <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
+                    <span className="flex h-3 w-3 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="my-3 mx-20">
+                <input
+                  type="file"
+                  accept=".png, .jpg, .jpeg"
+                  name="image1"
+                  onChange={handleFieldChange}
+                />
+                <input
+                  type="file"
+                  accept=".png, .jpg, .jpeg"
+                  name="image2"
+                  onChange={handleFieldChange}
+                />
+                <input
+                  type="file"
+                  accept=".png, .jpg, .jpeg"
+                  name="image3"
+                  onChange={handleFieldChange}
+                />
+                <br />
+                <input
+                  type="file"
+                  accept=".png, .jpg, .jpeg"
+                  name="image4"
+                  onChange={handleFieldChange}
+                />
+                <input
+                  type="file"
+                  accept=".png, .jpg, .jpeg"
+                  name="image5"
+                  onChange={handleFieldChange}
+                />
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  className="bg-pink-100 mx-20 p-2 m-2 rounded-lg"
+                  onClick={(e) => handleSubmit(e)}
+                  onSubmit={handleSubmit}
+                >
+                  저장하기
+                </button>
+              </div>
+            </form>
           </div>
-        </label>
-
-        <div className="my-3 mx-20">
-          <input
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            name="image1"
-            onChange={handleFieldChange}
-          />
-          <input
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            name="image2"
-            onChange={handleFieldChange}
-          />
-          <input
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            name="image3"
-            onChange={handleFieldChange}
-          />
-          <br />
-          <input
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            name="image4"
-            onChange={handleFieldChange}
-          />
-          <input
-            type="file"
-            accept=".png, .jpg, .jpeg"
-            name="image5"
-            onChange={handleFieldChange}
-          />
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            className="bg-pink-100 mx-20 p-2 m-2 rounded-lg"
-            onClick={(e) => handleSubmit(e)}
-            onSubmit={handleSubmit}
-          >
-            저장하기
-          </button>
         </div>
       </div>
       <DebugStates
