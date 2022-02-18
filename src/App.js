@@ -44,6 +44,7 @@ import PageReviewIndexCat from 'Pages/PageReview/PageReviewIndexCat';
 import PageMyinfo from 'Pages/PageMypage/PageMyinfo';
 import PageMyAssignInfo from 'Pages/PageMypage/PageMyAssignInfo';
 import PageMyPageReview from 'Pages/PageMypage/PageMyPageReview';
+import PageMyInquiry from 'Pages/PageMypage/PageMyInquiry';
 
 function App() {
   const { auth } = useAuth();
@@ -163,7 +164,7 @@ function App() {
                 element={<PageMyAssignInfo />}
               />
               <Route path="/mypage/myposts/" element={<PageMyPageReview />} />
-              <Route path="/mypage/myinquiry/" element={<PageInquiryIndex />} />
+              <Route path="/mypage/myinquiry/" element={<PageMyInquiry />} />
 
               {/* review */}
               <Route path="/review/new/" element={<PageReviewForm />} />
