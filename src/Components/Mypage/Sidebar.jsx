@@ -10,17 +10,21 @@ function Sidebar() {
     { name: '1:1 문의 글', path: '/mypage/myinquiry/' },
   ];
   return (
-    <div className="inline-block">
-      <ul className="text-black">
-        {menus.map((a) => (
-          <li className="block cursor-pointer p-2 hover:bg-blue-300 hover:text-pink-700">
-            <i className="w-8 fas fa-search p-2 bg-orange-300 rounded-full mx-2">
-              <NavLink to={a.path}>{a.name}</NavLink>
-            </i>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div class="flex left relative">
+        <div className="inline-block absolute top-20 left-10">
+          <ul className="text-black">
+            {menus.map((a) => (
+              <li className="block cursor-pointer p-2 hover:bg-blue-300 hover:text-pink-700">
+                <i className="w-8 fas fa-search p-2 bg-orange-300 rounded-full mx-2">
+                  <NavLink to={a.path}>{a.name}</NavLink>
+                </i>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
   );
 }
 
