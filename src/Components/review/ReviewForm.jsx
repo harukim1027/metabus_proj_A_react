@@ -111,7 +111,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
               }
               className="bg-pink-100 p-2 m-2 rounded-lg"
             >
-              1. 입양 신청 필터링
+              리뷰할 크루 선택하기
             </button>
 
             <div>
@@ -120,7 +120,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   {filtAssign.map((ani) => (
                     <div
                       className="inline-block p-2 m-2 rounded border-2 border-pink-200 w-1/5 cursor-pointer hover:scale-110"
-                      onClick={() => setSelectanimal(ani.animal.animal_no)}
+                      onClick={() => setSelectanimal(ani.assignment_no)}
                     >
                       <div className="flex h-36 items-center">
                         <img src={ani.animal.image} alt="" />

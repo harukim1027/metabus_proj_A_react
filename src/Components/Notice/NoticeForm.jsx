@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import useFieldValues from 'hooks/useFieldValues';
 import produce from 'immer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import LoadingIndicator from 'LoadingIndicator';
 import DebugStates from 'DebugStates';
 
@@ -14,7 +14,73 @@ const INIT_FIELD_VALUES = {
 
 function NoticeForm({ noticeId, handleDidSave }) {
   const { auth } = useAuth();
+  const [image1, setImage1] = useState('');
+  const [image2, setImage2] = useState('');
+  const [image3, setImage3] = useState('');
+  const [image4, setImage4] = useState('');
+  const [image5, setImage5] = useState('');
   const navigate = useNavigate();
+
+  // 사진 등록시
+  const imgpreview1 = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImage1(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
+  };
+
+  const imgpreview2 = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImage2(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
+  };
+
+  const imgpreview3 = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImage3(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
+  };
+
+  const imgpreview4 = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImage4(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
+  };
+
+  const imgpreview5 = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImage5(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
+  };
 
   // 조회
   const [{ data: noticeData, loading: getLoading, error: getError }] =
@@ -120,32 +186,72 @@ function NoticeForm({ noticeId, handleDidSave }) {
             type="file"
             accept=".png, .jpg, .jpeg, .jfif"
             name="image1"
-            onChange={handleFieldChange}
+            onChange={(e) => {
+              imgpreview1(e, e.target.files[0]);
+            }}
           />
+          <div>
+            <img src={noticeData?.image1} alt="" />
+          </div>
+          <div>
+            <img src={image1} alt="" />
+          </div>
           <input
             type="file"
             accept=".png, .jpg, .jpeg, .jfif"
             name="image2"
-            onChange={handleFieldChange}
+            onChange={(e) => {
+              imgpreview2(e, e.target.files[0]);
+            }}
           />
+          <div>
+            <img src={noticeData?.image2} alt="" />
+          </div>
+          <div>
+            <img src={image2} alt="" />
+          </div>
           <input
             type="file"
             accept=".png, .jpg, .jpeg, .jfif"
             name="image3"
-            onChange={handleFieldChange}
+            onChange={(e) => {
+              imgpreview3(e, e.target.files[0]);
+            }}
           />
+          <div>
+            <img src={noticeData?.image3} alt="" />
+          </div>
+          <div>
+            <img src={image3} alt="" />
+          </div>
           <input
             type="file"
             accept=".png, .jpg, .jpeg, .jfif"
             name="image4"
-            onChange={handleFieldChange}
+            onChange={(e) => {
+              imgpreview4(e, e.target.files[0]);
+            }}
           />
+          <div>
+            <img src={noticeData?.image4} alt="" />
+          </div>
+          <div>
+            <img src={image4} alt="" />
+          </div>
           <input
             type="file"
             accept=".png, .jpg, .jpeg, .jfif"
             name="image5"
-            onChange={handleFieldChange}
+            onChange={(e) => {
+              imgpreview5(e, e.target.files[0]);
+            }}
           />
+          <div>
+            <img src={noticeData?.image5} alt="" />
+          </div>
+          <div>
+            <img src={image5} alt="" />
+          </div>
         </div>
 
         {/* 파일업로드 */}
@@ -157,6 +263,9 @@ function NoticeForm({ noticeId, handleDidSave }) {
             name="file1"
             onChange={handleFieldChange}
           />
+          <div>
+            {(noticeData?.file1 || fieldValues.file1) && '파일1이 존재합니다.'}
+          </div>
           <input
             type="file"
             accept=".docx, .hwp, .xlsx, .pdf"

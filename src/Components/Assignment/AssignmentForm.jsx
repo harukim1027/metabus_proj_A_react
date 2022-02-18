@@ -2,7 +2,7 @@ import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import useFieldValues from 'hooks/useFieldValues';
 import DebugStates from 'DebugStates';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import './Assignment.css';
 import '../../App.css';
 
@@ -45,6 +45,14 @@ function AssignmentForm({ handleDidSave }) {
   useEffect(() => {
     queryanimal();
   }, []);
+
+  useEffect(() => {
+    setFilter({
+      protection_status: '입양 대기',
+      size: fieldValues.size,
+      sex: fieldValues.sex,
+    });
+  }, [fieldValues]);
 
   // TODO: filtAnimal을 가지고 QueryAnimal에서 필터링해서 하나의 상태값에 저장
   // 상태값을 버튼형식으로 표출 -> 클릭시 fieldValues에 그 동물의 pk가 들어가도록
@@ -126,7 +134,7 @@ function AssignmentForm({ handleDidSave }) {
           <div className=" header justify-center rounded px-20 pt-6  mb-4">
             <div className=" flex flex-wrap justify-center w-full max-w-m">
               <div className="bg-white shadow-md  rounded px-20 pt-6 pb-8 mb-4">
-                <span className="mb-3 block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2 text-center">
+                <span className="mb-3 block uppercase tracking-wide text-gray-700 text-2xl font-bold text-center">
                   🐶 크루원 검색 하기 🐱
                 </span>
                 <hr readOnly />
@@ -134,7 +142,7 @@ function AssignmentForm({ handleDidSave }) {
                 <div className="ml-3 mt-3">
                   <div className="w-full px-3 mb-6 md:mb-0">
                     <span className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                      크루원 덩치{' '}
+                      크루원 덩치
                     </span>
                     <div className="relative">
                       <select
@@ -162,7 +170,7 @@ function AssignmentForm({ handleDidSave }) {
                     <br />
                     {/* 크루원 성별 선택 */}
                     <span className="block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                      크루원 성별{' '}
+                      크루원 성별
                     </span>
                     <div className="relative">
                       <select
@@ -187,33 +195,17 @@ function AssignmentForm({ handleDidSave }) {
                     </div>
 
                     {/* 버튼 클릭 부분 */}
-                    <div>
-                      <div className="px-3 mb-6 md:mb-0">
-                        <button
-                          onClick={() => {
-                            setFilter({
-                              protection_status: '입양 대기',
-                              size: fieldValues.size,
-                              sex: fieldValues.sex,
-                            });
-                          }}
-                          className="icon_size2 hover:scale-110 duration-500"
-                          readOnly
-                        >
-                          <img src="/searchicon2.png" alt="button"></img>
-                        </button>
-                        {/* <h2 className="inline">{`<< 클릭 후, 클릭 >>`}</h2> */}
+                    <div className="">
+                      <div className="flex px-3 mb-6 md:mb-0 justify-center p-5">
                         <button
                           onClick={() =>
-                            QueryAnimal &&
                             setFiltAnimal(
-                              filter &&
-                                QueryAnimal.filter(
-                                  (animal) =>
-                                    animal.size === filter.size &&
-                                    animal.sex === filter.sex &&
-                                    animal.protection_status === '입양 대기',
-                                ),
+                              QueryAnimal?.filter(
+                                (animal) =>
+                                  animal.size === filter.size &&
+                                  animal.sex === filter.sex &&
+                                  animal.protection_status === '입양 대기',
+                              ),
                             )
                           }
                           className="icon_size2 hover:scale-110 duration-500"
@@ -223,19 +215,26 @@ function AssignmentForm({ handleDidSave }) {
                         </button>
                       </div>
                       {/* 검색한 동물 보여주기 */}
-                      {/*   TODO: filtAnimal을 가지고 QueryAnimal에서 필터링해서 하나의 상태값에 저장
-      상태값을 버튼형식으로 표출 -> 클릭시 fieldValues에 그 동물의 pk가 들어가도록 */}
                       <div className="px-3 mb-6 md:mb-0">
                         {filtAnimal.map((a) => (
                           <div
-                            className="inline-block p-2 m-2 rounded border-2 border-sky-400 w-1/5 cursor-pointer hover:scale-110"
+                            className="inline-block p-2 m-2 w-1/6 rounded border-2 border-sky-400 cursor-pointer hover:scale-110 overflow-hidden"
                             onClick={() => setSelanimal(a.animal_no)}
                           >
-                            <div className="flex h-36 items-center">
-                              <img src={a.image} alt="" />
+                            <div className="flex justify-center h-44">
+                              <img
+                                src={a.image}
+                                alt=""
+                                className="object-cover hover:object-contain w-full"
+                              />
                             </div>
                             <h2>나이 : {a.age} 세</h2>
-                            <h2>발견 장소 : {a.place_of_discovery}</h2>
+                            <h2>
+                              발견 장소 :
+                              {a.place_of_discovery.length > 4
+                                ? a.place_of_discovery.substr(0, 3) + '...'
+                                : a.place_of_discovery}
+                            </h2>
                             <h2>건강 상태 : {a.physical_condition}</h2>
                           </div>
                         ))}

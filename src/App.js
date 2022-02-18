@@ -16,6 +16,9 @@ import PageAnimalForm from 'Pages/PageStreetanimal/PageAnimalForm';
 // admin/UserManagement
 import PageUserManagementIndex from 'Pages/PageUserManagement/PageUserManagementIndex';
 import PageUserManagementDetail from 'Pages/PageUserManagement/PageUserManagementDetail';
+import PageUserAssignList from 'Pages/PageUserManagement/PageUserAssignList';
+import PageUserReviewList from 'Pages/PageUserManagement/PageUserReviewList';
+import PageUserInquiryList from 'Pages/PageUserManagement/PageUserInquiryList';
 // admin/assignment
 import PageAssignList from 'Pages/PageAssignManagement/PageAssignList';
 import PageAssignDetail from 'Pages/PageAssignManagement/PageAssignDetail';
@@ -39,6 +42,7 @@ import ReviewListDog from 'Components/review/ReviewListDog';
 import ReviewListCat from 'Components/review/ReviewListCat';
 // mypage
 import PageMyinfo from 'Pages/PageMypage/PageMyinfo';
+import PageMyAssignInfo from 'Pages/PageMypage/PageMyAssignInfo';
 import PageMyPageReview from 'Pages/PageMypage/PageMyPageReview';
 
 function App() {
@@ -82,6 +86,7 @@ function App() {
                 path="/admin/assignmanage/:assignId/"
                 element={<PageAssignDetail />}
               />
+
               {/* admin/UserManagement */}
               <Route
                 path="/admin/usermanage/"
@@ -91,6 +96,21 @@ function App() {
                 path="/admin/usermanage/:userId/"
                 element={<PageUserManagementDetail />}
               />
+              <Route
+                path="/admin/usermanage/:userId/assignstatus/"
+                element={<PageUserAssignList />}
+              />
+
+              <Route
+                path="/admin/usermanage/:userId/userreview/"
+                element={<PageUserReviewList />}
+              />
+
+              <Route
+                path="/admin/usermanage/:userId/userinquiry/"
+                element={<PageUserInquiryList />}
+              />
+
               {/* admin/inquiry */}
               <Route
                 path="/admin/inquiry/:inquiryId/edit/"
@@ -104,7 +124,6 @@ function App() {
               />
             </>
           )}
-          {/* ----------------------------------------- */}
 
           {auth?.isLoggedIn && (
             <>
@@ -139,7 +158,10 @@ function App() {
 
               {/* mypage */}
               <Route path="/mypage/userinfo/" element={<PageMyinfo />} />
-              <Route path="/mypage/assigninfo/" element={''} />
+              <Route
+                path="/mypage/assigninfo/"
+                element={<PageMyAssignInfo />}
+              />
               <Route path="/mypage/myposts/" element={<PageMyPageReview />} />
               <Route path="/mypage/myinquiry/" element={<PageInquiryIndex />} />
 
