@@ -55,8 +55,8 @@ function ReviewList() {
   return (
     <>
       <div className="header">
-        <div className="flex flex-wrap justify-center  overflow-x-auto  relative mx-20">
-          <div className="shadow-md py-2 align-middle inline-block ">
+        <div className="flex flex-wrap justify-center px-20 pb-20 relative mx-20">
+          <div className=" py-2 align-middle inline-block ">
             <div className="review_header shadow-md mb-10 rounded-2xl pb-5">
               <blockquote class="mt-6 text-6xl font-semibold italic text-center text-slate-900">
                 <span class="mt-10 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
@@ -93,7 +93,13 @@ function ReviewList() {
                       onChange={handleChange}
                       onKeyPress={handleKeyPress}
                     />
-                    <div className="absolute left-0 inset-y-0 mb-9 flex items-center mt-5">
+                    <div
+                      className={
+                        auth.isLoggedIn
+                          ? 'absolute left-0 inset-y-0 mb-9 flex items-center'
+                          : 'absolute left-0 inset-y-0 mb-9 flex items-center  mt-5'
+                      }
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6 ml-3 text-gray-400 hover:text-gray-500"
@@ -111,7 +117,7 @@ function ReviewList() {
                     </div>
                     <button
                       type="submit"
-                      className="absolute top-0 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                      className="relative top-0 text-white py-2 px-6 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                       onClick={() => refetch()}
                     >
                       검색
@@ -121,14 +127,19 @@ function ReviewList() {
                     {auth.isLoggedIn && !auth.is_staff && (
                       <button
                         onClick={() => navigate('/review/new/')}
-                        className="mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                        className="icon_size2"
+                        readOnly
                       >
-                        글쓰기
+                        <img
+                          className="transition transform hover:-translate-y-1"
+                          src="/pen2.png"
+                          alt="button"
+                        ></img>
                       </button>
                     )}
                   </div>
                 </div>
-                <hr />
+                <hr className="mb-3 mt-3" />
               </div>
 
               <div className="flex flex-wrap justify-center rounded">

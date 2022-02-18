@@ -21,12 +21,20 @@ function TopNav() {
           <div>
             <button className="icon_size3">
               <NavLink to="/accounts/login/">
-                <img src="/loginicon4.png" alt="button"></img>
+                <img
+                  src="/loginicon4.png"
+                  alt="button"
+                  className="hover:scale-110 duration-200"
+                ></img>
               </NavLink>
             </button>
             <button className="icon_size3">
               <NavLink to="/accounts/checksignup/">
-                <img src="/signupicon3.png" alt="button"></img>
+                <img
+                  src="/signupicon3.png"
+                  alt="button"
+                  className="hover:scale-110 duration-200"
+                ></img>
               </NavLink>
             </button>
           </div>
@@ -39,14 +47,18 @@ function TopNav() {
             {auth.is_staff ? (
               <button className="icon_size4">
                 <NavLink to="/admin/main/">
-                  <img src="/manageicon1.png" alt="manageiconbutton"></img>
+                  <img
+                    className="hover:scale-110 duration-200"
+                    src="/manageicon1.png"
+                    alt="manageiconbutton"
+                  ></img>
                 </NavLink>
               </button>
             ) : (
               <button className="icon_size4">
                 <NavLink to="/mypage/userinfo/">
                   <img
-                    className="mt-6"
+                    className="mt-5 hover:scale-110 duration-200"
                     src="/mypageicon1.png"
                     alt="mypagebutton"
                   ></img>
@@ -55,7 +67,11 @@ function TopNav() {
             )}
 
             <button className="icon_size4" onClick={handleLogout}>
-              <img src="/logouticon1.png" alt="button"></img>
+              <img
+                className="hover:scale-110 duration-200"
+                src="/logouticon1.png"
+                alt="button"
+              ></img>
             </button>
           </div>
         )}
@@ -66,7 +82,7 @@ function TopNav() {
       >
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
-      <div className="grid grid-cols-3 text-center text-xl font-semibold">
+      <div className="bg-white grid grid-cols-3 text-center text-xl font-semibold">
         <MyLink to="/notice/">공지사항</MyLink>
         {auth.is_staff ? (
           <MyLink to="/inquiry/">1:1 문의 현황</MyLink>
