@@ -11,7 +11,7 @@ function Sidebar() {
   ];
   return (
     <>
-      <div class="flex left relative">
+      <div className="flex left relative">
         <div className="inline-block absolute top-20 left-10">
           <ul className="text-black">
             {menus.map((a) => (

@@ -58,9 +58,9 @@ function ReviewListCat() {
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 relative mx-20">
               <div className="shadow-md py-2 align-middle inline-block min-w-full ">
                 <div className="review_header shadow-md ">
-                  <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
-                    <span class="mt-7 mb-6 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
-                      <span class="relative text-white">" 입양 후기 "</span>
+                  <blockquote className="mt-5 text-3xl font-semibold italic text-center text-slate-900">
+                    <span className="mt-7 mb-6 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
+                      <span className="relative text-white">" 입양 후기 "</span>
                     </span>
                   </blockquote>
                   <hr />
