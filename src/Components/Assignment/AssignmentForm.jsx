@@ -247,14 +247,14 @@ function AssignmentForm({ handleDidSave }) {
 
                       {/* 검색한 동물 보여주기 */}
                       <div className="container">
-                        <div className=" box ">
+                        <div className="box">
                           {filtAnimal.map((a) => (
                             <div className="">
                               <div
                                 className="border border-gray-100 inline-block  assign_table rounded-md shadow-md  cursor-pointer hover:scale-110 overflow-hidden"
                                 onClick={() => setSelanimal(a.animal_no)}
                               >
-                                <div className="back flex justify-center">
+                                <div className="flex justify-center">
                                   <img
                                     src={a.image}
                                     alt="동물 이미지"

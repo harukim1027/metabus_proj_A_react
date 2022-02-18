@@ -115,3 +115,5 @@ function ReviewDetail({ reviewId }) {
     </>
   );
 }
+
+export default ReviewDetail;
