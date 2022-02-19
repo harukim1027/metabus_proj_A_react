@@ -267,7 +267,7 @@ function AssignmentForm({ handleDidSave }) {
                                 className="border border-gray-100 inline-block  assign_table rounded-md shadow-md  cursor-pointer hover:scale-110 overflow-hidden"
                                 onClick={() => setSelanimal(a.animal_no)}
                               >
-                                <div className="back flex justify-center">
+                                <div className="flex justify-center">
                                   <img
                                     src={a.image}
                                     alt="동물 이미지"
