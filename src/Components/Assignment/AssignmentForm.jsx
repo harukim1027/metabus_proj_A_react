@@ -429,7 +429,7 @@ function AssignmentForm({ handleDidSave }) {
               {/* 반려동물 유무 */}
               <div className="ml-3 flex flex-wrap -mx-3 mb-2">
                 <div className=" w-full md:w-1/2 px-3 mb-6 ">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700">
+                  <span className="pb-2  block text-2xl font-extrabold text-slate-700">
                     반려동물 키움 여부{' '}
                     <input
                       type="checkbox"
@@ -554,8 +554,10 @@ function AssignmentForm({ handleDidSave }) {
                 </button>
               </div>
             </form>
-            <hr className="border-2" />
           </div>
+          <p class="flex flex-wrap justify-center text-center text-gray-500 text-xs">
+            &copy;2022 METABUS Corp. All rights reserved.
+          </p>
         </div>
       </div>
       <DebugStates fieldValues={fieldValues} />
