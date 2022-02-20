@@ -122,7 +122,6 @@ function LoginForm() {
           </form>
         </div>
       </div>
-      <p className="py-3 pb-3" />
       <DebugStates auth={auth} fieldValues={fieldValues} />
     </div>
   );

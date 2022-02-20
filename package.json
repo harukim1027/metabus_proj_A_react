@@ -24,6 +24,7 @@
     "react-paginate": "^8.1.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-toastify": "^8.2.0",
     "use-image": "^1.0.8",
     "web-vitals": "^2.1.0",
     "xlsx": "^0.18.0"
