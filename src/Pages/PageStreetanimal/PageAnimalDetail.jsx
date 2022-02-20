@@ -1,3 +1,4 @@
+import TopNav from 'Components/Main/TopNavi';
 import AnimalDetail from 'Components/StreetAnimal/AnimalDetail';
 import { useParams } from 'react-router-dom';
 
@@ -6,6 +7,7 @@ function PageAnimalDetail() {
 
   return (
     <div>
+      <TopNav />
       <AnimalDetail animalId={animalId} />
     </div>
   );

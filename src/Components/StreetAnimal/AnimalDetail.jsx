@@ -47,7 +47,6 @@ function AnimalDetail({ animalId }) {
 
   return (
     <div>
-      <TopNav />
       <h2>AnimalDetail</h2>
 
       {animal && (
