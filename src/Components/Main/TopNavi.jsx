@@ -78,29 +78,33 @@ function TopNav() {
       </div>
       <div
         onClick={() => navigate('/')}
-        className="w-full text-white  cursor-pointer"
+        className="w-full text-white  cursor-pointer mt-12"
       >
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
       <div className="py-4 bg-white grid grid-cols-3 text-center text-3xl font-bold">
-        <div className="hover:text-white hover:bg-green-400 ">
-          <MyLink to="/notice/">공지사항</MyLink>
-        </div>
+        <MyLink to="/notice/">
+          <div className="hover:text-white hover:bg-green-400 ">공지사항</div>
+        </MyLink>
 
         {auth.is_staff ? (
-          <div className="hover:text-white hover:bg-green-400 ">
-            <MyLink to="/inquiry/">1:1 문의 현황</MyLink>
-          </div>
+          <MyLink to="/inquiry/">
+            <div className="hover:text-white hover:bg-green-400 ">
+              1:1 문의 현황
+            </div>
+          </MyLink>
         ) : (
           <MyLink
             to={auth.isLoggedIn ? '/assignment/check/' : '/accounts/login/'}
           >
-            크루원 신청
+            <div className="hover:text-white hover:bg-blue-400 ">
+              크루원 신청
+            </div>
           </MyLink>
         )}
-        <div className="hover:text-white hover:bg-purple-400 ">
-          <MyLink to="/review/">커뮤니티</MyLink>
-        </div>
+        <MyLink to="/review/">
+          <div className="hover:text-white hover:bg-purple-400 ">커뮤니티</div>
+        </MyLink>
       </div>
     </div>
   );

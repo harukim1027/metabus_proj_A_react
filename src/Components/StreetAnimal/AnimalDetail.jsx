@@ -48,7 +48,6 @@ function AnimalDetail({ animalId }) {
   return (
     <div>
       <h2>AnimalDetail</h2>
-
       {animal && (
         <>
           <div className="my-3">

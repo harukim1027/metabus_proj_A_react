@@ -91,9 +91,7 @@ function AnimalForm({ animalId, handleDidSave }) {
 
   return (
     <div>
-      <TopNav />
       <h2>AnimalForm</h2>
-
       <form onSubmit={handleSubmit}>
         <div className="my-3">
           <span>동물 종 선택</span>
