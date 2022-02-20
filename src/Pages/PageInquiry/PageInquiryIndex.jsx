@@ -9,7 +9,7 @@ function PageInquiryIndex() {
   console.log(auth);
 
   return (
-    <div>
+    <div className="header">
       <TopNav />
       <InquiryList />
     </div>

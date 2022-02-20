@@ -83,23 +83,6 @@ function AssignmentForm({ handleDidSave }) {
     { manual: true },
   );
 
-  // api로 다시 받기 ---------------------------
-  // const [
-  //   { data: selAniData, loading: getaniLoading, error: getaniError },
-  //   refetch,
-  // ] = useApiAxios(
-  //   {
-  //     url: `/streetanimal/api/animal/${selanimal}/`,
-  //     method: 'GET',
-  //   },
-  //   { manual: true },
-  // );
-
-  // useEffect(() => {
-  //   refetch();
-  // }, [selanimal]);
-  // -------------------------------------------
-
   useEffect(() => {
     queryanimal();
   }, []);
@@ -701,9 +684,6 @@ function AssignmentForm({ handleDidSave }) {
               </form>
             </div>
           </div>
-          <p class="flex flex-wrap justify-center text-center text-gray-500 text-xs">
-            &copy;2022 METABUS Corp. All rights reserved.
-          </p>
         </div>
       </div>
       <DebugStates fieldValues={fieldValues} />

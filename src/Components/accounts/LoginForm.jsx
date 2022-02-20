@@ -122,10 +122,6 @@ function LoginForm() {
           </form>
         </div>
       </div>
-
-      <p class="mt-3 text-center text-gray-500 text-xs">
-        &copy;2022 METABUS Corp. All rights reserved.
-      </p>
       <p className="py-3 pb-3" />
       <DebugStates auth={auth} fieldValues={fieldValues} />
     </div>

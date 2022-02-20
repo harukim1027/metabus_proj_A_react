@@ -4,15 +4,16 @@ import ReviewSummary from './ReviewSummary';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFieldValues from 'hooks/useFieldValues';
+import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
 import './Review.css';
-import { useAuth } from 'contexts/AuthContext';
 
 const INIT_FIELD_VALUES = { category: '' };
 
 function ReviewList() {
   const { auth } = useAuth();
   const [query, setQuery] = useState('');
+
   const navigate = useNavigate();
   const [{ data: reviewList }, refetch] = useApiAxios(
     {
@@ -55,8 +56,8 @@ function ReviewList() {
   return (
     <>
       <div className="header">
-        <div className="flex flex-wrap justify-center px-20 pb-20 relative mx-20">
-          <div className=" py-2 align-middle inline-block ">
+        <div className="flex flex-wrap justify-center  overflow-x-auto  relative mx-20">
+          <div className="ml-3 py-2 align-middle inline-block ">
             <div className="review_header shadow-md mb-10 rounded-2xl pb-5">
               <blockquote class="mt-6 text-6xl font-semibold italic text-center text-slate-900">
                 <span class="mt-10 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
@@ -85,21 +86,15 @@ function ReviewList() {
               <div className="">
                 {/*  */}
                 <div className="flex place-content-between">
-                  <div className="relative mx-10 flex-1">
+                  <div className="relative mx-10 flex-1 mb-5">
                     <input
-                      className="appearance-none border-2 mr-3 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-pink-200 focus:border-pink-200 focus:shadow-outline"
+                      className="appearance-none border-2 mr-3 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md py-3 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-pink-200 focus:border-pink-200 focus:shadow-outline"
                       type="text"
                       placeholder="검색어를 입력해주세요."
                       onChange={handleChange}
                       onKeyPress={handleKeyPress}
                     />
-                    <div
-                      className={
-                        auth.isLoggedIn
-                          ? 'absolute left-0 inset-y-0 mb-9 flex items-center'
-                          : 'absolute left-0 inset-y-0 mb-9 flex items-center  mt-5'
-                      }
-                    >
+                    <div className="absolute left-0 top-3 flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6 ml-3 text-gray-400 hover:text-gray-500"
@@ -117,7 +112,7 @@ function ReviewList() {
                     </div>
                     <button
                       type="submit"
-                      className="relative top-0 text-white py-2 px-6 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                      className="relative top-0 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                       onClick={() => refetch()}
                     >
                       검색
@@ -160,6 +155,17 @@ function ReviewList() {
             </div>
           </div>
         </div>
+        {auth.isLoggedIn && !auth.is_staff && (
+          <div className="flex place-content-between">
+            <div></div>
+            <button
+              onClick={() => navigate('/review/new/')}
+              className="mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+            >
+              글쓰기
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

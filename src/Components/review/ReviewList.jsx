@@ -94,7 +94,7 @@ function ReviewList() {
                       onChange={handleChange}
                       onKeyPress={handleKeyPress}
                     />
-                    <div className="absolute left-0 inset-y-0 mb-8 flex items-center mt-5">
+                    <div className="absolute left-0 top-3 flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6 ml-3 text-gray-400 hover:text-gray-500"

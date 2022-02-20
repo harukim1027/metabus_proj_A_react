@@ -47,7 +47,7 @@ function CheckSignup(props) {
   return (
     <>
       <div className="header flex justify-center ">
-        <div className="flex flex-wrap max-w-m justify-center pt-6 pb-8 mb-4">
+        <div className="flex flex-wrap w-1/2 justify-center pt-6 pb-8 mb-4">
           <div className=" rounded-xl accounts_header shadow-md  flex flex-wrap justify-center w-full max-w-m">
             <main className="" role="main">
               <h1 className="mt-5 font-semibold text-2xl text-center p-2">
@@ -152,9 +152,6 @@ function CheckSignup(props) {
               </div>
             </main>
           </div>
-          <p class="mt-3 text-center text-gray-500 text-xs">
-            &copy;2022 METABUS Corp. All rights reserved.
-          </p>
         </div>
       </div>
     </>
