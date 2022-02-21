@@ -12,7 +12,7 @@ function PageInquiryDetail() {
       <div>
         <TopNav />
 
-        {(!auth.is_Staff && (
+        {(!auth.is_staff && (
           <div className="flex">
             <div className="flex-none">
               <Sidebar />
