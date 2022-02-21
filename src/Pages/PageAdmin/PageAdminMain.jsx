@@ -5,15 +5,13 @@ function PageAdminMain() {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex justify-center my-20">
-        <h2 className="text-4xl font-semibold">관리자 메인페이지</h2>
-      </div>
+      <div className="flex justify-center my-20"></div>
       <div className="flex justify-center">
         <AdminMain />
       </div>
       <div className="flex justify-center">
         <button
-          className="mt-10 p-2 text-xl font-semibold bg-slate-400 hover:bg-slate-700 hover:text-white rounded-xl"
+          className="mt-10 mb-10 p-2 text-xl font-semibold hover:bg-gray-700 hover:text-white rounded-xl"
           onClick={() => navigate('/')}
         >
           메인화면으로
