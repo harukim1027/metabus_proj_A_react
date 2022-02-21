@@ -1,6 +1,6 @@
 import { useApiAxios } from 'api/base';
-import AssignmentForm from 'Components/Assignment/AssignmentForm';
 import { useAuth } from 'contexts/AuthContext';
+import LoadingIndicator from 'LoadingIndicator';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -67,6 +67,12 @@ function UserManagementDetail({ userId }) {
   return (
     <div>
       <h2>UserManagementDetail</h2>
+      {loading && <LoadingIndicator />}
+      {deleteLoading && <LoadingIndicator>삭제 중 ...</LoadingIndicator>}
+      {error &&
+        `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+      {deleteError &&
+        `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
 
       {userData && (
         <>

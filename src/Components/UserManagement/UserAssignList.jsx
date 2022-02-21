@@ -8,7 +8,7 @@ function UserAssignList() {
   const { auth } = useAuth();
   const { userId } = useParams();
 
-  const [{ data: AssignStatusData }, refetch] = useApiAxios(
+  const [{ data: AssignStatusData, loading, error }, refetch] = useApiAxios(
     {
       url: `/adopt_assignment/api/assignment/?query=${userId}`,
       method: 'GET',
@@ -26,6 +26,9 @@ function UserAssignList() {
   return (
     <div>
       <h2>입양신청 현황 페이지</h2>
+      {loading && '로딩 중 ...'}
+      {error && '로딩 중 에러가 발생했습니다.'}
+
       <table className="border-2">
         <thead className="border-2">
           <tr>

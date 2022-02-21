@@ -1,11 +1,11 @@
 import { useApiAxios } from 'api/base';
-import TopNav from 'Components/Main/TopNavi';
 import useFieldValues from 'hooks/useFieldValues';
 import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import Button from 'Button';
 import { useEffect } from 'react';
 import produce from 'immer';
+import LoadingIndicator from 'LoadingIndicator';
 
 const INIT_FIELD_VALUES = {
   animal_reg_num: '',
@@ -92,6 +92,10 @@ function AnimalForm({ animalId, handleDidSave }) {
   return (
     <div>
       <h2>AnimalForm</h2>
+      {saveLoading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+      {saveError &&
+        `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
+
       <form onSubmit={handleSubmit}>
         <div className="my-3">
           <span>동물 종 선택</span>
