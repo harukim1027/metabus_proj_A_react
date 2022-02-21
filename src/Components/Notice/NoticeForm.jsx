@@ -156,6 +156,19 @@ function NoticeForm({ noticeId, handleDidSave }) {
     });
   };
 
+  // 사진 삭제 기능
+  const [{ loading, error }, delImage2] = useApiAxios(
+    {
+      url: `/notice/api/notices/${noticeId}/`,
+      method: 'PATCH',
+      data: { image2: fieldValues.image2 },
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    },
+    { manual: true },
+  );
+
   return (
     <>
       {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
@@ -229,17 +242,29 @@ function NoticeForm({ noticeId, handleDidSave }) {
                             imgpreview1(e, e.target.files[0]);
                           }}
                         />
-                        <div>
-                          <img
-                            src={noticeData?.image1}
-                            alt=""
-                            className="h-44"
-                          />
-                        </div>
+                        {!fieldValues.image1 && (
+                          <div>
+                            <img
+                              src={noticeData?.image1}
+                              alt=""
+                              className="h-44"
+                            />
+                          </div>
+                        )}
 
                         <div>
                           <img src={image1} alt="" className="h-44" />
                         </div>
+
+                        <button
+                          className="rounded-full px-2 py-1 bg-sky-300"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setImage1('');
+                          }}
+                        >
+                          X
+                        </button>
                       </li>
 
                       {/* 개별 이미지 input 박스 2*/}
@@ -252,16 +277,28 @@ function NoticeForm({ noticeId, handleDidSave }) {
                             imgpreview2(e, e.target.files[0]);
                           }}
                         />
-                        <div>
-                          <img
-                            src={noticeData?.image2}
-                            alt=""
-                            className="h-44"
-                          />
-                        </div>
+                        {!fieldValues.image2 && (
+                          <div>
+                            <img
+                              src={noticeData?.image2}
+                              alt=""
+                              className="h-44"
+                            />
+                          </div>
+                        )}
                         <div>
                           <img src={image2} alt="" className="h-44" />
                         </div>
+                        <button
+                          className="rounded-full px-2 py-1 bg-sky-300"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setImage2('');
+                            delImage2().then(() => window.location.reload());
+                          }}
+                        >
+                          X
+                        </button>
                       </li>
 
                       {/* 개별 이미지 input 박스 3*/}
@@ -284,6 +321,21 @@ function NoticeForm({ noticeId, handleDidSave }) {
                         <div>
                           <img src={image3} alt="" className="h-44" />
                         </div>
+                        <button
+                          className="rounded-full px-2 py-1 bg-sky-300"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setImage3('');
+                            setFieldValues((prevFieldValues) => {
+                              return {
+                                ...prevFieldValues,
+                                image3: '',
+                              };
+                            });
+                          }}
+                        >
+                          X
+                        </button>
                       </li>
 
                       {/* 개별 이미지 input 박스 4*/}
@@ -306,6 +358,21 @@ function NoticeForm({ noticeId, handleDidSave }) {
                         <div>
                           <img src={image4} alt="" className="h-44" />
                         </div>
+                        <button
+                          className="rounded-full px-2 py-1 bg-sky-300"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setImage4('');
+                            setFieldValues((prevFieldValues) => {
+                              return {
+                                ...prevFieldValues,
+                                image4: '',
+                              };
+                            });
+                          }}
+                        >
+                          X
+                        </button>
                       </li>
                       {/* 개별 이미지 input 박스 5*/}
                       <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md">
@@ -327,6 +394,21 @@ function NoticeForm({ noticeId, handleDidSave }) {
                         <div>
                           <img src={image5} alt="" className="h-44" />
                         </div>
+                        <button
+                          className="rounded-full px-2 py-1 bg-sky-300"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setImage5('');
+                            setFieldValues((prevFieldValues) => {
+                              return {
+                                ...prevFieldValues,
+                                image5: '',
+                              };
+                            });
+                          }}
+                        >
+                          X
+                        </button>
                       </li>
                     </ul>
                   </div>
@@ -401,6 +483,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
           </div>
         </div>
       </div>
+      <DebugStates fieldValues={fieldValues} />
     </>
   );
 }

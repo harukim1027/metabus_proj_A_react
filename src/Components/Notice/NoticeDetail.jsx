@@ -184,7 +184,10 @@ function NoticeDetail({ noticeId }) {
                 </button>
                 {auth.is_staff && (
                   <button
-                    onClick={() => navigate(`/admin/notice/${noticeId}/edit/`)}
+                    onClick={() => {
+                      navigate(`/admin/notice/${noticeId}/edit/`);
+                      window.location.reload();
+                    }}
                     className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     수정하기
