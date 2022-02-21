@@ -14,8 +14,8 @@ const INIT_FIELD_VALUES = {
   name: '',
   phone_number: '',
   email: '',
-  region: 1,
-  password_quiz: 1,
+  region: '서울',
+  password_quiz: '내 보물 1호는?',
   password_quiz_answer: '',
   password: '',
   password2: '',
@@ -75,7 +75,7 @@ function SignupForm() {
   return (
     <>
       <div className="header">
-        <div className="justify-center shadow-md rounded px-20 pt-6 pb-8 mb-4">
+        <div className="rounded px-20 pt-6 pb-8 mb-4">
           <div className=" flex flex-wrap justify-center w-full max-w-m">
             <hr className="mb-3" />
             {error?.response?.status === 401 && (
@@ -86,9 +86,8 @@ function SignupForm() {
               onSubmit={handleSubmit}
               className="bg-white shadow-md  rounded px-20 pt-6 pb-8 mb-4"
             >
-              <h2 className="text-m mb-3 flex justify-center py-3 text-center pb-3 ">
-                {' '}
-                🐰 Sign Up
+              <h2 className="text-3xl mb-8 flex justify-center py-3 text-center pb-3 ">
+                🐰 회원가입
               </h2>
               <div className="ml-3 -mx-3 mb-6">
                 <div className="ml-3 w-full">
@@ -397,9 +396,6 @@ function SignupForm() {
               </div>
             </form>
           </div>
-          <p class="flex flex-wrap justify-center text-center text-gray-500 text-xs">
-            &copy;2022 METABUS Corp. All rights reserved.
-          </p>
         </div>
       </div>
     </>

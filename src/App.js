@@ -50,7 +50,7 @@ function App() {
   const { auth } = useAuth();
   return (
     <>
-      <div className="app">
+      <div className="app header">
         <Routes>
           <Route path="/" element={<PageMainScreen />} />
           {/* accounts */}
@@ -175,6 +175,9 @@ function App() {
             </>
           )}
         </Routes>
+        <p className="mt-3 text-center text-gray-500 text-xs">
+          &copy;2022 METABUS Corp. All rights reserved.
+        </p>
       </div>
     </>
   );

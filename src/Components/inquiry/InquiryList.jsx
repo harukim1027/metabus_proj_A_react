@@ -37,11 +37,11 @@ function InquiryList() {
 
   return (
     <>
-      <div className="w-full h-screen bg-blue-100 flex">
-        <div className="flex flex-wrap justify-center w-full max-w-m">
+      <div className="header w-full h-screen">
+        <div className="flex flex-wrap justify-center w-full">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="notice_header ">
+              <div className="notice_header">
                 <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
                   <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
                     <span class="relative text-white">" 1:1 문의 "</span>
@@ -110,12 +110,7 @@ function InquiryList() {
                             {(auth.userID === inquiry.user ||
                               auth.is_staff) && (
                               <tr>
-                                <td
-                                  className="px-6 py-4 whitespace-nowrap"
-                                  onClick={() =>
-                                    navigate(`/inquiry/${inquiry.inquiry_no}/`)
-                                  }
-                                >
+                                <td className="px-6 py-4 whitespace-nowrap">
                                   <div className="ml-4">
                                     <div className="text-sm font-medium text-gray-900">
                                       {inquiry.inquiry_no}

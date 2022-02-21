@@ -1,3 +1,4 @@
+import TopNav from 'Components/Main/TopNavi';
 import AnimalForm from 'Components/StreetAnimal/AnimalForm';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -8,6 +9,7 @@ function PageAnimalForm() {
 
   return (
     <div>
+      <TopNav />
       <AnimalForm
         animalId={animalId}
         handleDidSave={(savedPost) =>

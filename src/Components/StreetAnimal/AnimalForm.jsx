@@ -10,8 +10,8 @@ import produce from 'immer';
 const INIT_FIELD_VALUES = {
   animal_reg_num: '',
   category: '강아지',
-  size: 1,
-  sex: 1,
+  size: '소형',
+  sex: '암컷',
   age: '',
   date_of_discovery: '',
   place_of_discovery: '',
@@ -91,9 +91,7 @@ function AnimalForm({ animalId, handleDidSave }) {
 
   return (
     <div>
-      <TopNav />
       <h2>AnimalForm</h2>
-
       <form onSubmit={handleSubmit}>
         <div className="my-3">
           <span>동물 종 선택</span>

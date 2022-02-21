@@ -4,10 +4,11 @@ import { useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function AnimalList() {
   const { auth } = useAuth();
-
+  const navigate = useNavigate()
   const [query, setQuery] = useState('');
 
   const [{ data: AnimalList, loading, error }, refetch] = useApiAxios(
@@ -38,7 +39,6 @@ function AnimalList() {
 
   return (
     <div>
-      <TopNav />
       <h2>AnimalList</h2>
 
       <input
@@ -76,30 +76,26 @@ function AnimalList() {
           <tbody>
             {AnimalList &&
               AnimalList.map((animal) => (
-                <tr>
+                <tr onClick={() => navigate(`/admin/animal/${animal.animal_no}/`)} className="cursor-pointer">
+
                   <td>
-                    <Link to={`/admin/animal/${animal.animal_no}/`}>
-                      {animal.animal_no}
-                    </Link>
+                    {animal.animal_no}
                   </td>
                   <td>
                     {animal.category.name === '강아지' && '강아지'}
                     {animal.category.name === '고양이' && '고양이'}
                   </td>
                   <td>
-                    <Link to={`/admin/animal/${animal.animal_no}/`}>
-                      <img
-                        src={animal.image}
-                        alt={animal.animal_no}
-                        className="w-10 h-10"
-                      />
-                    </Link>
+                    <img
+                      src={animal.image}
+                      alt={animal.animal_no}
+                      className="w-14 h-14"
+                    />
                   </td>
                   <td>
-                    <Link to={`/admin/animal/${animal.animal_no}/`}>
-                      {animal.animal_reg_num}
-                    </Link>
+                    {animal.animal_reg_num}
                   </td>
+
                   <td>{animal.age}</td>
                   <td>{animal.sex === '암컷' ? '암컷' : '수컷'}</td>
                   <td>{animal.place_of_discovery}</td>

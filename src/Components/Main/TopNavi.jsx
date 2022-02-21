@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
 import './TopNavi.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function TopNav() {
   const navigate = useNavigate();
@@ -13,6 +15,23 @@ function TopNav() {
     logout();
   };
 
+  const checkLogin = () => {
+    if (auth.isLoggedIn) {
+      navigate('/assignment/check/');
+    } else {
+      toast.info('로그인이 필요합니다.', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate('/accounts/login/');
+    }
+  };
+
   return (
     <div className="header">
       <div className="flex text-xl place-content-between">
@@ -21,12 +40,20 @@ function TopNav() {
           <div>
             <button className="icon_size3">
               <NavLink to="/accounts/login/">
-                <img src="/loginicon4.png" alt="button"></img>
+                <img
+                  src="/loginicon4.png"
+                  alt="button"
+                  className="hover:scale-110 duration-200"
+                ></img>
               </NavLink>
             </button>
             <button className="icon_size3">
               <NavLink to="/accounts/checksignup/">
-                <img src="/signupicon3.png" alt="button"></img>
+                <img
+                  src="/signupicon3.png"
+                  alt="button"
+                  className="hover:scale-110 duration-200"
+                ></img>
               </NavLink>
             </button>
           </div>
@@ -39,14 +66,18 @@ function TopNav() {
             {auth.is_staff ? (
               <button className="icon_size4">
                 <NavLink to="/admin/main/">
-                  <img src="/manageicon1.png" alt="manageiconbutton"></img>
+                  <img
+                    className="hover:scale-110 duration-200"
+                    src="/manageicon1.png"
+                    alt="manageiconbutton"
+                  ></img>
                 </NavLink>
               </button>
             ) : (
               <button className="icon_size4">
                 <NavLink to="/mypage/userinfo/">
                   <img
-                    className="mt-6"
+                    className="mt-5 hover:scale-110 duration-200"
                     src="/mypageicon1.png"
                     alt="mypagebutton"
                   ></img>
@@ -55,37 +86,53 @@ function TopNav() {
             )}
 
             <button className="icon_size4" onClick={handleLogout}>
-              <img src="/logouticon1.png" alt="button"></img>
+              <img
+                className="hover:scale-110 duration-200"
+                src="/logouticon1.png"
+                alt="button"
+              ></img>
             </button>
           </div>
         )}
       </div>
+      {/* 대문 */}
       <div
         onClick={() => navigate('/')}
-        className="w-full text-white  cursor-pointer"
+        className="w-full text-white  cursor-pointer mt-12"
       >
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
-      <div className="grid grid-cols-3 text-center text-xl font-semibold">
-        <MyLink to="/notice/">공지사항</MyLink>
+
+      {/* 탑메뉴바 */}
+      <div className="py-4 bg-white grid grid-cols-3 text-center text-3xl font-bold">
+        <MyLink to="/notice/">
+          <div className="hover:text-white hover:bg-green-400 ">공지사항</div>
+        </MyLink>
+
         {auth.is_staff ? (
-          <MyLink to="/inquiry/">1:1 문의 현황</MyLink>
+          <MyLink to="/inquiry/">
+            <div className="hover:text-white hover:bg-green-400">
+              1:1 문의 현황
+            </div>
+          </MyLink>
         ) : (
-          <MyLink to="/assignment/check/">크루원 신청</MyLink>
+          <button
+            className="hover:text-white hover:bg-blue-400 cusor-pointer font-bold"
+            onClick={checkLogin}
+          >
+            크루원 신청
+          </button>
         )}
-        <MyLink to="/review/">커뮤니티</MyLink>
+        <MyLink to="/review/">
+          <div className="hover:text-white hover:bg-purple-400 ">커뮤니티</div>
+        </MyLink>
       </div>
     </div>
   );
 }
 
 function MyLink({ to, children }) {
-  return (
-    <NavLink to={to} className={BaseClassName}>
-      {children}
-    </NavLink>
-  );
+  return <NavLink to={to}>{children}</NavLink>;
 }
-const BaseClassName = 'border-2 border-blue-300 py-2';
 
 export default TopNav;

@@ -45,7 +45,9 @@ function InquiryDetail({ inquiryId }) {
           <h4>답변입니다. : {inquiry.admin_answer}</h4>
         </>
       )}
-      <Link to="/inquiry/">목록으로</Link>
+      {(auth.is_staff && <Link to="/inquiry/">목록으로</Link>) || (
+        <Link to="/mypage/myinquiry/">목록으로</Link>
+      )}
       {!auth.is_staff && (
         <Link to={`/inquiry/${inquiryId}/edit/`}>수정하기</Link>
       )}

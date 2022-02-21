@@ -19,16 +19,16 @@
   height: auto;
 }
 
-.assign_table_bg {
-  background-color: #ffffff;
-}
-
 .assign_photo {
   width: 130px;
   height: 200px;
 }
 
 .assign_table {
-  width: 300px;
+  width: 350px;
   height: 200px;
+}
+
+.assign_table_bg {
+  background-color: #ffffff;
 }
