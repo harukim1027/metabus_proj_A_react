@@ -4,6 +4,7 @@ import Button from 'Button';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import '../../App.css';
 import './accounts.css';
 import Captcha from './Captcha';
@@ -57,6 +58,15 @@ function SignupForm() {
       requestToken({ data: fieldValues }).then(() => {
         // 인증 후, 이동할 주소를 지정합니다.
         navigate('/accounts/login/');
+        toast.success('회원가입 완료! 로그인해주세요.', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
     }
   };

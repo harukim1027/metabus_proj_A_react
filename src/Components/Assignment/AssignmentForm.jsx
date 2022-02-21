@@ -160,7 +160,7 @@ function AssignmentForm({ handleDidSave }) {
     <>
       <div className="header ">
         <div className="justify-center ">
-          <div className=" flex flex-wrap justify-center  max-w-m">
+          <div className="flex flex-wrap justify-center max-w-m">
             <br />
             <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
               <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-6xl font-extrabold">
