@@ -176,7 +176,7 @@ function InquiryList() {
               {auth.isLoggedIn && !auth.is_staff && (
                 <button
                   onClick={() => navigate('/inquiry/new/')}
-                  className=" mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                  className="mx-10 text-white py-1 px-3 rounded-md bg-red-400 hover:bg-red-600 hover:shadow-lg font-medium"
                 >
                   글쓰기
                 </button>
