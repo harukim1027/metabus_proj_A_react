@@ -103,7 +103,7 @@ function TopNav() {
       {/* 대문 */}
       <div
         onClick={() => navigate('/')}
-        className="w-full text-white  cursor-pointer mt-12"
+        className="w-full text-white  cursor-pointer mt-4"
       >
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
