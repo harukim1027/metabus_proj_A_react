@@ -88,7 +88,7 @@ function TopNav() {
                 </NavLink>
               </button>
             )}
-
+            {/* 로그아웃 */}
             <button className="icon_size4" onClick={handleLogout}>
               <img
                 className="hover:scale-110 duration-200"
@@ -114,12 +114,14 @@ function TopNav() {
         </MyLink>
 
         {auth.is_staff ? (
+          // 1:1 문의 현황
           <MyLink to="/inquiry/">
-            <div className="hover:text-white hover:bg-green-400">
+            <div className="hover:text-white hover:bg-yellow-300">
               1:1 문의 현황
             </div>
           </MyLink>
         ) : (
+          // 크루원 신청
           <button
             className="hover:text-white hover:bg-blue-400 cusor-pointer font-bold"
             onClick={checkLogin}

@@ -41,25 +41,25 @@ function InquiryList() {
         <div className="flex flex-wrap justify-center w-full">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-10">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-10">
-              <div className="notice_header rounded-xl">
-                <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
-                  <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+              <div className="notice_header rounded-xl shadow-md">
+                <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+                  <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block">
                     <span class="relative text-white">" 1:1 문의 "</span>
                   </span>
                 </blockquote>
 
-                <div className="ml-3 mb-3 mt-3">
+                <div className="ml-5 mb-5 mt-5 mr-3">
                   <div className="text-right">
                     <input
                       type="text"
                       placeholder="검색어를 입력해주세요."
                       onChange={handleChange}
                       onKeyPress={handleKeyPress}
-                      className="relative rounded p-3 text-sm  bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
+                      className="relative rounded p-3 text-m  bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
                     />
                     <button
                       type="submit"
-                      className="relative ml-2 mr-2 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 rounded"
+                      className="relative ml-2 mr-2 flex-shrink-0 bg-yellow-400 shadow-md hover:bg-yellow-700 border-yellow-400 hover:border-yellow-700 text-xl border-4 text-white py-1 rounded"
                       onClick={() => refetch()}
                     >
                       검색
@@ -67,38 +67,38 @@ function InquiryList() {
                   </div>
                 </div>
 
-                <div className="mb-5 shadow-md overflow-hidden border-b border-gray-200">
+                <div className="mb-5  overflow-hidden border-b border-gray-200">
                   {inquiryList && (
                     <table className="mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">
                       <thead className="bg-gray-50">
                         <tr>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-center text-m font-bold text-gray-500 uppercase tracking-wider"
+                            className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                           >
                             문의 번호
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-center text-m font-bold text-gray-500 uppercase tracking-wider"
+                            className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                           >
                             아이디
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-center text-m font-bold text-gray-500 uppercase tracking-wider"
+                            className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                           >
                             제목
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-center text-m font-bold text-gray-500 uppercase tracking-wider"
+                            className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                           >
                             문의 일자
                           </th>
                           <th
                             scope="col"
-                            className="px-6 py-3 text-center text-m font-bold text-gray-500 uppercase tracking-wider"
+                            className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                           >
                             답변 상태
                           </th>

@@ -41,7 +41,7 @@ function NoticeList() {
                 </span>
               </blockquote>
 
-              <div className="ml-3 mb-6 mt-3">
+              <div className="ml-10 mb-3 mt-3">
                 <div className="text-right">
                   {auth.is_staff && (
                     <button
@@ -52,6 +52,7 @@ function NoticeList() {
                       <img src="/pen.png" alt="button"></img>
                     </button>
                   )}
+
                   <input
                     type="text"
                     name="query"
@@ -60,6 +61,7 @@ function NoticeList() {
                     className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
                     placeholder="제목을 검색하세요."
                   />
+
                   <button
                     onClick={() => refetch()}
                     className="relative ml-2 mr-4 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white px-3 py-2 rounded"

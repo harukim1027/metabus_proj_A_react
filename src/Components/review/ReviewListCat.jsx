@@ -112,7 +112,7 @@ function ReviewList() {
                     </div>
                     <button
                       type="submit"
-                      className="relative top-0 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                      className="text-xl text-white py-2 px-4 uppercase rounded-md bg-purple-400 hover:bg-purple-600 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                       onClick={() => refetch()}
                     >
                       검색
