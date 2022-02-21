@@ -153,9 +153,18 @@ function InquiryList() {
                                       <div className="text-sm font-medium text-gray-900">
                                         {/* <h2>{inquiry.status}</h2> */}
                                         {inquiry.admin_answer.length > 0 ? (
-                                          <img src="/check.png" width="17" />
+                                          <div className="bg-blue-300 text-xs">
+                                            <img src="/check.png" width="17" />{' '}
+                                            답변 완료
+                                          </div>
                                         ) : (
-                                          <img src="/nocheck.png" width="17" />
+                                          <div className="bg-gray-300 text-xs">
+                                            <img
+                                              src="/nocheck.png"
+                                              width="15"
+                                            />
+                                            답변 대기
+                                          </div>
                                         )}
                                       </div>
                                     </div>
