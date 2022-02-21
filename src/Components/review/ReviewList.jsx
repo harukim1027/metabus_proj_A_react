@@ -65,13 +65,13 @@ function ReviewList() {
                 </span>
               </blockquote>
               <hr />
-              <div className="ml-10 mb-3 mt-3">
+              <div className="ml-10 mb-3 mt-6">
                 <form onSubmit={() => moveCategory()}>
                   <select
                     name="category"
                     value={fieldValues.category}
                     onChange={handleFieldChange}
-                    className="border-2 border-sky-400 rounded p-2"
+                    className="text-xl border-2 border-sky-400 rounded p-2"
                     defaultValue="카테고리"
                   >
                     <option value="카테고리">카테고리</option>
@@ -88,7 +88,7 @@ function ReviewList() {
                 <div className="flex place-content-between">
                   <div className="relative mx-10 flex-1 mb-5">
                     <input
-                      className="appearance-none border-2 mr-3 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md py-3 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-pink-200 focus:border-pink-200 focus:shadow-outline"
+                      className="text-xl appearance-none border-2 mr-3 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md py-3 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-pink-200 focus:border-pink-200 focus:shadow-outline"
                       type="text"
                       placeholder="검색어를 입력해주세요."
                       onChange={handleChange}
@@ -112,7 +112,7 @@ function ReviewList() {
                     </div>
                     <button
                       type="submit"
-                      className="relative top-0 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                      className="text-2xl text-white py-2 px-4 uppercase rounded-md bg-purple-400 hover:bg-purple-600 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                       onClick={() => refetch()}
                     >
                       검색

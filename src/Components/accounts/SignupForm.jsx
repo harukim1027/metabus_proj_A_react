@@ -85,7 +85,7 @@ function SignupForm() {
   return (
     <>
       <div className="header">
-        <div className="rounded px-20 pt-6 pb-8 mb-4">
+        <div className="rounded-xl px-20 pt-6 pb-8 mb-4">
           <div className=" flex flex-wrap justify-center w-full max-w-m">
             <hr className="mb-3" />
             {error?.response?.status === 401 && (
@@ -94,7 +94,7 @@ function SignupForm() {
 
             <form
               onSubmit={handleSubmit}
-              className="bg-white shadow-md  rounded px-20 pt-6 pb-8 mb-4"
+              className="bg-white shadow-md  rounded-xl px-20 pt-6 pb-8 mb-4"
             >
               <h2 className="text-3xl mb-8 flex justify-center py-3 text-center pb-3 ">
                 🐰 회원가입
