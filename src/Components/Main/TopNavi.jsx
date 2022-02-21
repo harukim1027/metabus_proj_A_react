@@ -20,14 +20,14 @@ function TopNav() {
       navigate('/assignment/check/');
     } else {
       toast.warn('크루원 신청을 위해서는 로그인이 필요합니다! 😲 ', {
-        position: 'top-center',
+        position: 'top-left',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        bodyClassName: 'font-bold text-2xl p-3',
+        bodyClassName: 'font-bold text-2xl p-5',
       });
       navigate('/accounts/login/');
     }
