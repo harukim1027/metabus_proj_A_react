@@ -4,6 +4,7 @@ import Button from 'Button';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import '../../App.css';
 import './accounts.css';
 import Captcha from './Captcha';
@@ -57,6 +58,15 @@ function SignupForm() {
       requestToken({ data: fieldValues }).then(() => {
         // 인증 후, 이동할 주소를 지정합니다.
         navigate('/accounts/login/');
+        toast.success('회원가입 완료! 로그인해주세요.', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
     }
   };
@@ -75,7 +85,7 @@ function SignupForm() {
   return (
     <>
       <div className="header">
-        <div className="rounded px-20 pt-6 pb-8 mb-4">
+        <div className="rounded-xl px-20 pt-6 pb-8 mb-4">
           <div className=" flex flex-wrap justify-center w-full max-w-m">
             <hr className="mb-3" />
             {error?.response?.status === 401 && (
@@ -84,7 +94,7 @@ function SignupForm() {
 
             <form
               onSubmit={handleSubmit}
-              className="bg-white shadow-md  rounded px-20 pt-6 pb-8 mb-4"
+              className="bg-white shadow-md  rounded-xl px-20 pt-6 pb-8 mb-4"
             >
               <h2 className="text-3xl mb-8 flex justify-center py-3 text-center pb-3 ">
                 🐰 회원가입

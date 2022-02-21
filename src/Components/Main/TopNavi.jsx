@@ -19,7 +19,7 @@ function TopNav() {
     if (auth.isLoggedIn) {
       navigate('/assignment/check/');
     } else {
-      toast.info('로그인이 필요합니다.', {
+      toast.info('크루원 신청을 위해서는 로그인이 필요합니다! 😲 ', {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
@@ -27,6 +27,7 @@ function TopNav() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        bodyClassName: 'font-bold text-2xl p-5',
       });
       navigate('/accounts/login/');
     }
@@ -38,6 +39,7 @@ function TopNav() {
         <div></div>
         {!auth.isLoggedIn && (
           <div>
+            {/* 로그인  */}
             <button className="icon_size3">
               <NavLink to="/accounts/login/">
                 <img
@@ -47,6 +49,7 @@ function TopNav() {
                 ></img>
               </NavLink>
             </button>
+            {/* 회원가입 */}
             <button className="icon_size3">
               <NavLink to="/accounts/checksignup/">
                 <img
@@ -64,6 +67,7 @@ function TopNav() {
         {auth.isLoggedIn && (
           <div className="flex">
             {auth.is_staff ? (
+              // 관리자 페이지
               <button className="icon_size4">
                 <NavLink to="/admin/main/">
                   <img
@@ -74,6 +78,7 @@ function TopNav() {
                 </NavLink>
               </button>
             ) : (
+              // 마이페이지
               <button className="icon_size4">
                 <NavLink to="/mypage/userinfo/">
                   <img

@@ -175,7 +175,7 @@ function App() {
             </>
           )}
         </Routes>
-        <p className="mt-3 text-center text-gray-500 text-xs">
+        <p className="header mt-10 text-center text-gray-500 text-xs">
           &copy;2022 METABUS Corp. All rights reserved.
         </p>
       </div>
