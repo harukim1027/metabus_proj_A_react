@@ -9,7 +9,7 @@ function MyAssignInfo() {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
-  const [{ data: MyAssignData }, refetch] = useApiAxios(
+  const [{ data: MyAssignData, loading, error }, refetch] = useApiAxios(
     {
       url: `/adopt_assignment/api/assignment/?query=${auth.userID}`,
       method: 'GET',
@@ -23,6 +23,9 @@ function MyAssignInfo() {
 
   return (
     <>
+      {loading && '로딩 중 ...'}
+      {error && '로딩 중 에러가 발생했습니다.'}
+
       <div className="header">
         <div className="justify-center mx-20 ">
           <div className="align-middle inline-block min-w-full sm:px-6 lg:px-8">
