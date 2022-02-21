@@ -41,7 +41,7 @@ function NoticeDetail({ noticeId }) {
   return (
     <>
       <div className="header">
-        <div className="flex flex-wrap justify-center w-full max-w-m">
+        <div className="px-20 justify-center w-full max-w-m">
           <div className="header justify-center rounded px-20 pt-6 mb-3">
             <div className="bg-white shadow-md overflow-hidden sm:rounded-lg">
               <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
@@ -59,7 +59,7 @@ function NoticeDetail({ noticeId }) {
                     <h4 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-sm text-gray-500">
                       {notice.content}
                     </h4>
-                    <div className="mb-4">
+                    <div className="px-20">
                       <img src={notice.image1} alt="" />
                       <img src={notice.image2} alt="" />
                       <img src={notice.image3} alt="" />
