@@ -5,6 +5,10 @@
   background-color: #dbf1f6;
 }
 
+.top_nav_header {
+  font-family: 'Hahmlet', serif;
+}
+
 .icon_size {
   width: 130px;
   height: 100px;

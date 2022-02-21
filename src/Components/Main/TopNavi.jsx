@@ -19,7 +19,7 @@ function TopNav() {
     if (auth.isLoggedIn) {
       navigate('/assignment/check/');
     } else {
-      toast.info('크루원 신청을 위해서는 로그인이 필요합니다!', {
+      toast.warn('크루원 신청을 위해서는 로그인이 필요합니다! 😲 ', {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
@@ -27,6 +27,7 @@ function TopNav() {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
+        bodyClassName: 'font-bold text-2xl p-3',
       });
       navigate('/accounts/login/');
     }
@@ -123,7 +124,7 @@ function TopNav() {
         ) : (
           // 크루원 신청
           <button
-            className="hover:text-white hover:bg-blue-400 cusor-pointer font-bold"
+            className="hover:text-white hover:bg-blue-400 cusor-pointer font-bold "
             onClick={checkLogin}
           >
             크루원 신청
