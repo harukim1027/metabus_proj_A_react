@@ -8,7 +8,7 @@ import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
 import './Review.css';
 
-const INIT_FIELD_VALUES = { category: '' };
+const INIT_FIELD_VALUES = { category: '강아지' };
 
 function ReviewList() {
   const { auth } = useAuth();
@@ -72,9 +72,8 @@ function ReviewList() {
                     value={fieldValues.category}
                     onChange={handleFieldChange}
                     className="text-xl border-2 border-sky-400 rounded p-2"
-                    defaultValue="카테고리"
+                    defaultValue="강아지"
                   >
-                    <option value="카테고리">카테고리</option>
                     <option value="전체">전체</option>
                     <option value="강아지">강아지</option>
                     <option value="고양이">고양이</option>
