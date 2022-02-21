@@ -39,9 +39,9 @@ function InquiryList() {
     <>
       <div className="header w-full h-screen">
         <div className="flex flex-wrap justify-center w-full">
-          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="notice_header">
+          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-10">
+            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-10">
+              <div className="notice_header rounded-xl">
                 <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
                   <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
                     <span class="relative text-white">" 1:1 문의 "</span>
@@ -110,12 +110,7 @@ function InquiryList() {
                             {(auth.userID === inquiry.user ||
                               auth.is_staff) && (
                               <tr>
-                                <td
-                                  className="px-6 py-4 whitespace-nowrap"
-                                  onClick={() =>
-                                    navigate(`/inquiry/${inquiry.inquiry_no}/`)
-                                  }
-                                >
+                                <td className="px-6 py-4 whitespace-nowrap">
                                   <div className="ml-4">
                                     <div className="text-sm font-medium text-gray-900">
                                       {inquiry.inquiry_no}
@@ -181,7 +176,7 @@ function InquiryList() {
               {auth.isLoggedIn && !auth.is_staff && (
                 <button
                   onClick={() => navigate('/inquiry/new/')}
-                  className=" mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                  className="mx-10 text-white py-1 px-3 rounded-md bg-red-400 hover:bg-red-600 hover:shadow-lg font-medium"
                 >
                   글쓰기
                 </button>
