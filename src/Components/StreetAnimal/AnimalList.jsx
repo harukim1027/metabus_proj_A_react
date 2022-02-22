@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function AnimalList() {
   const { auth } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [query, setQuery] = useState('');
 
   const [{ data: AnimalList, loading, error }, refetch] = useApiAxios(
@@ -58,6 +58,7 @@ function AnimalList() {
 
       {loading && '로딩 중 ...'}
       {error && '로딩 중 에러가 발생했습니다.'}
+
       <div className="my-5">
         <table className="border-2">
           <thead className="border-2">
@@ -76,11 +77,11 @@ function AnimalList() {
           <tbody>
             {AnimalList &&
               AnimalList.map((animal) => (
-                <tr onClick={() => navigate(`/admin/animal/${animal.animal_no}/`)} className="cursor-pointer">
-
-                  <td>
-                    {animal.animal_no}
-                  </td>
+                <tr
+                  onClick={() => navigate(`/admin/animal/${animal.animal_no}/`)}
+                  className="cursor-pointer"
+                >
+                  <td>{animal.animal_no}</td>
                   <td>
                     {animal.category.name === '강아지' && '강아지'}
                     {animal.category.name === '고양이' && '고양이'}
@@ -92,9 +93,7 @@ function AnimalList() {
                       className="w-14 h-14"
                     />
                   </td>
-                  <td>
-                    {animal.animal_reg_num}
-                  </td>
+                  <td>{animal.animal_reg_num}</td>
 
                   <td>{animal.age}</td>
                   <td>{animal.sex === '암컷' ? '암컷' : '수컷'}</td>
