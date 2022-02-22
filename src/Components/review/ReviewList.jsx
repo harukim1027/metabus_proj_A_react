@@ -1,20 +1,27 @@
 import { useApiAxios } from 'api/base';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ReviewSummary from './ReviewSummary';
 import { useNavigate } from 'react-router-dom';
 import useFieldValues from 'hooks/useFieldValues';
 import { useAuth } from 'contexts/AuthContext';
+import ReactPaginate from 'react-paginate';
+import 'css/pagination_review.css';
 
 const INIT_FIELD_VALUES = { category: '전체' };
 
 function ReviewList() {
   const { auth } = useAuth();
   const [query, setQuery] = useState('');
+  // 페이징
+  const [, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 2;
 
   const navigate = useNavigate();
-  const [{ data: reviewList }, refetch] = useApiAxios(
+  const [{ data: reviewList, loading, error }, refetch] = useApiAxios(
     {
-      url: `/adopt_review/api/reviews/${query ? '?query=' + query : ''}`,
+      url: `/adopt_review/api/reviews/`,
       method: 'GET',
     },
     {
@@ -32,6 +39,8 @@ function ReviewList() {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       refetch();
+      fetchReviews(1, query);
+
       console.log('ENTER');
     }
   };
@@ -49,6 +58,32 @@ function ReviewList() {
   useEffect(() => {
     moveCategory();
   }, [fieldValues]);
+
+  const fetchReviews = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+      };
+      const { data } = await refetch({ params });
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
+
+  useEffect(() => {
+    fetchReviews(1);
+  }, []);
+
+  const handlePageClick = (event) => {
+    fetchReviews(event.selected + 1);
+  };
+
+  const getQuery = (e) => {
+    setQuery(e.target.value);
+  };
 
   return (
     <>
@@ -87,7 +122,7 @@ function ReviewList() {
                       className="text-xl appearance-none border-2 mr-3 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md py-3 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-pink-200 focus:border-pink-200 focus:shadow-outline"
                       type="text"
                       placeholder="검색어를 입력해주세요."
-                      onChange={handleChange}
+                      onChange={getQuery}
                       onKeyPress={handleKeyPress}
                     />
                     <div className="absolute left-0 top-3 flex items-center">
@@ -134,31 +169,29 @@ function ReviewList() {
               </div>
 
               <div className="flex flex-wrap justify-center rounded">
-                {reviewList &&
-                  reviewList.map((review) => (
-                    <div
-                      key={review.review_no}
-                      className="transition-transform hover:-translate-y-5 duration-300 my-5 rounded-xl mx-5 mb-3 lg:w-1/4 sm:w-1/3 overflow-hidden shadow-lg inline"
-                    >
-                      <ReviewSummary review={review} />
-                    </div>
-                  ))}
+                {reviewList?.results?.map((review) => (
+                  <div
+                    key={review.review_no}
+                    className="transition-transform hover:-translate-y-5 duration-300 my-5 rounded-xl mx-5 mb-3 lg:w-1/4 sm:w-1/3 overflow-hidden shadow-lg inline"
+                  >
+                    <ReviewSummary review={review} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-        {auth.isLoggedIn && !auth.is_staff && (
-          <div className="flex place-content-between">
-            <div></div>
-            <button
-              onClick={() => navigate('/review/new/')}
-              className="mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-            >
-              글쓰기
-            </button>
-          </div>
-        )}
       </div>
+      <ReactPaginate
+        previousLabel="<"
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        renderOnZeroPageCount={null}
+        className="pagination_review"
+      />
     </>
   );
 }

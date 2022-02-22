@@ -1,23 +1,54 @@
-import { useEffect } from 'react';
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
 function InquiryList() {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
+  // 페이징
+  const [, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 2;
 
   const [{ data: inquiryList }, refetch] = useApiAxios(
     {
-      url: `/inquiry_board/api/inquiry/${query ? '?query=' + query : ''}`,
+      url: `/inquiry_board/api/inquiry/`,
       method: 'GET',
     },
     {
       manual: true,
     },
   );
+
+  const fetchInquiry = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+      };
+      const { data } = await refetch({ params });
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
+
+  useEffect(() => {
+    fetchInquiry(1);
+  }, []);
+
+  const handlePageClick = (event) => {
+    fetchInquiry(event.selected + 1);
+  };
+
+  const getQuery = (e) => {
+    setQuery(e.target.value);
+  };
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -27,6 +58,7 @@ function InquiryList() {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       refetch();
+      fetchInquiry(1, query);
       console.log('ENTER');
     }
   };
@@ -105,7 +137,7 @@ function InquiryList() {
                         </tr>
                       </thead>
                       <tbody className="bg-red divide-y divide-gray-200">
-                        {inquiryList?.map((inquiry) => (
+                        {inquiryList?.results?.map((inquiry) => (
                           <>
                             {(auth.userID === inquiry.user ||
                               auth.is_staff) && (
@@ -198,6 +230,16 @@ function InquiryList() {
             </div>
           </div>
         </div>
+        <ReactPaginate
+          previousLabel="<"
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={itemsPerPage}
+          pageCount={pageCount}
+          renderOnZeroPageCount={null}
+          className="pagination_notice"
+        />
       </div>
     </>
   );
