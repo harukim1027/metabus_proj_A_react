@@ -1,7 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import TopNav from 'Components/Main/TopNavi';
+import { useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
 import './Review.css';
@@ -9,7 +8,7 @@ import './Review.css';
 function ReviewDetail({ reviewId }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
-  const [selectanimalAssign, setSelectanimalAssign] = useState('');
+
   const [{ data: review, loading, error }, refetch] = useApiAxios(
     `/adopt_review/api/reviews/${reviewId}/`,
     { manual: true },
@@ -78,22 +77,12 @@ function ReviewDetail({ reviewId }) {
                       )}
                     </div>
 
+                    {/*  */}
+
                     <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-sm text-gray-500">
                       {review.content}
                     </h2>
                     <hr className="mt-3 mb-3" />
-
-                    {/* {review
-                      ?.filter(
-                        (filt) => filt.user.userID === filt.adoptassignment.,
-                      )
-                      .map((a) => (
-                        <div className="flex flex-wrap justify-center">
-                          <div className="flex-none place-items-center">
-                            <img src={a.animal.image} className="w-72" />
-                          </div>
-                        </div>
-                      ))} */}
 
                     <h4>
                       {review.adoptassignment.animal.end_date}일에{' '}
@@ -109,7 +98,6 @@ function ReviewDetail({ reviewId }) {
                       >
                         목록으로
                       </Link>
-
                       {auth.userID === review.user.userID && (
                         <Link
                           className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
@@ -118,7 +106,8 @@ function ReviewDetail({ reviewId }) {
                           수정하기
                         </Link>
                       )}
-                      {auth.userID === review.user.userID && (
+                      {(auth.userID === review.user.userID ||
+                        auth.is_staff) && (
                         <button
                           className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                           onClick={() => handleDelete()}

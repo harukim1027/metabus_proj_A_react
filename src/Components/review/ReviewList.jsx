@@ -1,12 +1,9 @@
 import { useApiAxios } from 'api/base';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ReviewSummary from './ReviewSummary';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useFieldValues from 'hooks/useFieldValues';
 import { useAuth } from 'contexts/AuthContext';
-import '../../App.css';
-import './Review.css';
 
 const INIT_FIELD_VALUES = { category: '전체' };
 
@@ -56,7 +53,7 @@ function ReviewList() {
   return (
     <>
       <div className="header">
-        <div className="flex flex-wrap justify-center  overflow-x-auto  relative mx-20">
+        <div className="flex flex-wrap justify-center overflow-x-auto relative mx-20">
           <div className="ml-3 py-2 align-middle inline-block ">
             <div className="review_header shadow-md mb-10 rounded-2xl pb-5">
               <blockquote class="mt-6 text-6xl font-semibold italic text-center text-slate-900">
