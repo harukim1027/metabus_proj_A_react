@@ -16,7 +16,7 @@ const INIT_FIELD_VALUES = {
 
 function ReviewForm({ reviewId, handleDidSave }) {
   const [filtAssign, setFiltAssign] = useState([]);
-  const [selectanimal, setSelectanimal] = useState(null);
+  const [selectanimalAssign, setSelectanimalAssign] = useState('');
   const { auth } = useAuth();
 
   const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
@@ -57,6 +57,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
     review || INIT_FIELD_VALUES,
   );
 
+  // fieldValues.animal = selAnimalInfo;
   // fieldValues.adoptassignment = filtAnimal;
 
   useEffect(() => {
@@ -68,10 +69,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
         draft.image4 = '';
         draft.image5 = '';
         draft.user = auth.userID;
-        draft.adoptassignment = selectanimal;
+        draft.adoptassignment = selectanimalAssign;
       }),
     );
-  }, [auth.userID, setFieldValues, selectanimal]);
+  }, [auth.userID, setFieldValues, selectanimalAssign]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -93,8 +94,8 @@ function ReviewForm({ reviewId, handleDidSave }) {
   };
 
   console.log('filtAssign', filtAssign);
-  // console.log('fieldValues', fieldValues);
-  // console.log('setSelectanimal', setSelectanimal);
+  console.log('selectanimalAssign', selectanimalAssign);
+  // console.log('AnimalList', AnimalList);
 
   return (
     <>
@@ -125,7 +126,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   setFiltAssign(
                     assignmentList.filter(
                       (assignment) =>
-                        assignment.status === '신청' &&
+                        assignment.status === '입양 완료' &&
                         assignment.user.userID === auth.userID,
                     ),
                   )
@@ -140,63 +141,132 @@ function ReviewForm({ reviewId, handleDidSave }) {
             <div>
               {filtAssign && (
                 <>
-                  {filtAssign.map((ani) => (
-                    <div
-                      className="inline-block p-2 m-2 rounded border-2 border-pink-200 w-1/5 cursor-pointer hover:scale-110"
-                      onClick={() => setSelectanimal(ani.assignment_no)}
-                    >
-                      <div className="flex h-36 items-center">
-                        <img src={ani.animal.image} alt="" />
+                  <div>
+                    {filtAssign.map((ani) => (
+                      <div
+                        className="inline-block p-2 m-2 rounded border-2 border-pink-200 w-1/5 cursor-pointer hover:scale-110"
+                        onClick={() => setSelectanimalAssign(ani.assignment_no)}
+                      >
+                        <div className="flex h-36 items-center">
+                          <img src={ani.animal.image} alt="" />
+                        </div>
+                        <h2>나이 : {ani.animal.age} 세</h2>
+                        <h3>{ani.animal.animal_reg_num}</h3>
                       </div>
-                      <h2>나이 : {ani.animal.age} 세</h2>
-                      <h3>{ani.animal.animal_reg_num}</h3>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </>
               )}
             </div>
+
+            <div className="flex justify-center my-10">
+              <div className="bg-white rounded-xl shadow-md px-20 py-8 w-11/12">
+                <p className="text-center text-blue-900 font-bold text-xl mb-5">
+                  ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
+                </p>
+                {filtAssign
+                  ?.filter((filt) => filt.assignment_no === selectanimalAssign)
+                  .map((a) => (
+                    <div className="flex flex-wrap justify-center">
+                      <div className="flex-none place-items-center">
+                        <img src={a.animal.image} className="w-72" />
+                      </div>
+                      <div className="flex-none mx-4 justify-items-center">
+                        <div className="flex justify-center">
+                          <ul className="w-72">
+                            <li className="flex justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                품종
+                              </span>
+                              <span>{a.animal.category.name}</span>
+                            </li>
+                            <li className="flex justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                사이즈
+                              </span>
+                              <span>{a.animal.size}</span>
+                            </li>
+                            <li className="flex justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                성별
+                              </span>
+                              <span>{a.animal.sex}</span>
+                            </li>
+                            <li className="flex justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                나이
+                              </span>
+                              <span>{a.animal.age}</span>
+                            </li>
+                            <li className="flex items-center justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                등록번호
+                              </span>
+                              <span>{a.animal.animal_reg_num}</span>
+                            </li>
+                            <li className="flex items-center justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                발견 장소
+                              </span>
+                              <span>{a.animal.place_of_discovery}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
           </div>
 
-          {/* 제목 입력 input 박스 */}
-          <div className="flex flex-wrap justify-center max-w-m">
-            <form onSubmit={handleSubmit}>
-              <div className="ml-3 -mx-3 mb-6">
+          {/* <div className="bg-red-200">
+            {review &&
+              setIsSelected(
+                review.map((a) => <h1>{a.animal.animal_reg_num}</h1>),
+              )}
+          </div> */}
+
+          <form
+            onSubmit={handleSubmit}
+            className="notice_header rounded-xl px-10 pt-6 pb-8"
+          >
+            {/* 제목 입력 input 박스 */}
+            <div className="flex flex-wrap justify-center max-w-m">
+              <form onSubmit={handleSubmit}>
                 <div className="ml-3 mb-3 w-full">
-                  <label className="p-2 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
-                    <input
-                      type="text"
-                      name="title"
-                      value={fieldValues.title}
-                      onChange={handleFieldChange}
-                      placeholder="제목을 입력해주세요."
-                      className="rounded p-3 text-sm   focus:outline-none focus:border focus:border-gray-400  w-full px-3 mb-6"
-                    />
-                    <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
-                      <span className="flex h-3 w-3 relative">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
-                      </span>
-                    </div>
-                  </label>
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
+                    제목
+                  </span>
+                  <input
+                    type="text"
+                    name="title"
+                    value={fieldValues.title}
+                    onChange={handleFieldChange}
+                    placeholder="제목을 입력해주세요."
+                    className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
+                  />
+                  <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
+                    <span className="flex h-3 w-3 relative">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-300 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-300"></span>
+                    </span>
+                  </div>
                   <br />
                 </div>
-              </div>
 
-              {/* 내용 입력 input 박스 */}
-              <div className="ml-3 -mx-3 mb-6">
+                {/* 내용 입력 input 박스 */}
                 <div className="ml-3 mb-3 w-full ">
-                  <span className="p-10 w-1/2 text-gray-800 relative mx-20 focus-within:text-pink-300 bg-white transition-colors rounded-md block border-2 border-gray-200 focus-within:border-pink-300">
-                    {' '}
-                    내용{' '}
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
+                    내용
                   </span>
 
-                  <input
+                  <textarea
                     type="text"
                     name="content"
                     value={fieldValues.content}
                     onChange={handleFieldChange}
                     placeholder="내용을 입력해주세요."
-                    className="rounded p-3 text-sm   focus:outline-none focus:border focus:border-gray-400  w-full px-3 mb-6"
+                    className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                   />
                   <div className="absolute left-0 inset-y-0 flex items-center -ml-2 mt-8">
                     <span className="flex h-3 w-3 relative">
@@ -205,56 +275,57 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     </span>
                   </div>
                 </div>
-              </div>
 
-              <div className="my-3 mx-20">
-                <input
-                  type="file"
-                  accept=".png, .jpg, .jpeg"
-                  name="image1"
-                  onChange={handleFieldChange}
-                />
-                <input
-                  type="file"
-                  accept=".png, .jpg, .jpeg"
-                  name="image2"
-                  onChange={handleFieldChange}
-                />
-                <input
-                  type="file"
-                  accept=".png, .jpg, .jpeg"
-                  name="image3"
-                  onChange={handleFieldChange}
-                />
-                <br />
-                <input
-                  type="file"
-                  accept=".png, .jpg, .jpeg"
-                  name="image4"
-                  onChange={handleFieldChange}
-                />
-                <input
-                  type="file"
-                  accept=".png, .jpg, .jpeg"
-                  name="image5"
-                  onChange={handleFieldChange}
-                />
-              </div>
+                <div className="my-3 mx-20">
+                  <input
+                    type="file"
+                    accept=".png, .jpg, .jpeg"
+                    name="image1"
+                    onChange={handleFieldChange}
+                  />
+                  <input
+                    type="file"
+                    accept=".png, .jpg, .jpeg"
+                    name="image2"
+                    onChange={handleFieldChange}
+                  />
+                  <input
+                    type="file"
+                    accept=".png, .jpg, .jpeg"
+                    name="image3"
+                    onChange={handleFieldChange}
+                  />
+                  <br />
+                  <input
+                    type="file"
+                    accept=".png, .jpg, .jpeg"
+                    name="image4"
+                    onChange={handleFieldChange}
+                  />
+                  <input
+                    type="file"
+                    accept=".png, .jpg, .jpeg"
+                    name="image5"
+                    onChange={handleFieldChange}
+                  />
+                </div>
 
-              <div>
-                <button
-                  type="submit"
-                  className="bg-pink-100 mx-20 p-2 m-2 rounded-lg"
-                  onClick={(e) => handleSubmit(e)}
-                  onSubmit={handleSubmit}
-                >
-                  저장하기
-                </button>
-              </div>
-            </form>
-          </div>
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    onClick={(e) => handleSubmit(e)}
+                    onSubmit={handleSubmit}
+                  >
+                    저장하기
+                  </button>
+                </div>
+              </form>
+            </div>
+          </form>
         </div>
       </div>
+
       <DebugStates
         review={review}
         getLoading={getLoading}

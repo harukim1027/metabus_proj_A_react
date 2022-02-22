@@ -1,7 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import TopNav from 'Components/Main/TopNavi';
 import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
 import './Review.css';
@@ -9,6 +8,7 @@ import './Review.css';
 function ReviewDetail({ reviewId }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
+
   const [{ data: review, loading, error }, refetch] = useApiAxios(
     `/adopt_review/api/reviews/${reviewId}/`,
     { manual: true },
@@ -37,6 +37,8 @@ function ReviewDetail({ reviewId }) {
   useEffect(() => {
     refetch();
   }, []);
+
+  console.log('review', review);
 
   return (
     <>
@@ -75,10 +77,19 @@ function ReviewDetail({ reviewId }) {
                       )}
                     </div>
 
+                    {/*  */}
+
                     <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-sm text-gray-500">
                       {review.content}
                     </h2>
                     <hr className="mt-3 mb-3" />
+
+                    <h4>
+                      {review.adoptassignment.animal.end_date}일에{' '}
+                      {review.user.nickname}님께 입양된{' '}
+                      {review.adoptassignment.animal.animal_reg_num} 의 입양
+                      후기입니다.
+                    </h4>
 
                     <div className="my-5 text-right">
                       <Link
@@ -87,7 +98,6 @@ function ReviewDetail({ reviewId }) {
                       >
                         목록으로
                       </Link>
-
                       {auth.userID === review.user.userID && (
                         <Link
                           className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
@@ -96,7 +106,8 @@ function ReviewDetail({ reviewId }) {
                           수정하기
                         </Link>
                       )}
-                      {auth.userID === review.user.userID && (
+                      {(auth.userID === review.user.userID ||
+                        auth.is_staff) && (
                         <button
                           className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                           onClick={() => handleDelete()}
