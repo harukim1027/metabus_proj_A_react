@@ -118,10 +118,29 @@ function LoginForm() {
                 className="text-xl shadow appearance-none border border-red-500 rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
-            <div className="text-center text-2xl mb-10">
+            <div className="text-center text-2xl mb-5">
               <Button>Log In</Button>
             </div>
+
+            <div className="text-right mb-5 border:bg-pink-200">
+              {/* 아이디 찾기 링크 이동 */}
+              <a
+                href="/accounts/findid/"
+                className="text-gray-500 mr-10 text-xs hover:bg-pink-200 hover:text-white font-semibold"
+              >
+                아이디 찾기
+              </a>
+              {/* 비밀번호 찾기 링크 이동 */}
+              <a
+                href="/accounts/findid/"
+                className="text-gray-500 text-xs hover:bg-pink-200 hover:text-white font-semibold"
+              >
+                비밀번호 찾기
+              </a>
+            </div>
+
             <hr />
+            {/* 회원가입 링크 이동 */}
             <p className="text-right mt-5  mb-2 text-red-300 text-m font-semibold">
               아직 METABUS의 회원이 아니신가요 ?
             </p>
