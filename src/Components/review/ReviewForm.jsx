@@ -16,7 +16,7 @@ const INIT_FIELD_VALUES = {
 
 function ReviewForm({ reviewId, handleDidSave }) {
   const [filtAssign, setFiltAssign] = useState([]);
-  const [selectanimal, setSelectanimal] = useState(null);
+  const [selectanimalAssign, setSelectanimalAssign] = useState('');
   const { auth } = useAuth();
 
   const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
@@ -56,6 +56,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
   const { fieldValues, handleFieldChange, setFieldValues } =
     useFieldValues(INIT_FIELD_VALUES);
 
+  // fieldValues.animal = selAnimalInfo;
   // fieldValues.adoptassignment = filtAnimal;
 
   useEffect(() => {
@@ -67,10 +68,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
         draft.image4 = '';
         draft.image5 = '';
         draft.user = auth.userID;
-        draft.adoptassignment = selectanimal;
+        draft.adoptassignment = selectanimalAssign;
       }),
     );
-  }, [auth.userID, setFieldValues, selectanimal]);
+  }, [auth.userID, setFieldValues, selectanimalAssign]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -92,8 +93,8 @@ function ReviewForm({ reviewId, handleDidSave }) {
   };
 
   console.log('filtAssign', filtAssign);
-  // console.log('fieldValues', fieldValues);
-  // console.log('setSelectanimal', setSelectanimal);
+  console.log('selectanimalAssign', selectanimalAssign);
+  // console.log('AnimalList', AnimalList);
 
   return (
     <>
@@ -124,7 +125,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   setFiltAssign(
                     assignmentList.filter(
                       (assignment) =>
-                        assignment.status === '신청' &&
+                        assignment.status === '입양 완료' &&
                         assignment.user.userID === auth.userID,
                     ),
                   )
@@ -139,22 +140,90 @@ function ReviewForm({ reviewId, handleDidSave }) {
             <div>
               {filtAssign && (
                 <>
-                  {filtAssign.map((ani) => (
-                    <div
-                      className="inline-block p-2 m-2 rounded border-2 border-pink-200 w-1/5 cursor-pointer hover:scale-110"
-                      onClick={() => setSelectanimal(ani.assignment_no)}
-                    >
-                      <div className="flex h-36 items-center">
-                        <img src={ani.animal.image} alt="" />
+                  <div>
+                    {filtAssign.map((ani) => (
+                      <div
+                        className="inline-block p-2 m-2 rounded border-2 border-pink-200 w-1/5 cursor-pointer hover:scale-110"
+                        onClick={() => setSelectanimalAssign(ani.assignment_no)}
+                      >
+                        <div className="flex h-36 items-center">
+                          <img src={ani.animal.image} alt="" />
+                        </div>
+                        <h2>나이 : {ani.animal.age} 세</h2>
+                        <h3>{ani.animal.animal_reg_num}</h3>
                       </div>
-                      <h2>나이 : {ani.animal.age} 세</h2>
-                      <h3>{ani.animal.animal_reg_num}</h3>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </>
               )}
             </div>
+
+            <div className="flex justify-center my-10">
+              <div className="bg-white rounded-xl shadow-md px-20 py-8 w-11/12">
+                <p className="text-center text-blue-900 font-bold text-xl mb-5">
+                  ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
+                </p>
+                {filtAssign
+                  ?.filter((filt) => filt.assignment_no === selectanimalAssign)
+                  .map((a) => (
+                    <div className="flex flex-wrap justify-center">
+                      <div className="flex-none place-items-center">
+                        <img src={a.animal.image} className="w-72" />
+                      </div>
+                      <div className="flex-none mx-4 justify-items-center">
+                        <div className="flex justify-center">
+                          <ul className="w-72">
+                            <li className="flex justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                품종
+                              </span>
+                              <span>{a.animal.category.name}</span>
+                            </li>
+                            <li className="flex justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                사이즈
+                              </span>
+                              <span>{a.animal.size}</span>
+                            </li>
+                            <li className="flex justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                성별
+                              </span>
+                              <span>{a.animal.sex}</span>
+                            </li>
+                            <li className="flex justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                나이
+                              </span>
+                              <span>{a.animal.age}</span>
+                            </li>
+                            <li className="flex items-center justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                등록번호
+                              </span>
+                              <span>{a.animal.animal_reg_num}</span>
+                            </li>
+                            <li className="flex items-center justify-between mt-2">
+                              <span className="bg-blue-100 font-bold">
+                                발견 장소
+                              </span>
+                              <span>{a.animal.place_of_discovery}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
           </div>
+
+          {/* <div className="bg-red-200">
+            {review &&
+              setIsSelected(
+                review.map((a) => <h1>{a.animal.animal_reg_num}</h1>),
+              )}
+          </div> */}
 
           {/* 제목 입력 input 박스 */}
           <div className="flex flex-wrap justify-center max-w-m">
