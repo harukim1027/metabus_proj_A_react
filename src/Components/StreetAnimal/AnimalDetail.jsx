@@ -3,13 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
+import LoadingIndicator from 'LoadingIndicator';
 
 function AnimalDetail({ animalId }) {
   const { auth } = useAuth();
 
   const navigate = useNavigate();
 
-  const [{ data: animal }, refetch] = useApiAxios(
+  const [{ data: animal, loading, error }, refetch] = useApiAxios(
     {
       url: `/streetanimal/api/animal/${animalId}/`,
       method: 'GET',
@@ -48,6 +49,12 @@ function AnimalDetail({ animalId }) {
   return (
     <div>
       <h2>AnimalDetail</h2>
+      {loading && <LoadingIndicator />}
+      {deleteLoading && <LoadingIndicator>삭제 중 ...</LoadingIndicator>}
+      {error &&
+        `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+      {deleteError &&
+        `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
       {animal && (
         <>
           <div className="my-3">

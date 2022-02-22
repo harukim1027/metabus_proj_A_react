@@ -37,6 +37,8 @@ function UserManagementIndex() {
   return (
     <div>
       <h2>UserManagementIndex</h2>
+      {loading && '로딩 중 ...'}
+      {error && '로딩 중 에러가 발생했습니다.'}
 
       <input
         type="text"

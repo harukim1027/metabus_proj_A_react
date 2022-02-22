@@ -7,7 +7,7 @@ function UserInquiryList() {
   const { auth } = useAuth();
   const { userId } = useParams();
 
-  const [{ data: UserInquiryData }, refetch] = useApiAxios(
+  const [{ data: UserInquiryData, loading, error }, refetch] = useApiAxios(
     {
       url: `/inquiry_board/api/inquiry/?query=${userId}`,
       method: 'GET',
@@ -25,6 +25,9 @@ function UserInquiryList() {
   return (
     <div>
       <h2>문의 글 현황 페이지</h2>
+      {loading && '로딩 중 ...'}
+      {error && '로딩 중 에러가 발생했습니다.'}
+
       <table className="border-2">
         <thead className="border-2">
           <tr>

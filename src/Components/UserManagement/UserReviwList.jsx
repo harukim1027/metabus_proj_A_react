@@ -7,7 +7,7 @@ function UserReviewList() {
   const { auth } = useAuth();
   const { userId } = useParams();
 
-  const [{ data: UserReviewData }, refetch] = useApiAxios(
+  const [{ data: UserReviewData, loading, error }, refetch] = useApiAxios(
     {
       url: `/adopt_review/api/reviews/?query=${userId}`,
       method: 'GET',
@@ -25,6 +25,9 @@ function UserReviewList() {
   return (
     <div>
       <h2>입양 후기글 현황 페이지</h2>
+      {loading && '로딩 중 ...'}
+      {error && '로딩 중 에러가 발생했습니다.'}
+
       <table className="border-2">
         <thead className="border-2">
           <tr>

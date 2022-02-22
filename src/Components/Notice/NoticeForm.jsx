@@ -156,19 +156,6 @@ function NoticeForm({ noticeId, handleDidSave }) {
     });
   };
 
-  // 사진 삭제 기능
-  const [{ loading, error }, delImage2] = useApiAxios(
-    {
-      url: `/notice/api/notices/${noticeId}/`,
-      method: 'PATCH',
-      data: { image2: fieldValues.image2 },
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
-      },
-    },
-    { manual: true },
-  );
-
   return (
     <>
       {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
@@ -261,11 +248,22 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           onClick={(e) => {
                             e.preventDefault();
                             setImage1('');
+                            setFieldValues((prevFieldValues) => {
+                              return {
+                                ...prevFieldValues,
+                                image1: '',
+                              };
+                            });
                           }}
                         >
                           X
                         </button>
                       </li>
+                      {saveErrorMessages.image1?.map((message, index) => (
+                        <p key={index} className="text-xs text-red-400">
+                          {message}
+                        </p>
+                      ))}
 
                       {/* 개별 이미지 input 박스 2*/}
                       <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md">
@@ -294,12 +292,22 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           onClick={(e) => {
                             e.preventDefault();
                             setImage2('');
-                            delImage2().then(() => window.location.reload());
+                            setFieldValues((prevFieldValues) => {
+                              return {
+                                ...prevFieldValues,
+                                image2: '',
+                              };
+                            });
                           }}
                         >
                           X
                         </button>
                       </li>
+                      {saveErrorMessages.image2?.map((message, index) => (
+                        <p key={index} className="text-xs text-red-400">
+                          {message}
+                        </p>
+                      ))}
 
                       {/* 개별 이미지 input 박스 3*/}
                       <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md">
@@ -337,6 +345,11 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           X
                         </button>
                       </li>
+                      {saveErrorMessages.image3?.map((message, index) => (
+                        <p key={index} className="text-xs text-red-400">
+                          {message}
+                        </p>
+                      ))}
 
                       {/* 개별 이미지 input 박스 4*/}
                       <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md">
@@ -374,6 +387,12 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           X
                         </button>
                       </li>
+                      {saveErrorMessages.image4?.map((message, index) => (
+                        <p key={index} className="text-xs text-red-400">
+                          {message}
+                        </p>
+                      ))}
+
                       {/* 개별 이미지 input 박스 5*/}
                       <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md">
                         <input
@@ -410,6 +429,11 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           X
                         </button>
                       </li>
+                      {saveErrorMessages.image5?.map((message, index) => (
+                        <p key={index} className="text-xs text-red-400">
+                          {message}
+                        </p>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -477,6 +501,13 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   <button className=" bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
                     저장하기
                   </button>
+                  <div>
+                    {saveLoading && (
+                      <LoadingIndicator>저장 중...</LoadingIndicator>
+                    )}
+                    {saveError &&
+                      `저장 중 에러가 발생했습니다. 내용을 확인해주세요.`}
+                  </div>
                 </div>
               </form>
             </div>
