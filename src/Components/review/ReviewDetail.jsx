@@ -1,6 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import TopNav from 'Components/Main/TopNavi';
 import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
@@ -9,6 +9,7 @@ import './Review.css';
 function ReviewDetail({ reviewId }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
+  const [selectanimalAssign, setSelectanimalAssign] = useState('');
   const [{ data: review, loading, error }, refetch] = useApiAxios(
     `/adopt_review/api/reviews/${reviewId}/`,
     { manual: true },
@@ -37,6 +38,8 @@ function ReviewDetail({ reviewId }) {
   useEffect(() => {
     refetch();
   }, []);
+
+  console.log('review', review);
 
   return (
     <>
@@ -79,6 +82,25 @@ function ReviewDetail({ reviewId }) {
                       {review.content}
                     </h2>
                     <hr className="mt-3 mb-3" />
+
+                    {/* {review
+                      ?.filter(
+                        (filt) => filt.user.userID === filt.adoptassignment.,
+                      )
+                      .map((a) => (
+                        <div className="flex flex-wrap justify-center">
+                          <div className="flex-none place-items-center">
+                            <img src={a.animal.image} className="w-72" />
+                          </div>
+                        </div>
+                      ))} */}
+
+                    <h4>
+                      {review.adoptassignment.animal.end_date}일에{' '}
+                      {review.user.nickname}님께 입양된{' '}
+                      {review.adoptassignment.animal.animal_reg_num} 의 입양
+                      후기입니다.
+                    </h4>
 
                     <div className="my-5 text-right">
                       <Link
