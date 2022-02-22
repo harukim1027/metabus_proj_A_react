@@ -53,8 +53,9 @@ function ReviewForm({ reviewId, handleDidSave }) {
     { manual: true },
   );
 
-  const { fieldValues, handleFieldChange, setFieldValues } =
-    useFieldValues(INIT_FIELD_VALUES);
+  const { fieldValues, handleFieldChange, setFieldValues } = useFieldValues(
+    review || INIT_FIELD_VALUES,
+  );
 
   // fieldValues.animal = selAnimalInfo;
   // fieldValues.adoptassignment = filtAnimal;
