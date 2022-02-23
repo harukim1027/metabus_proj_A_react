@@ -1,7 +1,6 @@
 // import { useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useEffect, useState } from 'react';
-import { useAuth } from 'contexts/AuthContext';
 import useFieldValues from 'hooks/useFieldValues';
 import '../../App.css';
 import './accounts.css';
@@ -16,7 +15,7 @@ function FindId() {
 
   const [{ data: userList, loading, error }, refetch] = useApiAxios(
     {
-      url: `/accounts/api/users/?query=${findUser.name}`,
+      url: `/accounts/api/usersnotpaging/?query=${findUser.name}`,
       method: 'GET',
       data: { name: findUser.name, email: findUser.email },
     },
