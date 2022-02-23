@@ -147,18 +147,18 @@ function MyPageReview() {
                 </table>
               </div>
             </div>
+            <ReactPaginate
+              previousLabel="<"
+              breakLabel="..."
+              nextLabel=">"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={itemsPerPage}
+              pageCount={pageCount}
+              renderOnZeroPageCount={null}
+              className="pagination_notice"
+            />
           </div>
         </div>
-        <ReactPaginate
-          previousLabel="<"
-          breakLabel="..."
-          nextLabel=">"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={itemsPerPage}
-          pageCount={pageCount}
-          renderOnZeroPageCount={null}
-          className="pagination_notice"
-        />
       </div>
     </>
   );
