@@ -102,9 +102,9 @@ function InquiryList() {
   return (
     <>
       <div className="header">
-        <div className="flex flex-wrap justify-center w-full">
-          <div className="review_header my-2 overflow-x-auto shadow-md mb-10 rounded-2xl pb-5">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-10">
+        <div className="justify-center mx-20">
+          <div className="align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="mypage_header rounded-xl shadow-md">
               <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
                 <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block">
                   <span class="relative text-white">" 1:1 문의 "</span>

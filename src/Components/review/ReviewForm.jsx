@@ -387,6 +387,11 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       placeholder="제목을 입력해주세요."
                       className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
                     />
+                    {saveErrorMessages.title?.map((message, index) => (
+                      <p key={index} className="text-md text-red-400">
+                        {message}
+                      </p>
+                    ))}
                     <br />
 
                     {/* 내용 입력 input 박스 */}
@@ -404,6 +409,11 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       placeholder="내용을 입력해주세요."
                       className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                     />
+                    {saveErrorMessages.content?.map((message, index) => (
+                      <p key={index} className="text-md text-red-400">
+                        {message}
+                      </p>
+                    ))}
                   </div>
 
                   {/* 이미지1 첨부 인풋박스 */}
@@ -665,6 +675,14 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     >
                       저장하기
                     </button>
+
+                    <div className="p-5">
+                      {saveLoading && (
+                        <LoadingIndicator>저장 중...</LoadingIndicator>
+                      )}
+                      {saveError &&
+                        `저장 중 에러가 발생했습니다. 메세지를 확인해주세요.`}
+                    </div>
                   </div>
                 </form>
               </div>
@@ -672,9 +690,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
           </div>
         </div>
       </div>
-      {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
-      {saveError &&
-        `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
 
       <DebugStates
         review={review}

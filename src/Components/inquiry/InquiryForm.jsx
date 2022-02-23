@@ -3,6 +3,7 @@ import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect } from 'react';
+import LoadingIndicator from 'LoadingIndicator';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -22,7 +23,14 @@ function InquiryForm({ inquiryId, handleDidSave }) {
     },
   );
 
-  const [{ loading: saveLoading, error: saveError }, saveRequest] = useApiAxios(
+  const [
+    {
+      loading: saveLoading,
+      error: saveError,
+      errorMessages: saveErrorMessages,
+    },
+    saveRequest,
+  ] = useApiAxios(
     {
       url: !inquiryId
         ? '/inquiry_board/api/inquiry/'
@@ -82,6 +90,11 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                   type="text"
                   className="border-2 border-gray-300"
                 />
+                {saveErrorMessages.title?.map((message, index) => (
+                  <p key={index} className="text-md text-red-400">
+                    {message}
+                  </p>
+                ))}
               </div>
 
               <div className="my-3">
@@ -92,6 +105,11 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                   onChange={handleFieldChange}
                   className="border-2 border-gray-300"
                 />
+                {saveErrorMessages.content?.map((message, index) => (
+                  <p key={index} className="text-md text-red-400">
+                    {message}
+                  </p>
+                ))}
               </div>
             </>
           )}
@@ -106,6 +124,11 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                 onChange={handleFieldChange}
                 className="border-2 border-gray-300"
               />
+              {saveErrorMessages.admin_answer?.map((message, index) => (
+                <p key={index} className="text-md text-red-400">
+                  {message}
+                </p>
+              ))}
             </div>
           )}
 
@@ -117,6 +140,11 @@ function InquiryForm({ inquiryId, handleDidSave }) {
             >
               저장하기
             </button>
+            <div className="p-5">
+              {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
+              {saveError &&
+                `저장 중 에러가 발생했습니다. 메세지를 확인해주세요.`}
+            </div>
           </div>
         </form>
       </div>
