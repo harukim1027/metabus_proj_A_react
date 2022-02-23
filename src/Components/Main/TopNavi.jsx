@@ -63,43 +63,48 @@ function TopNav() {
         )}
       </div>
       <div className="flex text-xl place-content-between">
-        <div></div>
         {auth.isLoggedIn && (
-          <div className="flex">
-            {auth.is_staff ? (
-              // 관리자 페이지
-              <button className="icon_size4">
-                <NavLink to="/admin/main/">
-                  <img
-                    className="hover:scale-110 duration-200"
-                    src="/manageicon1.png"
-                    alt="manageiconbutton"
-                  ></img>
-                </NavLink>
-              </button>
-            ) : (
-              // 마이페이지
-              <button className="icon_size4">
-                <NavLink to="/mypage/userinfo/">
-                  <img
-                    className="mt-5 hover:scale-110 duration-200"
-                    src="/mypageicon1.png"
-                    alt="mypagebutton"
-                  ></img>
-                </NavLink>
-              </button>
-            )}
+          <>
+            <div>
+              <span>{auth.nickname} 님 환영합니다.</span>
+            </div>
+            <div className="flex">
+              {auth.is_staff ? (
+                // 관리자 페이지
+                <button className="icon_size4">
+                  <NavLink to="/admin/main/">
+                    <img
+                      className="hover:scale-110 duration-200"
+                      src="/manageicon1.png"
+                      alt="manageiconbutton"
+                    ></img>
+                  </NavLink>
+                </button>
+              ) : (
+                // 마이페이지
+                <button className="icon_size4">
+                  <NavLink to="/mypage/userinfo/">
+                    <img
+                      className="mt-5 hover:scale-110 duration-200"
+                      src="/mypageicon1.png"
+                      alt="mypagebutton"
+                    ></img>
+                  </NavLink>
+                </button>
+              )}
 
-            <button className="icon_size4" onClick={handleLogout}>
-              <img
-                className="hover:scale-110 duration-200"
-                src="/logouticon1.png"
-                alt="button"
-              ></img>
-            </button>
-          </div>
+              <button className="icon_size4" onClick={handleLogout}>
+                <img
+                  className="hover:scale-110 duration-200"
+                  src="/logouticon1.png"
+                  alt="button"
+                ></img>
+              </button>
+            </div>
+          </>
         )}
       </div>
+
       {/* 대문 */}
       <div
         onClick={() => navigate('/')}

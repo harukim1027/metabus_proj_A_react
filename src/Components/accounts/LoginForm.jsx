@@ -132,7 +132,7 @@ function LoginForm() {
               </a>
               {/* 비밀번호 찾기 링크 이동 */}
               <a
-                href="/accounts/findid/"
+                href="/accounts/changepassword/"
                 className="text-gray-500 text-xs hover:bg-pink-200 hover:text-white font-semibold"
               >
                 비밀번호 찾기
