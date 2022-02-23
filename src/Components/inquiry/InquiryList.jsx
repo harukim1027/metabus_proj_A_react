@@ -171,7 +171,12 @@ function InquiryList() {
                       {inquiryList?.results?.map((inquiry) => (
                         <>
                           {(auth.userID === inquiry.user || auth.is_staff) && (
-                            <tr>
+                            <tr
+                              onClick={() =>
+                                navigate(`/inquiry/${inquiry.inquiry_no}/`)
+                              }
+                              className="cursor-pointer"
+                            >
                               <td className="px-6 py-4 whitespace-nowrap">
                                 <div className="ml-4">
                                   <div className="text-sm font-medium text-gray-900">
@@ -187,12 +192,7 @@ function InquiryList() {
                                 </div>
                               </td>
 
-                              <td
-                                className="px-6 py-4 whitespace-nowrap"
-                                onClick={() =>
-                                  navigate(`/inquiry/${inquiry.inquiry_no}/`)
-                                }
-                              >
+                              <td className="px-6 py-4 whitespace-nowrap">
                                 <div className="ml-4">
                                   <div className="text-sm font-medium text-gray-900">
                                     <span className="px-2 inline-flex text-s leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">

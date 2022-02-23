@@ -157,7 +157,7 @@ function MyPageReview() {
                                 </div>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap ">
-                                <span className="rounded-full bg-green-100 text-green-800">
+                                <span className="rounded-full bg-green-100 text-green-800 font-semibold">
                                   <Link to={`/review/${review.review_no}/`}>
                                     {review.title}
                                   </Link>
