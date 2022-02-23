@@ -63,7 +63,13 @@ function AssignDetail({ assignId }) {
                 <span class="relative text-white">" 신청자 정보 "</span>
               </span>
             </blockquote>
-            <h2>신청 번호 : {assignData?.assignment_no}</h2>
+            <ul className="w-60">
+              <li className="flex place-content-between">
+                <h2>신청 번호</h2>
+                <h2>{assignData?.assignment_no}</h2>
+              </li>
+            </ul>
+
             <h2>신청일 : {assignData?.created_at}</h2>
             <h2>신청시 기입한 이름 : {assignData?.adopter_name}</h2>
             <h2>회원명 : {assignData?.user.name}</h2>
@@ -74,12 +80,39 @@ function AssignDetail({ assignId }) {
             <h2>
               애완동물 유무 : {assignData?.have_pet_or_not ? '있음' : '없음'}
             </h2>
-            <h2>거주지 사진1</h2>
-            <img src={assignData?.picture_of_residence1} alt="" />
-            <h2>거주지 사진2</h2>
-            <img src={assignData?.picture_of_residence2} alt="" />
-            <h2>거주지 사진3</h2>
-            <img src={assignData?.picture_of_residence3} alt="" />
+            <div className="flex justify-center content-center">
+              <div className="flex flex-col border-2 border-gray-300 rounded-lg shadow-lg w-1/4 mx-2">
+                <h2>거주지 사진1</h2>
+                <hr className="border-2 border-gray-300" />
+                <img
+                  src={assignData?.picture_of_residence1}
+                  alt=""
+                  onClick={() => window.open(assignData?.picture_of_residence1)}
+                  className="w-full cursor-pointer my-auto"
+                />
+              </div>
+
+              <div className="border-2 border-gray-300 rounded-lg shadow-lg inline-block w-1/4 mx-2">
+                <h2>거주지 사진2</h2>
+                <hr className="border-2 border-gray-300" />
+                <img
+                  src={assignData?.picture_of_residence2}
+                  alt=""
+                  onClick={() => window.open(assignData?.picture_of_residence2)}
+                  className="w-full cursor-pointer"
+                />
+              </div>
+              <div className="border-2 border-gray-300 rounded-lg shadow-lg inline-block w-1/4 mx-2">
+                <h2>거주지 사진3</h2>
+                <hr className="border-2 border-gray-300" />
+                <img
+                  src={assignData?.picture_of_residence3}
+                  alt=""
+                  onClick={() => window.open(assignData?.picture_of_residence3)}
+                  className="w-full cursor-pointer"
+                />
+              </div>
+            </div>
             <h2>만남 희망 장소 : {assignData?.place_to_meet}</h2>
             <h2>만남 희망일 : {assignData?.date_to_meet}</h2>
             <div>
@@ -101,7 +134,25 @@ function AssignDetail({ assignId }) {
                 />
               )}
             </div>
-            <h2>--------------------♥--------------------</h2>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center">
+        <div className="bg-white rounded-xl w-2/3">
+          <div className="flex justify-center py-6 mb-3">
+            <h2>💕입양 신청 중💕</h2>
+          </div>
+        </div>
+      </div>
+      <div className="header flex justify-center">
+        <div className="w-2/3 notice_header rounded-xl mx-20 my-10 px-20">
+          <div className=" pt-6 mb-3">
+            <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+              <span class="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+                <span class="relative text-white">" 동물 정보 "</span>
+              </span>
+            </blockquote>
             <h2>동물 정보</h2>
             <h2>등록번호 : {assignData?.animal.animal_reg_num}</h2>
             <img src={assignData?.animal.image} alt="" />
