@@ -1,22 +1,46 @@
 import { useApiAxios } from 'api/base';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 
 function AssignList() {
   const navigate = useNavigate();
   const [query, setQuery] = useState(null);
+  // 페이징
+  const [, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 2;
 
-  const [{ data: assignData }, refetch] = useApiAxios(
+  const [{ data: assignList }, refetch] = useApiAxios(
     {
-      url: `/adopt_assignment/api/assignment/${query ? '?query=' + query : ''}`,
+      url: `/adopt_assignment/api/assignment/`,
       method: 'GET',
     },
     { manual: true },
   );
 
+  const fetchAssign = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+      };
+      const { data } = await refetch({ params });
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
+
   useEffect(() => {
-    refetch();
+    fetchAssign(1);
   }, []);
+
+  const handlePageClick = (event) => {
+    fetchAssign(event.selected + 1);
+  };
 
   const getQuery = (e) => {
     setQuery(e.target.value);
@@ -53,7 +77,7 @@ function AssignList() {
           </tr>
         </thead>
         <tbody>
-          {assignData?.map((assign) => (
+          {assignList?.results.map((assign) => (
             <tr>
               <td
                 className="border-2 border-gray-400 text-center cursor-pointer p-2"
@@ -99,6 +123,16 @@ function AssignList() {
           ))}
         </tbody>
       </table>
+      <ReactPaginate
+        previousLabel="<"
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        renderOnZeroPageCount={null}
+        className="pagination_notice"
+      />
     </div>
   );
 }
