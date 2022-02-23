@@ -15,9 +15,9 @@ const INIT_FIELD_VALUES = {
 };
 
 function ReviewForm({ reviewId, handleDidSave }) {
-  const [filtAssign, setFiltAssign] = useState([]);
   const { auth } = useAuth();
   const [image1, setImage1] = useState('');
+  const [filtAssign, setFiltAssign] = useState([]);
 
   const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
     {
@@ -134,7 +134,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
           {/* 페이지 이름 */}
 
           {/* review_header : 배경 흰색 */}
-          <div className="review_header rounded-2xl">
+          <div className="review_header rounded-2xl w-11/12">
             <blockquote class="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
               <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block text-3xl font-extrabold">
                 <span class="relative text-white">" 누구를 입양했나요 ? "</span>
@@ -239,6 +239,42 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       </div>
                     </div>
                   ))}
+
+                {/* 수정 진입시 바로 뜨는 부분 */}
+                {/* <div className="flex justify-center">
+                  <ul className="w-72">
+                    <li className="flex justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">품종</span>
+                      <span>
+                        {review?.adoptassignment.animal.category.name}
+                      </span>
+                    </li>
+                    <li className="flex justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">사이즈</span>
+                      <span>{review?.adoptassignment.animal.size}</span>
+                    </li>
+                    <li className="flex justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">성별</span>
+                      <span>{review?.adoptassignment.animal.sex}</span>
+                    </li>
+                    <li className="flex justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">나이</span>
+                      <span>{review?.adoptassignment.animal.age}</span>
+                    </li>
+                    <li className="flex items-center justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">등록번호</span>
+                      <span>
+                        {review?.adoptassignment.animal.animal_reg_num}
+                      </span>
+                    </li>
+                    <li className="flex items-center justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">발견 장소</span>
+                      <span>
+                        {review?.adoptassignment.animal.place_of_discovery}
+                      </span>
+                    </li>
+                  </ul>
+                </div> */}
               </div>
             </div>
           </div>
