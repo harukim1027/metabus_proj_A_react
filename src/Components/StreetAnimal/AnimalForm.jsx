@@ -3,7 +3,7 @@ import useFieldValues from 'hooks/useFieldValues';
 import { useAuth } from 'contexts/AuthContext';
 import DebugStates from 'DebugStates';
 import Button from 'Button';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import produce from 'immer';
 import LoadingIndicator from 'LoadingIndicator';
 
@@ -22,9 +22,24 @@ const INIT_FIELD_VALUES = {
   image: '',
 };
 
+// 사진 등록 시
 function AnimalForm({ animalId, handleDidSave }) {
   const { auth } = useAuth();
+  const [image, setImage] = useState('');
 
+  const imgpreview = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImage(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
+  };
+
+  // 조회
   const [{ data: Animal, loading: getLoading, error: getError }] = useApiAxios(
     {
       url: `/streetanimal/api/animal/${animalId}/`,
@@ -36,6 +51,7 @@ function AnimalForm({ animalId, handleDidSave }) {
     { manual: !animalId },
   );
 
+  // 저장
   const [
     {
       loading: saveLoading,
@@ -68,6 +84,7 @@ function AnimalForm({ animalId, handleDidSave }) {
     );
   }, [Animal]);
 
+  // 저장
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -92,9 +109,6 @@ function AnimalForm({ animalId, handleDidSave }) {
   return (
     <div>
       <h2>AnimalForm</h2>
-      {saveLoading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
-      {saveError &&
-        `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
 
       <form onSubmit={handleSubmit}>
         <div className="my-3">
@@ -231,18 +245,58 @@ function AnimalForm({ animalId, handleDidSave }) {
           </select>
         </div>
 
+        {/* 이미지 input 박스 */}
         <div className="my-3">
           <input
             name="image"
             accept=".png, .jpg, .jpeg"
-            onChange={handleFieldChange}
+            onChange={(e) => {
+              imgpreview(e, e.target.files[0]);
+            }}
             type="file"
             className="border-2 border-gray-300"
           />
+
+          {!fieldValues.image && (
+            <div>
+              <img src={Animal?.results.image} alt="" className="h-44" />
+            </div>
+          )}
+
+          <div>
+            <img src={image} alt="" className="h-44" />
+          </div>
+
+          <button
+            className="rounded-full px-2 py-1 bg-sky-300"
+            onClick={(e) => {
+              e.preventDefault();
+              setImage('');
+              setFieldValues((prevFieldValues) => {
+                return {
+                  ...prevFieldValues,
+                  image: '',
+                };
+              });
+            }}
+          >
+            X
+          </button>
         </div>
+        {saveErrorMessages.image?.map((message, index) => (
+          <p key={index} className="text-xs text-red-400">
+            {message}
+          </p>
+        ))}
 
         <div className="my-3">
           <Button>저장</Button>
+
+          <div>
+            {saveLoading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+            {saveError &&
+              `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
+          </div>
         </div>
       </form>
 

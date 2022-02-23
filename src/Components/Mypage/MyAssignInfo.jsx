@@ -67,7 +67,7 @@ function MyAssignInfo() {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {MyAssignData?.map((assign) => (
+                    {MyAssignData?.results.map((assign) => (
                       <tr>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <Link to={`/assignment/${assign.assignment_no}/`}>

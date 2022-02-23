@@ -122,16 +122,18 @@ function SignupForm() {
                   </button>
                   {nameValue.userID !== '' &&
                     userList &&
-                    userList.filter((user) => user.userID === nameValue.userID)
-                      .length > 0 && (
+                    userList.results?.filter(
+                      (user) => user.userID === nameValue.userID,
+                    ).length > 0 && (
                       <p className="text-m text-red-400">
                         동일한 아이디가 존재합니다. 다른 아이디를 입력해주세요.
                       </p>
                     )}
                   {nameValue.userID !== '' &&
                     userList &&
-                    userList.filter((user) => user.userID === nameValue.userID)
-                      .length === 0 && (
+                    userList.results?.filter(
+                      (user) => user.userID === nameValue.userID,
+                    ).length === 0 && (
                       <h2 className="text-m text-green-400">
                         사용가능한 아이디입니다.
                       </h2>
@@ -166,7 +168,7 @@ function SignupForm() {
                   </button>
                   {nameValue.nickname !== '' &&
                     userList &&
-                    userList.filter(
+                    userList.results?.filter(
                       (user) => user.nickname === nameValue.nickname,
                     ).length > 0 && (
                       <p className="text-m text-red-400">
@@ -175,7 +177,7 @@ function SignupForm() {
                     )}
                   {nameValue.nickname !== '' &&
                     userList &&
-                    userList.filter(
+                    userList.results?.filter(
                       (user) => user.nickname === nameValue.nickname,
                     ).length === 0 && (
                       <p className="text-m text-green-400">

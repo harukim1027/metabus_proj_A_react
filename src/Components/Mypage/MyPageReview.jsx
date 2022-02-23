@@ -69,50 +69,83 @@ function MyPageReview() {
 
   return (
     <>
-      <div className="header w-full h-screen">
-        <div className="flex flex-wrap justify-center w-full">
-          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-10">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-10">
-              <div className="notice_header rounded-xl shadow-md">
-                <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-                  <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block">
-                    <span class="relative text-white">" 내가 쓴 후기 "</span>
-                  </span>
-                </blockquote>
-                <input
-                  type="text"
-                  placeholder="검색어를 입력해주세요."
-                  onChange={handleChange}
-                  onKeyPress={handleKeyPress}
-                  className="relative rounded p-3 text-m  bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
-                />
-                <button
-                  type="submit"
-                  className="relative ml-2 mr-2 flex-shrink-0 bg-yellow-400 shadow-md hover:bg-yellow-700 border-yellow-400 hover:border-yellow-700 text-xl border-4 text-white py-1 rounded"
-                  onClick={() => refetch()}
-                >
-                  검색
-                </button>
-              </div>
-            </div>
-            <div className="mb-5  overflow-hidden border-b border-gray-200">
-              {reviewList && (
-                <div className="flex space-x-1">
-                  {reviewList.results
-                    .filter((filt) => filt.user.userID === auth.userID)
-                    .map((review) => (
-                      <div
-                        key={review.review_no}
-                        className="mx-20 md:w-1/4 l:w-1/3 px-4 transition-transform hover:-translate-y-5 duration-300 "
+      <div className="header">
+        <div className="justify-center mx-20">
+          <div className="align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="bg-white rounded-xl shadow-md">
+              <blockquote className="mt-5 text-4xl mb-3 font-semibold italic text-center text-slate-900">
+                <span className="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-orange-300 relative inline-block">
+                  <span className="relative text-white">" 내 입양후기 "</span>
+                </span>
+              </blockquote>
+
+              <div className="mb-5 overflow-hidden border-b border-gray-200">
+                <table className="mt-3 mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                       >
-                        <Link to={`/review/${review.review_no}/`}>
-                          <h2>{review.title}</h2>
-                          <h3>by: {review.user.nickname}</h3>
-                        </Link>
-                      </div>
-                    ))}
-                </div>
-              )}
+                        글 번호
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                      >
+                        제목
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                      >
+                        작성자
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                      >
+                        작성일자
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {reviewList && (
+                      <>
+                        {reviewList.results
+                          .filter((a) => a.user.userID === auth.userID)
+                          .map((review) => (
+                            <tr key={review.review_no}>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="ml-4">
+                                  <div className="text-sm font-medium text-gray-900">
+                                    {review.review_no}
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap ">
+                                <span className="rounded-full bg-green-100 text-green-800">
+                                  <Link to={`/review/${review.review_no}/`}>
+                                    {review.title}
+                                  </Link>
+                                </span>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <Link to={`/review/${review.review_no}/`}>
+                                  {review.user.nickname}
+                                </Link>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {review.created_at}
+                              </td>
+                            </tr>
+                          ))}
+                      </>
+                    )}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
