@@ -43,7 +43,7 @@ function NoticeDetail({ noticeId }) {
       <div className="header flex justify-center">
         <div className="w-2/3 notice_header rounded-xl mx-20 my-10 px-20">
           <div className=" pt-6 mb-3">
-            <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
+            <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
               <span class="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
                 <span class="relative text-white">" 공지사항 "</span>
               </span>

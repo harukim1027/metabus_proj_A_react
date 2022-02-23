@@ -16,7 +16,7 @@ function FindId() {
 
   const [{ data: userList, loading, error }, refetch] = useApiAxios(
     {
-      url: `/accounts/api/users/?query=${findUser.name}`,
+      url: `/accounts/api/usersnotpaging/?query=${findUser.name}`,
       method: 'GET',
       data: { name: findUser.name, email: findUser.email },
     },
