@@ -44,7 +44,7 @@ function ReviewDetail({ reviewId }) {
     <>
       <div className="header">
         <div className="flex flex-wrap justify-center max-w-m">
-          <div className="flex header justify-center rounded px-20 pt-6 mb-3">
+          <div className="flex header justify-center rounded px-20 my-10 mb-10">
             <div className="review_header shadow-md overflow-hidden sm:rounded-lg">
               <blockquote class="mt-5 text-3xl font-semibold italic text-center text-slate-900">
                 <span class="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
@@ -55,10 +55,49 @@ function ReviewDetail({ reviewId }) {
                 <div className="px-4 py-5 w-2/3">
                   {review && (
                     <>
-                      <h1 className="text-lg leading-6 font-bold text-gray-900">
+                      <h1 className="text-3xl leading-6 font-bold text-gray-900">
                         {review.title}
                       </h1>
                       <hr className="mt-3 mb-3" />
+
+                      <h4 className="flex border-2 text-gray-400">
+                        <></>
+                        <img
+                          src={review.adoptassignment.animal.image}
+                          className="w-1/6"
+                          alt=""
+                        />
+                        <ul className="flex justify-between mx-5">
+                          <li className="flex justify-between mt-2 w-24">
+                            품종 : {review.adoptassignment.animal.category}
+                          </li>
+                          <li className="flex justify-between mt-2 w-30">
+                            사이즈 : {review.adoptassignment.animal.size}
+                          </li>
+                          <li className="flex justify-between mt-2 w-30">
+                            성별 : {review.adoptassignment.animal.sex}
+                          </li>
+                          <li className="flex justify-between mt-2 w-30">
+                            나이 : {review.adoptassignment.animal.age}
+                          </li>
+                        </ul>
+
+                        <ul className="flex justify-between whitespace-pre">
+                          <li className="flex justify-between mt-2 w-30">
+                            건강상태 :{' '}
+                            {review.adoptassignment.animal.physical_condition}
+                          </li>
+                          <li className="flex justify-between mt-2 w-30">
+                            입양일 : {review.adoptassignment.animal.end_date}
+                          </li>
+                          <li className="flex justify-between mt-2 w-30">
+                            등록 번호 :{' '}
+                            {review.adoptassignment.animal.animal_reg_num}
+                          </li>
+                        </ul>
+                      </h4>
+
+                      <br />
 
                       <div className="mb-4 flex justify-center">
                         {review.image1 && (
@@ -94,23 +133,11 @@ function ReviewDetail({ reviewId }) {
 
                       {/*  */}
 
-                      <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-sm text-gray-900">
+                      <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-900">
                         {review.content}
                       </h2>
                       <br />
                       <hr className="mt-3 mb-3" />
-
-                      <h4 className="flex items-center text-gray-400">
-                        <img
-                          src={review.adoptassignment.animal.image}
-                          width="100"
-                          alt=""
-                        />
-                        {review.adoptassignment.animal.end_date}일에{' '}
-                        {review.user.nickname}님께 입양된{' '}
-                        {review.adoptassignment.animal.animal_reg_num} 의 입양
-                        후기입니다.
-                      </h4>
 
                       <div className="my-5 text-right">
                         <Link

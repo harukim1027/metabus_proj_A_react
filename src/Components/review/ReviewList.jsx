@@ -119,8 +119,8 @@ function ReviewList() {
 
   return (
     <>
-      <div className="header">
-        <div className="flex justify-center notice_header rounded-xl shadow-md mx-20 my-10">
+      <div className="header flex justify-center ">
+        <div className="flex justify-center review_header rounded-xl shadow-md mx-20 my-10 w-11/12">
           <div className="w-11/12 mb-10">
             <blockquote class="mt-6 text-6xl font-semibold italic text-center text-slate-900">
               <span class="mt-10 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
