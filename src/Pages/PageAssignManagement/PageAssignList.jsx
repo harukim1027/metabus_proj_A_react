@@ -5,7 +5,6 @@ function PageAssignList() {
   return (
     <>
       <TopNav />
-      <h2>입양신청 관리 페이지</h2>
       <AssignList />
     </>
   );

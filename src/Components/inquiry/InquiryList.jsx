@@ -91,7 +91,7 @@ function InquiryList() {
       window.removeEventListener('scroll', handleFollow);
     };
   });
-  console.log('window Scroll From Top:', scrollY);
+  // console.log('window Scroll From Top:', scrollY);
 
   useEffect(() => {
     gotoTop();
