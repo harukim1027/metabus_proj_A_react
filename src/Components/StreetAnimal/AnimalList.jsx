@@ -1,19 +1,25 @@
 import { useApiAxios } from 'api/base';
-import TopNav from 'Components/Main/TopNavi';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+import 'css/pagination_animal.css';
 
 function AnimalList() {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
 
+  // 페이징
+  const [, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 2;
+
   const [{ data: AnimalList, loading, error }, refetch] = useApiAxios(
     {
-      url: `/streetanimal/api/animal/${query ? '?query=' + query : ''}`,
+      url: `/streetanimal/api/animal/`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -22,20 +28,42 @@ function AnimalList() {
     { manual: true },
   );
 
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setQuery(value);
+  const fetchNotices = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+      };
+      const { data } = await refetch({ params });
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
+
+  useEffect(() => {
+    fetchNotices(1);
+  }, []);
+
+  // const handleChange = (e) => {
+  //   const { value } = e.target;
+  //   setQuery(value);
+  // };
+
+  const handlePageClick = (event) => {
+    fetchNotices(event.selected + 1);
+  };
+
+  const getQuery = (e) => {
+    setQuery(e.target.value);
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      refetch();
+      fetchNotices(1, query);
     }
   };
-
-  useEffect(() => {
-    refetch();
-  }, []);
 
   return (
     <div>
@@ -44,13 +72,13 @@ function AnimalList() {
       <input
         type="text"
         placeholder="등록번호로 검색"
-        onChange={handleChange}
+        onChange={getQuery}
         onKeyPress={handleKeyPress}
         className="mt-3 ml-3 border-2 border-gray-300"
       />
       <button
         type="submit"
-        onClick={() => refetch()}
+        onClick={() => handleKeyPress()}
         className="font-bold py-2 px-4 rounded cursor-pointer ml-1 bg-blue-500 hover:bg-blue-300 text-white"
       >
         검색
@@ -76,7 +104,7 @@ function AnimalList() {
 
           <tbody>
             {AnimalList &&
-              AnimalList.map((animal) => (
+              AnimalList.results.map((animal) => (
                 <tr
                   onClick={() => navigate(`/admin/animal/${animal.animal_no}/`)}
                   className="cursor-pointer"
@@ -108,6 +136,17 @@ function AnimalList() {
               ))}
           </tbody>
         </table>
+
+        <ReactPaginate
+          previousLabel="<"
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={itemsPerPage}
+          pageCount={pageCount}
+          renderOnZeroPageCount={null}
+          className="pagination_animal"
+        />
       </div>
     </div>
   );

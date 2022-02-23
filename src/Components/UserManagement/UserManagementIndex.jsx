@@ -1,16 +1,24 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
 import { useApiAxios } from 'api/base';
 import { Link } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+import 'css/pagination_userManage.css';
 
 function UserManagementIndex() {
   const [query, setQuery] = useState(null);
   const { auth } = useAuth();
 
+  // 페이징
+  const [, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 2;
+
   const [{ data: userData, loading, error }, refetch] = useApiAxios(
     {
-      url: `/accounts/api/users/${query ? '?query=' + query : ''}`,
+      url: `/accounts/api/users/`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -19,6 +27,28 @@ function UserManagementIndex() {
     { manual: true },
   );
 
+  const fetchNotices = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+      };
+      const { data } = await refetch({ params });
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
+
+  useEffect(() => {
+    fetchNotices(1);
+  }, []);
+
+  const handlePageClick = (event) => {
+    fetchNotices(event.selected + 1);
+  };
+
   const handleChange = (e) => {
     const { value } = e.target;
     setQuery(value);
@@ -26,13 +56,9 @@ function UserManagementIndex() {
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      refetch();
+      fetchNotices(1, query);
     }
   };
-
-  useEffect(() => {
-    refetch();
-  }, []);
 
   return (
     <div>
@@ -69,7 +95,7 @@ function UserManagementIndex() {
 
         <tbody>
           {userData &&
-            userData.map((user) => (
+            userData.results.map((user) => (
               <tr>
                 <td>
                   <Link to={`/admin/usermanage/${user.userID}/`}>
@@ -109,6 +135,17 @@ function UserManagementIndex() {
             ))}
         </tbody>
       </table>
+
+      <ReactPaginate
+        previousLabel="<"
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        renderOnZeroPageCount={null}
+        className="pagination_userManage"
+      />
     </div>
   );
 }

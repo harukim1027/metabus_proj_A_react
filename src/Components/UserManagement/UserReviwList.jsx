@@ -1,15 +1,24 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+import 'css/pagination_userManage.css';
 
 function UserReviewList() {
+  const [query, setQuery] = useState(null);
   const { auth } = useAuth();
   const { userId } = useParams();
 
+  // 페이징
+  const [, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 2;
+
   const [{ data: UserReviewData, loading, error }, refetch] = useApiAxios(
     {
-      url: `/adopt_review/api/reviews/?query=${userId}`,
+      url: `/adopt_review/api/reviews/`,
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.access}`,
@@ -18,9 +27,37 @@ function UserReviewList() {
     { manual: true },
   );
 
+  const fetchNotices = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+      };
+      const { data } = await refetch({ params });
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
+
   useEffect(() => {
-    refetch();
+    fetchNotices(1);
   }, []);
+
+  const handlePageClick = (event) => {
+    fetchNotices(event.selected + 1);
+  };
+
+  const getQuery = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      fetchNotices(1, query);
+    }
+  };
 
   return (
     <div>
@@ -38,7 +75,7 @@ function UserReviewList() {
         </thead>
 
         <tbody>
-          {UserReviewData?.map((review) => (
+          {UserReviewData?.results.map((review) => (
             <tr>
               <td>{review.review_no}</td>
 
@@ -51,6 +88,17 @@ function UserReviewList() {
           ))}
         </tbody>
       </table>
+
+      <ReactPaginate
+        previousLabel="<"
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        renderOnZeroPageCount={null}
+        className="pagination_userManage"
+      />
     </div>
   );
 }
