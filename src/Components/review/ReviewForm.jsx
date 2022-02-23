@@ -16,8 +16,8 @@ const INIT_FIELD_VALUES = {
 
 function ReviewForm({ reviewId, handleDidSave }) {
   const [filtAssign, setFiltAssign] = useState([]);
-  const [selectanimalAssign, setSelectanimalAssign] = useState('');
   const { auth } = useAuth();
+  const [image1, setImage1] = useState('');
 
   const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
     {
@@ -27,6 +27,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
     {
       manual: !reviewId,
     },
+  );
+
+  const [selectanimalAssign, setSelectanimalAssign] = useState(
+    review?.adoptassignment.assignment_no,
   );
 
   const [{ data: assignmentList, loading, error }] = useApiAxios(
@@ -40,7 +44,14 @@ function ReviewForm({ reviewId, handleDidSave }) {
     },
   );
 
-  const [{ loading: saveLoading, error: saveError }, saveRequest] = useApiAxios(
+  const [
+    {
+      loading: saveLoading,
+      error: saveError,
+      errorMessages: saveErrorMessages,
+    },
+    saveRequest,
+  ] = useApiAxios(
     {
       url: !reviewId
         ? '/adopt_review/api/reviews/'
@@ -93,8 +104,21 @@ function ReviewForm({ reviewId, handleDidSave }) {
     });
   };
 
-  console.log('filtAssign', filtAssign);
-  console.log('selectanimalAssign', selectanimalAssign);
+  // 사진 등록시
+  const imgpreview1 = (e, fileData) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(fileData);
+    return new Promise((resolve) => {
+      reader.onload = () => {
+        setImage1(reader.result);
+        resolve();
+        handleFieldChange(e);
+      };
+    });
+  };
+
+  console.log('fieldValues', fieldValues);
+  console.log('selectanimalAssign: ', selectanimalAssign);
   // console.log('AnimalList', AnimalList);
 
   return (
@@ -124,7 +148,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 onClick={() =>
                   assignmentList &&
                   setFiltAssign(
-                    assignmentList.filter(
+                    assignmentList.results?.filter(
                       (assignment) =>
                         assignment.status === '입양 완료' &&
                         assignment.user.userID === auth.userID,
@@ -169,7 +193,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   .map((a) => (
                     <div className="flex flex-wrap justify-center">
                       <div className="flex-none place-items-center">
-                        <img src={a.animal.image} className="w-72" />
+                        <img src={a.animal.image} alt="" className="w-72" />
                       </div>
                       <div className="flex-none mx-4 justify-items-center">
                         <div className="flex justify-center">
@@ -218,13 +242,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
               </div>
             </div>
           </div>
-
-          {/* <div className="bg-red-200">
-            {review &&
-              setIsSelected(
-                review.map((a) => <h1>{a.animal.animal_reg_num}</h1>),
-              )}
-          </div> */}
 
           <form
             onSubmit={handleSubmit}
@@ -276,13 +293,70 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   </div>
                 </div>
 
+                {/* 이미지 첨부 인풋박스 */}
+                <div className="mt-3 ml-3 mb-3 w-full">
+                  <span className=" block uppercase tracking-wide text-blue-900 text-m font-bold mb-2 ">
+                    이미지 첨부
+                  </span>
+                  <h2 className="text-gray-500 text-xs">
+                    ( 최대 5개까지 이미지를 등록할 수 있습니다. )
+                  </h2>
+
+                  <div className="bg-white px-4 py-5 w-full">
+                    {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
+                    <ul>
+                      {/* 개별 이미지 input 박스 1*/}
+                      <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md">
+                        <input
+                          type="file"
+                          accept=".png, .jpg, .jpeg, .jfif"
+                          name="image1"
+                          onChange={(e) => {
+                            imgpreview1(e, e.target.files[0]);
+                          }}
+                        />
+                        {!fieldValues.image1 && (
+                          <div>
+                            <img src={review?.image1} alt="" className="h-44" />
+                          </div>
+                        )}
+
+                        <div>
+                          <img src={image1} alt="" className="h-44" />
+                        </div>
+
+                        <button
+                          className="rounded-full px-2 py-1 bg-sky-300"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setImage1('');
+                            setFieldValues((prevFieldValues) => {
+                              return {
+                                ...prevFieldValues,
+                                image1: '',
+                              };
+                            });
+                          }}
+                        >
+                          X
+                        </button>
+                      </li>
+                      {saveErrorMessages.image1?.map((message, index) => (
+                        <p key={index} className="text-xs text-red-400">
+                          {message}
+                        </p>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
                 <div className="my-3 mx-20">
-                  <input
+                  {/* <input
                     type="file"
                     accept=".png, .jpg, .jpeg"
                     name="image1"
                     onChange={handleFieldChange}
-                  />
+                  /> */}
                   <input
                     type="file"
                     accept=".png, .jpg, .jpeg"

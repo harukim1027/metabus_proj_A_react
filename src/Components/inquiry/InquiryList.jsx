@@ -190,6 +190,7 @@ function InquiryList() {
                                               src="/check.png"
                                               width="15"
                                               className="ml-4"
+                                              alt=""
                                             />{' '}
                                             답변 완료
                                           </div>
@@ -199,6 +200,7 @@ function InquiryList() {
                                               src="/nocheck.png"
                                               width="15"
                                               className="ml-4"
+                                              alt=""
                                             />
                                             답변 대기
                                           </div>
