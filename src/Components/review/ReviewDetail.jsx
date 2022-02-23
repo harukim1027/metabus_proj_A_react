@@ -79,13 +79,18 @@ function ReviewDetail({ reviewId }) {
 
                     {/*  */}
 
-                    <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-sm text-gray-500">
+                    <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-sm text-gray-900">
                       {review.content}
                     </h2>
+                    <br />
                     <hr className="mt-3 mb-3" />
 
-                    <h4>
-                      <img src={review.adoptassignment.animal.image} alt="" />
+                    <h4 className="flex items-center text-gray-400">
+                      <img
+                        src={review.adoptassignment.animal.image}
+                        width="100"
+                        alt=""
+                      />
                       {review.adoptassignment.animal.end_date}일에{' '}
                       {review.user.nickname}님께 입양된{' '}
                       {review.adoptassignment.animal.animal_reg_num} 의 입양

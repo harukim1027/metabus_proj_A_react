@@ -176,10 +176,6 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
   return (
     <>
-      {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
-      {saveError &&
-        `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
-
       {/* review_header : 배경 흰색 */}
       <div className="header ">
         <div className="justify-center ">
@@ -676,6 +672,9 @@ function ReviewForm({ reviewId, handleDidSave }) {
           </div>
         </div>
       </div>
+      {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
+      {saveError &&
+        `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
 
       <DebugStates
         review={review}

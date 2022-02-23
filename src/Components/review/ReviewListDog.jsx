@@ -200,7 +200,7 @@ function ReviewList() {
                 <hr className="mb-3 mt-3" />
               </div>
 
-              <div className="flex flex-wrap justify-center rounded">
+              <div className="flex flex-wrap justify-center rounded mb-20">
                 {reviewList &&
                   reviewList?.results
                     ?.filter(
@@ -215,31 +215,20 @@ function ReviewList() {
                       </div>
                     ))}
               </div>
+              <ReactPaginate
+                previousLabel="<"
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={itemsPerPage}
+                pageCount={pageCount}
+                renderOnZeroPageCount={null}
+                className="pagination_review"
+              />
             </div>
           </div>
         </div>
-        {auth.isLoggedIn && !auth.is_staff && (
-          <div className="flex place-content-between">
-            <div></div>
-            <button
-              onClick={() => navigate('/review/new/')}
-              className="mx-20 text-white py-2 px-4 uppercase rounded-md bg-red-400 hover:bg-red-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-            >
-              글쓰기
-            </button>
-          </div>
-        )}
       </div>
-      <ReactPaginate
-        previousLabel="<"
-        breakLabel="..."
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={itemsPerPage}
-        pageCount={pageCount}
-        renderOnZeroPageCount={null}
-        className="pagination_review"
-      />
     </>
   );
 }

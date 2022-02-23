@@ -200,7 +200,7 @@ function ReviewList() {
                 <hr className="mb-3 mt-3" />
               </div>
 
-              <div className="flex flex-wrap justify-center rounded">
+              <div className="flex flex-wrap justify-center rounded mb-20">
                 {reviewList?.results?.map((review) => (
                   <div
                     key={review.review_no}
@@ -210,20 +210,20 @@ function ReviewList() {
                   </div>
                 ))}
               </div>
+              <ReactPaginate
+                previousLabel="<"
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={itemsPerPage}
+                pageCount={pageCount}
+                renderOnZeroPageCount={null}
+                className="pagination_review"
+              />
             </div>
           </div>
         </div>
       </div>
-      <ReactPaginate
-        previousLabel="<"
-        breakLabel="..."
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={itemsPerPage}
-        pageCount={pageCount}
-        renderOnZeroPageCount={null}
-        className="pagination_review"
-      />
     </>
   );
 }
