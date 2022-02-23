@@ -102,9 +102,9 @@ function MyPageReview() {
   return (
     <>
       <div className="header">
-        <div className="flex flex-wrap justify-center w-full">
-          <div className="review_header my-2 overflow-x-auto shadow-md mb-10 rounded-2xl pb-5">
-            <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-10">
+        <div className="justify-center mx-20">
+          <div className="align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="mypage_header rounded-xl shadow-md">
               <blockquote className="mt-5 text-4xl mb-3 font-semibold italic text-center text-slate-900">
                 <span className="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-orange-300 relative inline-block">
                   <span className="relative text-white">" 내 입양후기 "</span>
@@ -157,7 +157,7 @@ function MyPageReview() {
                                 </div>
                               </td>
                               <td className="px-6 py-4 whitespace-nowrap ">
-                                <span className="rounded-full bg-green-100 text-green-800">
+                                <span className="rounded-full bg-green-100 text-green-800 font-semibold">
                                   <Link to={`/review/${review.review_no}/`}>
                                     {review.title}
                                   </Link>
