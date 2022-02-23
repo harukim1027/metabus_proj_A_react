@@ -46,7 +46,7 @@ function AssignCheck(props) {
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 1016,
+      top: 940,
       behavior: 'smooth',
     });
     setScrollY(0); // ScrollY 의 값을 초기화
