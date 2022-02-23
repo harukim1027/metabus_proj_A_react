@@ -5,13 +5,44 @@ import { useAuth } from 'contexts/AuthContext';
 // import DebugStates from 'DebugStates';
 import Button from 'Button';
 import '../../App.css';
+import { useEffect, useState } from 'react';
 
 const INITIAL_FIELD_VALUES = { userID: '', password: '' };
 
 function LoginForm() {
   const navigate = useNavigate();
 
-  // const [auth, _, login] = useAuth();
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1000,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener('scroll', handleFollow);
+    };
+  });
+  console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, []);
+
+  //-------------
 
   const { auth, login } = useAuth();
   const [{ loading, error }, requestToken] = useApiAxios(

@@ -5,6 +5,7 @@ import DebugStates from 'DebugStates';
 import { useEffect, useMemo, useState } from 'react';
 import './Assignment.css';
 import '../../App.css';
+import LoadingIndicator from 'LoadingIndicator';
 
 const INIT_FIELD_VALUES = {
   adopter_name: '',
@@ -77,7 +78,7 @@ function AssignmentForm({ handleDidSave }) {
     queryanimal,
   ] = useApiAxios(
     {
-      url: `/streetanimal/api/animal/`,
+      url: `/streetanimal/api/animalnotpaging/`,
       method: 'GET',
     },
     { manual: true },
@@ -150,6 +151,54 @@ function AssignmentForm({ handleDidSave }) {
     });
   };
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const gotoSearched = () => {
+    window.scrollTo({
+      top: 1654,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const gotoForm = () => {
+    window.scrollTo({
+      top: 2254,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener('scroll', handleFollow);
+    };
+  });
+  console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, []);
+
+  //-------------
+
   console.log('---------------');
   console.log('AnimalList: ', AnimalList);
   console.log('filter: ', filter);
@@ -167,6 +216,7 @@ function AssignmentForm({ handleDidSave }) {
                 <span className="relative text-white">" 크루원 모집 "</span>
               </span>
             </blockquote>
+            {getLoading && <LoadingIndicator>로딩 중입니다.</LoadingIndicator>}
             <br />
           </div>
         </div>
@@ -271,7 +321,7 @@ function AssignmentForm({ handleDidSave }) {
                       </p>
                       <div className="flex px-3 mb-6 md:mb-0 justify-center p-5">
                         <button
-                          onClick={() =>
+                          onClick={() => {
                             setFiltAnimal(
                               AnimalList?.filter(
                                 (animal) =>
@@ -280,8 +330,9 @@ function AssignmentForm({ handleDidSave }) {
                                   animal.sex === filter.sex &&
                                   animal.protection_status === '입양 대기',
                               ),
-                            )
-                          }
+                            );
+                            gotoSearched();
+                          }}
                           className="hover:scale-110 duration-500 w-40"
                           readOnly
                         >
@@ -303,7 +354,10 @@ function AssignmentForm({ handleDidSave }) {
                           {filtAnimal.map((a) => (
                             <div
                               className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
-                              onClick={() => setSelanimal(a.animal_no)}
+                              onClick={() => {
+                                setSelanimal(a.animal_no);
+                                gotoForm();
+                              }}
                             >
                               <div className="flex justify-center overflow-hidden">
                                 <img
@@ -468,6 +522,11 @@ function AssignmentForm({ handleDidSave }) {
                   >
                     회원 정보와 동일
                   </button>
+                  {saveErrorMessages.adopter_name?.map((message, index) => (
+                    <p key={index} className="text-md text-red-400">
+                      {message}
+                    </p>
+                  ))}
                 </div>
 
                 {/* 신청자 월 수입 */}
@@ -498,6 +557,11 @@ function AssignmentForm({ handleDidSave }) {
                     className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
                   />
                   <span className="ml-3 text-xl">만 원</span>
+                  {saveErrorMessages.monthly_income?.map((message, index) => (
+                    <p key={index} className="text-md text-red-400">
+                      {message}
+                    </p>
+                  ))}
                 </div>
 
                 {/* 주거형태 */}
@@ -568,12 +632,20 @@ function AssignmentForm({ handleDidSave }) {
                             imgpreview1(e, e.target.files[0]);
                           }}
                         />
+
                         {image1 && (
                           <div>
                             <img src={image1} alt="" className="h-72" />
                           </div>
                         )}
                       </li>
+                      {saveErrorMessages.picture_of_residence1?.map(
+                        (message, index) => (
+                          <p key={index} className="text-md text-red-400">
+                            {message}
+                          </p>
+                        ),
+                      )}
 
                       {/* 거주지 파일 input 박스 2 */}
                       <li className="pl-3 pr-4 py-3 flex items-center justify-between text-m w-3/5">
@@ -591,6 +663,13 @@ function AssignmentForm({ handleDidSave }) {
                           </div>
                         )}
                       </li>
+                      {saveErrorMessages.picture_of_residence2?.map(
+                        (message, index) => (
+                          <p key={index} className="text-md text-red-400">
+                            {message}
+                          </p>
+                        ),
+                      )}
 
                       {/* 거주지 파일 input 박스 3 */}
                       <li className="pl-3 pr-4 py-3 flex items-center justify-between text-m w-3/5">
@@ -608,6 +687,13 @@ function AssignmentForm({ handleDidSave }) {
                           </div>
                         )}
                       </li>
+                      {saveErrorMessages.picture_of_residence3?.map(
+                        (message, index) => (
+                          <p key={index} className="text-md text-red-400">
+                            {message}
+                          </p>
+                        ),
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -666,6 +752,11 @@ function AssignmentForm({ handleDidSave }) {
                       onChange={handleFieldChange}
                       className="block appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 w-1/3"
                     />
+                    {saveErrorMessages.date_to_meet?.map((message, index) => (
+                      <p key={index} className="text-md text-red-400">
+                        {message}
+                      </p>
+                    ))}
                     <p className="text-blue-400 mb-2 mt-1">
                       센터 방문 날짜를 선택해주세요!
                     </p>
@@ -680,6 +771,13 @@ function AssignmentForm({ handleDidSave }) {
                   >
                     <img src="/assignicon2.png" alt="button"></img>
                   </button>
+                </div>
+                <div className="flex justify-center">
+                  {saveLoading && (
+                    <LoadingIndicator>저장 중...</LoadingIndicator>
+                  )}
+                  {saveError &&
+                    `저장 중 에러가 발생했습니다. 신청 양식을 확인해주세요.`}
                 </div>
               </form>
             </div>
