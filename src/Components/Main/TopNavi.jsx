@@ -5,21 +5,17 @@ import '../../App.css';
 import './TopNavi.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 function TopNav() {
   const navigate = useNavigate();
-
   const { auth, logout } = useAuth();
-
   const handleLogout = () => {
     logout();
   };
-
   const checkLogin = () => {
     if (auth.isLoggedIn) {
       navigate('/assignment/check/');
     } else {
-      toast.info('크루원 신청을 위해서는 로그인이 필요합니다! 😲 ', {
+      toast.info('크루원 신청을 위해서는 로그인이 필요합니다! :깜짝_놀란: ', {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
@@ -32,7 +28,6 @@ function TopNav() {
       navigate('/accounts/login/');
     }
   };
-
   return (
     <div className="header">
       <div className="flex text-xl place-content-between">
@@ -63,41 +58,47 @@ function TopNav() {
         )}
       </div>
       <div className="flex text-xl place-content-between">
-        <div></div>
         {auth.isLoggedIn && (
-          <div className="flex">
-            {auth.is_staff ? (
-              // 관리자 페이지
-              <button className="icon_size4">
-                <NavLink to="/admin/main/">
-                  <img
-                    className="hover:scale-110 duration-200"
-                    src="/manageicon1.png"
-                    alt="manageiconbutton"
-                  ></img>
-                </NavLink>
-              </button>
-            ) : (
-              // 마이페이지
-              <button className="icon_size4">
-                <NavLink to="/mypage/userinfo/">
-                  <img
-                    className="mt-5 hover:scale-110 duration-200"
-                    src="/mypageicon1.png"
-                    alt="mypagebutton"
-                  ></img>
-                </NavLink>
-              </button>
-            )}
+          <>
+            <div className="w-full bg-blue-200 mt-12 h-20 inline-block relative">
+              <span className="ml-20 text-center">
+                {auth.nickname} 님 환영합니다.
+              </span>
+            </div>
 
-            <button className="icon_size4" onClick={handleLogout}>
-              <img
-                className="hover:scale-110 duration-200"
-                src="/logouticon1.png"
-                alt="button"
-              ></img>
-            </button>
-          </div>
+            <div className="flex absolute right-0">
+              {auth.is_staff ? (
+                // 관리자 페이지
+                <button className="icon_size4">
+                  <NavLink to="/admin/main/">
+                    <img
+                      className="hover:scale-110 duration-200"
+                      src="/manageicon1.png"
+                      alt="manageiconbutton"
+                    ></img>
+                  </NavLink>
+                </button>
+              ) : (
+                // 마이페이지
+                <button className="icon_size4">
+                  <NavLink to="/mypage/userinfo/">
+                    <img
+                      className="mt-5 hover:scale-110 duration-200"
+                      src="/mypageicon1.png"
+                      alt="mypagebutton"
+                    ></img>
+                  </NavLink>
+                </button>
+              )}
+              <button className="icon_size4" onClick={handleLogout}>
+                <img
+                  className="hover:scale-110 duration-200"
+                  src="/logouticon1.png"
+                  alt="button"
+                ></img>
+              </button>
+            </div>
+          </>
         )}
       </div>
       {/* 대문 */}
@@ -107,13 +108,11 @@ function TopNav() {
       >
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
-
       {/* 탑메뉴바 */}
       <div className="py-4 bg-white grid grid-cols-3 text-center text-3xl font-bold">
         <MyLink to="/notice/">
           <div className="hover:text-white hover:bg-green-400 ">공지사항</div>
         </MyLink>
-
         {auth.is_staff ? (
           <MyLink to="/inquiry/">
             <div className="hover:text-white hover:bg-green-400">
@@ -135,9 +134,7 @@ function TopNav() {
     </div>
   );
 }
-
 function MyLink({ to, children }) {
   return <NavLink to={to}>{children}</NavLink>;
 }
-
 export default TopNav;
