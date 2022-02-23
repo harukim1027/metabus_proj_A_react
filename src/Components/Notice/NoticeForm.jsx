@@ -165,7 +165,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
       <div className="header">
         <div className="flex justify-center">
           {/* 폼 작성 시작부분 */}
-          <div className="mt-10 mb-7 notice_header w-11/12">
+          <div className="mt-10 mb-7 notice_header w-9/12 rounded-xl">
             <blockquote class="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
               <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block text-6xl font-extrabold">
                 <span class="relative text-white">" 공지사항 작성 "</span>

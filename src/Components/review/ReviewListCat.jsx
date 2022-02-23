@@ -1,5 +1,5 @@
 import { useApiAxios } from 'api/base';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import ReviewSummary from './ReviewSummary';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -7,17 +7,23 @@ import useFieldValues from 'hooks/useFieldValues';
 import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
 import './Review.css';
+import ReactPaginate from 'react-paginate';
 
 const INIT_FIELD_VALUES = { category: '고양이' };
 
 function ReviewList() {
   const { auth } = useAuth();
   const [query, setQuery] = useState('');
+  // 페이징
+  const [, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 2;
 
   const navigate = useNavigate();
   const [{ data: reviewList }, refetch] = useApiAxios(
     {
-      url: `/adopt_review/api/reviews/${query ? '?query=' + query : ''}`,
+      url: `/adopt_review/api/reviews/`,
       method: 'GET',
     },
     {
@@ -52,6 +58,32 @@ function ReviewList() {
   useEffect(() => {
     moveCategory();
   }, [fieldValues]);
+
+  const fetchReviews = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: newQuery,
+      };
+      const { data } = await refetch({ params });
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
+
+  useEffect(() => {
+    fetchReviews(1);
+  }, []);
+
+  const handlePageClick = (event) => {
+    fetchReviews(event.selected + 1);
+  };
+
+  const getQuery = (e) => {
+    setQuery(e.target.value);
+  };
 
   return (
     <>
@@ -138,8 +170,8 @@ function ReviewList() {
 
               <div className="flex flex-wrap justify-center rounded">
                 {reviewList &&
-                  reviewList
-                    .filter(
+                  reviewList?.results
+                    ?.filter(
                       (a) => a.adoptassignment.animal.category === '고양이',
                     )
                     .map((review) => (
@@ -166,6 +198,16 @@ function ReviewList() {
           </div>
         )}
       </div>
+      <ReactPaginate
+        previousLabel="<"
+        breakLabel="..."
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={itemsPerPage}
+        pageCount={pageCount}
+        renderOnZeroPageCount={null}
+        className="pagination_review"
+      />
     </>
   );
 }
