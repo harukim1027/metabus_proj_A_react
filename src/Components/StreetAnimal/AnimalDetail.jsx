@@ -1,4 +1,3 @@
-import TopNav from 'Components/Main/TopNavi';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
@@ -91,7 +90,7 @@ function AnimalDetail({ animalId }) {
           <div className="my-3">
             <span>나이</span>
             <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {animal.age}세
+              {animal.age}
             </span>
           </div>
 

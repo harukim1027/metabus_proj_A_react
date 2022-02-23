@@ -33,7 +33,7 @@ function UserManagementDetail({ userId }) {
   );
 
   useEffect(() => {
-    const userAssign = assignList?.filter(
+    const userAssign = assignList?.results.filter(
       (assignment) => assignment.user.userID === userData.userID,
     );
     setAssignArray(userAssign);
