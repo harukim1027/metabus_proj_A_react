@@ -65,8 +65,11 @@ function TopNav() {
       <div className="flex text-xl place-content-between">
         {auth.isLoggedIn && (
           <>
-            <div>
-              <span>{auth.nickname} 님 환영합니다.</span>
+            <div className="ml-10 mt-20 ">
+              <span className="bg-white shadow-md border text-center font-bold">
+                {'  '}
+                오늘도 찾아주셨네요, {auth.nickname} 님 ❕
+              </span>
             </div>
             <div className="flex">
               {auth.is_staff ? (
