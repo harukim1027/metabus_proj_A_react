@@ -41,37 +41,38 @@ function NoticeDetail({ noticeId }) {
   return (
     <>
       <div className="header flex justify-center">
-        <div className="w-2/3 notice_header rounded-xl mx-20 my-10 px-20">
-          <div className=" pt-6 mb-3">
-            <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-              <span class="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
-                <span class="relative text-white">" 공지사항 "</span>
-              </span>
-            </blockquote>
-            <div className="px-4 py-5">
+        <div className="w-11/12 rounded-xl my-10 mb-10 shadow-md notice_header overflow-hidden">
+          <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+              <span class="relative text-white">" 공지사항 "</span>
+            </span>
+          </blockquote>
+          <div className="flex justify-center">
+            <div className="px-4 py-5 w-2/3">
               {notice && (
                 <>
-                  <h1 className="text-lg leading-6 font-bold text-gray-900">
+                  <h1 className="text-3xl leading-6 font-bold text-gray-900">
                     {notice.title}
                   </h1>
                   <hr className="mt-3 mb-3" />
-                  <h4 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-sm text-gray-500">
-                    {notice.content}
-                  </h4>
-                  <div className="px-20">
+
+                  <div className="w-full">
                     <img src={notice.image1} alt="" />
                     <img src={notice.image2} alt="" />
                     <img src={notice.image3} alt="" />
                     <img src={notice.image4} alt="" />
                     <img src={notice.image5} alt="" />
                   </div>
+                  <h4 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500">
+                    {notice.content}
+                  </h4>
                   <hr className="mt-3 mb-3" />
                   <span className="mt-3 text-m font-bold text-gray-500">
                     첨부파일
                   </span>
-                  <div className="bg-white px-4 py-5 sm:grid  sm:gap-4 sm:px-6">
+                  <div className="bg-white px-4 py-5 sm:grid sm:gap-4 sm:px-6">
                     <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
-                      <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                      <li className="pl-3 pr-4 py-3 flex justify-between text-sm">
                         <div className="w-0 flex-1 flex items-center">
                           <svg
                             class="flex-shrink-0 h-5 w-5 text-gray-400"
@@ -90,7 +91,7 @@ function NoticeDetail({ noticeId }) {
                           {notice.file1 && (
                             <>
                               <span className="ml-2 flex-1 w-0 truncate">
-                                {notice.file1}
+                                첨부파일1
                               </span>
 
                               <div className="ml-4 flex-shrink-0">
@@ -123,7 +124,7 @@ function NoticeDetail({ noticeId }) {
                           {notice.file2 && (
                             <>
                               <span className="ml-2 flex-1 w-0 truncate">
-                                {notice.file2}
+                                첨부파일2
                               </span>
 
                               <div className="ml-4 flex-shrink-0">
@@ -139,7 +140,7 @@ function NoticeDetail({ noticeId }) {
                         </div>
                       </li>
                       <li className="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
-                        <div>
+                        <div className="w-0 flex-1 flex items-center">
                           <svg
                             class="flex-shrink-0 h-5 w-5 text-gray-400"
                             xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +157,7 @@ function NoticeDetail({ noticeId }) {
                           {notice.file3 && (
                             <>
                               <span className="ml-2 flex-1 w-0 truncate">
-                                {notice.file3}
+                                첨부파일3
                               </span>
 
                               <div className="ml-4 flex-shrink-0">
