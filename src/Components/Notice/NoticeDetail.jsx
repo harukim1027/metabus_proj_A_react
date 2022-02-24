@@ -40,8 +40,8 @@ function NoticeDetail({ noticeId }) {
 
   return (
     <>
-      <div className="header flex justify-center">
-        <div className="w-11/12 rounded-xl my-10 mb-10 shadow-md notice_header overflow-hidden">
+      <div className="header flex flex-wrap justify-center">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
               <span class="relative text-white">" 공지사항 "</span>

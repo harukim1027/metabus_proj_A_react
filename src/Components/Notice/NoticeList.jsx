@@ -88,112 +88,110 @@ function NoticeList() {
 
   return (
     <>
-      <div className="header flex justify-center ">
-        <div className="flex justify-center notice_header rounded-xl shadow-md mx-20 my-10 w-11/12">
-          <div className="w-11/12 mb-10">
-            <blockquote class="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
-              <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
-                <span class="relative text-white">" 공지사항 "</span>
-              </span>
-            </blockquote>
+      <div className="header flex flex-wrap justify-center">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+          <blockquote class="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
+            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+              <span class="relative text-white">" 공지사항 "</span>
+            </span>
+          </blockquote>
 
-            <div className="ml-3 mb-6 mt-3">
-              <div className="text-right">
-                {auth.is_staff && (
-                  <button
-                    onClick={() => navigate('/admin/notice/new/')}
-                    className=" icon_size"
-                    readOnly
-                  >
-                    <img src="/pen.png" alt="button"></img>
-                  </button>
-                )}
-                <input
-                  type="text"
-                  name="query"
-                  onChange={getQuery}
-                  onKeyPress={handleKeyPress}
-                  className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
-                  placeholder="제목을 검색하세요."
-                />
+          <div className="ml-3 mb-6 mt-3">
+            <div className="text-right">
+              {auth.is_staff && (
                 <button
-                  onClick={() => handleKeyPress()}
-                  className="relative ml-2 mr-4 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white px-3 py-2 rounded"
+                  onClick={() => navigate('/admin/notice/new/')}
+                  className=" icon_size hover:scale-110"
                   readOnly
                 >
-                  검색
+                  <img src="/pen.png" alt="button"></img>
                 </button>
-              </div>
-            </div>
-            <div className="mb-5 overflow-hidden">
-              {noticeList && (
-                // 테이블로 표현한 방식 (assignment와 다르게 해볼 예정)
-                <>
-                  <table className="mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
-                        >
-                          No
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
-                        >
-                          제목
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
-                        >
-                          작성시간
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                      {noticeList?.results?.map((notice) => (
-                        <tr>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="ml-4">
-                              <div className="text-xl font-medium text-gray-900">
-                                {notice.notice_no}
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
-                                <Link to={`/notice/${notice.notice_no}/`}>
-                                  <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    {notice.title}
-                                  </span>
-                                </Link>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="text-m px-6 py-4 whitespace-nowrap">
-                            {notice.created_at}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </>
               )}
+              <input
+                type="text"
+                name="query"
+                onChange={getQuery}
+                onKeyPress={handleKeyPress}
+                className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
+                placeholder="제목을 검색하세요."
+              />
+              <button
+                onClick={() => handleKeyPress()}
+                className="relative ml-2 mr-4 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white px-3 py-2 rounded"
+                readOnly
+              >
+                검색
+              </button>
             </div>
-            <ReactPaginate
-              previousLabel="<"
-              breakLabel="..."
-              nextLabel=">"
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={itemsPerPage}
-              pageCount={pageCount}
-              renderOnZeroPageCount={null}
-              className="pagination_notice"
-            />
           </div>
+          <div className="mb-5 overflow-hidden">
+            {noticeList && (
+              // 테이블로 표현한 방식 (assignment와 다르게 해볼 예정)
+              <>
+                <table className="mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                      >
+                        No
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                      >
+                        제목
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                      >
+                        작성시간
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {noticeList?.results?.map((notice) => (
+                      <tr>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="ml-4">
+                            <div className="text-xl font-medium text-gray-900">
+                              {notice.notice_no}
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="ml-4">
+                            <div className="text-sm font-medium text-gray-900">
+                              <Link to={`/notice/${notice.notice_no}/`}>
+                                <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                  {notice.title}
+                                </span>
+                              </Link>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="text-m px-6 py-4 whitespace-nowrap">
+                          {notice.created_at}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </>
+            )}
+          </div>
+          <ReactPaginate
+            previousLabel="<"
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={itemsPerPage}
+            pageCount={pageCount}
+            renderOnZeroPageCount={null}
+            className="pagination_notice"
+          />
         </div>
       </div>
     </>

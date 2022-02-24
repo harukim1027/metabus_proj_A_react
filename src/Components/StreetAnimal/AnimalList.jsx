@@ -65,7 +65,7 @@ function AnimalList() {
   return (
     <>
       <div className="header">
-        <div className="flex flex-wrap justify-center max-w-m">
+        <div className="flex flex-wrap justify-center">
           <div className="w-2/3 header justify-center px-20 pt-6 mb-3">
             <div className="animal_header rounded-xl shadow-md overflow-hidden">
               <blockquote class="mt-5 text-4xl mb-3 font-semibold italic text-center text-slate-900">
