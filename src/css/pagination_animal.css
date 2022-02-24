@@ -40,11 +40,11 @@ ul.pagination_animal li a {
   font-weight: 600;
 }
 ul.pagination_animal li:hover {
-  background-color: rgb(20 184 166);
+  background-color: rgb(239 68 68);
   color: white;
 }
 ul.pagination_animal li.selected {
-  background-color: rgb(20 184 166);
+  background-color: rgb(239 68 68);
 }
 ul.pagination_animal li.selected a {
   color: white;

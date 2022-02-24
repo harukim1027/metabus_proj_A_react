@@ -1,6 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../App.css';
 import './Notice.css';
@@ -38,10 +38,42 @@ function NoticeDetail({ noticeId }) {
     }
   };
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener('scroll', handleFollow);
+    };
+  });
+  // console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, [notice]);
+
+  //-------------
+
   return (
     <>
-      <div className="header flex justify-center">
-        <div className="w-11/12 rounded-xl my-10 mb-10 shadow-md notice_header overflow-hidden">
+      <div className="header flex flex-wrap justify-center">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
               <span class="relative text-white">" 공지사항 "</span>
@@ -51,9 +83,15 @@ function NoticeDetail({ noticeId }) {
             <div className="px-4 py-5 w-2/3">
               {notice && (
                 <>
-                  <h1 className="text-3xl leading-6 font-bold text-gray-900">
+                  <h2
+                    className={
+                      notice.title.length > 20
+                        ? 'text-xl leading-6 font-bold text-gray-900 tracking-wide'
+                        : 'text-3xl leading-6 font-bold text-gray-900 tracking-wide'
+                    }
+                  >
                     {notice.title}
-                  </h1>
+                  </h2>
                   <hr className="mt-3 mb-3" />
 
                   <div className="w-full">
