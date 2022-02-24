@@ -1,7 +1,6 @@
 // import { useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useEffect, useState } from 'react';
-import { useAuth } from 'contexts/AuthContext';
 import useFieldValues from 'hooks/useFieldValues';
 import '../../App.css';
 import './accounts.css';
@@ -42,7 +41,7 @@ function FindId() {
           {' '}
           🐹 아이디 찾기{' '}
         </h2>
-        <span className="text-center block uppercase tracking-wide text-red-400 text-s font-bold mb-2">
+        <span className="text-center block uppercase tracking-wide text-red-400 text-s font-bold mb-3">
           아이디를 찾기 위해서는 회원님의 이름과 이메일이 필요합니다 ❕
         </span>
         {error?.response?.status === 401 && (

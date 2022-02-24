@@ -46,6 +46,7 @@ import PageMyAssignInfo from 'Pages/PageMypage/PageMyAssignInfo';
 import PageMyPageReview from 'Pages/PageMypage/PageMyPageReview';
 import PageMyInquiry from 'Pages/PageMypage/PageMyInquiry';
 import PageFindId from 'Pages/PageAccounts/PageFindId';
+import PageChangePassword from 'Pages/PageAccounts/PageChangePassword';
 
 function App() {
   const { auth } = useAuth();
@@ -59,6 +60,10 @@ function App() {
           <Route path="/accounts/signup/" element={<PageSignupForm />} />
           <Route path="/accounts/checksignup/" element={<PageCheckSignup />} />
           <Route path="/accounts/findid/" element={<PageFindId />} />
+          <Route
+            path="/accounts/changepassword/"
+            element={<PageChangePassword />}
+          />
 
           {/* notice */}
           <Route path="/notice/" element={<PageNoticeList />} />
