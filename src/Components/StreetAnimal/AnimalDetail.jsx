@@ -51,7 +51,7 @@ function AnimalDetail({ animalId }) {
         <div className="flex flex-wrap justify-center max-w-m">
           <div className="w-2/3 header justify-center px-20 pt-6 mb-3">
             <div className="animal_header rounded-xl shadow-md overflow-hidden">
-              <blockquote class="mt-5 text-4xl font-semibold italic text-center text-slate-900">
+              <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
                 <span class="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">
                   <span class="relative text-white">" 동물 정보 "</span>
                 </span>
@@ -128,7 +128,7 @@ function AnimalDetail({ animalId }) {
 
                       <tr>
                         <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
-                          건강 상태
+                          동물 정보
                         </th>
                         <td>{animal.info}</td>
                       </tr>

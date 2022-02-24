@@ -112,7 +112,7 @@ function AnimalForm({ animalId, handleDidSave }) {
         <div className="flex flex-wrap justify-center max-w-m">
           <div className="w-2/3 header justify-center px-20 pt-6 mb-3">
             <div className="animal_header rounded-xl shadow-md overflow-hidden">
-              <blockquote className="mt-5 text-4xl font-semibold italic text-center text-slate-900">
+              <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
                 <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">
                   <span className="relative text-white">" 동물 등록 "</span>
                 </span>
@@ -120,8 +120,8 @@ function AnimalForm({ animalId, handleDidSave }) {
 
               <div className="px-4 py-5 sm:px-6 ">
                 <form onSubmit={handleSubmit}>
-                  <div className="my-3 items-center">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       동물 종 선택
                     </span>
                     <div className="relative">
@@ -135,7 +135,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                         <option value="고양이">고양이</option>
                       </select>
 
-                      <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                      <div className="pointer-events-none absolute inset-y-0 right-80 flex items-center px-2 text-gray-700">
                         <svg
                           className="fill-current h-5 w-5"
                           xmlns="http://www.w3.org/2000/svg"
@@ -147,8 +147,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     </div>
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       등록번호 입력
                     </span>
                     <input
@@ -160,8 +160,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       크기 선택
                     </span>
                     <div className="relative">
@@ -177,7 +177,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                         <option value="대형">대형</option>
                       </select>
 
-                      <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                      <div className="pointer-events-none absolute inset-y-0 right-80 flex items-center px-2 text-gray-700">
                         <svg
                           className="fill-current h-5 w-5"
                           xmlns="http://www.w3.org/2000/svg"
@@ -189,8 +189,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     </div>
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       성별 선택
                     </span>
                     <div className="relative">
@@ -205,7 +205,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                         <option value="수컷">수컷</option>
                       </select>
 
-                      <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                      <div className="pointer-events-none absolute inset-y-0 right-80 flex items-center px-2 text-gray-700">
                         <svg
                           className="fill-current h-5 w-5"
                           xmlns="http://www.w3.org/2000/svg"
@@ -217,8 +217,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     </div>
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       나이 입력
                     </span>
                     <input
@@ -230,8 +230,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       발견 날짜 입력
                     </span>
                     <input
@@ -243,8 +243,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       발견 장소 입력
                     </span>
                     <input
@@ -256,9 +256,9 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
-                      건강 상태 입력
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
+                      동물 정보 입력
                     </span>
                     <textarea
                       name="info"
@@ -269,8 +269,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       보호 시작날짜 입력
                     </span>
                     <input
@@ -282,8 +282,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       보호 종료날짜 입력
                     </span>
                     <input
@@ -295,8 +295,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
 
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                  <div className="my-10 items-center">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       입양상태 선택
                     </span>
                     <div className="relative">
@@ -312,7 +312,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                         <option value="입양 완료">입양 완료</option>
                       </select>
 
-                      <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                      <div className="pointer-events-none absolute inset-y-0 right-80 flex items-center px-2 text-gray-700">
                         <svg
                           className="fill-current h-5 w-5"
                           xmlns="http://www.w3.org/2000/svg"
@@ -326,7 +326,7 @@ function AnimalForm({ animalId, handleDidSave }) {
 
                   {/* 이미지 input 박스 */}
                   <div>
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ml-60">
                       이미지 첨부
                     </span>
                     <ul>

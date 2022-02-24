@@ -68,7 +68,7 @@ function AnimalList() {
         <div className="flex flex-wrap justify-center max-w-m">
           <div className="w-2/3 header justify-center px-20 pt-6 mb-3">
             <div className="animal_header rounded-xl shadow-md overflow-hidden">
-              <blockquote class="mt-5 text-4xl mb-3 font-semibold italic text-center text-slate-900">
+              <blockquote class="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
                 <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">
                   <span class="relative text-white">" 유기동물 관리 "</span>
                 </span>
