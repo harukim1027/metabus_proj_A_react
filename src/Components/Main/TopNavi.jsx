@@ -5,21 +5,17 @@ import '../../App.css';
 import './TopNavi.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 function TopNav() {
   const navigate = useNavigate();
-
   const { auth, logout } = useAuth();
-
   const handleLogout = () => {
     logout();
   };
-
   const checkLogin = () => {
     if (auth.isLoggedIn) {
       navigate('/assignment/check/');
     } else {
-      toast.info('크루원 신청을 위해서는 로그인이 필요합니다! 😲 ', {
+      toast.info('크루원 신청을 위해서는 로그인이 필요합니다! :깜짝_놀란: ', {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
@@ -32,7 +28,6 @@ function TopNav() {
       navigate('/accounts/login/');
     }
   };
-
   return (
     <div className="header">
       <div className="flex text-xl place-content-between">
@@ -115,13 +110,11 @@ function TopNav() {
       >
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
-
       {/* 탑메뉴바 */}
       <div className="py-4 bg-white grid grid-cols-3 text-center text-3xl font-bold">
         <MyLink to="/notice/">
           <div className="hover:text-white hover:bg-green-400 ">공지사항</div>
         </MyLink>
-
         {auth.is_staff ? (
           <MyLink to="/inquiry/">
             <div className="hover:text-white hover:bg-green-400">
@@ -143,9 +136,7 @@ function TopNav() {
     </div>
   );
 }
-
 function MyLink({ to, children }) {
   return <NavLink to={to}>{children}</NavLink>;
 }
-
 export default TopNav;

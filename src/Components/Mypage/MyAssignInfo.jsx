@@ -82,13 +82,13 @@ function MyAssignInfo() {
                         scope="col"
                         className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                       >
-                        신청 날짜
+                        동물 번호
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                       >
-                        동물 번호
+                        신청 날짜
                       </th>
                       <th
                         scope="col"
@@ -108,13 +108,13 @@ function MyAssignInfo() {
                         </td>
 
                         <td className="px-6 py-4 whitespace-nowrap">
-                          {assign.created_at}
-                        </td>
-
-                        <td className="px-6 py-4 whitespace-nowrap">
                           <Link to={`/admin/animal/${assign.animal.animal_no}`}>
                             {assign.animal.animal_reg_num}
                           </Link>
+                        </td>
+
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {assign.created_at}
                         </td>
 
                         <td

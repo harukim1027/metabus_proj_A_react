@@ -107,198 +107,302 @@ function AnimalForm({ animalId, handleDidSave }) {
   };
 
   return (
-    <div>
-      <h2>AnimalForm</h2>
+    <>
+      <div className="header">
+        <div className="flex flex-wrap justify-center max-w-m">
+          <div className="w-2/3 header justify-center px-20 pt-6 mb-3">
+            <div className="animal_header rounded-xl shadow-md overflow-hidden">
+              <blockquote className="mt-5 text-4xl font-semibold italic text-center text-slate-900">
+                <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">
+                  <span className="relative text-white">" 동물 등록 "</span>
+                </span>
+              </blockquote>
 
-      <form onSubmit={handleSubmit}>
-        <div className="my-3">
-          <span>동물 종 선택</span>
-          <select
-            name="category"
-            value={fieldValues.category}
-            onChange={handleFieldChange}
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          >
-            <option value="강아지">강아지</option>
-            <option value="고양이">고양이</option>
-          </select>
-        </div>
+              <div className="px-4 py-5 sm:px-6 ">
+                <form onSubmit={handleSubmit}>
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      동물 종 선택
+                    </span>
+                    <div className="relative">
+                      <select
+                        name="category"
+                        value={fieldValues.category}
+                        onChange={handleFieldChange}
+                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3 "
+                      >
+                        <option value="강아지">강아지</option>
+                        <option value="고양이">고양이</option>
+                      </select>
 
-        <div className="my-3">
-          <span>등록번호 입력</span>
-          <input
-            name="animal_reg_num"
-            value={fieldValues.animal_reg_num}
-            onChange={handleFieldChange}
-            type="text"
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          />
-        </div>
+                      <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                        <svg
+                          className="fill-current h-5 w-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
 
-        <div className="my-3">
-          <span>크기 선택</span>
-          <select
-            name="size"
-            value={fieldValues.size}
-            onChange={handleFieldChange}
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-            defaultValue="1"
-          >
-            <option value="소형">소형</option>
-            <option value="중형">중형</option>
-            <option value="대형">대형</option>
-          </select>
-        </div>
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      등록번호 입력
+                    </span>
+                    <input
+                      name="animal_reg_num"
+                      value={fieldValues.animal_reg_num}
+                      onChange={handleFieldChange}
+                      type="text"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                    />
+                  </div>
 
-        <div className="my-3">
-          <span>성별 선택</span>
-          <select
-            name="sex"
-            value={fieldValues.sex}
-            onChange={handleFieldChange}
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-            defaultValue="1"
-          >
-            <option value="암컷">암컷</option>
-            <option value="수컷">수컷</option>
-          </select>
-        </div>
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      크기 선택
+                    </span>
+                    <div className="relative">
+                      <select
+                        name="size"
+                        value={fieldValues.size}
+                        onChange={handleFieldChange}
+                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3"
+                        defaultValue="1"
+                      >
+                        <option value="소형">소형</option>
+                        <option value="중형">중형</option>
+                        <option value="대형">대형</option>
+                      </select>
 
-        <div className="my-3">
-          <span>나이 입력</span>
-          <input
-            name="age"
-            value={fieldValues.age}
-            onChange={handleFieldChange}
-            type="number"
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          />
-        </div>
+                      <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                        <svg
+                          className="fill-current h-5 w-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
 
-        <div className="my-3">
-          <span>발견 날짜 입력</span>
-          <input
-            name="date_of_discovery"
-            value={fieldValues.date_of_discovery}
-            onChange={handleFieldChange}
-            type="datetime-local"
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          />
-        </div>
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      성별 선택
+                    </span>
+                    <div className="relative">
+                      <select
+                        name="sex"
+                        value={fieldValues.sex}
+                        onChange={handleFieldChange}
+                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3"
+                        defaultValue="1"
+                      >
+                        <option value="암컷">암컷</option>
+                        <option value="수컷">수컷</option>
+                      </select>
 
-        <div className="my-3">
-          <span>발견 장소 입력</span>
-          <input
-            name="place_of_discovery"
-            value={fieldValues.place_of_discovery}
-            onChange={handleFieldChange}
-            type="text"
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          />
-        </div>
+                      <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                        <svg
+                          className="fill-current h-5 w-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
 
-        <div className="my-3">
-          <span>건강 상태 입력</span>
-          <textarea
-            name="physical_condition"
-            value={fieldValues.physical_condition}
-            onChange={handleFieldChange}
-            type="text"
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          />
-        </div>
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      나이 입력
+                    </span>
+                    <input
+                      name="age"
+                      value={fieldValues.age}
+                      onChange={handleFieldChange}
+                      type="number"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                    />
+                  </div>
 
-        <div className="my-3">
-          <span>보호 시작날짜 입력</span>
-          <input
-            name="start_date"
-            value={fieldValues.start_date}
-            onChange={handleFieldChange}
-            type="date"
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          />
-        </div>
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      발견 날짜 입력
+                    </span>
+                    <input
+                      name="date_of_discovery"
+                      value={fieldValues.date_of_discovery}
+                      onChange={handleFieldChange}
+                      type="datetime-local"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                    />
+                  </div>
 
-        <div className="my-3">
-          <span>보호 종료날짜 입력</span>
-          <input
-            name="end_date"
-            value={fieldValues.end_date}
-            onChange={handleFieldChange}
-            type="date"
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          />
-        </div>
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      발견 장소 입력
+                    </span>
+                    <input
+                      name="place_of_discovery"
+                      value={fieldValues.place_of_discovery}
+                      onChange={handleFieldChange}
+                      type="text"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                    />
+                  </div>
 
-        <div className="my-3">
-          <span>입양상태 입력</span>
-          <select
-            name="protection_status"
-            value={fieldValues.protection_status}
-            onChange={handleFieldChange}
-            type="text"
-            className="border-2 border-sky-400 rounded p-1 ml-2"
-          >
-            <option value="입양 대기">입양 대기</option>
-            <option value="입양 매칭 중">입양 매칭 중</option>
-            <option value="입양 완료">입양 완료</option>
-          </select>
-        </div>
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      건강 상태 입력
+                    </span>
+                    <textarea
+                      name="physical_condition"
+                      value={fieldValues.physical_condition}
+                      onChange={handleFieldChange}
+                      type="text"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                    />
+                  </div>
 
-        {/* 이미지 input 박스 */}
-        <div className="my-3">
-          <input
-            name="image"
-            accept=".png, .jpg, .jpeg"
-            onChange={(e) => {
-              imgpreview(e, e.target.files[0]);
-            }}
-            type="file"
-            className="border-2 border-gray-300"
-          />
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      보호 시작날짜 입력
+                    </span>
+                    <input
+                      name="start_date"
+                      value={fieldValues.start_date}
+                      onChange={handleFieldChange}
+                      type="date"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                    />
+                  </div>
 
-          {!fieldValues.image && (
-            <div>
-              <img src={Animal?.results.image} alt="" className="h-44" />
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      보호 종료날짜 입력
+                    </span>
+                    <input
+                      name="end_date"
+                      value={fieldValues.end_date}
+                      onChange={handleFieldChange}
+                      type="date"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                    />
+                  </div>
+
+                  <div className="my-3">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      입양상태 선택
+                    </span>
+                    <div className="relative">
+                      <select
+                        name="protection_status"
+                        value={fieldValues.protection_status}
+                        onChange={handleFieldChange}
+                        type="text"
+                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3"
+                      >
+                        <option value="입양 대기">입양 대기</option>
+                        <option value="입양 매칭 중">입양 매칭 중</option>
+                        <option value="입양 완료">입양 완료</option>
+                      </select>
+
+                      <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                        <svg
+                          className="fill-current h-5 w-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 이미지 input 박스 */}
+                  <div>
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                      이미지 첨부
+                    </span>
+                    <ul>
+                      <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md">
+                        <input
+                          name="image"
+                          accept=".png, .jpg, .jpeg"
+                          onChange={(e) => {
+                            imgpreview(e, e.target.files[0]);
+                          }}
+                          type="file"
+                        />
+
+                        {!fieldValues.image && (
+                          <div>
+                            <img
+                              src={Animal?.results.image}
+                              alt=""
+                              className="h-44"
+                            />
+                          </div>
+                        )}
+
+                        <div>
+                          <img src={image} alt="" className="h-44" />
+                        </div>
+
+                        <button
+                          className="rounded-full px-2 py-1 bg-sky-300"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setImage('');
+                            setFieldValues((prevFieldValues) => {
+                              return {
+                                ...prevFieldValues,
+                                image: '',
+                              };
+                            });
+                          }}
+                        >
+                          X
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {saveErrorMessages.image?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      {message}
+                    </p>
+                  ))}
+
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded mt-6"
+                      onClick={(e) => handleSubmit(e)}
+                      onSubmit={handleSubmit}
+                    >
+                      저장
+                    </button>
+                  </div>
+
+                  <div>
+                    {saveLoading && (
+                      <LoadingIndicator>저장 중 ...</LoadingIndicator>
+                    )}
+                    {saveError &&
+                      `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
+                  </div>
+                </form>
+              </div>
             </div>
-          )}
-
-          <div>
-            <img src={image} alt="" className="h-44" />
-          </div>
-
-          <button
-            className="rounded-full px-2 py-1 bg-sky-300"
-            onClick={(e) => {
-              e.preventDefault();
-              setImage('');
-              setFieldValues((prevFieldValues) => {
-                return {
-                  ...prevFieldValues,
-                  image: '',
-                };
-              });
-            }}
-          >
-            X
-          </button>
-        </div>
-        {saveErrorMessages.image?.map((message, index) => (
-          <p key={index} className="text-xs text-red-400">
-            {message}
-          </p>
-        ))}
-
-        <div className="my-3">
-          <Button>저장</Button>
-
-          <div>
-            {saveLoading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
-            {saveError &&
-              `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
           </div>
         </div>
-      </form>
+      </div>
 
       <DebugStates
         Animal={Animal}
@@ -307,7 +411,7 @@ function AnimalForm({ animalId, handleDidSave }) {
         saveErrorMessages={saveErrorMessages}
         fieldValues={fieldValues}
       />
-    </div>
+    </>
   );
 }
 
