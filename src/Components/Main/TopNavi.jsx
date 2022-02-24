@@ -61,9 +61,10 @@ function TopNav() {
         {auth.isLoggedIn && (
           <>
             <div className="ml-10 mt-20 ">
-              <span className="bg-white shadow-md border text-center font-bold">
+              <span className="rounded-xl bg-white shadow-md border text-center font-bold">
                 {'  '}
-                오늘도 찾아주셨네요, {auth.nickname} 님 ❕
+                &nbsp; &nbsp;오늘도 찾아주셨네요, {auth.nickname} 님 ❕
+                &nbsp;&nbsp;
               </span>
             </div>
             <div className="flex">
