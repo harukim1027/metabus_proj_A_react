@@ -101,7 +101,7 @@ function NoticeList() {
               {auth.is_staff && (
                 <button
                   onClick={() => navigate('/admin/notice/new/')}
-                  className=" icon_size hover:scale-110"
+                  className=" icon_size float-left ml-10 hover:scale-110"
                   readOnly
                 >
                   <img src="/pen.png" alt="button"></img>
@@ -112,7 +112,7 @@ function NoticeList() {
                 name="query"
                 onChange={getQuery}
                 onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
+                className="relative rounded p-3 text-m mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
                 placeholder="제목을 검색하세요."
               />
               <button
@@ -124,22 +124,22 @@ function NoticeList() {
               </button>
             </div>
           </div>
-          <div className="mb-5 overflow-hidden">
+          <div className="mb-5">
             {noticeList && (
               // 테이블로 표현한 방식 (assignment와 다르게 해볼 예정)
               <>
-                <table className="mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">
+                <table className="mb-5 border text-center min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
                       >
                         No
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/2"
                       >
                         제목
                       </th>
@@ -154,27 +154,26 @@ function NoticeList() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {noticeList?.results?.map((notice) => (
                       <tr>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="ml-4">
-                            <div className="text-xl font-medium text-gray-900">
-                              {notice.notice_no}
-                            </div>
+                        <td className="py-4">
+                          <div className="text-xl font-medium text-gray-900">
+                            {notice.notice_no}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              <Link to={`/notice/${notice.notice_no}/`}>
-                                <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                  {notice.title}
-                                </span>
-                              </Link>
-                            </div>
+                        <td className="py-4">
+                          <div
+                            className="font-medium text-gray-900 cursor-pointer"
+                            onClick={() =>
+                              navigate(`/notice/${notice.notice_no}/`)
+                            }
+                          >
+                            <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                              {notice.title.length > 20
+                                ? notice.title.substr(0, 19) + '...'
+                                : notice.title}
+                            </span>
                           </div>
                         </td>
-                        <td className="text-m px-6 py-4 whitespace-nowrap">
-                          {notice.created_at}
-                        </td>
+                        <td className="text-m py-4">{notice.created_at}</td>
                       </tr>
                     ))}
                   </tbody>

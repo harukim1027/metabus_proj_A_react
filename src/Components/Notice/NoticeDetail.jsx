@@ -51,9 +51,15 @@ function NoticeDetail({ noticeId }) {
             <div className="px-4 py-5 w-2/3">
               {notice && (
                 <>
-                  <h1 className="text-3xl leading-6 font-bold text-gray-900">
+                  <h2
+                    className={
+                      notice.title.length > 20
+                        ? 'text-xl leading-6 font-bold text-gray-900 tracking-wide'
+                        : 'text-3xl leading-6 font-bold text-gray-900 tracking-wide'
+                    }
+                  >
                     {notice.title}
-                  </h1>
+                  </h2>
                   <hr className="mt-3 mb-3" />
 
                   <div className="w-full">
