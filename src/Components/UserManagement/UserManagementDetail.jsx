@@ -3,6 +3,8 @@ import { useAuth } from 'contexts/AuthContext';
 import LoadingIndicator from 'LoadingIndicator';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import '../../App.css';
+import './userManage.css';
 
 function UserManagementDetail({ userId }) {
   const { auth } = useAuth();
@@ -65,113 +67,149 @@ function UserManagementDetail({ userId }) {
   }, []);
 
   return (
-    <div>
-      <h2>UserManagementDetail</h2>
-      {loading && <LoadingIndicator />}
-      {deleteLoading && <LoadingIndicator>삭제 중 ...</LoadingIndicator>}
-      {error &&
-        `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
-      {deleteError &&
-        `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
-
-      {userData && (
-        <>
-          <div className="my-3">
-            <span>유저아이디</span>
-            <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {userData.userID}
+    <>
+      <div className="header flex flex-wrap justify-center">
+        <div className="userManage_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+          <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block">
+              <span class="relative text-white">" 회원 정보 "</span>
             </span>
+          </blockquote>
+
+          {loading && <LoadingIndicator />}
+          {deleteLoading && <LoadingIndicator>삭제 중 ...</LoadingIndicator>}
+          {error &&
+            `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+          {deleteError &&
+            `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
+
+          <div className="my-5 overflow-hidden">
+            {userData && (
+              <>
+                <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
+                  <tr>
+                    <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                      유저아이디
+                    </th>
+                    <td>{userData.userID}</td>
+                  </tr>
+
+                  <tr>
+                    <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                      이름
+                    </th>
+                    <td>{userData.name}</td>
+                  </tr>
+
+                  <tr>
+                    <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                      닉네임
+                    </th>
+                    <td>{userData.nickname}</td>
+                  </tr>
+
+                  <tr>
+                    <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                      연락처
+                    </th>
+                    <td>{userData.phone_number}</td>
+                  </tr>
+
+                  <tr>
+                    <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                      이메일
+                    </th>
+                    <td>{userData.email}</td>
+                  </tr>
+
+                  <tr>
+                    <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                      거주지역
+                    </th>
+                    <td>{userData?.region}</td>
+                  </tr>
+                </table>
+
+                {assignArray?.map((assign) => {
+                  return (
+                    <>
+                      <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
+                        <tr>
+                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                            신청일
+                          </th>
+                          <td>{assign.created_at}</td>
+                        </tr>
+
+                        <tr>
+                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                            신청번호
+                          </th>
+                          <td>{assign.assignment_no}</td>
+                        </tr>
+
+                        <tr>
+                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                            신청동물
+                          </th>
+                          <td>{assign.animal.category.name}</td>
+                        </tr>
+
+                        <tr>
+                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                            동물 등록번호
+                          </th>
+                          <td>{assign.animal.animal_reg_num}</td>
+                        </tr>
+
+                        <tr>
+                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                            만남장소
+                          </th>
+                          <td>{assign.place_to_meet}</td>
+                        </tr>
+
+                        <tr>
+                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                            만남날짜
+                          </th>
+                          <td>{assign.date_to_meet}</td>
+                        </tr>
+
+                        <tr>
+                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                            신청상태
+                          </th>
+                          <td>{assign.status}</td>
+                        </tr>
+                      </table>
+                    </>
+                  );
+                })}
+              </>
+            )}
           </div>
 
-          <div className="my-3">
-            <span>이름</span>
-            <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {userData.name}
-            </span>
+          <div className="my-5 text-right">
+            <button
+              onClick={handleDelete}
+              className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+            >
+              삭제
+            </button>
+
+            <button
+              onClick={() => {
+                navigate('/admin/usermanage/');
+              }}
+              className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+            >
+              목록
+            </button>
           </div>
-
-          <div className="my-3">
-            <span>닉네임</span>
-            <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {userData.nickname}
-            </span>
-          </div>
-
-          <div className="my-3">
-            <span>연락처</span>
-            <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {userData.phone_number}
-            </span>
-          </div>
-
-          <div className="my-3">
-            <span>이메일</span>
-            <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {userData.email}
-            </span>
-          </div>
-
-          <div className="my-3">
-            <span>거주지역</span>
-            <span className="border-2 border-sky-400 rounded p-1 ml-2">
-              {userData?.region === '서울' && '서울'}
-              {userData?.region === '인천' && '인천'}
-              {userData?.region === '대전' && '대전'}
-              {userData?.region === '세종' && '세종'}
-              {userData?.region === '대구' && '대구'}
-              {userData?.region === '부산' && '부산'}
-              {userData?.region === '광주' && '광주'}
-              {userData?.region === '울산' && '울산'}
-              {userData?.region === '제주' && '제주'}
-              {userData?.region === '강원' && '강원'}
-            </span>
-          </div>
-
-          <div>
-            {assignArray?.map((assign) => {
-              return (
-                <>
-                  <div>신청일</div>
-                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
-                    {assign.user.created_at}
-                  </span>
-                  <div>신청번호</div>
-                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
-                    {assign.assignment_no}
-                  </span>
-                  <div>신청동물</div>
-                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
-                    {assign.animal.category.name}
-                  </span>
-                  <div>만남장소</div>
-                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
-                    {assign.place_to_meet}
-                  </span>
-                  <div>만남날짜</div>
-                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
-                    {assign.date_to_meet}
-                  </span>
-                  <div>신청상태</div>
-                  <span className="border-2 border-sky-400 rounded p-1 ml-2">
-                    {assign.status}
-                  </span>
-                </>
-              );
-            })}
-          </div>
-        </>
-      )}
-
-      <div className="my-5">
-        <button onClick={handleDelete} className="hover:text-red-400">
-          삭제
-        </button>
-
-        <Link to="/admin/usermanage/" className="hover:text-red-400">
-          목록
-        </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
