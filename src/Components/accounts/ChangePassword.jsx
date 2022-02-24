@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const INIT_FIELD_VALUES = {
   userID: '',
   name: '',
-  password_quiz: '',
+  password_quiz: '내 보물 1호는?',
   password_quiz_answer: '',
 };
 
