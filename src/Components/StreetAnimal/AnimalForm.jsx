@@ -109,7 +109,7 @@ function AnimalForm({ animalId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="animal_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">
               <span className="relative text-white">" 동물 등록 "</span>
@@ -127,13 +127,13 @@ function AnimalForm({ animalId, handleDidSave }) {
                     name="category"
                     value={fieldValues.category}
                     onChange={handleFieldChange}
-                    className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-full"
+                    className="rounded-xl text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
                   >
                     <option value="강아지">강아지</option>
                     <option value="고양이">고양이</option>
                   </select>
 
-                  <div className="pointer-events-none absolute inset-y-0 right-80 flex items-center px-2 text-gray-700">
+                  <div className="pointer-events-none absolute top-3 right-3 flex items-center px-2 text-gray-700">
                     <svg
                       className="fill-current h-5 w-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +154,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   value={fieldValues.animal_reg_num}
                   onChange={handleFieldChange}
                   type="text"
-                  className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-full "
+                  className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6"
                 />
               </div>
 

@@ -187,7 +187,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   value={fieldValues.title}
                   onChange={handleFieldChange}
                   placeholder="제목을 입력해주세요."
-                  className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
+                  className="rounded-xl text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
                 />
               </div>
               {/* 내용 입력 인풋박스 */}
@@ -201,7 +201,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   onChange={handleFieldChange}
                   rows="7" // textarea의 행 설정으로 늘릴 수 있음
                   placeholder="내용을 입력해주세요."
-                  className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
+                  className="rounded-xl text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                 />
               </div>
               <hr />
@@ -219,7 +219,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                   <ul>
                     {/* 개별 이미지 input 박스 1*/}
-                    <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -265,7 +265,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 2*/}
-                    <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -309,7 +309,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 3*/}
-                    <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -347,7 +347,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 4*/}
-                    <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -385,7 +385,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 5*/}
-                    <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -427,7 +427,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
               <hr />
               {/* 파일 첨부 인풋박스 시작 부분 */}
               <div className="my-3 ml-3 w-full">
-                <span className=" block uppercase tracking-wide text-blue-900 text-m font-bold mb-2 ">
+                <span className=" block uppercase tracking-wide text-blue-900 text-md font-bold mb-2 ">
                   파일 첨부
                 </span>
                 <h2 className="text-gray-500 text-xs">
@@ -439,7 +439,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                   <ul>
                     {/* 개별 이미지 input 박스 1*/}
-                    <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 border-2 rounded-md w-full">
+                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md w-full">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
@@ -467,7 +467,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {/* 개별 파일 input 박스 2*/}
-                    <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
@@ -495,7 +495,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {/* 개별 파일 input 박스 3*/}
-                    <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
@@ -527,7 +527,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                 </div>
               </div>
               <div className="text-center">
-                <button className=" bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded">
+                <button className=" bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-1 px-2 rounded">
                   저장하기
                 </button>
                 <div>

@@ -62,9 +62,18 @@ function AnimalDetail({ animalId }) {
           {deleteError &&
             `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
 
-          <div className="mb-5 overflow-hidden border-b border-gray-200">
+          <div className="my-5 overflow-hidden">
             {animal && (
               <>
+                <div className="flex justify-center">
+                  {animal.image && (
+                    <img
+                      src={animal.image}
+                      alt={animal.animal_no}
+                      className="mr-1"
+                    />
+                  )}
+                </div>
                 <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
@@ -155,16 +164,6 @@ function AnimalDetail({ animalId }) {
                     </td>
                   </tr>
                 </table>
-
-                <div className="px-20">
-                  {animal.image && (
-                    <img
-                      src={animal.image}
-                      alt={animal.animal_no}
-                      className="mr-1"
-                    />
-                  )}
-                </div>
               </>
             )}
           </div>

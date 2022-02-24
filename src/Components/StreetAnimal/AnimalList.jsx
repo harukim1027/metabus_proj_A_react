@@ -72,7 +72,7 @@ function AnimalList() {
             </span>
           </blockquote>
 
-          <div className="ml-3 mb-6 mt-6">
+          <div className="ml-3 mb-6 mt-3">
             <div className="text-right">
               <button
                 onClick={() => navigate('/admin/animal/new/')}
@@ -90,9 +90,9 @@ function AnimalList() {
                 className="relative rounded p-3 text-m mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
               />
               <button
-                type="submit"
                 onClick={() => handleKeyPress()}
-                className="relative ml-2 mr-2 flex-shrink-0 bg-red-400 shadow-md hover:bg-red-700 border-red-400 hover:border-red-700 text-xl border-4 text-white py-1 rounded"
+                className="relative ml-2 mr-4 flex-shrink-0 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-xl border-4 text-white px-3 py-2 rounded"
+                readOnly
               >
                 검색
               </button>
@@ -103,19 +103,31 @@ function AnimalList() {
           {error && '로딩 중 에러가 발생했습니다.'}
 
           <div className="mb-5 overflow-hidden">
-            <table className="mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">
+            <table className="border text-center min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider">
-                    번호
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
+                  >
+                    No
                   </th>
-                  <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider">
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
+                  >
                     동물 종
                   </th>
-                  <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider">
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/2"
+                  >
                     등록번호
                   </th>
-                  <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider">
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                  >
                     입양 상태
                   </th>
                 </tr>
@@ -130,33 +142,27 @@ function AnimalList() {
                       }
                       className="cursor-pointer"
                     >
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-m font-medium text-gray-900">
+                      <td className="px-6 py-4">
+                        <div className="text-xl font-medium text-gray-900">
                           {animal.animal_no}
                         </div>
                       </td>
 
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-m font-medium text-gray-900">
-                          {animal.category.name === '강아지' && '강아지'}
-                          {animal.category.name === '고양이' && '고양이'}
+                      <td className="px-6 py-4">
+                        <div className="text-xl font-medium text-gray-900">
+                          {animal.category.name}
                         </div>
                       </td>
 
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-m font-medium text-gray-900">
+                      <td className="px-6 py-4">
+                        <span className="text-xl text-gray-900 font-semibold rounded-full bg-red-100">
                           {animal.animal_reg_num}
-                        </div>
+                        </span>
                       </td>
 
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-m font-medium text-gray-900">
-                          {animal.protection_status === '입양 대기' &&
-                            '입양 대기'}
-                          {animal.protection_status === '입양 매칭 중' &&
-                            '입양 매칭 중'}
-                          {animal.protection_status === '입양 완료' &&
-                            '입양 완료'}
+                      <td className="px-6 py-4">
+                        <div className="text-xl font-medium text-gray-900">
+                          {animal.protection_status}
                         </div>
                       </td>
                     </tr>
