@@ -190,10 +190,6 @@ function NoticeForm({ noticeId, handleDidSave }) {
 
   return (
     <>
-      {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
-      {saveError &&
-        `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
-
       <div className="header flex flex-wrap justify-center">
         <div className="notice_header rounded-md shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
           {/* 폼 작성 시작부분 */}
