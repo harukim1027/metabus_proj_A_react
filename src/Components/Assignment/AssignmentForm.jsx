@@ -390,7 +390,7 @@ function AssignmentForm({ handleDidSave }) {
                                       <span className="bg-blue-100 font-bold">
                                         건강 상태
                                       </span>
-                                      <span>{a.physical_condition}</span>
+                                      <span>{a.info}</span>
                                     </li>
                                   </ul>
                                 </div>

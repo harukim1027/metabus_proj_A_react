@@ -15,7 +15,7 @@ const INIT_FIELD_VALUES = {
   age: '',
   date_of_discovery: '',
   place_of_discovery: '',
-  physical_condition: '',
+  info: '',
   start_date: '',
   end_date: '',
   protection_status: '',
@@ -261,8 +261,8 @@ function AnimalForm({ animalId, handleDidSave }) {
                       건강 상태 입력
                     </span>
                     <textarea
-                      name="physical_condition"
-                      value={fieldValues.physical_condition}
+                      name="info"
+                      value={fieldValues.info}
                       onChange={handleFieldChange}
                       type="text"
                       className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"

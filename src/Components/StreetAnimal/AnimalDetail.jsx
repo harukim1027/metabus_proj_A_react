@@ -130,7 +130,7 @@ function AnimalDetail({ animalId }) {
                         <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                           건강 상태
                         </th>
-                        <td>{animal.physical_condition}</td>
+                        <td>{animal.info}</td>
                       </tr>
 
                       <tr>

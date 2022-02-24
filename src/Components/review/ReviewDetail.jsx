@@ -82,8 +82,7 @@ function ReviewDetail({ reviewId }) {
 
                       <ul className="flex mx-5">
                         <li className="mt-2 px-2 border-gray-200 ">
-                          건강상태 :{' '}
-                          {review.adoptassignment.animal.physical_condition}
+                          건강상태 : {review.adoptassignment.animal.info}
                         </li>
                         <li className="mt-2 px-2 border-l-2 border-gray-200">
                           입양일 : {review.adoptassignment.animal.end_date}
