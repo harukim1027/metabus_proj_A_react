@@ -120,8 +120,8 @@ function AnimalForm({ animalId, handleDidSave }) {
 
               <div className="px-4 py-5 sm:px-6 ">
                 <form onSubmit={handleSubmit}>
-                  <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                  <div className="my-3 items-center">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       동물 종 선택
                     </span>
                     <div className="relative">
@@ -129,7 +129,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                         name="category"
                         value={fieldValues.category}
                         onChange={handleFieldChange}
-                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3 "
+                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3 ml-60"
                       >
                         <option value="강아지">강아지</option>
                         <option value="고양이">고양이</option>
@@ -148,7 +148,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       등록번호 입력
                     </span>
                     <input
@@ -156,12 +156,12 @@ function AnimalForm({ animalId, handleDidSave }) {
                       value={fieldValues.animal_reg_num}
                       onChange={handleFieldChange}
                       type="text"
-                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3 ml-60"
                     />
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       크기 선택
                     </span>
                     <div className="relative">
@@ -169,7 +169,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                         name="size"
                         value={fieldValues.size}
                         onChange={handleFieldChange}
-                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3"
+                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3 ml-60"
                         defaultValue="1"
                       >
                         <option value="소형">소형</option>
@@ -190,7 +190,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       성별 선택
                     </span>
                     <div className="relative">
@@ -198,7 +198,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                         name="sex"
                         value={fieldValues.sex}
                         onChange={handleFieldChange}
-                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3"
+                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3 ml-60"
                         defaultValue="1"
                       >
                         <option value="암컷">암컷</option>
@@ -218,7 +218,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       나이 입력
                     </span>
                     <input
@@ -226,12 +226,12 @@ function AnimalForm({ animalId, handleDidSave }) {
                       value={fieldValues.age}
                       onChange={handleFieldChange}
                       type="number"
-                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3 ml-60"
                     />
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       발견 날짜 입력
                     </span>
                     <input
@@ -239,12 +239,12 @@ function AnimalForm({ animalId, handleDidSave }) {
                       value={fieldValues.date_of_discovery}
                       onChange={handleFieldChange}
                       type="datetime-local"
-                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3 ml-60"
                     />
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       발견 장소 입력
                     </span>
                     <input
@@ -252,12 +252,12 @@ function AnimalForm({ animalId, handleDidSave }) {
                       value={fieldValues.place_of_discovery}
                       onChange={handleFieldChange}
                       type="text"
-                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3 ml-60"
                     />
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       건강 상태 입력
                     </span>
                     <textarea
@@ -265,12 +265,12 @@ function AnimalForm({ animalId, handleDidSave }) {
                       value={fieldValues.physical_condition}
                       onChange={handleFieldChange}
                       type="text"
-                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3 ml-60"
                     />
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       보호 시작날짜 입력
                     </span>
                     <input
@@ -278,12 +278,12 @@ function AnimalForm({ animalId, handleDidSave }) {
                       value={fieldValues.start_date}
                       onChange={handleFieldChange}
                       type="date"
-                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3 ml-60"
                     />
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       보호 종료날짜 입력
                     </span>
                     <input
@@ -291,12 +291,12 @@ function AnimalForm({ animalId, handleDidSave }) {
                       value={fieldValues.end_date}
                       onChange={handleFieldChange}
                       type="date"
-                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                      className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3 ml-60"
                     />
                   </div>
 
                   <div className="my-3">
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       입양상태 선택
                     </span>
                     <div className="relative">
@@ -305,7 +305,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                         value={fieldValues.protection_status}
                         onChange={handleFieldChange}
                         type="text"
-                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3"
+                        className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3 ml-60"
                       >
                         <option value="입양 대기">입양 대기</option>
                         <option value="입양 매칭 중">입양 매칭 중</option>
@@ -326,11 +326,11 @@ function AnimalForm({ animalId, handleDidSave }) {
 
                   {/* 이미지 input 박스 */}
                   <div>
-                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+                    <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2 ml-60">
                       이미지 첨부
                     </span>
                     <ul>
-                      <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md">
+                      <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-2/3 border-2 rounded-md ml-32">
                         <input
                           name="image"
                           accept=".png, .jpg, .jpeg"

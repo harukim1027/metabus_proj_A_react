@@ -33,6 +33,8 @@ function ChangePassword() {
     e.preventDefault();
   };
 
+  console.log('findUser: ', findUser);
+  console.log('userList: ', userList);
   return (
     <>
       <div>
