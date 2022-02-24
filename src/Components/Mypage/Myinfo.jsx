@@ -119,21 +119,6 @@ function Myinfo() {
                     <td>{userData?.password_quiz_answer}</td>
                   </tr>
                 </table>
-                <div className="text-right mr-5 mt-3 mb-3">
-                  <button
-                    onClick={() =>
-                      window.open(
-                        'http://localhost:8000/accounts/password_change/',
-                        '_blank',
-                      )
-                    }
-                    className="text-xl hover:bg-blue-200 hover:text-white font-semibold"
-                  >
-                    <span class="h-3 w-3 text-blue-900 bg-gray-200 hover:text-white">
-                      비밀번호 변경하기
-                    </span>
-                  </button>
-                </div>
               </div>
             </div>
           </div>
