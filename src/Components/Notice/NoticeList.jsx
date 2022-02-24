@@ -59,7 +59,7 @@ function NoticeList() {
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 679,
+      top: 1016,
       behavior: 'smooth',
     });
     setScrollY(0); // ScrollY 의 값을 초기화

@@ -156,6 +156,38 @@ function NoticeForm({ noticeId, handleDidSave }) {
     });
   };
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener('scroll', handleFollow);
+    };
+  });
+  // console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, [noticeData]);
+
+  //-------------
+
   return (
     <>
       {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
@@ -163,22 +195,24 @@ function NoticeForm({ noticeId, handleDidSave }) {
         `저장 중 에러가 발생했습니다.(${saveError.response.status} ${saveError.response.statusText})`}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-md shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
           {/* 폼 작성 시작부분 */}
           <blockquote class="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
             <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block text-6xl font-extrabold">
-              <span class="relative text-white">" 공지사항 작성 "</span>
+              <span class="relative text-white">
+                {!noticeId ? ' " 공지사항 작성 " ' : ' " 공지사항 수정 " '}
+              </span>
             </span>
           </blockquote>
           <hr />
           <div className="w-full">
             <form
               onSubmit={handleSubmit}
-              className="notice_header rounded-xl px-10 pt-6 pb-8"
+              className="notice_header rounded-md px-10 pt-6 pb-8"
             >
               {/* 제목 입력 인풋박스 */}
               <div className="ml-3 mb-3 w-full">
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
+                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                   제목
                 </span>
                 <input
@@ -187,12 +221,12 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   value={fieldValues.title}
                   onChange={handleFieldChange}
                   placeholder="제목을 입력해주세요."
-                  className="rounded-xl text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
+                  className="rounded-md text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
                 />
               </div>
               {/* 내용 입력 인풋박스 */}
               <div className="ml-3 mb-3 w-full ">
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
+                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                   내용
                 </span>
                 <textarea
@@ -201,14 +235,14 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   onChange={handleFieldChange}
                   rows="7" // textarea의 행 설정으로 늘릴 수 있음
                   placeholder="내용을 입력해주세요."
-                  className="rounded-xl text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
+                  className="rounded-md text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                 />
               </div>
               <hr />
 
               {/* 이미지 첨부 인풋박스 */}
               <div className="my-3 ml-3 w-full">
-                <span className=" block uppercase tracking-wide text-blue-900 text-m font-bold mb-2 ">
+                <span className=" block uppercase tracking-wide text-blue-900 text-xl font-bold mb-2 ">
                   이미지 첨부
                 </span>
                 <h2 className="text-gray-500 text-xs">
@@ -427,7 +461,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
               <hr />
               {/* 파일 첨부 인풋박스 시작 부분 */}
               <div className="my-3 ml-3 w-full">
-                <span className=" block uppercase tracking-wide text-blue-900 text-md font-bold mb-2 ">
+                <span className=" block uppercase tracking-wide text-blue-900 text-xl font-bold mb-2 ">
                   파일 첨부
                 </span>
                 <h2 className="text-gray-500 text-xs">

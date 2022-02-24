@@ -106,13 +106,47 @@ function AnimalForm({ animalId, handleDidSave }) {
     });
   };
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener('scroll', handleFollow);
+    };
+  });
+  // console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, [Animal]);
+
+  //-------------
+
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="animal_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="animal_header rounded-md shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">
-              <span className="relative text-white">" 동물 등록 "</span>
+              <span className="relative text-white">
+                {!animalId ? ' " 동물 등록 " ' : ' " 동물 정보 수정 " '}
+              </span>
             </span>
           </blockquote>
 
@@ -127,13 +161,13 @@ function AnimalForm({ animalId, handleDidSave }) {
                     name="category"
                     value={fieldValues.category}
                     onChange={handleFieldChange}
-                    className="rounded-xl text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
                   >
                     <option value="강아지">강아지</option>
                     <option value="고양이">고양이</option>
                   </select>
 
-                  <div className="pointer-events-none absolute top-3 right-3 flex items-center px-2 text-gray-700">
+                  <div className="pointer-events-none absolute top-4 right-3 flex items-center px-2 text-gray-700">
                     <svg
                       className="fill-current h-5 w-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -154,7 +188,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   value={fieldValues.animal_reg_num}
                   onChange={handleFieldChange}
                   type="text"
-                  className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6"
+                  className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
                 />
               </div>
 
@@ -167,7 +201,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     name="size"
                     value={fieldValues.size}
                     onChange={handleFieldChange}
-                    className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-full "
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
                     defaultValue="1"
                   >
                     <option value="소형">소형</option>
@@ -175,7 +209,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     <option value="대형">대형</option>
                   </select>
 
-                  <div className="pointer-events-none absolute inset-y-0 right-80 flex items-center px-2 text-gray-700">
+                  <div className="pointer-events-none absolute top-4 right-3 flex items-center px-2 text-gray-700">
                     <svg
                       className="fill-current h-5 w-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -187,71 +221,75 @@ function AnimalForm({ animalId, handleDidSave }) {
                 </div>
               </div>
 
-              <div className="my-10 items-center">
-                <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                  성별 선택
-                </span>
-                <div className="relative">
-                  <select
-                    name="sex"
-                    value={fieldValues.sex}
+              <div className="flex justify-between">
+                <div className="my-10 items-center">
+                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                    성별 선택
+                  </span>
+                  <div className="relative">
+                    <select
+                      name="sex"
+                      value={fieldValues.sex}
+                      onChange={handleFieldChange}
+                      className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                      defaultValue="1"
+                    >
+                      <option value="암컷">암컷</option>
+                      <option value="수컷">수컷</option>
+                    </select>
+
+                    <div className="pointer-events-none absolute top-4 right-3 flex items-center px-2 text-gray-700">
+                      <svg
+                        className="fill-current h-5 w-5"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="my-10 items-center">
+                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                    나이 입력
+                  </span>
+                  <input
+                    name="age"
+                    value={fieldValues.age}
                     onChange={handleFieldChange}
-                    className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-full "
-                    defaultValue="1"
-                  >
-                    <option value="암컷">암컷</option>
-                    <option value="수컷">수컷</option>
-                  </select>
-
-                  <div className="pointer-events-none absolute inset-y-0 right-80 flex items-center px-2 text-gray-700">
-                    <svg
-                      className="fill-current h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                    </svg>
-                  </div>
+                    type="number"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                  />
                 </div>
               </div>
 
-              <div className="my-10 items-center">
-                <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                  나이 입력
-                </span>
-                <input
-                  name="age"
-                  value={fieldValues.age}
-                  onChange={handleFieldChange}
-                  type="number"
-                  className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-full "
-                />
-              </div>
+              <div className="flex justify-between">
+                <div className="my-10 items-center">
+                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                    발견 날짜 입력
+                  </span>
+                  <input
+                    name="date_of_discovery"
+                    value={fieldValues.date_of_discovery}
+                    onChange={handleFieldChange}
+                    type="datetime-local"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                  />
+                </div>
 
-              <div className="my-10 items-center">
-                <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                  발견 날짜 입력
-                </span>
-                <input
-                  name="date_of_discovery"
-                  value={fieldValues.date_of_discovery}
-                  onChange={handleFieldChange}
-                  type="datetime-local"
-                  className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-full "
-                />
-              </div>
-
-              <div className="my-10 items-center">
-                <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                  발견 장소 입력
-                </span>
-                <input
-                  name="place_of_discovery"
-                  value={fieldValues.place_of_discovery}
-                  onChange={handleFieldChange}
-                  type="text"
-                  className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-full "
-                />
+                <div className="my-10 items-center">
+                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                    발견 장소 입력
+                  </span>
+                  <input
+                    name="place_of_discovery"
+                    value={fieldValues.place_of_discovery}
+                    onChange={handleFieldChange}
+                    type="text"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                  />
+                </div>
               </div>
 
               <div className="my-10 items-center">
@@ -263,34 +301,36 @@ function AnimalForm({ animalId, handleDidSave }) {
                   value={fieldValues.info}
                   onChange={handleFieldChange}
                   type="text"
-                  className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-full "
+                  className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none h-72"
                 />
               </div>
 
-              <div className="my-10 items-center">
-                <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                  보호 시작날짜 입력
-                </span>
-                <input
-                  name="start_date"
-                  value={fieldValues.start_date}
-                  onChange={handleFieldChange}
-                  type="date"
-                  className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-full "
-                />
-              </div>
+              <div className="flex justify-between">
+                <div className="my-10 items-center">
+                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                    보호 시작날짜 입력
+                  </span>
+                  <input
+                    name="start_date"
+                    value={fieldValues.start_date}
+                    onChange={handleFieldChange}
+                    type="date"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                  />
+                </div>
 
-              <div className="my-10 items-center">
-                <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                  보호 종료날짜 입력
-                </span>
-                <input
-                  name="end_date"
-                  value={fieldValues.end_date}
-                  onChange={handleFieldChange}
-                  type="date"
-                  className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-full "
-                />
+                <div className="my-10 items-center">
+                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                    보호 종료날짜 입력
+                  </span>
+                  <input
+                    name="end_date"
+                    value={fieldValues.end_date}
+                    onChange={handleFieldChange}
+                    type="date"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                  />
+                </div>
               </div>
 
               <div className="my-10 items-center">
@@ -303,14 +343,14 @@ function AnimalForm({ animalId, handleDidSave }) {
                     value={fieldValues.protection_status}
                     onChange={handleFieldChange}
                     type="text"
-                    className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-full "
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
                   >
                     <option value="입양 대기">입양 대기</option>
                     <option value="입양 매칭 중">입양 매칭 중</option>
                     <option value="입양 완료">입양 완료</option>
                   </select>
 
-                  <div className="pointer-events-none absolute inset-y-0 right-80 flex items-center px-2 text-gray-700">
+                  <div className="pointer-events-none absolute top-4 right-3 flex items-center px-2 text-gray-700">
                     <svg
                       className="fill-current h-5 w-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -328,7 +368,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   이미지 첨부
                 </span>
                 <ul>
-                  <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-full border-2 rounded-md ml-32">
+                  <li className="flex justify-between items-center text-sm pl-3 pr-4 py-3 w-full border-2 rounded-md">
                     <input
                       name="image"
                       accept=".png, .jpg, .jpeg"

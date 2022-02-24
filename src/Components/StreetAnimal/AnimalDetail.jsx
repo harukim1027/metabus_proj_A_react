@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import LoadingIndicator from 'LoadingIndicator';
 
 function AnimalDetail({ animalId }) {
@@ -45,6 +45,38 @@ function AnimalDetail({ animalId }) {
     refetch();
   }, []);
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener('scroll', handleFollow);
+    };
+  });
+  // console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, [animal]);
+
+  //-------------
+
   return (
     <>
       <div className="header flex flex-wrap justify-center">
@@ -69,8 +101,8 @@ function AnimalDetail({ animalId }) {
                   {animal.image && (
                     <img
                       src={animal.image}
-                      alt={animal.animal_no}
-                      className="mr-1"
+                      alt="동물 이미지가 없습니다."
+                      className="h-96"
                     />
                   )}
                 </div>
