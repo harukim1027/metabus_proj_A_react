@@ -159,10 +159,6 @@ function App() {
                 element={<PageInquiryDetail />}
               />
               <Route path="/inquiry/new/" element={<PageInquiryForm />} />
-              <Route
-                path="/inquiry/:inquiryId/edit/"
-                element={<PageInquiryForm />}
-              />
 
               {/* mypage */}
               <Route path="/mypage/userinfo/" element={<PageMyinfo />} />

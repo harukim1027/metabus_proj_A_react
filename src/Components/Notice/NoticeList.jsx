@@ -130,19 +130,19 @@ function NoticeList() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500  tracking-wider w-44"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/2"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500  tracking-wider w-96"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500  tracking-wider"
                   >
                     작성시간
                   </th>
