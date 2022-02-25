@@ -41,8 +41,7 @@ function ChangePassword() {
       <div>
         <div className="header rounded-xl px-20 pt-6 pb-8 mb-4">
           <h2 className="text-center text-4xl py-5 pb-5 font-bold  mb-3">
-            {' '}
-            🐯 비밀번호 변경하기{' '}
+            🐯 비밀번호 변경하기
           </h2>
           {/* 저장 에러  */}
           <div>
