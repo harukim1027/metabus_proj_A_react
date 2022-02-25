@@ -5,7 +5,6 @@ function PageUserAssignList() {
   return (
     <>
       <TopNav />
-      <h2>PageUserAssignList</h2>
       <UserAssignList />
     </>
   );
