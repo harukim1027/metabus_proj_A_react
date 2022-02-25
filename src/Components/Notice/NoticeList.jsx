@@ -96,6 +96,9 @@ function NoticeList() {
             </span>
           </blockquote>
 
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+
           <div className="ml-3 mb-6 mt-3">
             <div className="text-right">
               {auth.is_staff && (

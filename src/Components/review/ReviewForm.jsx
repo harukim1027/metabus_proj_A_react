@@ -186,6 +186,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 <span className="relative text-white">" 입양 후기 "</span>
               </span>
             </blockquote>
+
+            {loading && '로딩 중 ...'}
+            {error && '로딩 중 에러가 발생했습니다.'}
+
             <br />
           </div>
         </div>

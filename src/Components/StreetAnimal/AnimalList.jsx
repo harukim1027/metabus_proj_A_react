@@ -104,6 +104,9 @@ function AnimalList() {
             </span>
           </blockquote>
 
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+
           <div className="ml-3 mb-6 mt-3">
             <div className="text-right">
               <button
@@ -130,9 +133,6 @@ function AnimalList() {
               </button>
             </div>
           </div>
-
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
 
           <div className="mb-5 overflow-hidden">
             <table className="border text-center min-w-full divide-y divide-gray-200">

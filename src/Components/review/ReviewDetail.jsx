@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
 import './Review.css';
+import LoadingIndicator from 'LoadingIndicator';
 
 function ReviewDetail({ reviewId }) {
   const navigate = useNavigate();
@@ -14,16 +15,17 @@ function ReviewDetail({ reviewId }) {
     { manual: true },
   );
 
-  const [{}, deleteReview] = useApiAxios(
-    {
-      url: `/adopt_review/api/reviews/${reviewId}/`,
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
+  const [{ loading: deleteLoading, error: deleteError }, deleteReview] =
+    useApiAxios(
+      {
+        url: `/adopt_review/api/reviews/${reviewId}/`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${auth.access}`,
+        },
       },
-    },
-    { manual: true },
-  );
+      { manual: true },
+    );
 
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
@@ -49,6 +51,10 @@ function ReviewDetail({ reviewId }) {
               <span class="relative text-white text-6xl">" 입양후기 "</span>
             </span>
           </blockquote>
+
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+
           <div className="flex justify-center">
             <div className="px-4 py-5 w-2/3">
               {review && (
@@ -159,6 +165,13 @@ function ReviewDetail({ reviewId }) {
                         삭제하기
                       </button>
                     )}
+
+                    {loading && (
+                      <LoadingIndicator>저장 중 ...</LoadingIndicator>
+                    )}
+                    {error && `저장 중 에러가 발생했습니다.`}
+
+                    {deleteError && `삭제 요청 중 에러가 발생했습니다.`}
                   </div>
                 </>
               )}

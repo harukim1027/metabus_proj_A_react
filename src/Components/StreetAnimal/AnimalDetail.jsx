@@ -91,8 +91,6 @@ function AnimalDetail({ animalId }) {
           {deleteLoading && <LoadingIndicator>삭제 중 ...</LoadingIndicator>}
           {error &&
             `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
-          {deleteError &&
-            `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
 
           <div className="my-5 overflow-hidden">
             {animal && (
@@ -223,6 +221,13 @@ function AnimalDetail({ animalId }) {
                 >
                   목록
                 </Link>
+
+                <div>
+                  {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                  {error && `저장 중 에러가 발생했습니다.`}
+
+                  {deleteError && `삭제 요청 중 에러가 발생했습니다.`}
+                </div>
               </>
             )}
           </div>

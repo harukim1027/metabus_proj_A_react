@@ -70,9 +70,9 @@ function UserManagementDetail({ userId }) {
     <>
       <div className="header flex flex-wrap justify-center">
         <div className="userManage_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
-          <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block">
-              <span class="relative text-white">" 회원 정보 "</span>
+          <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+            <span className="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block">
+              <span className="relative text-white">" 회원 정보 "</span>
             </span>
           </blockquote>
 
@@ -80,8 +80,6 @@ function UserManagementDetail({ userId }) {
           {deleteLoading && <LoadingIndicator>삭제 중 ...</LoadingIndicator>}
           {error &&
             `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
-          {deleteError &&
-            `삭제 요청 중 에러가 발생했습니다. (${deleteError.response?.status} ${deleteError.response?.statusText})`}
 
           <div className="my-5 overflow-hidden">
             {userData && (
@@ -206,6 +204,8 @@ function UserManagementDetail({ userId }) {
             >
               목록
             </button>
+
+            {deleteError && `삭제 요청 중 에러가 발생했습니다.`}
           </div>
         </div>
       </div>
