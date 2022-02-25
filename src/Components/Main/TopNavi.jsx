@@ -15,7 +15,7 @@ function TopNav() {
     if (auth.isLoggedIn) {
       navigate('/assignment/check/');
     } else {
-      toast.info('크루원 신청을 위해서는 로그인이 필요합니다! :깜짝_놀란: ', {
+      toast.info('크루원 신청을 위해서는 로그인이 필요합니다! 😓 ', {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
@@ -57,16 +57,16 @@ function TopNav() {
           </div>
         )}
       </div>
-      <div className="flex text-xl place-content-between">
-        {auth.isLoggedIn && (
-          <>
-            <div className="ml-10 mt-20 ">
-              <span className="rounded-xl bg-white shadow-md border text-center font-bold">
-                {'  '}
-                &nbsp; &nbsp;오늘도 찾아주셨네요, {auth.nickname} 님 ❕
-                &nbsp;&nbsp;
-              </span>
-            </div>
+      {auth.isLoggedIn && (
+        <>
+          <div className="relative">
+            <span className="rounded-xl bg-white shadow-md border text-center font-bold absolute xs:top-25 sm:top-10 xs:inset-x-0 sm:inset-x-auto sm:left-10">
+              &nbsp; &nbsp;오늘도 찾아주셨네요, {auth.nickname} 님 ❕ &nbsp;
+              &nbsp;
+            </span>
+          </div>
+          <div className="flex text-xl place-content-between">
+            <div></div>
             <div className="flex">
               {auth.is_staff ? (
                 // 관리자 페이지
@@ -100,9 +100,9 @@ function TopNav() {
                 ></img>
               </button>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
 
       {/* 대문 */}
       <div
@@ -112,7 +112,7 @@ function TopNav() {
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
       {/* 탑메뉴바 */}
-      <div className="py-4 bg-white grid grid-cols-3 text-center text-3xl font-bold">
+      <div className="py-4 bg-white grid grid-cols-3 text-center xs:text-xl sm:text-3xl font-bold">
         <MyLink to="/notice/">
           <div className="hover:text-white hover:bg-green-400 ">공지사항</div>
         </MyLink>

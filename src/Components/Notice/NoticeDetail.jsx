@@ -1,5 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
+import LoadingIndicator from 'LoadingIndicator';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../App.css';
@@ -18,16 +19,17 @@ function NoticeDetail({ noticeId }) {
     refetch();
   }, []);
 
-  const [{}, deleteNotice] = useApiAxios(
-    {
-      url: `/notice/api/notices/${noticeId}/`,
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
+  const [{ loading: deleteLoading, error: deleteError }, deleteNotice] =
+    useApiAxios(
+      {
+        url: `/notice/api/notices/${noticeId}/`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${auth.access}`,
+        },
       },
-    },
-    { manual: true },
-  );
+      { manual: true },
+    );
 
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
@@ -73,14 +75,18 @@ function NoticeDetail({ noticeId }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
               <span class="relative text-white">" 공지사항 "</span>
             </span>
           </blockquote>
+
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+
           <div className="flex justify-center">
-            <div className="px-4 py-5 w-2/3">
+            <div className="px-4 py-5 xs:w-full sm:w-2/3">
               {notice && (
                 <>
                   <h2
@@ -240,6 +246,12 @@ function NoticeDetail({ noticeId }) {
                     삭제하기
                   </button>
                 )}
+              </div>
+              <div>
+                {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                {error && `저장 중 에러가 발생했습니다.`}
+
+                {deleteError && `삭제 요청 중 에러가 발생했습니다.`}
               </div>
             </div>
           </div>

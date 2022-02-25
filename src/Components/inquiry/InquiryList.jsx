@@ -95,7 +95,7 @@ function InquiryList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block">
               <span class="relative text-white">" 1:1 문의 "</span>
@@ -156,31 +156,31 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-32"
+                    className="py-3 text-center xs:text-sm sm:text-xl font-bold text-gray-500 uppercase tracking-wider xs:w-10 sm:w-32"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
+                    className="py-3 text-center xs:text-xs sm:text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
                   >
                     아이디
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/3"
+                    className="py-3 text-center xs:text-sm sm:text-xl font-bold text-gray-500 uppercase tracking-wider w-1/3"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                    className="py-3 text-center xs:text-sm sm:text-xl font-bold text-gray-500 uppercase tracking-wider"
                   >
                     문의 일자
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                    className="py-3 text-center xs:text-sm sm:text-xl font-bold text-gray-500 uppercase tracking-wider"
                   >
                     답변 상태
                   </th>
@@ -211,7 +211,7 @@ function InquiryList() {
                       </div>
                     </td>
                     <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
+                      <div className="text-m py-4 md:text-md xs:text-xs">
                         {inquiry.created_at}
                       </div>
                     </td>
