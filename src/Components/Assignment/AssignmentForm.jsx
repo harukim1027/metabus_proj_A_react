@@ -73,8 +73,9 @@ function AssignmentForm({ handleDidSave }) {
 
   fieldValues.animal = selanimal;
 
+  // get 요청
   const [
-    { data: AnimalList, loading: getLoading, error: getError },
+    { data: AnimalList, loading: getLoading, error: getError, errorMessages },
     queryanimal,
   ] = useApiAxios(
     {
@@ -217,6 +218,14 @@ function AssignmentForm({ handleDidSave }) {
               </span>
             </blockquote>
             {getLoading && <LoadingIndicator>로딩 중입니다.</LoadingIndicator>}
+            {/* 로딩 에러 */}
+            {getLoading && '로딩 중 ...'}
+            {getError && '로딩 중 에러가 발생했습니다.'}
+            {getError?.response?.status === 401 && (
+              <div className="text-red-400">
+                조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+              </div>
+            )}
             <br />
           </div>
         </div>
@@ -276,6 +285,11 @@ function AssignmentForm({ handleDidSave }) {
                         <option value="중형">중형</option>
                         <option value="대형">대형</option>
                       </select>
+                      {errorMessages.userID?.map((message, index) => (
+                        <p key={index} className="text-m text-red-400">
+                          {message}
+                        </p>
+                      ))}
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
                         <svg
                           className="fill-current h-5 w-5"
@@ -303,6 +317,11 @@ function AssignmentForm({ handleDidSave }) {
                         <option value="암컷">암컷</option>
                         <option value="수컷">수컷</option>
                       </select>
+                      {errorMessages.userID?.map((message, index) => (
+                        <p key={index} className="text-m text-red-400">
+                          {message}
+                        </p>
+                      ))}
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
                         <svg
                           className="fill-current h-5 w-5"
@@ -338,6 +357,14 @@ function AssignmentForm({ handleDidSave }) {
                         >
                           <img src="/searchicon2.png" alt="button"></img>
                         </button>
+                        {/* 저장 에러  */}
+                        <div>
+                          {getLoading && (
+                            <LoadingIndicator>저장 중 ...</LoadingIndicator>
+                          )}
+                          {getError &&
+                            `저장 중 에러가 발생했습니다. (${getError.response?.status} ${getError.response?.statusText})`}
+                        </div>
                       </div>
 
                       {/* 검색한 동물 보여주기 */}
@@ -515,6 +542,7 @@ function AssignmentForm({ handleDidSave }) {
                     placeholder="신청자 이름을 입력해주세요."
                     className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
                   />
+
                   <button
                     onClick={(e) => putAuthName(e)}
                     className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white py-1 px-2 rounded"

@@ -11,6 +11,8 @@ function AssignStatus({ assignId, handleDidSave, assignData }) {
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_VALUES);
   INIT_VALUES.status = assignData.status;
   // ---------------------------
+  // patch 요청
+
   const [
     {
       loading: saveLoading,
@@ -53,23 +55,35 @@ function AssignStatus({ assignId, handleDidSave, assignData }) {
   //-----------------------------------------
 
   return (
-    <form onSubmit={handleSubmit}>
-      <select
-        name="status"
-        value={fieldValues.status}
-        onChange={handleFieldChange}
-        className="border-2 border-sky-400 rounded p-1 ml-2"
-        defaultValue="신청"
-      >
-        <option value="신청">신청</option>
-        <option value="심사 중">심사 중</option>
-        <option value="수락">수락</option>
-        <option value="교육 중">교육 중</option>
-        <option value="입양 완료">입양 완료</option>
-        <option value="거절">거절</option>
-      </select>
-      <button className="bg-blue-300 rounded-lg p-2">저장</button>
-    </form>
+    <>
+      <div>
+        {/* 로딩 에러 */}
+        {saveLoading && '로딩 중 ...'}
+        {saveError && '로딩 중 에러가 발생했습니다.'}
+        {saveError?.response?.status === 401 && (
+          <div className="text-red-400">
+            조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+          </div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <select
+            name="status"
+            value={fieldValues.status}
+            onChange={handleFieldChange}
+            className="border-2 border-sky-400 rounded p-1 ml-2"
+            defaultValue="신청"
+          >
+            <option value="신청">신청</option>
+            <option value="심사 중">심사 중</option>
+            <option value="수락">수락</option>
+            <option value="교육 중">교육 중</option>
+            <option value="입양 완료">입양 완료</option>
+            <option value="거절">거절</option>
+          </select>
+          <button className="bg-blue-300 rounded-lg p-2">저장</button>
+        </form>
+      </div>
+    </>
   );
 }
 

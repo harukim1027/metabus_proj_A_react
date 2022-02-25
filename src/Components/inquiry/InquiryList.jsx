@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import 'css/pagination_inquiry.css';
+import LoadingIndicator from 'LoadingIndicator';
 
 function InquiryList() {
   const { auth } = useAuth();
@@ -15,15 +16,17 @@ function InquiryList() {
   const [page, setPage] = useState(1);
   const itemsPerPage = 2;
 
-  const [{ data: inquiryList }, refetchAll] = useApiAxios(
-    {
-      url: `/inquiry_board/api/inquiry/`,
-      method: 'GET',
-    },
-    {
-      manual: true,
-    },
-  );
+  // get요청
+  const [{ data: inquiryList, loading, error, errorMessages }, refetchAll] =
+    useApiAxios(
+      {
+        url: `/inquiry_board/api/inquiry/`,
+        method: 'GET',
+      },
+      {
+        manual: true,
+      },
+    );
 
   const fetchInquiry = useCallback(
     async (newPage, newQuery = query) => {
@@ -98,6 +101,14 @@ function InquiryList() {
               <span class="relative text-white">" 1:1 문의 "</span>
             </span>
           </blockquote>
+          {/* 로딩 에러 */}
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+          {error?.response?.status === 401 && (
+            <div className="text-red-400">
+              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+            </div>
+          )}
 
           <div className="ml-3 mb-6 mt-3">
             <div className="text-right">
@@ -118,6 +129,11 @@ function InquiryList() {
                 onKeyPress={handleKeyPress}
                 className="relative rounded p-3 text-m mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
               />
+              {errorMessages.query?.map((message, index) => (
+                <p key={index} className="text-m text-red-400">
+                  {message}
+                </p>
+              ))}
               <button
                 type="submit"
                 className="relative ml-2 mr-4 flex-shrink-0 bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-xl border-4 text-white px-3 py-2 rounded"
@@ -125,6 +141,12 @@ function InquiryList() {
               >
                 검색
               </button>
+              {/* 저장 에러  */}
+              <div>
+                {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                {error &&
+                  `저장 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+              </div>
             </div>
           </div>
 

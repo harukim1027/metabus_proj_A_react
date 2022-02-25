@@ -2,6 +2,7 @@ import { useApiAxios } from 'api/base';
 import Button from 'Button';
 
 import useFieldValues from 'hooks/useFieldValues';
+import LoadingIndicator from 'LoadingIndicator';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -57,7 +58,7 @@ function SignupForm() {
 
   //-------------
 
-  // 회원가입 폼 생성을 위한 api 데이터 post 요청
+  // 회원가입 폼 생성을 위한 api 데이터 post 요청 -> 버튼 밑에 위치
   const [{ loading, error, errorMessages }, requestToken] = useApiAxios(
     {
       url: `/accounts/api/signup/`,
@@ -66,7 +67,7 @@ function SignupForm() {
     { manual: true },
   );
 
-  // 중복입력 대조를 위한 api 데이터 get 요청
+  // 중복입력 대조를 위한 api 데이터 get 요청 -> 상단에 로딩 위치
   const [{ data: userList }, refetch] = useApiAxios(
     {
       url: `/accounts/api/users/`,
@@ -112,41 +113,44 @@ function SignupForm() {
       nickname: fieldValues.nickname,
     });
   };
-  console.log(nameValue);
 
   return (
     <>
-      <div className="header">
-        <div className="rounded-xl px-20 pt-6 pb-8 mb-4">
-          <div className=" flex flex-wrap justify-center w-full max-w-m">
-            <hr className="mb-3" />
-            {error?.response?.status === 401 && (
-              <div className="text-red-400">회원가입에 실패했습니다.</div>
-            )}
+      {/* 로딩 에러 */}
+      {loading && '로딩 중 ...'}
+      {error && '로딩 중 에러가 발생했습니다.'}
+      {error?.response?.status === 401 && (
+        <div className="text-red-400">
+          조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+        </div>
+      )}
+      <div className="header flex flex-wrap justify-center">
+        <div className="animal_header rounded-xl shadow-md overflow-hidden px-10 pt-5 pb-10 my-10 xl:w-1/2 lg:w-2/3 md:w-3/4 sm:w-4/5 xs:w-full">
+          <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+            <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
+              <span className="relative text-white">" 회원 가입 "</span>
+            </span>
+          </blockquote>
 
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white shadow-md  rounded-xl px-20 pt-6 pb-8 mb-4"
-            >
-              <h2 className="text-3xl mb-8 flex justify-center py-3 text-center pb-3 ">
-                🐰 회원가입
-              </h2>
-              <div className="ml-3 -mx-3 mb-6">
-                <div className="ml-3 w-full">
-                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
-                    사용자 ID{' '}
+          <div className="flex justify-center items-stretch py-5">
+            <form onSubmit={handleSubmit} className="pb-8 my-10 w-2/3">
+              <div className="flex justify-center">
+                <div className="w-full mb-10 items-stretch">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 text-m font-bold">
+                    사용자 ID
                   </span>
+
                   <input
                     type="text"
                     name="userID"
                     value={fieldValues.userID}
                     onChange={handleFieldChange}
-                    placeholder="사용자 ID를 입력해주세요."
-                    className="rounded p-3 text-sm  bg-gray-100 focus:outline-none focus:border focus:border-gray-400  w-full md:w-1/2 px-3 mb-6 md:mb-0"
+                    placeholder="사용하실 ID를 입력해주세요."
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="bg-blue-400 hover:bg-blue-700 border-blue-400 hover:border-blue-700 text-md text-white px-1 py-3 rounded md:ml-2"
                     readOnly
                     onClick={(e) => clickButton(e)}
                   >
@@ -157,7 +161,7 @@ function SignupForm() {
                     userList.results?.filter(
                       (user) => user.userID === nameValue.userID,
                     ).length > 0 && (
-                      <p className="text-m text-red-400">
+                      <p className="text-sm text-red-400">
                         동일한 아이디가 존재합니다. 다른 아이디를 입력해주세요.
                       </p>
                     )}
@@ -166,7 +170,7 @@ function SignupForm() {
                     userList.results?.filter(
                       (user) => user.userID === nameValue.userID,
                     ).length === 0 && (
-                      <h2 className="text-m text-green-400">
+                      <h2 className="text-sm text-green-400">
                         사용가능한 아이디입니다.
                       </h2>
                     )}
@@ -177,10 +181,11 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <div className="ml-3 flex flex-wrap -mx-3 mb-6 ">
-                <div className="ml-3 w-full">
-                  <span className="mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
-                    닉네임{' '}
+
+              <div className="flex justify-center">
+                <div className="w-full mb-10 items-stretch">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 text-m font-bold">
+                    닉네임
                   </span>
                   <input
                     type="text"
@@ -188,11 +193,11 @@ function SignupForm() {
                     value={fieldValues.nickname}
                     onChange={handleFieldChange}
                     placeholder="사용하실 닉네임을 입력해주세요."
-                    className="rounded p-3 bg-gray-100 focus:outline-none focus:border text-sm focus:border-gray-400 w-full md:w-1/2 px-3 mb-6 md:mb-0"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="bg-blue-400 hover:bg-blue-700 border-blue-400 hover:border-blue-700 text-md text-white px-1 py-3 rounded md:ml-2"
                     onClick={(e) => clickButton(e)}
                     readOnly
                   >
@@ -203,7 +208,7 @@ function SignupForm() {
                     userList.results?.filter(
                       (user) => user.nickname === nameValue.nickname,
                     ).length > 0 && (
-                      <p className="text-m text-red-400">
+                      <p className="text-sm text-red-400">
                         동일한 닉네임이 존재합니다. 다른 닉네임을 입력해주세요.
                       </p>
                     )}
@@ -212,7 +217,7 @@ function SignupForm() {
                     userList.results?.filter(
                       (user) => user.nickname === nameValue.nickname,
                     ).length === 0 && (
-                      <p className="text-m text-green-400">
+                      <p className="text-sm text-green-400">
                         사용가능한 닉네임입니다.
                       </p>
                     )}
@@ -223,10 +228,11 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <div className="ml-3 flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
+
+              <div className="flex justify-center">
+                <div className="w-full mb-10">
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700 pb-2">
-                    사용자 이름{' '}
+                    사용자 이름
                   </span>
                   <input
                     type="text"
@@ -234,7 +240,7 @@ function SignupForm() {
                     value={fieldValues.name}
                     onChange={handleFieldChange}
                     placeholder="사용자 이름을 입력해주세요."
-                    className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {errorMessages.name?.map((message, index) => (
                     <p key={index} className="text-m text-red-400">
@@ -243,10 +249,11 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <div className="ml-3 flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
+
+              <div className="flex justify-center">
+                <div className="w-full mb-10">
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700 pb-2">
-                    연락처{' '}
+                    연락처
                   </span>
                   <input
                     type="text"
@@ -254,7 +261,7 @@ function SignupForm() {
                     value={fieldValues.phone_number}
                     onChange={handleFieldChange}
                     placeholder="입력형식 예) 010-0000-0000"
-                    className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.phone_number?.map((message, index) => (
                     <p key={index} className="text-m text-red-400">
@@ -263,10 +270,11 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <div className="ml-3 flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
+
+              <div className="flex justify-center">
+                <div className="w-full mb-10">
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
-                    이메일{' '}
+                    이메일
                   </span>
                   <input
                     type="text"
@@ -274,7 +282,7 @@ function SignupForm() {
                     value={fieldValues.email}
                     onChange={handleFieldChange}
                     placeholder="입력형식 예 ) user@email.com"
-                    className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.email?.map((message, index) => (
                     <p key={index} className="text-m text-red-400">
@@ -283,17 +291,18 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <div className="ml-3 flex flex-wrap -mx-3 mb-6">
-                <div className="ml-4 inline-block relative w-64 pb-2">
+
+              <div className="flex justify-center">
+                <div className="w-full mb-10">
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
-                    거주지역{' '}
+                    거주지역
                   </span>
                   <div className="relative">
                     <select
                       name="region"
                       value={fieldValues.region}
                       onChange={handleFieldChange}
-                      className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="block appearance-none rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                     >
                       <option value="서울">서울</option>
                       <option value="인천">인천</option>
@@ -307,7 +316,7 @@ function SignupForm() {
                       <option value="강원">강원</option>
                     </select>
 
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <div class="pointer-events-none absolute inset-y-0 right-5 flex items-center px-2 text-gray-700">
                       <svg
                         class="fill-current h-4 w-4"
                         xmlns="http://www.w3.org/2000/svg"
@@ -325,17 +334,18 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <div className="ml-3 flex flex-wrap -mx-3 mb-2">
-                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+
+              <div className="flex justify-center">
+                <div className="w-full mb-10">
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
-                    비밀번호 퀴즈{' '}
+                    비밀번호 퀴즈
                   </span>
                   <div className="relative">
                     <select
                       name="password_quiz"
                       value={fieldValues.password_quiz}
                       onChange={handleFieldChange}
-                      className="block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="block appearance-none rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                     >
                       <option value="내 보물 1호는?">내 보물 1호는?</option>
                       <option value="처음 키운 반려동물 이름은?">
@@ -345,7 +355,7 @@ function SignupForm() {
                       <option value="아버지 성함은?">아버지 성함은?</option>
                       <option value="좋아하는 음식은?">좋아하는 음식은?</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <div class="pointer-events-none absolute inset-y-0 right-5 flex items-center px-2 text-gray-700">
                       <svg
                         class="fill-current h-4 w-4"
                         xmlns="http://www.w3.org/2000/svg"
@@ -355,17 +365,18 @@ function SignupForm() {
                       </svg>
                     </div>
                   </div>
-
                   {errorMessages.password_quiz?.map((message, index) => (
                     <p key={index} className="text-m text-red-400">
                       {message}
                     </p>
                   ))}
                 </div>
+              </div>
 
-                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <div className="flex justify-center">
+                <div className="w-full">
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
-                    비밀번호 퀴즈 정답{' '}
+                    비밀번호 퀴즈 정답
                   </span>
                   <input
                     type="text"
@@ -373,7 +384,7 @@ function SignupForm() {
                     value={fieldValues.password_quiz_answer}
                     onChange={handleFieldChange}
                     placeholder="퀴즈 정답을 입력해주세요."
-                    className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
 
                   {errorMessages.password_quiz_answer?.map((message, index) => (
@@ -382,14 +393,17 @@ function SignupForm() {
                     </p>
                   ))}
                 </div>
-                <h5 className="ml-5 text-xs mb-3 text-blue-400">
-                  이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
-                </h5>
               </div>
-              <div className="ml-4 flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
+              <h5 className="text-xs ml-2 mb-10 text-blue-400">
+                이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
+              </h5>
+
+              <hr className="mb-3" />
+
+              <div className="flex justify-center">
+                <div className="w-full mb-10">
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
-                    비밀번호{' '}
+                    비밀번호
                   </span>
                   <input
                     type="password"
@@ -397,7 +411,7 @@ function SignupForm() {
                     value={fieldValues.password}
                     onChange={handleFieldChange}
                     placeholder="******************"
-                    className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.password?.map((message, index) => (
                     <p key={index} className="text-m text-red-400">
@@ -407,11 +421,10 @@ function SignupForm() {
                 </div>
               </div>
 
-              <hr className="mb-3" />
-              <div className="ml-3 flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
+              <div className="flex justify-center">
+                <div className="w-full">
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-m font-extrabold text-slate-700">
-                    비밀번호 확인{' '}
+                    비밀번호 확인
                   </span>
                   <input
                     type="password"
@@ -419,7 +432,7 @@ function SignupForm() {
                     value={fieldValues.password2}
                     onChange={handleFieldChange}
                     placeholder="******************"
-                    className="rounded mb-2 p-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 w-full text-sm"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.password2?.map((message, index) => (
                     <p key={index} className="text-m text-red-400">
@@ -427,16 +440,24 @@ function SignupForm() {
                     </p>
                   ))}
                 </div>
-                <h5 className="ml-5 text-xs mb-3 text-blue-400">
-                  입력하신 비밀번호를 다시 입력해주세요 !
-                </h5>
               </div>
+              <h5 className="ml-5 text-xs mb-10 text-blue-400">
+                입력하신 비밀번호를 다시 입력해주세요 !
+              </h5>
               <div className="flex justify-center">
                 <Captcha />
               </div>
 
               <div className="my-3 py-3 text-center">
                 <Button>회원가입</Button>
+
+                {/* 저장 에러  */}
+                <div>
+                  {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                  {error?.response?.status === 401 && (
+                    <div className="text-red-400">회원가입에 실패했습니다.</div>
+                  )}
+                </div>
               </div>
             </form>
           </div>

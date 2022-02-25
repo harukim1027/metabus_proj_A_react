@@ -53,7 +53,8 @@ function MyPageReview() {
     }
   };
 
-  const [{ data: reviewList }, refetch] = useApiAxios(
+  // get 요청
+  const [{ data: reviewList, loading, error }, refetch] = useApiAxios(
     {
       url: `/adopt_review/api/reviews/`,
       method: 'GET',
@@ -110,7 +111,14 @@ function MyPageReview() {
                   <span className="relative text-white">" 내 입양후기 "</span>
                 </span>
               </blockquote>
-
+              {/* 로딩 에러 */}
+              {loading && '로딩 중 ...'}
+              {error && '로딩 중 에러가 발생했습니다.'}
+              {error?.response?.status === 401 && (
+                <div className="text-red-400">
+                  조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+                </div>
+              )}
               <div className="mb-5 overflow-hidden border-b border-gray-200">
                 <table className="mt-3 mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">

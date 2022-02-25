@@ -6,6 +6,7 @@ import { useAuth } from 'contexts/AuthContext';
 import Button from 'Button';
 import '../../App.css';
 import { useEffect, useState } from 'react';
+import LoadingIndicator from 'LoadingIndicator';
 
 const INITIAL_FIELD_VALUES = { userID: '', password: '' };
 
@@ -43,8 +44,9 @@ function LoginForm() {
 
   //-------------
 
-  const { auth, login } = useAuth();
-  const [{ loading, error }, requestToken] = useApiAxios(
+  // post요청은 하단에 에러메시지가 위치.
+  const { login } = useAuth();
+  const [{ loading, error, errorMessages }, requestToken] = useApiAxios(
     {
       url: `/accounts/api/token/`,
       method: 'POST',
@@ -112,9 +114,13 @@ function LoginForm() {
         🐹 로그인{' '}
       </h2>
 
+      {/* 로딩 에러 */}
+      {loading && '로딩 중 ...'}
+      {error && '로딩 중 에러가 발생했습니다.'}
       {error?.response?.status === 401 && (
         <div className="text-red-400">로그인에 실패했습니다.</div>
       )}
+
       <div className="flex justify-center">
         <div className="max-w-m">
           <form
@@ -134,6 +140,11 @@ function LoginForm() {
                 placeholder="userID"
                 className="text-xl shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5"
               />
+              {errorMessages.userID?.map((message, index) => (
+                <p key={index} className="text-m text-red-400">
+                  {message}
+                </p>
+              ))}
             </div>
             <div className="mb-6">
               <label className="block text-gray-700 text-2xl font-bold mb-2">
@@ -147,9 +158,20 @@ function LoginForm() {
                 placeholder="**************"
                 className="text-xl shadow appearance-none border border-red-500 rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
+              {errorMessages.password?.map((message, index) => (
+                <p key={index} className="text-m text-red-400">
+                  {message}
+                </p>
+              ))}
             </div>
             <div className="text-center text-2xl mb-5">
               <Button>Log In</Button>
+              {/* 저장 에러  */}
+              <div>
+                {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                {error &&
+                  `저장 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+              </div>
             </div>
 
             <div className="text-right mb-5 border:bg-pink-200">
