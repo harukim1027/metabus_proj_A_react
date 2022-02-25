@@ -89,9 +89,9 @@ function NoticeList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
-          <blockquote class="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
-            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+          <blockquote class="mt-5 mb-3 font-semibold italic text-center text-slate-900">
+            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xs:text-xl sm:text-3xl md:text-6xl">
               <span class="relative text-white">" 공지사항 "</span>
             </span>
           </blockquote>
@@ -125,26 +125,26 @@ function NoticeList() {
             </div>
           </div>
           <div className="mb-5">
-            <table className="mb-5 border text-center min-w-full divide-y divide-gray-200">
+            <table className="mb-5 border text-center divide-y divide-gray-200 w-full">
               <thead className="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500  tracking-wider w-44"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-44"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500  tracking-wider w-96"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-96"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500  tracking-wider"
+                    className="px-6 py-3 text-center lg:text-xl md:text-md sm:text-sm xs:text-xs font-bold text-gray-500 tracking-wider w-44"
                   >
-                    작성시간
+                    작성일
                   </th>
                 </tr>
               </thead>
@@ -168,7 +168,9 @@ function NoticeList() {
                         </span>
                       </div>
                     </td>
-                    <td className="text-m py-4">{notice.created_at}</td>
+                    <td className="text-m py-4 lg:text-md md:text-md sm:text-sm xs:text-xs">
+                      {notice.created_at}
+                    </td>
                   </tr>
                 ))}
               </tbody>

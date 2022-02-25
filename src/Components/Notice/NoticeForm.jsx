@@ -191,10 +191,10 @@ function NoticeForm({ noticeId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-md shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
-          <blockquote class="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
-            <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block text-6xl font-extrabold">
+          <blockquote class="mt-3 mb-10 font-semibold italic text-center text-slate-900">
+            <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl font-extrabold">
               <span class="relative text-white">
                 {!noticeId ? ' " 공지사항 작성 " ' : ' " 공지사항 수정 " '}
               </span>
@@ -204,10 +204,10 @@ function NoticeForm({ noticeId, handleDidSave }) {
           <div className="w-full">
             <form
               onSubmit={handleSubmit}
-              className="notice_header rounded-md px-10 pt-6 pb-8"
+              className="notice_header rounded-md sm:px-0 md:px-20 pt-6 pb-8"
             >
               {/* 제목 입력 인풋박스 */}
-              <div className="ml-3 mb-3 w-full">
+              <div className="mb-3 w-full">
                 <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                   제목
                 </span>
@@ -221,7 +221,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                 />
               </div>
               {/* 내용 입력 인풋박스 */}
-              <div className="ml-3 mb-3 w-full ">
+              <div className="mb-3 w-full ">
                 <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                   내용
                 </span>
@@ -249,11 +249,12 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                   <ul>
                     {/* 개별 이미지 input 박스 1*/}
-                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
                         name="image1"
+                        className=""
                         onChange={(e) => {
                           imgpreview1(e, e.target.files[0]);
                         }}
@@ -263,7 +264,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           <img
                             src={noticeData?.image1}
                             alt=""
-                            className="h-44"
+                            className="w-44"
                           />
                         </div>
                       )}
@@ -295,7 +296,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 2*/}
-                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -339,7 +340,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 3*/}
-                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -377,7 +378,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 4*/}
-                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -415,7 +416,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 5*/}
-                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -469,7 +470,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                   <ul>
                     {/* 개별 이미지 input 박스 1*/}
-                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md w-full">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
@@ -497,7 +498,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {/* 개별 파일 input 박스 2*/}
-                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
@@ -525,7 +526,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {/* 개별 파일 input 박스 3*/}
-                    <li className="flex justify-between items-center text-md pl-3 pr-4 py-3 border-2 rounded-md">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
