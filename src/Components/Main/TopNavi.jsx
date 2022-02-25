@@ -118,7 +118,7 @@ function TopNav() {
         </MyLink>
         {auth.is_staff ? (
           <MyLink to="/inquiry/">
-            <div className="hover:text-white hover:bg-green-400">
+            <div className="hover:text-white hover:bg-yellow-300">
               1:1 문의 현황
             </div>
           </MyLink>
