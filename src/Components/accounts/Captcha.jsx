@@ -6,7 +6,7 @@ const Captcha = () => {
   return (
     <div>
       <ReCAPTCHA
-        sitekey="6LcgZX8eAAAAAE0cFuPqzl5wwGZgRDJaGOlue2Lg"
+        sitekey="6LcDeZ4eAAAAACi0gyhj3J47U5CLmDPtF5tJwnWv"
         onChange={onChange}
       />
     </div>
