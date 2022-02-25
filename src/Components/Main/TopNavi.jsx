@@ -57,16 +57,16 @@ function TopNav() {
           </div>
         )}
       </div>
-      <div className="flex text-xl place-content-between">
-        {auth.isLoggedIn && (
-          <>
-            <div className="ml-10 mt-20 ">
-              <span className="rounded-xl bg-white shadow-md border text-center font-bold">
-                {'  '}
-                &nbsp; &nbsp;오늘도 찾아주셨네요, {auth.nickname} 님 ❕
-                &nbsp;&nbsp;
-              </span>
-            </div>
+      {auth.isLoggedIn && (
+        <>
+          <div className="relative">
+            <span className="rounded-xl bg-white shadow-md border text-center font-bold absolute top-10 left-10">
+              &nbsp; &nbsp;오늘도 찾아주셨네요, {auth.nickname} 님 ❕ &nbsp;
+              &nbsp;
+            </span>
+          </div>
+          <div className="flex text-xl place-content-between">
+            <div></div>
             <div className="flex">
               {auth.is_staff ? (
                 // 관리자 페이지
@@ -100,9 +100,9 @@ function TopNav() {
                 ></img>
               </button>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
 
       {/* 대문 */}
       <div
