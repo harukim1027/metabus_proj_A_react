@@ -125,7 +125,7 @@ function SignupForm() {
         </div>
       )}
       <div className="header flex flex-wrap justify-center">
-        <div className="animal_header rounded-xl shadow-md overflow-hidden px-10 pt-5 pb-10 my-10 xl:w-1/2 lg:w-2/3 md:w-3/4 sm:w-4/5 xs:w-full">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
               <span className="relative text-white">" 회원 가입 "</span>
