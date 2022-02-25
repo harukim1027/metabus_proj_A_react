@@ -79,7 +79,7 @@ function CheckSignup(props) {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="mx-10 accounts_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="mx-10 accounts_header rounded-xl shadow-md overflow-hidden pt-5 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <main className="" role="main">
             <h1 className="mt-5 font-semibold text-2xl text-center p-2">
               {' '}
