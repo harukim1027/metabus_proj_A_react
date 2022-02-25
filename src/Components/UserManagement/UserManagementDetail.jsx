@@ -36,7 +36,7 @@ function UserManagementDetail({ userId }) {
 
   useEffect(() => {
     const userAssign = assignList?.results.filter(
-      (assignment) => assignment.user.userID === userData.userID,
+      (assignment) => assignment.user.userID === userData?.userID,
     );
     setAssignArray(userAssign);
   }, [assignList, userData]);
@@ -89,35 +89,35 @@ function UserManagementDetail({ userId }) {
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       유저아이디
                     </th>
-                    <td>{userData.userID}</td>
+                    <td>{userData?.userID}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       이름
                     </th>
-                    <td>{userData.name}</td>
+                    <td>{userData?.name}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       닉네임
                     </th>
-                    <td>{userData.nickname}</td>
+                    <td>{userData?.nickname}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       연락처
                     </th>
-                    <td>{userData.phone_number}</td>
+                    <td>{userData?.phone_number}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       이메일
                     </th>
-                    <td>{userData.email}</td>
+                    <td>{userData?.email}</td>
                   </tr>
 
                   <tr>
