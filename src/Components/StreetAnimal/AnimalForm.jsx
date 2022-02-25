@@ -150,6 +150,9 @@ function AnimalForm({ animalId, handleDidSave }) {
             </span>
           </blockquote>
 
+          {getLoading && '로딩 중 ...'}
+          {getError && '로딩 중 에러가 발생했습니다.'}
+
           <div className="flex justify-center px-4 py-5">
             <form onSubmit={handleSubmit}>
               <div className="my-10 items-center">
@@ -191,6 +194,11 @@ function AnimalForm({ animalId, handleDidSave }) {
                   className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
                 />
               </div>
+              {saveErrorMessages.animal_reg_num?.map((message, index) => (
+                <p key={index} className="text-xs text-red-400">
+                  {message}
+                </p>
+              ))}
 
               <div className="my-10 items-center">
                 <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
@@ -262,6 +270,11 @@ function AnimalForm({ animalId, handleDidSave }) {
                     className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
                   />
                 </div>
+                {saveErrorMessages.age?.map((message, index) => (
+                  <p key={index} className="text-xs text-red-400">
+                    {message}
+                  </p>
+                ))}
               </div>
 
               <div className="flex justify-between">
@@ -277,6 +290,11 @@ function AnimalForm({ animalId, handleDidSave }) {
                     className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
                   />
                 </div>
+                {saveErrorMessages.date_of_discovery?.map((message, index) => (
+                  <p key={index} className="text-xs text-red-400">
+                    {message}
+                  </p>
+                ))}
 
                 <div className="my-10 items-center">
                   <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
@@ -290,6 +308,11 @@ function AnimalForm({ animalId, handleDidSave }) {
                     className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
                   />
                 </div>
+                {saveErrorMessages.place_of_discovery?.map((message, index) => (
+                  <p key={index} className="text-xs text-red-400">
+                    {message}
+                  </p>
+                ))}
               </div>
 
               <div className="my-10 items-center">
@@ -304,6 +327,11 @@ function AnimalForm({ animalId, handleDidSave }) {
                   className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none h-72"
                 />
               </div>
+              {saveErrorMessages.info?.map((message, index) => (
+                <p key={index} className="text-xs text-red-400">
+                  {message}
+                </p>
+              ))}
 
               <div className="flex justify-between">
                 <div className="my-10 items-center">
@@ -429,7 +457,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   <LoadingIndicator>저장 중 ...</LoadingIndicator>
                 )}
                 {saveError &&
-                  `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
+                  `저장 중 에러가 발생했습니다. 입력 내용을 확인해주세요.`}
               </div>
             </form>
           </div>

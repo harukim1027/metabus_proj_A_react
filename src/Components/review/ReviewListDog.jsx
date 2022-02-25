@@ -21,7 +21,7 @@ function ReviewList() {
   const itemsPerPage = 2;
 
   const navigate = useNavigate();
-  const [{ data: reviewList }, refetch] = useApiAxios(
+  const [{ data: reviewList, loading, error }, refetch] = useApiAxios(
     {
       url: `/adopt_review/api/reviews/${query ? '?query=' + query : ''}`,
       method: 'GET',
@@ -128,6 +128,10 @@ function ReviewList() {
                   <span class="relative text-white">" 입양 후기 "</span>
                 </span>
               </blockquote>
+
+              {loading && '로딩 중 ...'}
+              {error && '로딩 중 에러가 발생했습니다.'}
+
               <hr />
               <div className="ml-10 mb-3 mt-6">
                 <form onSubmit={() => moveCategory()}>

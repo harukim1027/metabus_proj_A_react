@@ -53,16 +53,6 @@ function UserAssignList() {
     fetchNotices(event.selected + 1);
   };
 
-  // const getQuery = (e) => {
-  //   setQuery(e.target.value);
-  // };
-
-  // const handleKeyPress = (e) => {
-  //   if (e.key === 'Enter') {
-  //     fetchNotices(1, query);
-  //   }
-  // };
-
   return (
     <>
       <div className="header flex flex-wrap justify-center">

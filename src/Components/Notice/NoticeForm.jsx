@@ -200,6 +200,10 @@ function NoticeForm({ noticeId, handleDidSave }) {
               </span>
             </span>
           </blockquote>
+
+          {getLoading && '로딩 중 ...'}
+          {getError && '로딩 중 에러가 발생했습니다.'}
+
           <hr />
           <div className="w-full">
             <form

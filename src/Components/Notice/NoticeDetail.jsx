@@ -1,5 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
+import LoadingIndicator from 'LoadingIndicator';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../App.css';
@@ -18,16 +19,17 @@ function NoticeDetail({ noticeId }) {
     refetch();
   }, []);
 
-  const [{}, deleteNotice] = useApiAxios(
-    {
-      url: `/notice/api/notices/${noticeId}/`,
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${auth.access}`,
+  const [{ loading: deleteLoading, error: deleteError }, deleteNotice] =
+    useApiAxios(
+      {
+        url: `/notice/api/notices/${noticeId}/`,
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${auth.access}`,
+        },
       },
-    },
-    { manual: true },
-  );
+      { manual: true },
+    );
 
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
@@ -79,6 +81,10 @@ function NoticeDetail({ noticeId }) {
               <span class="relative text-white">" 공지사항 "</span>
             </span>
           </blockquote>
+
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+
           <div className="flex justify-center">
             <div className="px-4 py-5 xs:w-full sm:w-2/3">
               {notice && (
@@ -240,6 +246,12 @@ function NoticeDetail({ noticeId }) {
                     삭제하기
                   </button>
                 )}
+              </div>
+              <div>
+                {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                {error && `저장 중 에러가 발생했습니다.`}
+
+                {deleteError && `삭제 요청 중 에러가 발생했습니다.`}
               </div>
             </div>
           </div>
