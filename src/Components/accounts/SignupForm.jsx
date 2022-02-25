@@ -2,6 +2,7 @@ import { useApiAxios } from 'api/base';
 import Button from 'Button';
 
 import useFieldValues from 'hooks/useFieldValues';
+import LoadingIndicator from 'LoadingIndicator';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -57,7 +58,7 @@ function SignupForm() {
 
   //-------------
 
-  // 회원가입 폼 생성을 위한 api 데이터 post 요청
+  // 회원가입 폼 생성을 위한 api 데이터 post 요청 -> 버튼 밑에 위치
   const [{ loading, error, errorMessages }, requestToken] = useApiAxios(
     {
       url: `/accounts/api/signup/`,
@@ -66,7 +67,7 @@ function SignupForm() {
     { manual: true },
   );
 
-  // 중복입력 대조를 위한 api 데이터 get 요청
+  // 중복입력 대조를 위한 api 데이터 get 요청 -> 상단에 로딩 위치
   const [{ data: userList }, refetch] = useApiAxios(
     {
       url: `/accounts/api/users/`,
@@ -120,6 +121,16 @@ function SignupForm() {
         <div className="rounded-xl px-20 pt-6 pb-8 mb-4">
           <div className=" flex flex-wrap justify-center w-full max-w-m">
             <hr className="mb-3" />
+
+            {/* 로딩 에러 */}
+            {loading && '로딩 중 ...'}
+            {error && '로딩 중 에러가 발생했습니다.'}
+            {error?.response?.status === 401 && (
+              <div className="text-red-400">
+                조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+              </div>
+            )}
+
             {error?.response?.status === 401 && (
               <div className="text-red-400">회원가입에 실패했습니다.</div>
             )}
@@ -437,6 +448,13 @@ function SignupForm() {
 
               <div className="my-3 py-3 text-center">
                 <Button>회원가입</Button>
+
+                {/* 저장 에러  */}
+                <div>
+                  {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                  {error &&
+                    `저장 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+                </div>
               </div>
             </form>
           </div>

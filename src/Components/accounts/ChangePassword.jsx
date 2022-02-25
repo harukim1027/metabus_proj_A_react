@@ -2,6 +2,7 @@ import { useApiAxios } from 'api/base';
 import { useEffect, useState } from 'react';
 import useFieldValues from 'hooks/useFieldValues';
 import { ToastContainer, toast } from 'react-toastify';
+import LoadingIndicator from 'LoadingIndicator';
 
 const INIT_FIELD_VALUES = {
   userID: '',
@@ -43,7 +44,16 @@ function ChangePassword() {
             {' '}
             🐯 비밀번호 변경하기{' '}
           </h2>
+          {/* 저장 에러  */}
+          <div>
+            {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+            {saveError &&
+              `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
+          </div>
 
+          {/* 로딩 에러 */}
+          {loading && '로딩 중 ...'}
+          {saveError && '로딩 중 에러가 발생했습니다.'}
           {saveError?.response?.status === 401 && (
             <div className="text-red-400">
               조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.

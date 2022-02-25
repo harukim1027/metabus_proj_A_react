@@ -2,15 +2,19 @@ import { useApiAxios } from 'api/base';
 import { useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import LoadingIndicator from 'LoadingIndicator';
 
 function InquiryDetail({ inquiryId }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
-  const [{ data: inquiry }, refetch] = useApiAxios(
+
+  //method 지정을 안하면 -> get 요청이 default
+  const [{ data: inquiry, loading, error }, refetch] = useApiAxios(
     `/inquiry_board/api/inquiry/${inquiryId}/`,
     { manual: true },
   );
 
+  // gelete
   const [{}, deleteInquiry] = useApiAxios(
     {
       url: `/inquiry_board/api/inquiry/${inquiryId}/`,
@@ -44,6 +48,15 @@ function InquiryDetail({ inquiryId }) {
               <span class="relative text-white">" 1:1 문의 "</span>
             </span>
           </blockquote>
+          {/* 로딩 에러 */}
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+          {error?.response?.status === 401 && (
+            <div className="text-red-400">
+              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+            </div>
+          )}
+
           <div className="flex justify-center">
             <div className="px-4 py-5 w-2/3">
               {inquiry && (
@@ -118,6 +131,12 @@ function InquiryDetail({ inquiryId }) {
                 >
                   삭제하기
                 </button>
+                {/* 저장 에러  */}
+                <div>
+                  {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                  {error &&
+                    `저장 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+                </div>
               </div>
             </div>
           </div>

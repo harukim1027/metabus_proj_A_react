@@ -9,6 +9,8 @@ function AssignDetail({ assignId }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [clicked, setClicked] = useState(false);
+
+  // get 요청
   const [{ data: assignData }, refetch] = useApiAxios(
     {
       url: `/adopt_assignment/api/assignment/${assignId}/`,
@@ -21,6 +23,7 @@ function AssignDetail({ assignId }) {
     refetch();
   }, []);
 
+  // delete 요청
   const [{ loading: deleteLoading, error: deleteError }, deleteAssign] =
     useApiAxios(
       {
@@ -33,6 +36,7 @@ function AssignDetail({ assignId }) {
       { manual: true },
     );
 
+  // patch 요청
   const [{ loading, error }, changeAPS] = useApiAxios(
     {
       url: `/streetanimal/api/animal/${assignData?.animal.animal_no}/`,
@@ -63,6 +67,15 @@ function AssignDetail({ assignId }) {
                 <span class="relative text-white">" 신청자 정보 "</span>
               </span>
             </blockquote>
+            {/* 로딩 에러 */}
+            {loading && '로딩 중 ...'}
+            {error && '로딩 중 에러가 발생했습니다.'}
+            {error?.response?.status === 401 && (
+              <div className="text-red-400">
+                조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+              </div>
+            )}
+
             <ul className="w-60">
               <li className="flex place-content-between">
                 <h2>신청 번호</h2>

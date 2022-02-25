@@ -6,6 +6,8 @@ function AssignComp({ assignId, assignData }) {
   const navigate = useNavigate();
 
   console.log('assignData: ', assignData);
+
+  // patch  요청
   const [{ loading, error }, changeAPS] = useApiAxios(
     {
       url: `/streetanimal/api/animal/${assignData?.animal.animal_no}/`,
@@ -15,6 +17,7 @@ function AssignComp({ assignId, assignData }) {
     { manual: true },
   );
 
+  // get요청
   const [{ data: adaniData }, refetch] = useApiAxios(
     {
       url: `/streetanimal/api/animal/${assignData?.animal.animal_no}/`,
@@ -69,6 +72,14 @@ function AssignComp({ assignId, assignData }) {
               <span class="relative text-white">" 입양신청 완료! "</span>
             </span>
           </blockquote>
+          {/* 로딩 에러 */}
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+          {error?.response?.status === 401 && (
+            <div className="text-red-400">
+              조회에 실패했습니다. 정보를 다시 확인해주세요.
+            </div>
+          )}
 
           <h2 className="text-center text-xl">
             등록번호 : {adaniData?.animal_reg_num}

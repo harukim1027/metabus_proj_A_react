@@ -14,13 +14,15 @@ function AssignList() {
   const [page, setPage] = useState(1);
   const itemsPerPage = 2;
 
-  const [{ data: assignList }, refetch] = useApiAxios(
-    {
-      url: `/adopt_assignment/api/assignment/`,
-      method: 'GET',
-    },
-    { manual: true },
-  );
+  // get요청
+  const [{ data: assignList, loading, error, errorMessages }, refetch] =
+    useApiAxios(
+      {
+        url: `/adopt_assignment/api/assignment/`,
+        method: 'GET',
+      },
+      { manual: true },
+    );
 
   const fetchAssign = useCallback(
     async (newPage, newQuery = query) => {
@@ -63,6 +65,14 @@ function AssignList() {
               <span class="relative text-white">" 입양신청 목록 "</span>
             </span>
           </blockquote>
+          {/* 로딩 에러 */}
+          {loading && '로딩 중 ...'}
+          {error && '로딩 중 에러가 발생했습니다.'}
+          {error?.response?.status === 401 && (
+            <div className="text-red-400">
+              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+            </div>
+          )}
 
           <div className="ml-3 mb-6 mt-3">
             <div className="text-right">
@@ -74,6 +84,11 @@ function AssignList() {
                 className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
                 placeholder="제목을 검색하세요."
               />
+              {errorMessages.query?.map((message, index) => (
+                <p key={index} className="text-m text-red-400">
+                  {message}
+                </p>
+              ))}
               <button
                 onClick={() => handleKeyPress()}
                 className="relative ml-2 mr-4 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white px-3 py-2 rounded"

@@ -13,6 +13,7 @@ const INIT_FIELD_VALUES = {
 function InquiryForm({ inquiryId, handleDidSave }) {
   const { auth } = useAuth();
 
+  // get 요청
   const [{ data: inquiry, loading: getLoading, error: getError }] = useApiAxios(
     {
       url: `/inquiry_board/api/inquiry/${inquiryId}/`,
@@ -23,6 +24,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
     },
   );
 
+  // post, put 요청
   const [
     {
       loading: saveLoading,
@@ -85,6 +87,16 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               <span class="relative text-white">" 내 문의사항 "</span>
             </span>
           </blockquote>
+
+          {/* 로딩 에러 */}
+          {getLoading && '로딩 중 ...'}
+          {getError && '로딩 중 에러가 발생했습니다.'}
+          {getError?.response?.status === 401 && (
+            <div className="text-red-400">
+              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+            </div>
+          )}
+
           <hr />
           <div className="w-full">
             <form

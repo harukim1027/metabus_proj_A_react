@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import useFieldValues from 'hooks/useFieldValues';
 import '../../App.css';
 import './accounts.css';
+import LoadingIndicator from 'LoadingIndicator';
 
 const INITIAL_FIELD_VALUES = { name: '', email: '' };
 
@@ -13,14 +14,16 @@ function FindId() {
   const { fieldValues, handleFieldChange } =
     useFieldValues(INITIAL_FIELD_VALUES);
 
-  const [{ data: userList, loading, error }, refetch] = useApiAxios(
-    {
-      url: `/accounts/api/usersnotpaging/?query=${findUser.name}`,
-      method: 'GET',
-      data: { name: findUser.name, email: findUser.email },
-    },
-    { manual: true },
-  );
+  // findid는 get요청 -> loading 에러만 필요하다.
+  const [{ data: userList, loading, error, errorMessages }, refetch] =
+    useApiAxios(
+      {
+        url: `/accounts/api/usersnotpaging/?query=${findUser.name}`,
+        method: 'GET',
+        data: { name: findUser.name, email: findUser.email },
+      },
+      { manual: true },
+    );
 
   useEffect(() => {
     refetch();
@@ -44,11 +47,16 @@ function FindId() {
         <span className="text-center block uppercase tracking-wide text-red-400 text-s font-bold mb-3">
           아이디를 찾기 위해서는 회원님의 이름과 이메일이 필요합니다 ❕
         </span>
+
+        {/* 로딩 에러 */}
+        {loading && '로딩 중 ...'}
+        {error && '로딩 중 에러가 발생했습니다.'}
         {error?.response?.status === 401 && (
           <div className="text-red-400">
             조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
           </div>
         )}
+
         <div className="flex justify-center">
           <div className="accounts_header shadow-md  rounded-xl ">
             <div className="max-w-m">
@@ -70,6 +78,11 @@ function FindId() {
                   className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400  px-3 md:mb-0"
                   placeholder="이름을 입력해주세요."
                 />
+                {errorMessages.name?.map((message, index) => (
+                  <p key={index} className="text-m text-red-400">
+                    {message}
+                  </p>
+                ))}
 
                 <span className="after:content-['*'] after:ml-0.5 after:text-red-500  mt-10 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                   사용자 이메일{' '}
@@ -85,6 +98,12 @@ function FindId() {
                   className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 px-3 md:mb-0"
                   placeholder="이메일을 입력해주세요."
                 />
+                {errorMessages.email?.map((message, index) => (
+                  <p key={index} className="text-m text-red-400">
+                    {message}
+                  </p>
+                ))}
+
                 <br />
                 <div className="mt-10 text-center text-2xl mb-10">
                   <button
@@ -99,6 +118,14 @@ function FindId() {
                   >
                     아이디 찾기
                   </button>
+                  {/* 저장 에러  */}
+                  <div>
+                    {loading && (
+                      <LoadingIndicator>저장 중 ...</LoadingIndicator>
+                    )}
+                    {error &&
+                      `저장 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+                  </div>
                 </div>
               </form>
               <hr />

@@ -5,7 +5,7 @@ import Sidebar from 'Components/Mypage/Sidebar';
 
 function Myinfo() {
   const { auth } = useAuth();
-  const [{ data: userData }, refetch] = useApiAxios(
+  const [{ data: userData, loading, error }, refetch] = useApiAxios(
     {
       url: `/accounts/api/users/${auth.userID}/`,
       method: 'GET',
@@ -60,6 +60,14 @@ function Myinfo() {
                   <span class="relative text-white">" 내 회원정보 "</span>
                 </span>
               </blockquote>
+              {/* 로딩 에러 */}
+              {loading && '로딩 중 ...'}
+              {error && '로딩 중 에러가 발생했습니다.'}
+              {error?.response?.status === 401 && (
+                <div className="text-red-400">
+                  조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+                </div>
+              )}
 
               <div className="mb-5 overflow-hidden border-b border-gray-200">
                 <table className="mb-5 mr-5 mt-3 border text-center min-w-full divide-y divide-gray-200">
