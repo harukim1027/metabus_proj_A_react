@@ -78,48 +78,43 @@ function CheckSignup(props) {
 
   return (
     <>
-      <div className="header flex justify-center ">
-        <div className="flex flex-wrap w-1/2 justify-center pt-6 pb-8 mb-4">
-          <div className=" rounded-xl accounts_header shadow-md  flex flex-wrap justify-center w-full max-w-m">
-            <main className="" role="main">
-              <h1 className="mt-5 font-semibold text-2xl text-center p-2">
-                {' '}
-                🐼 약관동의
-              </h1>
+      <div className="header flex flex-wrap justify-center">
+        <div className="mx-10 accounts_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+          <main className="" role="main">
+            <h1 className="mt-5 font-semibold text-2xl text-center p-2">
+              {' '}
+              🐼 약관동의
+            </h1>
 
-              <div className="ml-10 mr-10 ">
-                <div className="text-center">
-                  <div className="font-bold pb-3">
-                    <br />
-                    <blockquote class="text-3xl font-semibold italic text-center text-slate-900">
-                      <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
-                        <span class="relative text-white">
-                          " 약관 및 개인정보 처리방침 "
-                        </span>
-                      </span>
-                      <p className="mt-3 mb-3">
-                        {' '}
-                        안내를 반드시 읽고, 동의해주세요 !
-                      </p>
-                    </blockquote>
-                  </div>
-                </div>
-                <hr />
+            <div className="flex justify-center text-center">
+              <div className="px-4 py-5 xs:w-full sm:w-2/3">
                 <br />
-              </div>
-              <div className="w-full">
-                <div className="">
-                  <div>
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                      회원 가입 약관 동의 [ 필수 ]
+                <blockquote class="font-semibold italic text-center text-slate-900">
+                  <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500 relative inline-block">
+                    <span class="xl:text-4xl lg:text-2xl md:text-xl sm:text-xl xs:text-xl relative text-white">
+                      " 약관 및 개인정보 처리방침 "
                     </span>
-                  </div>
+                  </span>
+                  <p className="xl:text-4xl lg:text-2xl md:text-xl sm:text-xl xs:text-xl mt-3 mb-3">
+                    {' '}
+                    안내를 반드시 읽고, 동의해주세요 !
+                  </p>
+                </blockquote>
+              </div>
 
-                  <div className="w-full">
-                    <SignupAgreementation />
-                  </div>
+              <hr />
+              <br />
+            </div>
+            <div className="w-full">
+              <div className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s sm:mt-0 sm:col-span-2">
+                <div className="mx-5">
+                  <p className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-s after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 font-bold mb-2">
+                    회원 가입 약관 동의 [ 필수 ]
+                  </p>
 
-                  <div className="text-xl text-right pb-5 font-bold text-gray-700">
+                  <SignupAgreementation />
+
+                  <div className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-s sm:mt-0 sm:col-span-2 text-right pb-5 font-bold text-gray-700">
                     <label>회원 가입 이용 약관에 동의합니다 </label>
                     <input
                       type="checkbox"
@@ -129,19 +124,15 @@ function CheckSignup(props) {
                       required
                     />
                   </div>
-                  <hr className="pb-6" />
-                  <div>
-                    <div>
-                      <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                        개인정보 수집 및 이용에 관한 동의 사항 [ 필수 ]
-                      </span>
+                </div>
+                <hr className="pb-6" />
+                <div className="mx-5">
+                  <p className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-s after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 font-bold mb-2">
+                    개인정보 수집 및 이용에 관한 동의 사항 [ 필수 ]
+                  </p>
+                  <Agreementation />
 
-                      <div className="w-full">
-                        <Agreementation />
-                      </div>
-                    </div>
-                  </div>
-                  <div className=" text-xl text-right pb-5 font-bold text-gray-700">
+                  <div className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s sm:mt-0 sm:col-span-2 text-right pb-5 font-bold text-gray-700">
                     <label>개인정보 수집 및 이용에 동의합니다 </label>
                     <input
                       type="checkbox"
@@ -151,39 +142,38 @@ function CheckSignup(props) {
                       required
                     />
                   </div>
-
-                  <div className=" pb-3 text-right ">
-                    <label className="text-2xl bg-yellow-100 font-bold">
-                      모두 동의합니다{'  '}
-                      <input
-                        checked={all_check ? 'checked' : null}
-                        type="checkbox"
-                        onClick={() => {
-                          set_all_check(!all_check);
-                        }}
-                      />
-                    </label>
-                  </div>
-                  <hr />
-                  <div className="text-2xl text-red-400 text-center">
-                    <br />
-                    약관 동의를 해야 회원가입을 할 수 있어요 ! 🐰
-                  </div>
-                  <div className="text-center my-3">
-                    {all_check && (
-                      <Button
-                        onClick={() => navigate('/accounts/signup/')}
-                        disabled
-                      >
-                        회원가입
-                      </Button>
-                    )}
-                  </div>
-                  <br />
                 </div>
+                <div className="mx-5 pb-3 text-right ">
+                  <label className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s sm:mt-0 sm:col-span-2 bg-yellow-100 font-bold">
+                    모두 동의합니다{'  '}
+                    <input
+                      checked={all_check ? 'checked' : null}
+                      type="checkbox"
+                      onClick={() => {
+                        set_all_check(!all_check);
+                      }}
+                    />
+                  </label>
+                </div>
+                <hr />
+                <div className="xl:text-3xl lg:text-2xl md:text-xl sm:text-xl xs:text-m sm:mt-0 sm:col-span-2 text-red-400 text-center">
+                  <br />
+                  약관 동의를 해야 회원가입을 할 수 있어요 ! 🐰
+                </div>
+                <div className="text-center my-3">
+                  {all_check && (
+                    <Button
+                      onClick={() => navigate('/accounts/signup/')}
+                      disabled
+                    >
+                      회원가입
+                    </Button>
+                  )}
+                </div>
+                <br />
               </div>
-            </main>
-          </div>
+            </div>
+          </main>
         </div>
       </div>
     </>
