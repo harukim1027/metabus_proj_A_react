@@ -110,16 +110,8 @@ function LoginForm() {
   return (
     <div className="header">
       <h2 className="text-center text-4xl py-5 pb-5 font-bold mt-5 mb-3">
-        {' '}
-        🐹 로그인{' '}
+        🐹 로그인
       </h2>
-
-      {/* 로딩 에러 */}
-      {loading && '로딩 중 ...'}
-      {error && '로딩 중 에러가 발생했습니다.'}
-      {error?.response?.status === 401 && (
-        <div className="text-red-400">로그인에 실패했습니다.</div>
-      )}
 
       <div className="flex justify-center">
         <div className="max-w-m">
@@ -127,6 +119,9 @@ function LoginForm() {
             className="bg-white shadow-md rounded-xl px-20 pt-6 pb-8 mb-4"
             onSubmit={handleSubmit}
           >
+            {/* 로딩 에러 */}
+            {loading && '로딩 중 ...'}
+
             <div className="mt-10 mb-4">
               <label className=" block text-gray-700 text-2xl font-bold mb-2">
                 ID
@@ -140,11 +135,6 @@ function LoginForm() {
                 placeholder="userID"
                 className="text-xl shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5"
               />
-              {errorMessages.userID?.map((message, index) => (
-                <p key={index} className="text-m text-red-400">
-                  {message}
-                </p>
-              ))}
             </div>
             <div className="mb-6">
               <label className="block text-gray-700 text-2xl font-bold mb-2">
@@ -158,19 +148,15 @@ function LoginForm() {
                 placeholder="**************"
                 className="text-xl shadow appearance-none border border-red-500 rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
-              {errorMessages.password?.map((message, index) => (
-                <p key={index} className="text-m text-red-400">
-                  {message}
-                </p>
-              ))}
             </div>
             <div className="text-center text-2xl mb-5">
               <Button>Log In</Button>
               {/* 저장 에러  */}
-              <div>
+              <div className="text-sm">
                 {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
-                {error &&
-                  `저장 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+                {error?.response?.status === 401 && (
+                  <div className="text-red-400">로그인에 실패했습니다.</div>
+                )}
               </div>
             </div>
 
