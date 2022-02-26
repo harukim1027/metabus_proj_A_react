@@ -44,11 +44,11 @@ function ReviewDetail({ reviewId }) {
 
   return (
     <>
-      <div className="header flex justify-center">
-        <div className="w-11/12 rounded-xl my-10 mb-10 shadow-md notice_header overflow-hidden">
-          <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
-              <span class="relative text-white text-6xl">" 입양후기 "</span>
+      <div className="header flex flex-wrap justify-center">
+        <div className="review_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+          <blockquote class="mt-3 mb-10 font-semibold italic text-center text-slate-900">
+            <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl text-6xl ">
+              <span class="relative text-white">" 입양후기 "</span>
             </span>
           </blockquote>
 
@@ -56,48 +56,60 @@ function ReviewDetail({ reviewId }) {
           {error && '로딩 중 에러가 발생했습니다.'}
 
           <div className="flex justify-center">
-            <div className="px-4 py-5 w-2/3">
+            <div className="px-4 py-5 xs:w-full sm:w-2/3">
               {review && (
                 <>
-                  <h1 className="text-3xl leading-6 font-bold text-gray-900">
+                  <h1
+                    className={
+                      review.title.length > 20
+                        ? 'text-xl leading-6 font-bold text-gray-900 tracking-wide'
+                        : 'text-3xl leading-6 font-bold text-gray-900 tracking-wide'
+                    }
+                  >
                     {review.title}
                   </h1>
                   <hr className="mt-3 mb-3" />
-                  <div className="flex border-2 border-gray-300 rounded-lg text-gray-400">
-                    <img
-                      src={review.adoptassignment.animal.image}
-                      className="w-1/6"
-                      alt=""
-                    />
-                    <div className="ml-20 px-20 py-4">
-                      <ul className="flex justify-center ml-20 h-10">
-                        <li className="mt-2 px-2 border-gray-200">
-                          <span className="font-medium"> 품종 : </span>
-                          {review.adoptassignment.animal.category}
-                        </li>
-                        <li className="mt-2 px-2 border-l-2 border-gray-200">
-                          사이즈 : {review.adoptassignment.animal.size}
-                        </li>
-                        <li className="mt-2 px-2 border-l-2 border-gray-200">
-                          성별 : {review.adoptassignment.animal.sex}
-                        </li>
-                        <li className="mt-2 px-2 border-l-2 border-gray-200">
-                          나이 : {review.adoptassignment.animal.age}
-                        </li>
-                      </ul>
 
-                      <ul className="flex mx-5">
-                        <li className="mt-2 px-2 border-gray-200 ">
-                          건강상태 : {review.adoptassignment.animal.info}
-                        </li>
-                        <li className="mt-2 px-2 border-l-2 border-gray-200">
-                          입양일 : {review.adoptassignment.animal.end_date}
-                        </li>
-                        <li className="mt-2 px-2 border-l-2 border-gray-200">
-                          등록 번호 :{' '}
-                          {review.adoptassignment.animal.animal_reg_num}
-                        </li>
-                      </ul>
+                  {/* 입양한 동물 정보 박스 */}
+                  <div className="flex justify-center">
+                    <div className="inline-block assign_table rounded-md shadow-md overflow-hidden mx-4 my-4 w-96">
+                      {/* <div className="review_header rounded-xl shadow-md overflow-hidden md:px-10 pt-3 pb-5 my-5 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-1/3 xs:w-1/4 "> */}
+                      <div className="flex justify-center overflow-hidden">
+                        <img
+                          src={review.adoptassignment.animal.image}
+                          alt=""
+                          className="assign_photo object-cover"
+                        />
+
+                        <div className="flex justify-center">
+                          <ul className="mt-6 assign_table_bg border-gray-200 w-60">
+                            <li className="pl-1 pr-1 py-1 flex items-center justify-between text-sm border-t-2">
+                              품종 : {review.adoptassignment.animal.category}
+                            </li>
+                            <li className="pl-1 pr-1 py-1 flex items-center justify-between text-sm border-t-2">
+                              사이즈 : {review.adoptassignment.animal.size}
+                            </li>
+                            <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm border-t-2">
+                              성별 : {review.adoptassignment.animal.sex}
+                            </li>
+                            <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm border-t-2">
+                              나이 : {review.adoptassignment.animal.age}
+                            </li>
+
+                            <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm border-t-2">
+                              건강상태 : {review.adoptassignment.animal.info}
+                            </li>
+                            <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm border-t-2">
+                              입양일 : {review.adoptassignment.animal.end_date}
+                            </li>
+                            <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm ">
+                              등록 번호 :
+                              {review.adoptassignment.animal.animal_reg_num}
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      {/* </div> */}
                     </div>
                   </div>
                   <br />
