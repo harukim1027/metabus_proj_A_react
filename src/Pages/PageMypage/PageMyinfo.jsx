@@ -7,9 +7,7 @@ function PageMyinfo() {
     <>
       <TopNav />
       <div className="flex">
-        <div className="flex-1/4 bg-sky-100">
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="flex-1">
           <Myinfo />
         </div>

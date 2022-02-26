@@ -7,9 +7,7 @@ function PageMyPageReview() {
     <>
       <TopNav />
       <div className="flex">
-        <div className="flex-none">
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="flex-1">
           <MyPageReview />
         </div>
