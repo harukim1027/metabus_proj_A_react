@@ -543,7 +543,7 @@ function AssignmentForm({ handleDidSave }) {
               <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
                 월 수입
                 <button onClick={() => setHelp(!help)} className="inline">
-                  <img src="/outline_help.png" alt="button"></img>
+                  <img src="/outline_help.png" alt="help"></img>
                 </button>
                 {help && (
                   <div className="mt-1 justify-center">

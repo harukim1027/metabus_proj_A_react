@@ -8,7 +8,7 @@ import ReactPaginate from 'react-paginate';
 import 'css/pagination_review.css';
 import LoadingIndicator from 'LoadingIndicator';
 
-const INIT_FIELD_VALUES = { category: '전체' };
+const INIT_FIELD_VALUES = { category: '고양이' };
 
 function ReviewList() {
   const { auth } = useAuth();
