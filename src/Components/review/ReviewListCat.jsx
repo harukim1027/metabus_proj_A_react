@@ -64,7 +64,7 @@ function ReviewList() {
     async (newPage, newQuery = query) => {
       const params = {
         page: newPage,
-        query: newQuery,
+        query: fieldValues.category,
       };
       const { data } = await refetch({ params });
       setPage(newPage);

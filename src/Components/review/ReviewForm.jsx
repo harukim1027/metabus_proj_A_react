@@ -388,7 +388,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
               </div>
             ))}
 
-          {!selectanimalAssign && (
+          {!selectanimalAssign && review && (
             <div className="flex flex-wrap justify-center">
               <div className="flex-none place-items-center">
                 <img
@@ -402,32 +402,30 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   <ul className="w-72">
                     <li className="flex justify-between mt-2">
                       <span className="bg-blue-100 font-bold">동물 종</span>
-                      <span>
-                        {review?.adoptassignment.animal.category.name}
-                      </span>
+                      <span>{review.adoptassignment.animal.category.name}</span>
                     </li>
                     <li className="flex justify-between mt-2">
                       <span className="bg-blue-100 font-bold">사이즈</span>
-                      <span>{review?.adoptassignment.animal.size}</span>
+                      <span>{review.adoptassignment.animal.size}</span>
                     </li>
                     <li className="flex justify-between mt-2">
                       <span className="bg-blue-100 font-bold">성별</span>
-                      <span>{review?.adoptassignment.animal.sex}</span>
+                      <span>{review.adoptassignment.animal.sex}</span>
                     </li>
                     <li className="flex justify-between mt-2">
                       <span className="bg-blue-100 font-bold">나이</span>
-                      <span>{review?.adoptassignment.animal.age}</span>
+                      <span>{review.adoptassignment.animal.age}</span>
                     </li>
                     <li className="flex items-center justify-between mt-2">
                       <span className="bg-blue-100 font-bold">등록번호</span>
                       <span>
-                        {review?.adoptassignment.animal.animal_reg_num}
+                        {review.adoptassignment.animal.animal_reg_num}
                       </span>
                     </li>
                     <li className="flex items-center justify-between mt-2">
                       <span className="bg-blue-100 font-bold">발견 장소</span>
                       <span>
-                        {review?.adoptassignment.animal.place_of_discovery}
+                        {review.adoptassignment.animal.place_of_discovery}
                       </span>
                     </li>
                   </ul>
