@@ -120,9 +120,9 @@ function ReviewList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
+            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xs:text-xl sm:text-3xl md:text-6xl">
               <span class="relative text-white">" 입양 후기 "</span>
             </span>
           </blockquote>
@@ -133,7 +133,7 @@ function ReviewList() {
                 name="category"
                 value={fieldValues.category}
                 onChange={handleFieldChange}
-                className="text-xl border-2 border-sky-400 rounded p-2"
+                className="text-xl border-2 border-purple-400 rounded p-2"
                 defaultValue="전체"
               >
                 <option value="전체">전체</option>
