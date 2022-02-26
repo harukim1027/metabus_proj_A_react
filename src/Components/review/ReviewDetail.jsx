@@ -74,12 +74,14 @@ function ReviewDetail({ reviewId }) {
                   <div className="flex justify-center">
                     <div className="inline-block assign_table rounded-md shadow-md overflow-hidden mx-4 my-4 w-96">
                       {/* <div className="review_header rounded-xl shadow-md overflow-hidden md:px-10 pt-3 pb-5 my-5 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-1/3 xs:w-1/4 "> */}
-                      <div className="flex justify-center overflow-hidden">
-                        <img
-                          src={review.adoptassignment.animal.image}
-                          alt=""
-                          className="assign_photo object-cover"
-                        />
+                      <div className="flex justify-center">
+                        <div className="overflow-hidden">
+                          <img
+                            src={review.adoptassignment.animal.image}
+                            alt=""
+                            className="assign_photo w-full h-full"
+                          />
+                        </div>
 
                         <div className="flex justify-center">
                           <ul className="mt-6 assign_table_bg border-gray-200 w-60">
