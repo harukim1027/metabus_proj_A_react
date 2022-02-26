@@ -107,7 +107,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                 <>
                   <div className="ml-3 mb-3 w-full">
                     <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
-                      제목 입력
+                      제목
                     </span>
                     <input
                       name="title"
@@ -169,8 +169,8 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                     답변 입력
                   </h2>
                   <textarea
-                    name="content"
-                    value={fieldValues.content}
+                    name="admin_answer"
+                    value={fieldValues.admin_answer}
                     onChange={handleFieldChange}
                     placeholder="내용을 입력해주세요."
                     className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
