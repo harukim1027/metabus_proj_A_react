@@ -6,6 +6,7 @@ import useFieldValues from 'hooks/useFieldValues';
 import { useAuth } from 'contexts/AuthContext';
 import ReactPaginate from 'react-paginate';
 import 'css/pagination_review.css';
+import LoadingIndicator from 'LoadingIndicator';
 
 const INIT_FIELD_VALUES = { category: '전체' };
 
@@ -126,6 +127,9 @@ function ReviewList() {
               <span class="relative text-white">" 입양 후기 "</span>
             </span>
           </blockquote>
+
+          {loading && <LoadingIndicator>로딩 중 ...</LoadingIndicator>}
+          {error && '로딩 중 에러가 발생했습니다.'}
 
           <div className="ml-3 mb-6 mt-3">
             <form onSubmit={() => moveCategory()}>

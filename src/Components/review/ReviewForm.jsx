@@ -193,20 +193,20 @@ function ReviewForm({ reviewId, handleDidSave }) {
     setScrollY(0); // ScrollY 의 값을 초기화
   };
 
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
 
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
-  console.log('window Scroll From Top:', scrollY);
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
+  // console.log('window Scroll From Top:', scrollY);
 
   useEffect(() => {
     gotoTop();
@@ -231,13 +231,9 @@ function ReviewForm({ reviewId, handleDidSave }) {
           {error && '로딩 중 에러가 발생했습니다.'}
 
           <br />
-        </div>
-      </div>
 
-      {/*  */}
+          {/*  */}
 
-      <div className="header flex flex-wrap justify-center">
-        <div className="review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <span className="mb-6 block tracking-wide text-gray-700 text-4xl font-bold text-center">
             🐶 크루원 선택 하기 🐱
           </span>
@@ -267,77 +263,75 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 </div>
 
                 {/* 검색한 동물 보여주기 */}
-                <div className="container">
-                  {/* 필터가 됐을 시에 노출 문구  */}
-                  {filtAssign.length !== 0 ? (
-                    <p className="text-center text-blue-900 font-bold text-xl mb-5 xs:text-lg">
-                      ⬇ 원하시는 크루원을 아래에서 선택해주세요. ⬇
-                    </p>
-                  ) : (
-                    ''
-                  )}
+                {/* 필터가 됐을 시에 노출 문구  */}
+                {filtAssign.length !== 0 ? (
+                  <p className="text-center text-blue-900 font-bold text-xl mb-5 xs:text-lg">
+                    ⬇ 원하시는 크루원을 아래에서 선택해주세요. ⬇
+                  </p>
+                ) : (
+                  ''
+                )}
 
-                  {/* 선택 후 나오는 정보 박스 */}
-                  <div className="flex flex-wrap justify-center">
-                    {filtAssign && (
-                      <>
-                        <div>
-                          {filtAssign.map((ani) => (
-                            <div
-                              className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
-                              onClick={() => {
-                                setSelectanimalAssign(ani.assignment_no);
-                                gotoForm();
-                              }}
-                            >
-                              <div className="flex justify-center overflow-hidden">
-                                <img
-                                  src={ani.animal.image}
-                                  alt="이미지"
-                                  className="assign_photo object-cover"
-                                />
+                {/* 선택 후 나오는 정보 박스 */}
+                <div className="flex flex-wrap justify-center">
+                  {filtAssign && (
+                    <>
+                      <div>
+                        {filtAssign.map((ani) => (
+                          <div
+                            className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
+                            onClick={() => {
+                              setSelectanimalAssign(ani.assignment_no);
+                              gotoForm();
+                            }}
+                          >
+                            <div className="flex justify-center overflow-hidden">
+                              <img
+                                src={ani.animal.image}
+                                alt="이미지"
+                                className="assign_photo object-cover"
+                              />
 
-                                <div className="assign_table flex justify-center">
-                                  <ul className="mt-6 assign_table_bg border-gray-200 w-70">
-                                    <li className="pl-3 pr-5 py-2 flex items-center justify-between text-sm  border-t-1">
-                                      <span className="bg-blue-100 font-bold">
-                                        카테고리
-                                      </span>
-                                      <span>{ani.animal.category.name}</span>
-                                    </li>
-                                    <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
-                                      <span className="bg-blue-100 font-bold">
-                                        등록 번호
-                                      </span>
-                                      <span>{ani.animal.animal_reg_num}</span>
-                                    </li>
-                                    <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
-                                      <span className="bg-blue-100 font-bold">
-                                        사이즈
-                                      </span>
-                                      <span>{ani.animal.size}</span>
-                                    </li>
-                                    <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
-                                      <span className="bg-blue-100 font-bold">
-                                        성별
-                                      </span>
-                                      <span>{ani.animal.sex}</span>
-                                    </li>
-                                    <li className="pl-3 pr-5 py-4 flex items-center justify-between text-sm  border-t-1">
-                                      <span className="bg-blue-100 font-bold">
-                                        나이
-                                      </span>
-                                      <span> {ani.animal.age} 살</span>
-                                    </li>
-                                  </ul>
-                                </div>
+                              <div className="assign_table flex justify-center">
+                                <ul className="mt-6 assign_table_bg border-gray-200 w-70">
+                                  <li className="pl-3 pr-5 py-2 flex items-center justify-between text-sm  border-t-1">
+                                    <span className="bg-blue-100 font-bold">
+                                      동물 종
+                                    </span>
+                                    <span>{ani.animal.category.name}</span>
+                                  </li>
+                                  <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
+                                    <span className="bg-blue-100 font-bold">
+                                      등록 번호
+                                    </span>
+                                    <span>{ani.animal.animal_reg_num}</span>
+                                  </li>
+                                  <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
+                                    <span className="bg-blue-100 font-bold">
+                                      사이즈
+                                    </span>
+                                    <span>{ani.animal.size}</span>
+                                  </li>
+                                  <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
+                                    <span className="bg-blue-100 font-bold">
+                                      성별
+                                    </span>
+                                    <span>{ani.animal.sex}</span>
+                                  </li>
+                                  <li className="pl-3 pr-5 py-4 flex items-center justify-between text-sm  border-t-1">
+                                    <span className="bg-blue-100 font-bold">
+                                      나이
+                                    </span>
+                                    <span> {ani.animal.age} 살</span>
+                                  </li>
+                                </ul>
                               </div>
                             </div>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

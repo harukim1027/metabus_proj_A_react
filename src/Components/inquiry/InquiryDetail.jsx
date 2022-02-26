@@ -78,6 +78,7 @@ function InquiryDetail({ inquiryId }) {
                   <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500">
                     {inquiry.content}
                   </h2>
+
                   <hr className="my-3 border border-gray-400" />
 
                   <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500">
