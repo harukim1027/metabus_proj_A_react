@@ -174,6 +174,46 @@ function ReviewForm({ reviewId, handleDidSave }) {
   console.log('selectanimalAssign: ', selectanimalAssign);
   // console.log('AnimalList', AnimalList);
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const gotoForm = () => {
+    window.scrollTo({
+      top: 1700,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    };
+    watch();
+    return () => {
+      window.removeEventListener('scroll', handleFollow);
+    };
+  });
+  console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, []);
+
+  //-------------
+
   return (
     <>
       {/* review_header : 배경 흰색 */}
@@ -248,9 +288,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
                               {filtAssign.map((ani) => (
                                 <div
                                   className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
-                                  onClick={() =>
-                                    setSelectanimalAssign(ani.assignment_no)
-                                  }
+                                  onClick={() => {
+                                    setSelectanimalAssign(ani.assignment_no);
+                                    gotoForm();
+                                  }}
                                 >
                                   <div className="flex justify-center overflow-hidden">
                                     <img

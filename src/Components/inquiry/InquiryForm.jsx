@@ -80,7 +80,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-md shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
           <blockquote class="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
             <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block text-6xl font-extrabold">
@@ -186,7 +186,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               <div className="text-center">
                 <button
                   type="submit"
-                  className=" bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                  className=" bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                   onClick={(e) => handleSubmit(e)}
                 >
                   저장하기

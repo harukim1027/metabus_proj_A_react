@@ -90,7 +90,7 @@ function ReviewList() {
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 940,
+      top: 1016,
       behavior: 'smooth',
     });
     setScrollY(0); // ScrollY 의 값을 초기화
@@ -148,7 +148,7 @@ function ReviewList() {
             <div className="text-right">
               {auth.isLoggedIn && !auth.is_staff && (
                 <button
-                  onClick={() => navigate('/admin/notice/new/')}
+                  onClick={() => navigate('/review/new/')}
                   className=" icon_size float-left ml-10 hover:scale-110"
                   readOnly
                 >

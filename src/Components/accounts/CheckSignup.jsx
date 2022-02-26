@@ -79,10 +79,9 @@ function CheckSignup(props) {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="mx-10 accounts_header rounded-xl shadow-md overflow-hidden pt-5 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="accounts_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <main className="" role="main">
             <h1 className="mt-5 font-semibold text-2xl text-center p-2">
-              {' '}
               🐼 약관동의
             </h1>
 
@@ -145,7 +144,7 @@ function CheckSignup(props) {
                 </div>
                 <div className="mx-5 pb-3 text-right ">
                   <label className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s sm:mt-0 sm:col-span-2 bg-yellow-100 font-bold">
-                    모두 동의합니다{'  '}
+                    모두 동의합니다
                     <input
                       checked={all_check ? 'checked' : null}
                       type="checkbox"
