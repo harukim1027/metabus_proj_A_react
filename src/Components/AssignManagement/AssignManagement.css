@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
+.header {
+  font-family: 'Hahmlet', serif;
+  background-color: #dbf1f6;
+}
+
+.assignmanagement_header {
+  background-color: #ffffff;
+}
+
+.explanation_header {
+  font-family: 'Hahmlet', serif;
+  background-color: #dbf1f6;
+}
+
+.assign_explanation {
+  width: auto;
+  height: auto;
+}
+
+.assign_photo {
+  width: 130px;
+  height: 200px;
+}
+
+.assign_table {
+  width: 350px;
+  height: 200px;
+}
+
+.assign_table_bg {
+  background-color: #ffffff;
+}
