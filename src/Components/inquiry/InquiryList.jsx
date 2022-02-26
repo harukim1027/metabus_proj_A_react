@@ -156,13 +156,13 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-xl font-bold text-gray-500 uppercase tracking-wider xs:w-10 sm:w-32"
+                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider xs:w-10 xs:text-sm sm:w-32 sm:text-xl"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-xs sm:text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
+                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider w-44 xs:text-xs sm:text-lg"
                   >
                     아이디
                   </th>
@@ -174,9 +174,9 @@ function InquiryList() {
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-xl font-bold text-gray-500 uppercase tracking-wider"
+                    className="py-3 text-center xs:text-sm sm:text-md font-bold text-gray-500 uppercase tracking-wider"
                   >
-                    문의 일자
+                    문의일
                   </th>
                   <th
                     scope="col"
@@ -211,7 +211,7 @@ function InquiryList() {
                       </div>
                     </td>
                     <td className="py-4">
-                      <div className="text-m py-4 md:text-md xs:text-xs">
+                      <div className="py-4 xs:text-xs lg:text-md">
                         {inquiry.created_at}
                       </div>
                     </td>
