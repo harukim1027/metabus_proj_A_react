@@ -122,7 +122,7 @@ function ReviewList() {
       <div className="header flex flex-wrap justify-center">
         <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xs:text-xl sm:text-3xl md:text-6xl">
+            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 입양 후기 "</span>
             </span>
           </blockquote>
@@ -179,7 +179,7 @@ function ReviewList() {
             {reviewList?.results?.map((review) => (
               <div
                 key={review.review_no}
-                className="transition-transform hover:-translate-y-5 duration-300 my-5 rounded-xl mx-5 mb-3 lg:w-1/4 sm:w-1/3 overflow-hidden shadow-lg inline"
+                className="transition-transform hover:-translate-y-5 duration-300 my-5 rounded-xl mx-5 mb-3 w-44 h-60 overflow-hidden shadow-lg inline"
               >
                 <ReviewSummary review={review} />
               </div>
