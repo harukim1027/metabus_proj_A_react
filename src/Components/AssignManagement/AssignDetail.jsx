@@ -349,19 +349,30 @@ function AssignDetail({ assignId }) {
           <h2>보호 시작일 : {assignData?.animal.start_date}</h2>
           <h2>보호 종료일 : {assignData?.animal.end_date}</h2> */}
           {/* </div> */}
+
+          <div className="my-5 text-right">
+            {auth.is_staff && (
+              <button
+                onClick={() => handleDelete()}
+                className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
+              >
+                삭제
+              </button>
+            )}
+
+            <button
+              onClick={() => {
+                auth.is_staff
+                  ? navigate(`/admin/assignmanage/`)
+                  : navigate(`/mypage/assigninfo/`);
+              }}
+              className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
+            >
+              목록
+            </button>
+          </div>
         </div>
       </div>
-      {auth.is_staff && <button onClick={() => handleDelete()}>삭제</button>}
-
-      <button
-        onClick={() => {
-          auth.is_staff
-            ? navigate(`/admin/assignmanage/`)
-            : navigate(`/mypage/assigninfo/`);
-        }}
-      >
-        목록
-      </button>
     </>
   );
 }
