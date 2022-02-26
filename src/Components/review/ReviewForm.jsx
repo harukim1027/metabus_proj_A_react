@@ -32,6 +32,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       manual: !reviewId,
     },
   );
+  console.log(review);
 
   const [selectanimalAssign, setSelectanimalAssign] = useState(
     review?.adoptassignment.assignment_no,
@@ -39,7 +40,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
   const [{ data: assignmentList, loading, error }] = useApiAxios(
     {
-      url: `/adopt_assignment/api/assignment/`,
+      url: `/adopt_assignment/api/assignmentnotpaging/`,
       method: 'GET',
       data: { user: auth.userID },
     },
@@ -249,7 +250,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     onClick={() =>
                       assignmentList &&
                       setFiltAssign(
-                        assignmentList.results?.filter(
+                        assignmentList?.filter(
                           (assignment) =>
                             assignment.status === '입양 완료' &&
                             assignment.user.userID === auth.userID,
@@ -358,7 +359,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   <div className="flex justify-center">
                     <ul className="w-72">
                       <li className="flex justify-between mt-2">
-                        <span className="bg-blue-100 font-bold">카테고리</span>
+                        <span className="bg-blue-100 font-bold">동물 종</span>
                         <span>{a.animal.category.name}</span>
                       </li>
                       <li className="flex justify-between mt-2">
@@ -386,6 +387,54 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 </div>
               </div>
             ))}
+
+          {!selectanimalAssign && (
+            <div className="flex flex-wrap justify-center">
+              <div className="flex-none place-items-center">
+                <img
+                  src={review?.adoptassignment.animal.image}
+                  alt=""
+                  className="w-72"
+                />
+              </div>
+              <div className="flex-none mx-4 justify-items-center">
+                <div className="flex justify-center">
+                  <ul className="w-72">
+                    <li className="flex justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">동물 종</span>
+                      <span>
+                        {review?.adoptassignment.animal.category.name}
+                      </span>
+                    </li>
+                    <li className="flex justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">사이즈</span>
+                      <span>{review?.adoptassignment.animal.size}</span>
+                    </li>
+                    <li className="flex justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">성별</span>
+                      <span>{review?.adoptassignment.animal.sex}</span>
+                    </li>
+                    <li className="flex justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">나이</span>
+                      <span>{review?.adoptassignment.animal.age}</span>
+                    </li>
+                    <li className="flex items-center justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">등록번호</span>
+                      <span>
+                        {review?.adoptassignment.animal.animal_reg_num}
+                      </span>
+                    </li>
+                    <li className="flex items-center justify-between mt-2">
+                      <span className="bg-blue-100 font-bold">발견 장소</span>
+                      <span>
+                        {review?.adoptassignment.animal.place_of_discovery}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
