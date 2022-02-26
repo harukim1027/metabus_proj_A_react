@@ -410,9 +410,7 @@ function AssignmentForm({ handleDidSave }) {
                             </span>
                           </li>
                           <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-y-2">
-                            <span className="bg-blue-100 font-bold">
-                              건강 상태
-                            </span>
+                            <span className="bg-blue-100 font-bold">특징</span>
                             <span>{a.info}</span>
                           </li>
                         </ul>
@@ -458,7 +456,7 @@ function AssignmentForm({ handleDidSave }) {
                         <span>{a.age}</span>
                       </li>
                       <li className="flex justify-between mt-2">
-                        <span className="bg-blue-100 font-bold">건강상태</span>
+                        <span className="bg-blue-100 font-bold">특징</span>
                         <span>{a.physical_condition}</span>
                       </li>
                     </ul>
@@ -526,7 +524,7 @@ function AssignmentForm({ handleDidSave }) {
 
               <button
                 onClick={(e) => putAuthName(e)}
-                className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 border-4 text-white py-1 px-2 rounded xs:text-sm xs:ml-0 xs:mt-3 sm:text-lg sm:ml-3 sm:mt-0"
+                className="bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 border-4 text-white py-1 px-2 rounded xs:text-sm xs:ml-0 xs:mt-3 sm:text-lg sm:ml-3 sm:mt-0"
                 readOnly
               >
                 회원 정보와 동일

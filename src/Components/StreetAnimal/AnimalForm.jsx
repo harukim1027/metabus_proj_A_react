@@ -80,6 +80,7 @@ function AnimalForm({ animalId, handleDidSave }) {
     setFieldValues(
       produce((draft) => {
         draft.image = '';
+        draft.category = fieldValues.category.name;
       }),
     );
   }, [Animal]);
@@ -117,19 +118,19 @@ function AnimalForm({ animalId, handleDidSave }) {
     setScrollY(0); // ScrollY 의 값을 초기화
   };
 
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
 
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
   // console.log('window Scroll From Top:', scrollY);
 
   useEffect(() => {
@@ -153,8 +154,8 @@ function AnimalForm({ animalId, handleDidSave }) {
           {getLoading && '로딩 중 ...'}
           {getError && '로딩 중 에러가 발생했습니다.'}
 
-          <div className="flex justify-center px-4 py-5">
-            <form onSubmit={handleSubmit}>
+          <div className="flex justify-center py-5">
+            <form onSubmit={handleSubmit} className="w-1/2">
               <div className="my-10 items-center">
                 <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2">
                   동물 종 선택
@@ -165,6 +166,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     value={fieldValues.category}
                     onChange={handleFieldChange}
                     className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
+                    defaultValue="강아지"
                   >
                     <option value="강아지">강아지</option>
                     <option value="고양이">고양이</option>
@@ -228,6 +230,11 @@ function AnimalForm({ animalId, handleDidSave }) {
                   </div>
                 </div>
               </div>
+              {saveErrorMessages.size?.map((message, index) => (
+                <p key={index} className="text-xs text-red-400">
+                  {message}
+                </p>
+              ))}
 
               <div className="flex justify-between">
                 <div className="my-10 items-center">
@@ -239,7 +246,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                       name="sex"
                       value={fieldValues.sex}
                       onChange={handleFieldChange}
-                      className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                      className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
                       defaultValue="1"
                     >
                       <option value="암컷">암컷</option>
@@ -267,7 +274,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     value={fieldValues.age}
                     onChange={handleFieldChange}
                     type="number"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
                   />
                 </div>
                 {saveErrorMessages.age?.map((message, index) => (
@@ -287,7 +294,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     value={fieldValues.date_of_discovery}
                     onChange={handleFieldChange}
                     type="datetime-local"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
                   />
                 </div>
                 {saveErrorMessages.date_of_discovery?.map((message, index) => (
@@ -305,7 +312,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     value={fieldValues.place_of_discovery}
                     onChange={handleFieldChange}
                     type="text"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
                   />
                 </div>
                 {saveErrorMessages.place_of_discovery?.map((message, index) => (
@@ -343,9 +350,14 @@ function AnimalForm({ animalId, handleDidSave }) {
                     value={fieldValues.start_date}
                     onChange={handleFieldChange}
                     type="date"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
                   />
                 </div>
+                {saveErrorMessages.start_date?.map((message, index) => (
+                  <p key={index} className="text-xs text-red-400">
+                    {message}
+                  </p>
+                ))}
 
                 <div className="my-10 items-center">
                   <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
@@ -356,9 +368,14 @@ function AnimalForm({ animalId, handleDidSave }) {
                     value={fieldValues.end_date}
                     onChange={handleFieldChange}
                     type="date"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-72 p-3 mb-6 appearance-none"
+                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
                   />
                 </div>
+                {saveErrorMessages.end_date?.map((message, index) => (
+                  <p key={index} className="text-xs text-red-400">
+                    {message}
+                  </p>
+                ))}
               </div>
 
               <div className="my-10 items-center">
@@ -405,16 +422,15 @@ function AnimalForm({ animalId, handleDidSave }) {
                       }}
                       type="file"
                     />
-
-                    {!fieldValues.image && (
+                    {!fieldValues.image ? (
                       <div>
                         <img src={Animal?.image} alt="" className="h-44" />
                       </div>
+                    ) : (
+                      <div>
+                        <img src={image} alt="" className="h-44" />
+                      </div>
                     )}
-
-                    <div>
-                      <img src={image} alt="" className="h-44" />
-                    </div>
 
                     <button
                       className="rounded-full px-2 py-1 bg-sky-300"
@@ -452,7 +468,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                 </button>
               </div>
 
-              <div>
+              <div className="text-center">
                 {saveLoading && (
                   <LoadingIndicator>저장 중 ...</LoadingIndicator>
                 )}

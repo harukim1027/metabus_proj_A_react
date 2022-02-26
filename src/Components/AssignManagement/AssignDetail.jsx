@@ -173,7 +173,7 @@ function AssignDetail({ assignId }) {
             <h2>사이즈 : {assignData?.animal.size}</h2>
             <h2>성별 : {assignData?.animal.sex}</h2>
             <h2>나이 : {assignData?.animal.age}세</h2>
-            <h2>건강 상태 : {assignData?.animal.info}</h2>
+            <h2>특징 : {assignData?.animal.info}</h2>
             <h2>보호 시작일 : {assignData?.animal.start_date}</h2>
             <h2>보호 종료일 : {assignData?.animal.end_date}</h2>
           </div>
