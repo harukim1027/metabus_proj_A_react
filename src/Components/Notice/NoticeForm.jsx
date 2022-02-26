@@ -258,7 +258,6 @@ function NoticeForm({ noticeId, handleDidSave }) {
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
                         name="image1"
-                        className=""
                         onChange={(e) => {
                           imgpreview1(e, e.target.files[0]);
                         }}

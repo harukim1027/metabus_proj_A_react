@@ -180,26 +180,28 @@ function AssignmentForm({ handleDidSave }) {
     setScrollY(0); // ScrollY 의 값을 초기화
   };
 
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
+  // 아래 주석부분은 스크롤 위치 확인용
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
 
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
   // console.log('window Scroll From Top:', scrollY);
+  // ------
 
   useEffect(() => {
     gotoTop();
   }, []);
 
-  //-------------
+  //----여기까지 스크롤-----
 
   console.log('---------------');
   console.log('AnimalList: ', AnimalList);
@@ -210,7 +212,7 @@ function AssignmentForm({ handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-full xs:w-full">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
             <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-6xl font-extrabold">
               <span className="relative text-white">" 크루원 모집 "</span>
@@ -234,7 +236,7 @@ function AssignmentForm({ handleDidSave }) {
           <div className="ml-3 mt-3">
             <div className="w-full px-3 mb-10">
               {/* 크루 선택 (개/고양이) */}
-              <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+              <span className="block tracking-wide text-gray-700 font-bold mb-2 xs:text-md sm:text-lg md:text-2xl">
                 크루원 타입
               </span>
               <div className="relative">
@@ -260,7 +262,7 @@ function AssignmentForm({ handleDidSave }) {
               </div>
               <br />
               {/* 크루원 덩치 선택 */}
-              <span className="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
+              <span className="block uppercase tracking-wide text-gray-700 font-bold mb-2 xs:text-md sm:text-lg md:text-2xl">
                 크루원 덩치
               </span>
               <div className="relative">
@@ -293,7 +295,7 @@ function AssignmentForm({ handleDidSave }) {
 
               <br />
               {/* 크루원 성별 선택 */}
-              <span className="block uppercase tracking-wide text-gray-700 text-2xl font-bold mb-2">
+              <span className="block uppercase tracking-wide text-gray-700 font-bold mb-2 xs:text-md sm:text-lg md:text-2xl">
                 크루원 성별
               </span>
               <div className="relative">
@@ -364,59 +366,61 @@ function AssignmentForm({ handleDidSave }) {
 
           {/* 검색한 동물 보여주기 */}
 
-          <div className="container">
-            {/* 필터가 됐을 시에 노출 문구  */}
-            {filtAnimal.length !== 0 ? (
-              <p className="text-center text-blue-900 font-bold text-xl mb-5">
-                ② 원하시는 크루원을 아래에서 선택해주세요 ⬇
-              </p>
-            ) : (
-              ''
-            )}
-            <div className="flex flex-wrap justify-center">
-              {filtAnimal.map((a) => (
-                <div
-                  className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
-                  onClick={() => {
-                    setSelanimal(a.animal_no);
-                    gotoForm();
-                  }}
-                >
-                  <div className="flex justify-center overflow-hidden">
-                    <img
-                      src={a.image}
-                      alt="동물 이미지"
-                      className="assign_photo object-cover"
-                    />
-                    <hr />
-                    <div className="assign_table flex justify-center">
-                      <ul className="mt-6 assign_table_bg border-gray-200 w-60">
-                        <li className="pl-3 pr-5 py-4 flex items-center justify-between text-sm  border-t-2">
-                          <span className="bg-blue-100 font-bold">나이</span>
-                          <span> {a.age} 살</span>
-                        </li>
+          <div className="flex justify-center">
+            <div>
+              {/* 필터가 됐을 시에 노출 문구  */}
+              {filtAnimal.length !== 0 ? (
+                <p className="text-center text-blue-900 font-bold text-xl mb-5">
+                  ② 원하시는 크루원을 아래에서 선택해주세요 ⬇
+                </p>
+              ) : (
+                ''
+              )}
+              <div className="flex flex-wrap justify-center">
+                {filtAnimal.map((a) => (
+                  <div
+                    className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
+                    onClick={() => {
+                      setSelanimal(a.animal_no);
+                      gotoForm();
+                    }}
+                  >
+                    <div className="flex justify-center overflow-hidden">
+                      <img
+                        src={a.image}
+                        alt="동물 이미지"
+                        className="assign_photo object-cover"
+                      />
+                      <hr />
+                      <div className="assign_table flex justify-center">
+                        <ul className="mt-6 assign_table_bg border-gray-200 w-60">
+                          <li className="pl-3 pr-5 py-4 flex items-center justify-between text-sm  border-t-2">
+                            <span className="bg-blue-100 font-bold">나이</span>
+                            <span> {a.age} 살</span>
+                          </li>
 
-                        <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
-                          <span className="bg-blue-100 font-bold">
-                            발견 장소
-                          </span>
-                          <span>
-                            {a.place_of_discovery.length > 9
-                              ? a.place_of_discovery.substr(0, 8) + '...'
-                              : a.place_of_discovery}
-                          </span>
-                        </li>
-                        <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-y-2">
-                          <span className="bg-blue-100 font-bold">
-                            건강 상태
-                          </span>
-                          <span>{a.info}</span>
-                        </li>
-                      </ul>
+                          <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
+                            <span className="bg-blue-100 font-bold">
+                              발견 장소
+                            </span>
+                            <span>
+                              {a.place_of_discovery.length > 9
+                                ? a.place_of_discovery.substr(0, 8) + '...'
+                                : a.place_of_discovery}
+                            </span>
+                          </li>
+                          <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-y-2">
+                            <span className="bg-blue-100 font-bold">
+                              건강 상태
+                            </span>
+                            <span>{a.info}</span>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -424,13 +428,13 @@ function AssignmentForm({ handleDidSave }) {
       {/* 컨테이너 끝 */}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
-          <p className="text-center text-blue-900 font-bold text-xl mb-5">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-3/4 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
+          <p className="text-center text-blue-900 font-bold text-xl my-10">
             ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
           </p>
           {AnimalList?.filter((animal) => animal.animal_no === selanimal).map(
             (a) => (
-              <div className="flex flex-wrap justify-center">
+              <div className="flex flex-wrap justify-center sm:px-20 lg:px-0">
                 <div className="flex-none place-items-center">
                   <img src={a.image} className="w-72" />
                 </div>
@@ -494,9 +498,9 @@ function AssignmentForm({ handleDidSave }) {
       {/* 신청하는 폼 */}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-3/4 md:px-20 lg:w-2/3 pb-10 my-10">
           <form
-            className="assignments_header px-20 py-10 my-10"
+            className="assignments_header sm:px-20 md:px-0 py-10"
             onSubmit={handleSubmit}
           >
             {fieldValues.animal && (
@@ -507,8 +511,8 @@ function AssignmentForm({ handleDidSave }) {
 
             <hr />
             {/* 신청자 이름 */}
-            <div className="ml-6 mb-6 mt-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+            <div className="my-5 w-full">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
                 신청자 이름
               </span>
               <input
@@ -517,12 +521,12 @@ function AssignmentForm({ handleDidSave }) {
                 value={fieldValues.adopter_name}
                 onChange={handleFieldChange}
                 placeholder="신청자 이름을 입력해주세요."
-                className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                className="rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg md:w-1/2 lg:w-2/3 xl:w-3/4"
               />
 
               <button
                 onClick={(e) => putAuthName(e)}
-                className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white py-1 px-2 rounded"
+                className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 border-4 text-white py-1 px-2 rounded xs:text-sm xs:ml-0 xs:mt-3 sm:text-lg sm:ml-3 sm:mt-0"
                 readOnly
               >
                 회원 정보와 동일
@@ -535,8 +539,8 @@ function AssignmentForm({ handleDidSave }) {
             </div>
 
             {/* 신청자 월 수입 */}
-            <div className="ml-6 mb-6 mt-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+            <div className="my-5 w-full">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
                 월 수입
                 <button onClick={() => setHelp(!help)} className="inline">
                   <img src="/outline_help.png" alt="button"></img>
@@ -559,9 +563,11 @@ function AssignmentForm({ handleDidSave }) {
                 name="monthly_income"
                 value={fieldValues.monthly_income}
                 onChange={handleFieldChange}
-                className="appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3 w-1/3"
+                className="rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg lg:w-2/3 xl:w-3/4"
               />
-              <span className="ml-3 text-xl">만 원</span>
+              <span className="xs:ml-0 xs:mt-3 sm:ml-3 sm:mt-0 text-xl">
+                만 원
+              </span>
               {saveErrorMessages.monthly_income?.map((message, index) => (
                 <p key={index} className="text-md text-red-400">
                   {message}
@@ -570,8 +576,8 @@ function AssignmentForm({ handleDidSave }) {
             </div>
 
             {/* 주거형태 */}
-            <div className="ml-6 mb-6 mt-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+            <div className="my-5 w-full">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
                 주거 형태
               </span>
               <div className="relative">
@@ -579,7 +585,7 @@ function AssignmentForm({ handleDidSave }) {
                   name="residential_type"
                   value={fieldValues.residential_type}
                   onChange={handleFieldChange}
-                  className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3"
+                  className=" appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg lg:w-2/3 xl:w-3/4"
                   defaultValue="아파트"
                 >
                   <option value="아파트">아파트</option>
@@ -588,7 +594,7 @@ function AssignmentForm({ handleDidSave }) {
                   <option value="원룸">원룸</option>
                   <option value="오피스텔">오피스텔</option>
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                <div className="pointer-events-none absolute inset-y-0 xs:right-3 sm:right-1/2 lg:right-1/3 xl:right-1/4 flex items-center px-2 text-gray-700">
                   <svg
                     className="fill-current h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -601,8 +607,8 @@ function AssignmentForm({ handleDidSave }) {
             </div>
 
             {/* 반려동물 유무 */}
-            <div className="ml-6 mb-6 mt-5 w-full">
-              <span className="block tracking-wide text-gray-700 text-2xl font-bold mb-2">
+            <div className="my-5 w-full">
+              <span className="block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
                 반려동물 키움 여부
                 <input
                   type="checkbox"
@@ -612,23 +618,25 @@ function AssignmentForm({ handleDidSave }) {
                   className="ml-5"
                 />
               </span>
-              <p>확인용 절차입니다.</p>
+              <p className=" xs:text-sm sm:text-md md:text-lg">
+                확인용 절차입니다.
+              </p>
             </div>
 
             {/* 거주지 사진 */}
-            <div className="ml-6 mb-6 mt-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700 pb-2">
+            <div className="my-5 w-full">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
                 거주지 사진
               </span>
               <p className="text-m text-blue-900 mb-1">
                 ( 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다! )
               </p>
 
-              <div className="bg-white px-4 py-5 sm:grid  sm:gap-4 sm:px-6">
+              <div className="flex justify-start bg-white py-5 w-full">
                 {/* 거주지 파일 첨부 인풋박스 ul태그 시작 부분*/}
-                <ul className="border border-gray-200 rounded-md divide-y divide-gray-200">
+                <ul>
                   {/* 거주지 파일 input 박스 1  */}
-                  <li className="pl-3 pr-4 py-3 flex items-center justify-between text-m w-3/5">
+                  <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence1"
@@ -637,23 +645,22 @@ function AssignmentForm({ handleDidSave }) {
                         imgpreview1(e, e.target.files[0]);
                       }}
                     />
-
                     {image1 && (
                       <div>
-                        <img src={image1} alt="" className="h-72" />
+                        <img src={image1} alt="" className="h-44" />
                       </div>
                     )}
                   </li>
                   {saveErrorMessages.picture_of_residence1?.map(
                     (message, index) => (
-                      <p key={index} className="text-md text-red-400">
+                      <p key={index} className="text-md text-red-400 ml-3">
                         {message}
                       </p>
                     ),
                   )}
 
                   {/* 거주지 파일 input 박스 2 */}
-                  <li className="pl-3 pr-4 py-3 flex items-center justify-between text-m w-3/5">
+                  <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence2"
@@ -664,20 +671,20 @@ function AssignmentForm({ handleDidSave }) {
                     />
                     {image2 && (
                       <div>
-                        <img src={image2} alt="" className="h-72" />
+                        <img src={image2} alt="" className="h-44" />
                       </div>
                     )}
                   </li>
                   {saveErrorMessages.picture_of_residence2?.map(
                     (message, index) => (
-                      <p key={index} className="text-md text-red-400">
+                      <p key={index} className="text-md text-red-400 ml-3">
                         {message}
                       </p>
                     ),
                   )}
 
                   {/* 거주지 파일 input 박스 3 */}
-                  <li className="pl-3 pr-4 py-3 flex items-center justify-between text-m w-3/5">
+                  <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence3"
@@ -688,13 +695,13 @@ function AssignmentForm({ handleDidSave }) {
                     />
                     {image3 && (
                       <div>
-                        <img src={image3} alt="" className="h-72" />
+                        <img src={image3} alt="" className="h-44" />
                       </div>
                     )}
                   </li>
                   {saveErrorMessages.picture_of_residence3?.map(
                     (message, index) => (
-                      <p key={index} className="text-md text-red-400">
+                      <p key={index} className="text-md text-red-400 ml-3">
                         {message}
                       </p>
                     ),
@@ -704,8 +711,8 @@ function AssignmentForm({ handleDidSave }) {
             </div>
 
             {/* 만남 희망 장소 */}
-            <div className="ml-6 mb-6 mt-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700 pb-2">
+            <div className="my-5 w-full">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
                 만남 희망 장소
               </span>
               <div className="relative">
@@ -713,7 +720,7 @@ function AssignmentForm({ handleDidSave }) {
                   name="place_to_meet"
                   value={fieldValues.place_to_meet}
                   onChange={handleFieldChange}
-                  className="text-lg block appearance-none bg-gray-100 border border-gray-200 text-gray-700 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 px-4 py-3  w-1/3"
+                  className=" appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg md:w-2/3 xl:w-3/4"
                   defaultValue="서울 강동구청 반려동물팀"
                 >
                   <option value="서울 강동구청 반려동물팀">
@@ -730,7 +737,7 @@ function AssignmentForm({ handleDidSave }) {
                   </option>
                   <option value="부산 동물보호센터">부산 동물보호센터</option>
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 right-2/3 flex items-center px-2 text-gray-700">
+                <div className="pointer-events-none absolute inset-y-0 xs:right-3 sm:right-1/2 md:right-1/3 xl:right-1/4 flex items-center px-2 text-gray-700">
                   <svg
                     className="fill-current h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -743,17 +750,17 @@ function AssignmentForm({ handleDidSave }) {
             </div>
 
             {/* 만남 희망 날짜 */}
-            <div className="ml-6 mb-6 mt-5 w-full">
+            <div className="my-5 w-full">
               <div className="relative">
-                <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block text-2xl font-extrabold text-slate-700">
-                  만남 희망 날짜{' '}
+                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
+                  만남 희망 날짜
                 </span>
 
                 <input
                   type="date"
                   name="date_to_meet"
                   onChange={handleFieldChange}
-                  className="block appearance-none bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 w-1/3"
+                  className="appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg md:w-2/3 xl:w-3/4"
                 />
                 {saveErrorMessages.date_to_meet?.map((message, index) => (
                   <p key={index} className="text-md text-red-400">
