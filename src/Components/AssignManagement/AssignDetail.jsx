@@ -280,7 +280,7 @@ function AssignDetail({ assignId }) {
                 <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                   등록번호
                 </th>
-                <td>{assignData?.animal.animal_reg_num}</td>
+                {/* <td>{assignData?.animal.animal_reg_num}</td> */}
               </tr>
 
               <tr>
