@@ -1,17 +1,15 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import 'css/pagination_userManage.css';
+import 'css/pagination_assignList.css';
 import '../../App.css';
 import './userManage.css';
 
-function UserAssignList() {
+function UserAssignList({ userId }) {
   const [query, setQuery] = useState(null);
   const { auth } = useAuth();
-  const { userId } = useParams();
   const navigate = useNavigate();
 
   // 페이징
@@ -35,7 +33,7 @@ function UserAssignList() {
     async (newPage, newQuery = query) => {
       const params = {
         page: newPage,
-        query: newQuery,
+        query: userId,
       };
       const { data } = await refetch({ params });
       setPage(newPage);
@@ -58,7 +56,7 @@ function UserAssignList() {
       <div className="header flex flex-wrap justify-center">
         <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote className="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
-            <span className="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+            <span className="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
               <span className="relative text-white">" 입양신청 현황 "</span>
             </span>
           </blockquote>
@@ -74,7 +72,7 @@ function UserAssignList() {
                     번호
                   </th>
                   <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/4">
-                    등록번호
+                    동물 등록번호
                   </th>
                   <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/4">
                     신청날짜
@@ -86,27 +84,20 @@ function UserAssignList() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {AssignStatusData?.results.map((assign) => (
-                  <tr>
+                  <tr
+                    onClick={() =>
+                      navigate(`/admin/assignmanage/${assign.assignment_no}/`)
+                    }
+                    className=" cursor-pointer"
+                  >
                     <td className="py-4">
-                      <div
-                        className="text-xl font-medium text-gray-900"
-                        onClick={() =>
-                          navigate(
-                            `/admin/assignmanage/${assign.assignment_no}/`,
-                          )
-                        }
-                      >
+                      <div className="text-xl font-medium text-gray-900">
                         {assign.assignment_no}
                       </div>
                     </td>
 
                     <td className="py-4">
-                      <div
-                        className="text-lg font-medium text-gray-900 cursor-pointer"
-                        onClick={() =>
-                          navigate(`/admin/animal/${assign.animal.animal_no}/`)
-                        }
-                      >
+                      <div className="text-lg font-medium text-gray-900">
                         {assign.animal.animal_reg_num}
                       </div>
                     </td>
@@ -128,7 +119,7 @@ function UserAssignList() {
             pageRangeDisplayed={itemsPerPage}
             pageCount={pageCount}
             renderOnZeroPageCount={null}
-            className="pagination_userManage"
+            className="pagination_assignList"
           />
         </div>
       </div>

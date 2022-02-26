@@ -119,36 +119,26 @@ function UserManagementIndex() {
               <tbody className="bg-white divide-y divide-gray-200">
                 {userData &&
                   userData.results.map((user) => (
-                    <tr>
+                    <tr
+                      onClick={() =>
+                        navigate(`/admin/usermanage/${user.userID}/`)
+                      }
+                      className=" cursor-pointer"
+                    >
                       <td className="py-4">
-                        <div
-                          className="text-lg font-medium text-gray-900 cursor-pointer"
-                          onClick={() =>
-                            navigate(`/admin/usermanage/${user.userID}/`)
-                          }
-                        >
+                        <div className="text-lg font-medium text-gray-900">
                           {user.userID}
                         </div>
                       </td>
 
                       <td className="py-4">
-                        <div
-                          className="text-lg font-medium text-gray-900 cursor-pointer"
-                          onClick={() =>
-                            navigate(`/admin/usermanage/${user.userID}/`)
-                          }
-                        >
+                        <div className="text-lg font-medium text-gray-900">
                           {user.name}
                         </div>
                       </td>
 
                       <td className="py-4">
-                        <div
-                          className="text-lg font-medium text-gray-900 cursor-pointer"
-                          onClick={() =>
-                            navigate(`/admin/usermanage/${user.userID}/`)
-                          }
-                        >
+                        <div className="text-lg font-medium text-gray-900">
                           {user.nickname}
                         </div>
                       </td>

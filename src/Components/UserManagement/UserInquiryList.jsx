@@ -1,16 +1,15 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
-import 'css/pagination_userManage.css';
+import 'css/pagination_inquiry.css';
 import '../../App.css';
 import './userManage.css';
 
-function UserInquiryList() {
+function UserInquiryList({ userId }) {
   const [query, setQuery] = useState(null);
   const { auth } = useAuth();
-  const { userId } = useParams();
   const navigate = useNavigate();
 
   // 페이징
@@ -34,7 +33,7 @@ function UserInquiryList() {
     async (newPage, newQuery = query) => {
       const params = {
         page: newPage,
-        query: newQuery,
+        query: userId,
       };
       const { data } = await refetch({ params });
       setPage(newPage);
@@ -128,7 +127,7 @@ function UserInquiryList() {
             pageRangeDisplayed={itemsPerPage}
             pageCount={pageCount}
             renderOnZeroPageCount={null}
-            className="pagination_userManage"
+            className="pagination_inquiry"
           />
         </div>
       </div>

@@ -5,12 +5,11 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import '../../App.css';
 import './userManage.css';
-import 'css/pagination_userManage.css';
+import 'css/pagination_review.css';
 
-function UserReviewList() {
+function UserReviewList({ userId }) {
   const [query, setQuery] = useState(null);
   const { auth } = useAuth();
-  const { userId } = useParams();
   const navigate = useNavigate();
 
   // 페이징
@@ -34,7 +33,7 @@ function UserReviewList() {
     async (newPage, newQuery = query) => {
       const params = {
         page: newPage,
-        query: newQuery,
+        query: userId,
       };
       const { data } = await refetch({ params });
       setPage(newPage);
@@ -92,32 +91,36 @@ function UserReviewList() {
               </thead>
 
               <tbody className="bg-white divide-y divide-gray-200">
-                {UserReviewData?.results.map((review) => (
-                  <tr>
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        {review.review_no}
-                      </div>
-                    </td>
+                {UserReviewData?.results
+                  .filter((review) => review.user.userID === userId)
+                  .map((review) => (
+                    <tr>
+                      <td className="py-4">
+                        <div className="text-lg font-medium text-gray-900">
+                          {review.review_no}
+                        </div>
+                      </td>
 
-                    <td className="py-4">
-                      <div
-                        className="text-lg font-medium text-gray-900 cursor-pointer"
-                        onClick={() => navigate(`/review/${review.review_no}/`)}
-                      >
-                        <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-purple-800">
-                          {review.title}
-                        </span>
-                      </div>
-                    </td>
+                      <td className="py-4">
+                        <div
+                          className="text-lg font-medium text-gray-900 cursor-pointer"
+                          onClick={() =>
+                            navigate(`/review/${review.review_no}/`)
+                          }
+                        >
+                          <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-purple-800">
+                            {review.title}
+                          </span>
+                        </div>
+                      </td>
 
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        {review.created_at}
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                      <td className="py-4">
+                        <div className="text-lg font-medium text-gray-900">
+                          {review.created_at}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
@@ -130,7 +133,7 @@ function UserReviewList() {
             pageRangeDisplayed={itemsPerPage}
             pageCount={pageCount}
             renderOnZeroPageCount={null}
-            className="pagination_userManage"
+            className="pagination_review"
           />
         </div>
       </div>

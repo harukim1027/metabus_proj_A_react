@@ -105,7 +105,7 @@ function App() {
                 element={<PageUserManagementDetail />}
               />
               <Route
-                path="/admin/usermanage/:userId/assignstatus/"
+                path="/admin/usermanage/:userId/userassign/"
                 element={<PageUserAssignList />}
               />
 

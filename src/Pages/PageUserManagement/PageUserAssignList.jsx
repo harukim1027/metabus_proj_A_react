@@ -14,7 +14,7 @@ function PageUserAssignList() {
           <UserManageSidebar userId={userId} />
         </div>
         <div className="flex-1">
-          <UserAssignList />
+          <UserAssignList userId={userId} />
         </div>
       </div>
     </>

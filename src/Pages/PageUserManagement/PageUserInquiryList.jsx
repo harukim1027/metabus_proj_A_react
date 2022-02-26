@@ -14,7 +14,7 @@ function PageUserInquiryList() {
           <UserManageSidebar userId={userId} />
         </div>
         <div className="flex-1">
-          <UserInquiryList />
+          <UserInquiryList userId={userId} />
         </div>
       </div>
     </>

@@ -127,63 +127,6 @@ function UserManagementDetail({ userId }) {
                     <td>{userData?.region}</td>
                   </tr>
                 </table>
-
-                {assignArray?.map((assign) => {
-                  return (
-                    <>
-                      <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
-                        <tr>
-                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
-                            신청일
-                          </th>
-                          <td>{assign.created_at}</td>
-                        </tr>
-
-                        <tr>
-                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
-                            신청번호
-                          </th>
-                          <td>{assign.assignment_no}</td>
-                        </tr>
-
-                        <tr>
-                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
-                            신청동물
-                          </th>
-                          <td>{assign.animal.category.name}</td>
-                        </tr>
-
-                        <tr>
-                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
-                            동물 등록번호
-                          </th>
-                          <td>{assign.animal.animal_reg_num}</td>
-                        </tr>
-
-                        <tr>
-                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
-                            만남장소
-                          </th>
-                          <td>{assign.place_to_meet}</td>
-                        </tr>
-
-                        <tr>
-                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
-                            만남날짜
-                          </th>
-                          <td>{assign.date_to_meet}</td>
-                        </tr>
-
-                        <tr>
-                          <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
-                            신청상태
-                          </th>
-                          <td>{assign.status}</td>
-                        </tr>
-                      </table>
-                    </>
-                  );
-                })}
               </>
             )}
           </div>
@@ -191,7 +134,7 @@ function UserManagementDetail({ userId }) {
           <div className="my-5 text-right">
             <button
               onClick={handleDelete}
-              className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
             >
               삭제
             </button>
@@ -200,7 +143,7 @@ function UserManagementDetail({ userId }) {
               onClick={() => {
                 navigate('/admin/usermanage/');
               }}
-              className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
             >
               목록
             </button>
