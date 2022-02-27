@@ -116,20 +116,6 @@ function SignupForm() {
 
   return (
     <>
-      {/* 로딩 에러 */}
-      {loading && <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>}
-      {error && (
-        <>
-          <p className="text-red-400">
-            &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
-          </p>
-        </>
-      )}
-      {error?.response?.status === 401 && (
-        <div className="text-red-400">
-          조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
-        </div>
-      )}
       <div className="header flex flex-wrap justify-center">
         <div className="mx-10 notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
