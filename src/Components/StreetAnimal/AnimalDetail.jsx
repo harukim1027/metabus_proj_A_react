@@ -186,12 +186,7 @@ function AnimalDetail({ animalId }) {
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       입양 상태
                     </th>
-                    <td>
-                      {animal.protection_status === '입양 대기' && '입양 대기'}
-                      {animal.protection_status === '입양 매칭 중' &&
-                        '입양 매칭 중'}
-                      {animal.protection_status === '입양 완료' && '입양 완료'}
-                    </td>
+                    <td>{animal.protection_status}</td>
                   </tr>
                 </table>
               </>

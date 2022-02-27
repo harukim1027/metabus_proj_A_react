@@ -1,6 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import '../../App.css';
 import './Review.css';
@@ -42,6 +42,38 @@ function ReviewDetail({ reviewId }) {
 
   // console.log('review', review);
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
+
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
+  // console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, [review]);
+
+  //-------------
+
   return (
     <>
       <div className="header flex flex-wrap justify-center">
@@ -72,8 +104,7 @@ function ReviewDetail({ reviewId }) {
 
                   {/* 입양한 동물 정보 박스 */}
                   <div className="flex justify-center">
-                    <div className="inline-block assign_table rounded-md shadow-md overflow-hidden mx-4 my-4 w-96">
-                      {/* <div className="review_header rounded-xl shadow-md overflow-hidden md:px-10 pt-3 pb-5 my-5 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-1/3 xs:w-1/4 "> */}
+                    <div className="inline-block assign_table rounded-md shadow-md overflow-hidden mx-4 my-4 w-96 h-full">
                       <div className="flex justify-center">
                         <div className="overflow-hidden">
                           <img
@@ -84,7 +115,7 @@ function ReviewDetail({ reviewId }) {
                         </div>
 
                         <div className="flex justify-center">
-                          <ul className="mt-6 assign_table_bg border-gray-200 w-60">
+                          <ul className="assign_table_bg border-gray-200 w-60">
                             <li className="pl-1 pr-1 py-1 flex items-center justify-between text-sm border-t-2">
                               품종 : {review.adoptassignment.animal.category}
                             </li>
@@ -97,21 +128,19 @@ function ReviewDetail({ reviewId }) {
                             <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm border-t-2">
                               나이 : {review.adoptassignment.animal.age}
                             </li>
-
                             <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm border-t-2">
-                              건강상태 : {review.adoptassignment.animal.info}
+                              특징 : {review.adoptassignment.animal.info}
                             </li>
                             <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm border-t-2">
-                              입양일 : {review.adoptassignment.animal.end_date}
+                              입양일 : {review.adoptassignment.date_to_meet}
                             </li>
-                            <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm ">
+                            <li className="pl-1 pr-1 py-1  flex items-center justify-between text-sm border-t-2">
                               등록 번호 :
                               {review.adoptassignment.animal.animal_reg_num}
                             </li>
                           </ul>
                         </div>
                       </div>
-                      {/* </div> */}
                     </div>
                   </div>
                   <br />
@@ -158,14 +187,14 @@ function ReviewDetail({ reviewId }) {
 
                   <div className="my-5 text-right">
                     <Link
-                      className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                      className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                       to="/review/"
                     >
                       목록으로
                     </Link>
                     {auth.userID === review.user.userID && (
                       <Link
-                        className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                        className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                         to={`/review/${reviewId}/edit/`}
                       >
                         수정하기
@@ -173,18 +202,16 @@ function ReviewDetail({ reviewId }) {
                     )}
                     {(auth.userID === review.user.userID || auth.is_staff) && (
                       <button
-                        className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                        className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                         onClick={() => handleDelete()}
                       >
                         삭제하기
                       </button>
                     )}
 
-                    {loading && (
-                      <LoadingIndicator>저장 중 ...</LoadingIndicator>
+                    {deleteLoading && (
+                      <LoadingIndicator>삭제 중 ...</LoadingIndicator>
                     )}
-                    {error && `저장 중 에러가 발생했습니다.`}
-
                     {deleteError && `삭제 요청 중 에러가 발생했습니다.`}
                   </div>
                 </>

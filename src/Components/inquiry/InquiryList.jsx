@@ -71,19 +71,19 @@ function InquiryList() {
     setScrollY(0); // ScrollY 의 값을 초기화
   };
 
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
 
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
   // console.log('window Scroll From Top:', scrollY);
 
   useEffect(() => {

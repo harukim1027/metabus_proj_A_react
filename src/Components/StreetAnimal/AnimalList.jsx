@@ -73,19 +73,19 @@ function AnimalList() {
     setScrollY(0); // ScrollY 의 값을 초기화
   };
 
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
 
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
   // console.log('window Scroll From Top:', scrollY);
 
   useEffect(() => {
@@ -158,7 +158,7 @@ function AnimalList() {
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
                   >
                     입양 상태
                   </th>
@@ -175,13 +175,13 @@ function AnimalList() {
                       className="cursor-pointer"
                     >
                       <td className="px-6 py-4">
-                        <div className="text-xl font-medium text-gray-900">
+                        <div className="text-md font-medium text-gray-900">
                           {animal.animal_no}
                         </div>
                       </td>
 
                       <td className="px-6 py-4">
-                        <div className="text-xl font-medium text-gray-900">
+                        <div className="text-md font-medium text-gray-900">
                           {animal.category.name}
                         </div>
                       </td>
@@ -193,7 +193,7 @@ function AnimalList() {
                       </td>
 
                       <td className="px-6 py-4">
-                        <div className="text-xl font-medium text-gray-900">
+                        <div className="text-sm font-medium text-gray-900">
                           {animal.protection_status}
                         </div>
                       </td>

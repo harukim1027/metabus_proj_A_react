@@ -167,19 +167,19 @@ function NoticeForm({ noticeId, handleDidSave }) {
     setScrollY(0); // ScrollY 의 값을 초기화
   };
 
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
 
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
   // console.log('window Scroll From Top:', scrollY);
 
   useEffect(() => {
@@ -262,7 +262,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           imgpreview1(e, e.target.files[0]);
                         }}
                       />
-                      {!fieldValues.image1 && (
+                      {!fieldValues.image1 ? (
                         <div>
                           <img
                             src={noticeData?.image1}
@@ -270,11 +270,11 @@ function NoticeForm({ noticeId, handleDidSave }) {
                             className="w-44"
                           />
                         </div>
+                      ) : (
+                        <div>
+                          <img src={image1} alt="" className="h-44" />
+                        </div>
                       )}
-
-                      <div>
-                        <img src={image1} alt="" className="h-44" />
-                      </div>
 
                       <button
                         className="rounded-full px-2 py-1 bg-sky-300"
@@ -308,7 +308,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           imgpreview2(e, e.target.files[0]);
                         }}
                       />
-                      {!fieldValues.image2 && (
+                      {!fieldValues.image2 ? (
                         <div>
                           <img
                             src={noticeData?.image2}
@@ -316,10 +316,12 @@ function NoticeForm({ noticeId, handleDidSave }) {
                             className="h-44"
                           />
                         </div>
+                      ) : (
+                        <div>
+                          <img src={image2} alt="" className="h-44" />
+                        </div>
                       )}
-                      <div>
-                        <img src={image2} alt="" className="h-44" />
-                      </div>
+
                       <button
                         className="rounded-full px-2 py-1 bg-sky-300"
                         onClick={(e) => {
@@ -352,12 +354,20 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           imgpreview3(e, e.target.files[0]);
                         }}
                       />
-                      <div>
-                        <img src={noticeData?.image3} alt="" className="h-44" />
-                      </div>
-                      <div>
-                        <img src={image3} alt="" className="h-44" />
-                      </div>
+                      {!fieldValues.image3 ? (
+                        <div>
+                          <img
+                            src={noticeData?.image3}
+                            alt=""
+                            className="h-44"
+                          />
+                        </div>
+                      ) : (
+                        <div>
+                          <img src={image3} alt="" className="h-44" />
+                        </div>
+                      )}
+
                       <button
                         className="rounded-full px-2 py-1 bg-sky-300"
                         onClick={(e) => {
@@ -390,12 +400,20 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           imgpreview4(e, e.target.files[0]);
                         }}
                       />
-                      <div>
-                        <img src={noticeData?.image4} alt="" className="h-44" />
-                      </div>
-                      <div>
-                        <img src={image4} alt="" className="h-44" />
-                      </div>
+                      {!fieldValues.image4 ? (
+                        <div>
+                          <img
+                            src={noticeData?.image4}
+                            alt=""
+                            className="h-44"
+                          />
+                        </div>
+                      ) : (
+                        <div>
+                          <img src={image4} alt="" className="h-44" />
+                        </div>
+                      )}
+
                       <button
                         className="rounded-full px-2 py-1 bg-sky-300"
                         onClick={(e) => {
@@ -428,12 +446,20 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           imgpreview5(e, e.target.files[0]);
                         }}
                       />
-                      <div>
-                        <img src={noticeData?.image5} alt="" className="h-44" />
-                      </div>
-                      <div>
-                        <img src={image5} alt="" className="h-44" />
-                      </div>
+                      {!fieldValues.image5 ? (
+                        <div>
+                          <img
+                            src={noticeData?.image5}
+                            alt=""
+                            className="h-44"
+                          />
+                        </div>
+                      ) : (
+                        <div>
+                          <img src={image5} alt="" className="h-44" />
+                        </div>
+                      )}
+
                       <button
                         className="rounded-full px-2 py-1 bg-sky-300"
                         onClick={(e) => {

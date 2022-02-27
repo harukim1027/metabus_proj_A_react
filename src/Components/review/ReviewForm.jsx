@@ -257,7 +257,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                         ),
                       )
                     }
-                    className="bg-pink-100 p-2 m-2 rounded-lg"
+                    className="bg-purple-200 p-2 m-2 rounded-lg"
                   >
                     리뷰할 크루 선택하기
                   </button>
@@ -725,7 +725,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                     onClick={(e) => handleSubmit(e)}
                     onSubmit={handleSubmit}
                   >
