@@ -114,9 +114,9 @@ function InquiryForm({ inquiryId, handleDidSave }) {
       <div className="header flex flex-wrap justify-center">
         <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
-          <blockquote class="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
-            <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block text-6xl font-extrabold">
-              <span class="relative text-white">" 내 문의사항 "</span>
+          <blockquote className="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
+            <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block text-6xl font-extrabold">
+              <span className="relative text-white">" 내 문의사항 "</span>
             </span>
           </blockquote>
 
@@ -151,7 +151,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                     />
                     {saveErrorMessages.title?.map((message, index) => (
                       <p key={index} className="text-md text-red-400">
-                        {message}
+                        제목을 입력해주세요.
                       </p>
                     ))}
                   </div>
@@ -170,7 +170,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                     />
                     {saveErrorMessages.content?.map((message, index) => (
                       <p key={index} className="text-md text-red-400">
-                        {message}
+                        내용을 입력해주세요.
                       </p>
                     ))}
                   </div>
@@ -207,11 +207,6 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                     placeholder="내용을 입력해주세요."
                     className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                   />
-                  {saveErrorMessages.admin_answer?.map((message, index) => (
-                    <p key={index} className="text-md text-red-400">
-                      {message}
-                    </p>
-                  ))}
                 </div>
               )}
 

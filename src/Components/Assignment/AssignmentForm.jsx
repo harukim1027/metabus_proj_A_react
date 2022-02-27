@@ -285,11 +285,7 @@ function AssignmentForm({ handleDidSave }) {
                   <option value="중형">중형</option>
                   <option value="대형">대형</option>
                 </select>
-                {errorMessages.userID?.map((message, index) => (
-                  <p key={index} className="text-m text-red-400">
-                    {message}
-                  </p>
-                ))}
+
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
                   <svg
                     className="fill-current h-5 w-5"
@@ -317,11 +313,7 @@ function AssignmentForm({ handleDidSave }) {
                   <option value="암컷">암컷</option>
                   <option value="수컷">수컷</option>
                 </select>
-                {errorMessages.userID?.map((message, index) => (
-                  <p key={index} className="text-m text-red-400">
-                    {message}
-                  </p>
-                ))}
+
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
                   <svg
                     className="fill-current h-5 w-5"
@@ -539,7 +531,7 @@ function AssignmentForm({ handleDidSave }) {
               </button>
               {saveErrorMessages.adopter_name?.map((message, index) => (
                 <p key={index} className="text-md text-red-400">
-                  {message}
+                  이름을 입력해주세요.
                 </p>
               ))}
             </div>
@@ -576,7 +568,7 @@ function AssignmentForm({ handleDidSave }) {
               </span>
               {saveErrorMessages.monthly_income?.map((message, index) => (
                 <p key={index} className="text-md text-red-400">
-                  {message}
+                  월 수입을 입력해주세요.
                 </p>
               ))}
             </div>
