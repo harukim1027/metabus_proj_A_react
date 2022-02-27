@@ -84,8 +84,19 @@ function ReviewDetail({ reviewId }) {
             </span>
           </blockquote>
 
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
+          {/* 로딩 에러 */}
+          {loading && (
+            <>
+              <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
+            </>
+          )}
+          {error && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
 
           <div className="flex justify-center">
             <div className="px-4 py-5 xs:w-full sm:w-2/3">

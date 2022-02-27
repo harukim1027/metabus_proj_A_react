@@ -121,9 +121,19 @@ function ReviewList() {
             </span>
           </blockquote>
 
-          {loading && <LoadingIndicator>로딩 중 ...</LoadingIndicator>}
-          {error && '로딩 중 에러가 발생했습니다.'}
-
+          {loading && (
+            <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
+          )}
+          {error && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
+          {error?.response?.status === 401 && (
+            <div className="text-red-400">조회에 실패했습니다.</div>
+          )}
           <div className="ml-3 mb-6 mt-3">
             <form onSubmit={() => moveCategory()}>
               <select

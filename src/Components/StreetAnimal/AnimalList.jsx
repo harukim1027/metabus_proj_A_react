@@ -7,6 +7,7 @@ import ReactPaginate from 'react-paginate';
 import 'css/pagination_animal.css';
 import '../../App.css';
 import './Animal.css';
+import LoadingIndicator from 'LoadingIndicator';
 
 function AnimalList() {
   const { auth } = useAuth();
@@ -108,8 +109,16 @@ function AnimalList() {
             </span>
           </blockquote>
 
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
+          {loading && (
+            <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
+          )}
+          {error && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
 
           <div className="ml-3 mb-6 mt-3">
             <div className="text-right">

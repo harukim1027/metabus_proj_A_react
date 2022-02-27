@@ -235,9 +235,19 @@ function ReviewForm({ reviewId, handleDidSave }) {
             </span>
           </blockquote>
 
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
-
+          {/* 로딩 에러 */}
+          {loading && (
+            <>
+              <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
+            </>
+          )}
+          {error && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
           <br />
 
           {/*  */}
@@ -470,7 +480,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   />
                   {saveErrorMessages.title?.map((message, index) => (
                     <p key={index} className="text-md text-red-400">
-                      {message}
+                      제목을 입력해주세요.
                     </p>
                   ))}
                   <br />
@@ -492,7 +502,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   />
                   {saveErrorMessages.content?.map((message, index) => (
                     <p key={index} className="text-md text-red-400">
-                      {message}
+                      내용을 입력해주세요.
                     </p>
                   ))}
                 </div>
@@ -547,7 +557,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       </li>
                       {saveErrorMessages.image1?.map((message, index) => (
                         <p key={index} className="text-xs text-red-400">
-                          {message}
+                          이미지 첨부가 필요합니다!
                         </p>
                       ))}
 
@@ -590,7 +600,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       </li>
                       {saveErrorMessages.image2?.map((message, index) => (
                         <p key={index} className="text-xs text-red-400">
-                          {message}
+                          이미지 첨부가 필요합니다!
                         </p>
                       ))}
 
@@ -633,7 +643,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       </li>
                       {saveErrorMessages.image3?.map((message, index) => (
                         <p key={index} className="text-xs text-red-400">
-                          {message}
+                          이미지 첨부가 필요합니다!
                         </p>
                       ))}
 
@@ -677,7 +687,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       </li>
                       {saveErrorMessages.image4?.map((message, index) => (
                         <p key={index} className="text-xs text-red-400">
-                          {message}
+                          이미지 첨부가 필요합니다!
                         </p>
                       ))}
 
@@ -720,7 +730,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       </li>
                       {saveErrorMessages.image1?.map((message, index) => (
                         <p key={index} className="text-xs text-red-400">
-                          {message}
+                          이미지 첨부가 필요합니다!
                         </p>
                       ))}
                     </ul>

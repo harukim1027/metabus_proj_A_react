@@ -87,11 +87,19 @@ function AnimalDetail({ animalId }) {
             </span>
           </blockquote>
 
-          {loading && <LoadingIndicator />}
-          {deleteLoading && <LoadingIndicator>삭제 중 ...</LoadingIndicator>}
-          {error &&
-            `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
-
+          {loading && (
+            <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
+          )}
+          {deleteLoading && (
+            <LoadingIndicator>&nbsp;&nbsp;삭제 중 ...</LoadingIndicator>
+          )}
+          {error && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
           <div className="my-5 overflow-hidden">
             {animal && (
               <>
