@@ -378,7 +378,7 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <h5 className="mt-1 xl:text-m lg:text-m md:text-m sm:text-s xs:text-xs  ml-2 mb-10 text-blue-400">
+              <h5 className="mt-1 xl:text-lg lg:text-lg md:text-m sm:text-s xs:text-xs  ml-2 mb-10 text-blue-400">
                 이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
               </h5>
 
@@ -425,7 +425,7 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <h5 className="mt-1 ml-5 xl:text-m lg:text-m md:text-m sm:text-s xs:text-xs mb-5 text-blue-400">
+              <h5 className="mt-1 ml-5 xl:text-lg lg:text-lg md:text-m sm:text-s xs:text-xs mb-10 text-blue-400">
                 입력하신 비밀번호를 다시 입력해주세요 !
               </h5>
 
