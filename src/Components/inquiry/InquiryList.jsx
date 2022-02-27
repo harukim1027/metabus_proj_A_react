@@ -32,7 +32,8 @@ function InquiryList() {
     async (newPage, newQuery = query) => {
       const params = {
         page: newPage,
-        query: auth.is_staff ? newQuery : auth.userID,
+        query: newQuery,
+        author: auth.is_staff === 1 ? '' : auth.userID,
       };
       const { data } = await refetchAll({ params });
       setPage(newPage);
@@ -52,6 +53,10 @@ function InquiryList() {
 
   const getQuery = (e) => {
     setQuery(e.target.value);
+  };
+
+  const handleBTNPress = () => {
+    fetchInquiry(1, query);
   };
 
   const handleKeyPress = (e) => {
@@ -103,12 +108,6 @@ function InquiryList() {
           </blockquote>
           {/* 로딩 에러 */}
           {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
-          {error?.response?.status === 401 && (
-            <div className="text-red-400">
-              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
-            </div>
-          )}
 
           <div className="ml-3 mb-6 mt-3">
             <div className="text-right">
@@ -137,15 +136,13 @@ function InquiryList() {
               <button
                 type="submit"
                 className="relative ml-2 mr-4 flex-shrink-0 bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-xl border-4 text-white px-3 py-2 rounded"
-                onClick={() => handleKeyPress()}
+                onClick={handleBTNPress}
               >
                 검색
               </button>
-              {/* 저장 에러  */}
               <div>
-                {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
-                {error &&
-                  `저장 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+                {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
+                {error && '검색된 정보가 없습니다.'}
               </div>
             </div>
           </div>

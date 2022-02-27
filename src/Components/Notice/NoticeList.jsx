@@ -48,6 +48,10 @@ function NoticeList() {
     setQuery(e.target.value);
   };
 
+  const handleBTNPress = () => {
+    fetchNotices(1, query);
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       fetchNotices(1, query);
@@ -119,7 +123,7 @@ function NoticeList() {
                 placeholder="제목을 검색하세요."
               />
               <button
-                onClick={() => handleKeyPress()}
+                onClick={handleBTNPress}
                 className="relative ml-2 mr-4 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white px-3 py-2 rounded"
                 readOnly
               >

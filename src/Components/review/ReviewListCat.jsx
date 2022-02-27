@@ -32,24 +32,6 @@ function ReviewList() {
 
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setQuery(value);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      refetch();
-      fetchReviews(1, query);
-
-      console.log('ENTER');
-    }
-  };
-
-  useEffect(() => {
-    refetch();
-  }, []);
-
   const moveCategory = () => {
     fieldValues.category === '전체' && navigate(`/review/`);
     fieldValues.category === '강아지' && navigate(`/review/dog/`);
@@ -85,6 +67,16 @@ function ReviewList() {
 
   const getQuery = (e) => {
     setQuery(e.target.value);
+  };
+
+  const handleBTNPress = () => {
+    fetchReviews(1, query);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      fetchReviews(1, query);
+    }
   };
 
   // 스크롤 기능
@@ -169,7 +161,7 @@ function ReviewList() {
                 placeholder="제목을 검색하세요."
               />
               <button
-                onClick={() => handleKeyPress()}
+                onClick={handleBTNPress}
                 className="relative ml-2 mr-4 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-xl border-4 text-white px-3 py-2 rounded"
                 readOnly
               >
