@@ -182,23 +182,6 @@ function AssignDetail({ assignId }) {
             </table>
           </div>
 
-          {/* <ul className="w-60">
-              <li className="flex place-content-between">
-                <h2>신청 번호</h2>
-                <h2>{assignData?.assignment_no}</h2>
-              </li>
-            </ul>
-
-            <h2>신청일 : {assignData?.created_at}</h2>
-            <h2>신청시 기입한 이름 : {assignData?.adopter_name}</h2>
-            <h2>회원명 : {assignData?.user.name}</h2>
-            <h2>회원 연락처 : {assignData?.user.phone_number}</h2>
-            <h2>회원 e-mail : {assignData?.user.email}</h2>
-            <h2>월 수입 : {assignData?.monthly_income}만</h2>
-            <h2>주거 형태 : {assignData?.residential_type}</h2>
-            <h2>
-              애완동물 유무 : {assignData?.have_pet_or_not ? '있음' : '없음'}
-            </h2> */}
           <div className="flex justify-center content-center">
             <div className="flex flex-col border-2 border-gray-300 rounded-lg shadow-lg w-1/4 mx-2">
               <h2>거주지 사진1</h2>
@@ -264,7 +247,6 @@ function AssignDetail({ assignId }) {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
 
       <div className="header flex flex-wrap justify-center">
         <div className="assignmanagement_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
@@ -276,67 +258,66 @@ function AssignDetail({ assignId }) {
           </blockquote>
 
           <div className="my-5 overflow-hidden">
-            <tabel className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
+            <tabel className="text-center divide-y divide-gray-200">
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   등록번호
                 </th>
-                {/* <td>{assignData?.animal.animal_reg_num}</td> */}
+                <td>{assignData?.animal.animal_reg_num}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   종류
                 </th>
                 <td>{assignData?.animal.category.name}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   사이즈
                 </th>
                 <td>{assignData?.animal.size}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   성별
                 </th>
                 <td>{assignData?.animal.sex}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   나이
                 </th>
                 <td>{assignData?.animal.age}세</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   동물 정보
                 </th>
                 <td>{assignData?.animal.info}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   보호 시작일
                 </th>
                 <td>{assignData?.animal.start_date}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   보호 종료일
                 </th>
                 <td>{assignData?.animal.end_date}</td>
               </tr>
             </tabel>
-
-            <div>
-              <img src={assignData?.animal.image} alt="" />
-            </div>
+          </div>
+          <div>
+            <img src={assignData?.animal.image} alt="" />
           </div>
 
           {/* <h2>동물 정보</h2>
@@ -371,26 +352,6 @@ function AssignDetail({ assignId }) {
             >
               목록
             </button>
-=======
-      <div className="header flex justify-center">
-        <div className="w-2/3 notice_header rounded-xl mx-20 my-10 px-20">
-          <div className=" pt-6 mb-3">
-            <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-              <span class="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
-                <span class="relative text-white">" 동물 정보 "</span>
-              </span>
-            </blockquote>
-            <h2>동물 정보</h2>
-            <h2>등록번호 : {assignData?.animal.animal_reg_num}</h2>
-            <img src={assignData?.animal.image} alt="" />
-            <h2>종류 : {assignData?.animal.category.name}</h2>
-            <h2>사이즈 : {assignData?.animal.size}</h2>
-            <h2>성별 : {assignData?.animal.sex}</h2>
-            <h2>나이 : {assignData?.animal.age}세</h2>
-            <h2>특징 : {assignData?.animal.info}</h2>
-            <h2>보호 시작일 : {assignData?.animal.start_date}</h2>
-            <h2>보호 종료일 : {assignData?.animal.end_date}</h2>
->>>>>>> c30e9b3b57ee74230064172fe64eded3faba5aa4
           </div>
         </div>
       </div>
