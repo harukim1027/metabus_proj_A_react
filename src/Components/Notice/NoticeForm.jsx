@@ -241,19 +241,19 @@ function NoticeForm({ noticeId, handleDidSave }) {
               <hr />
 
               {/* 이미지 첨부 인풋박스 */}
-              <div className="my-3 ml-3 w-full">
-                <span className=" block uppercase tracking-wide text-blue-900 text-xl font-bold mb-2 ">
+              <div className="my-3 w-full">
+                <span className="block tracking-wide text-blue-900 text-xl font-bold mb-2 ">
                   이미지 첨부
                 </span>
                 <h2 className="text-gray-500 text-xs">
                   ( 최대 5개까지 이미지를 등록할 수 있습니다. )
                 </h2>
 
-                <div className="flex justify-center bg-white px-4 py-5 w-full">
+                <div className="flex justify-center bg-white py-5 w-full">
                   {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                   <ul>
                     {/* 개별 이미지 input 박스 1*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -267,7 +267,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                           <img
                             src={noticeData?.image1}
                             alt=""
-                            className="w-44"
+                            className="h-44"
                           />
                         </div>
                       ) : (
@@ -486,8 +486,8 @@ function NoticeForm({ noticeId, handleDidSave }) {
               </div>
               <hr />
               {/* 파일 첨부 인풋박스 시작 부분 */}
-              <div className="my-3 ml-3 w-full">
-                <span className=" block uppercase tracking-wide text-blue-900 text-xl font-bold mb-2 ">
+              <div className="my-3 w-full">
+                <span className="block tracking-wide text-blue-900 text-xl font-bold mb-2 ">
                   파일 첨부
                 </span>
                 <h2 className="text-gray-500 text-xs">
@@ -495,11 +495,11 @@ function NoticeForm({ noticeId, handleDidSave }) {
                 </h2>
 
                 {/* 개별 파일 input 박스 1*/}
-                <div className="flex justify-center bg-white px-4 py-5 w-full">
+                <div className="flex justify-center bg-white py-5 w-full">
                   {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                   <ul>
                     {/* 개별 이미지 input 박스 1*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"

@@ -324,7 +324,7 @@ function AnimalForm({ animalId, handleDidSave }) {
 
               <div className="my-10 items-center">
                 <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                  동물 정보 입력
+                  동물 특징 입력(건강상태, 성격 등)
                 </span>
                 <textarea
                   name="info"
