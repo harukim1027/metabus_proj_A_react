@@ -53,18 +53,19 @@ function UserInquiryList({ userId }) {
   };
 
   // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [UserInquiryData]);
 
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 1016,
+      top: topLocation,
       behavior: 'smooth',
     });
   };
-
-  // const handleFollow = () => {
-  //   setScrollY(window.pageYOffset);
-  // };
 
   useEffect(() => {
     gotoTop();
@@ -74,7 +75,7 @@ function UserInquiryList({ userId }) {
 
   return (
     <>
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="userManage_header rounded-xl shadow-md px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote class="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block">

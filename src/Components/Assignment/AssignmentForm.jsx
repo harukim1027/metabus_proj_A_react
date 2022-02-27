@@ -190,7 +190,7 @@ function AssignmentForm({ handleDidSave }) {
   console.log('topLocation: ', topLocation);
   useEffect(() => {
     setFormLoc(document.querySelector('#form').offsetTop);
-  }, [AnimalList]);
+  }, [selanimal]);
 
   const gotoForm = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
@@ -427,11 +427,8 @@ function AssignmentForm({ handleDidSave }) {
       </div>
       {/* 컨테이너 끝 */}
 
-      <div className="header flex flex-wrap justify-center">
-        <div
-          className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-3/4 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10"
-          id="form"
-        >
+      <div className="header flex flex-wrap justify-center" id="form">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-3/4 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
           <p className="text-center text-blue-900 font-bold text-xl my-10">
             ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
           </p>

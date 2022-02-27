@@ -117,28 +117,29 @@ function AnimalForm({ animalId, handleDidSave }) {
   };
 
   // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [Animal]);
 
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 1016,
+      top: topLocation,
       behavior: 'smooth',
     });
   };
 
-  // const handleFollow = () => {
-  //   setScrollY(window.pageYOffset);
-  // };
-
   useEffect(() => {
     gotoTop();
-  }, [Animal]);
+  }, [topLocation]);
 
   //-------------
 
   return (
     <>
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="animal_header rounded-md shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">

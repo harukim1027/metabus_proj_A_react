@@ -1,5 +1,5 @@
 import { useApiAxios } from 'api/base';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import ReactPaginate from 'react-paginate';
@@ -7,7 +7,7 @@ import LoadingIndicator from 'LoadingIndicator';
 
 function MyPageReview() {
   const { auth } = useAuth();
-
+  const navigate = useNavigate();
   // 페이징
   const [query, setQuery] = useState('');
   const [, setCurrentItems] = useState(null);
@@ -49,11 +49,16 @@ function MyPageReview() {
   };
 
   // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [reviewList]);
 
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 940,
+      top: topLocation,
       behavior: 'smooth',
     });
   };
@@ -66,7 +71,7 @@ function MyPageReview() {
 
   return (
     <>
-      <div className="header">
+      <div className="header" id="topLoc">
         <div className="justify-center mx-20">
           <div className="align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="mypage_header rounded-xl shadow-md">
@@ -130,7 +135,13 @@ function MyPageReview() {
                         {reviewList.results
                           .filter((a) => a.user.userID === auth.userID)
                           .map((review) => (
-                            <tr key={review.review_no}>
+                            <tr
+                              key={review.review_no}
+                              onClick={() =>
+                                navigate(`/review/${review.review_no}/`)
+                              }
+                              className="cursor-pointer"
+                            >
                               <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs ">
                                 <div className="ml-4">
                                   <div className="text-sm font-medium text-gray-900">
@@ -140,9 +151,9 @@ function MyPageReview() {
                               </td>
                               <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
                                 <span className="px-2 rounded-full bg-green-100 text-green-800 font-semibold">
-                                  <Link to={`/review/${review.review_no}/`}>
-                                    {review.title}
-                                  </Link>
+                                  {review.title.length > 8
+                                    ? review.title.substring(0, 8) + '...'
+                                    : review.title}
                                 </span>
                               </td>
                               <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">

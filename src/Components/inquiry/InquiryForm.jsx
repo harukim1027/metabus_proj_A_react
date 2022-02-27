@@ -80,28 +80,29 @@ function InquiryForm({ inquiryId, handleDidSave }) {
   };
 
   // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [inquiry]);
 
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 940,
+      top: topLocation,
       behavior: 'smooth',
     });
   };
 
-  // const handleFollow = () => {
-  //   setScrollY(window.pageYOffset);
-  // };
-
   useEffect(() => {
     gotoTop();
-  }, [inquiry]);
+  }, [topLocation]);
 
   //-------------
 
   return (
     <>
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
           <blockquote className="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
@@ -211,7 +212,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
 
                 <button
                   onClick={() => {
-                    navigate('/inquiry/');
+                    navigate(`/inquiry/${inquiryId ? inquiryId : ''}`);
                   }}
                   className=" ml-3 bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                 >

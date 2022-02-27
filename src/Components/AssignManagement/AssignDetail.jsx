@@ -76,7 +76,7 @@ function AssignDetail({ assignId }) {
 
   useEffect(() => {
     gotoTop();
-  }, [topLocation]);
+  }, [assignData]);
 
   //-------------
 

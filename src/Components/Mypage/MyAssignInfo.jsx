@@ -46,11 +46,16 @@ function MyAssignInfo() {
   };
 
   // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [MyAssignData]);
 
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 940,
+      top: topLocation,
       behavior: 'smooth',
     });
   };
@@ -63,7 +68,7 @@ function MyAssignInfo() {
 
   return (
     <>
-      <div className="header">
+      <div className="header" id="topLoc">
         <div className="justify-center mx-20 ">
           <div className="align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="mypage_header rounded-xl shadow-md">

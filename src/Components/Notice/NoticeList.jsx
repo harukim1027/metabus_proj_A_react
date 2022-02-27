@@ -59,18 +59,19 @@ function NoticeList() {
   };
 
   // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [noticeList]);
 
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 1016,
+      top: topLocation,
       behavior: 'smooth',
     });
   };
-
-  // const handleFollow = () => {
-  //   setScrollY(window.pageYOffset);
-  // };
 
   useEffect(() => {
     gotoTop();
@@ -80,7 +81,7 @@ function NoticeList() {
 
   return (
     <>
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 mb-3 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
@@ -145,17 +146,17 @@ function NoticeList() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {noticeList?.results?.map((notice) => (
-                  <tr>
+                  <tr
+                    onClick={() => navigate(`/notice/${notice.notice_no}/`)}
+                    className=" cursor-pointer"
+                  >
                     <td className="py-4">
                       <div className="text-xl font-medium text-gray-900">
                         {notice.notice_no}
                       </div>
                     </td>
                     <td className="py-4">
-                      <div
-                        className="font-medium text-gray-900 cursor-pointer"
-                        onClick={() => navigate(`/notice/${notice.notice_no}/`)}
-                      >
+                      <div className="font-medium text-gray-900">
                         <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                           {notice.title.length > 8
                             ? notice.title.substr(0, 8) + '...'

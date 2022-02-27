@@ -183,7 +183,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
   console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
-  }, [selectanimalAssign]);
+  }, [review]);
 
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
@@ -193,15 +193,15 @@ function ReviewForm({ reviewId, handleDidSave }) {
     });
   };
 
-  const [location, setLocation] = useState(0);
-  console.log('location: ', location);
+  const [formLoc, setFormLoc] = useState(0);
+  console.log('formLoc: ', formLoc);
   useEffect(() => {
-    setLocation(document.querySelector('#form').offsetTop);
+    setFormLoc(document.querySelector('#form').offsetTop);
   }, [selectanimalAssign]);
 
   const gotoForm = () => {
     window.scrollTo({
-      top: location,
+      top: formLoc,
       behavior: 'smooth',
     });
   };
@@ -743,7 +743,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
                   <button
                     onClick={() => {
-                      navigate('/review/');
+                      navigate(`/review/${reviewId ? reviewId : ''}`);
                     }}
                     className=" ml-3 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
