@@ -2,6 +2,7 @@ import { useApiAxios } from 'api/base';
 import { useEffect, useState } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import Sidebar from 'Components/Mypage/Sidebar';
+import LoadingIndicator from 'LoadingIndicator';
 
 function Myinfo() {
   const { auth } = useAuth();
@@ -64,9 +65,7 @@ function Myinfo() {
               </blockquote>
               {/* 로딩 에러 */}
               {loading && (
-                <>
-                  <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
-                </>
+                <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
               )}
               {error && (
                 <>

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './Mypage.css';
 import 'css/pagination_assignList.css';
 import ReactPaginate from 'react-paginate';
+import LoadingIndicator from 'LoadingIndicator';
 
 function MyAssignInfo() {
   const { auth } = useAuth();
@@ -91,9 +92,7 @@ function MyAssignInfo() {
               </blockquote>
               {/* 로딩 에러 */}
               {loading && (
-                <>
-                  <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
-                </>
+                <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
               )}
               {error && (
                 <>
@@ -116,25 +115,25 @@ function MyAssignInfo() {
                     <tr>
                       <th
                         scope="col"
-                        className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                        className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                       >
                         신청 번호
                       </th>
                       <th
                         scope="col"
-                        className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                        className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                       >
                         동물 번호
                       </th>
                       <th
                         scope="col"
-                        className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                        className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                       >
                         신청 날짜
                       </th>
                       <th
                         scope="col"
-                        className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                        className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                       >
                         진행 상태
                       </th>
@@ -143,25 +142,27 @@ function MyAssignInfo() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {MyAssignData?.results.map((assign) => (
                       <tr>
-                        <td className="px-6 py-4 ">
+                        <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs ">
                           <Link to={`/assignment/${assign.assignment_no}/`}>
                             {assign.assignment_no}
                           </Link>
                         </td>
 
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
                           <Link to={`/admin/animal/${assign.animal.animal_no}`}>
                             {assign.animal.animal_reg_num}
                           </Link>
                         </td>
 
-                        <td className="px-6 py-4">{assign.created_at}</td>
+                        <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
+                          {assign.created_at}
+                        </td>
 
                         <td
                           className={
                             assign.status === '입양 완료'
-                              ? 'text-orange-300 font-bold px-6 py-4'
-                              : 'px-6 py-4 '
+                              ? 'text-orange-300 font-bold px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs'
+                              : 'px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs'
                           }
                         >
                           {assign.status}
