@@ -37,9 +37,30 @@ function FindId() {
     e.preventDefault();
   };
 
+  // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [userList]);
+
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: topLocation,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    gotoTop();
+  }, [topLocation]);
+
+  //-------------
+
   return (
     <>
-      <div className="header rounded-xl pt-6 pb-8 mb-4">
+      <div className="header rounded-xl pt-6 pb-8 mb-4" id="topLoc">
         <h2 className="text-center text-4xl py-5 pb-5 font-bold mb-3">
           {' '}
           🐹 아이디 찾기{' '}

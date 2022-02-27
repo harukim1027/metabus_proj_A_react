@@ -32,31 +32,19 @@ function AssignComp({ assignId, assignData }) {
   }, [assignData]);
 
   // 스크롤 기능
-  const [scrollY, setScrollY] = useState(0);
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [adaniData]);
+
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 1016,
+      top: topLocation,
       behavior: 'smooth',
     });
-    setScrollY(0); // ScrollY 의 값을 초기화
   };
-
-  // 스크롤 위치 확인용
-  // const handleFollow = () => {
-  //   setScrollY(window.pageYOffset);
-  // };
-
-  // useEffect(() => {
-  //   const watch = () => {
-  //     window.addEventListener('scroll', handleFollow);
-  //   };
-  //   watch();
-  //   return () => {
-  //     window.removeEventListener('scroll', handleFollow);
-  //   };
-  // });
-  // console.log('window Scroll From Top:', scrollY);
 
   useEffect(() => {
     gotoTop();
@@ -66,7 +54,7 @@ function AssignComp({ assignId, assignData }) {
 
   return (
     <>
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-full xs:w-full">
           <blockquote class="mt-5 mb-3 font-semibold italic text-center text-slate-900">
             <span class="my-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block xs:text-2xl sm:text-4xl lg:text-6xl">

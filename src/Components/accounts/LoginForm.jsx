@@ -14,33 +14,23 @@ function LoginForm() {
   const navigate = useNavigate();
 
   // 스크롤 기능
-  const [scrollY, setScrollY] = useState(0);
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, []);
+
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 1000,
+      top: topLocation,
       behavior: 'smooth',
     });
-    setScrollY(0); // ScrollY 의 값을 초기화
   };
-
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
-
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
 
   useEffect(() => {
     gotoTop();
-  }, []);
+  }, [topLocation]);
 
   //-------------
 
@@ -108,7 +98,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="header">
+    <div className="header" id="topLoc">
       <h2 className="text-center text-4xl py-5 pb-5 font-bold mt-5 mb-3">
         🐹 로그인
       </h2>

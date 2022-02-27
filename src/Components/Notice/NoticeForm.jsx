@@ -157,30 +157,18 @@ function NoticeForm({ noticeId, handleDidSave }) {
   };
 
   // 스크롤 기능
-  const [scrollY, setScrollY] = useState(0);
+
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
       top: 1016,
       behavior: 'smooth',
     });
-    setScrollY(0); // ScrollY 의 값을 초기화
   };
 
   // const handleFollow = () => {
   //   setScrollY(window.pageYOffset);
   // };
-
-  // useEffect(() => {
-  //   const watch = () => {
-  //     window.addEventListener('scroll', handleFollow);
-  //   };
-  //   watch();
-  //   return () => {
-  //     window.removeEventListener('scroll', handleFollow);
-  //   };
-  // });
-  // console.log('window Scroll From Top:', scrollY);
 
   useEffect(() => {
     gotoTop();
@@ -193,9 +181,9 @@ function NoticeForm({ noticeId, handleDidSave }) {
       <div className="header flex flex-wrap justify-center">
         <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
-          <blockquote class="mt-3 mb-10 font-semibold italic text-center text-slate-900">
-            <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl font-extrabold">
-              <span class="relative text-white">
+          <blockquote className="mt-3 mb-10 font-semibold italic text-center text-slate-900">
+            <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl font-extrabold">
+              <span className="relative text-white">
                 {!noticeId ? ' " 공지사항 작성 " ' : ' " 공지사항 수정 " '}
               </span>
             </span>
@@ -223,6 +211,11 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   placeholder="제목을 입력해주세요."
                   className="rounded-md text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
                 />
+                {saveErrorMessages.title?.map((message, index) => (
+                  <p key={index} className="text-md text-red-400">
+                    제목을 입력해주세요.
+                  </p>
+                ))}
               </div>
               {/* 내용 입력 인풋박스 */}
               <div className="mb-3 w-full ">
@@ -237,6 +230,11 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   placeholder="내용을 입력해주세요."
                   className="rounded-md text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                 />
+                {saveErrorMessages.content?.map((message, index) => (
+                  <p key={index} className="text-md text-red-400">
+                    내용을 입력해주세요.
+                  </p>
+                ))}
               </div>
               <hr />
 

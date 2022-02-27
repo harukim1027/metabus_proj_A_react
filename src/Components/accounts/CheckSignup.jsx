@@ -9,38 +9,6 @@ import '../../App.css';
 import './accounts.css';
 
 function CheckSignup(props) {
-  // 스크롤 기능
-  const [scrollY, setScrollY] = useState(0);
-  const gotoTop = () => {
-    // 클릭하면 스크롤이 위로 올라가는 함수
-    window.scrollTo({
-      top: 1016,
-      behavior: 'smooth',
-    });
-    setScrollY(0); // ScrollY 의 값을 초기화
-  };
-
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
-
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
-  // console.log('window Scroll From Top:', scrollY);
-
-  useEffect(() => {
-    gotoTop();
-  }, []);
-
-  //-------------
-
   let [all_check, set_all_check] = useState(false);
   let [contract_check, set_contract_check] = useState(false);
 
@@ -76,9 +44,30 @@ function CheckSignup(props) {
     setSecondCheckBoxActive(all_check);
   }, [all_check]);
 
+  // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, []);
+
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: topLocation,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    gotoTop();
+  }, [topLocation]);
+
+  //-------------
+
   return (
     <>
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="accounts_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <main className="" role="main">
             <h1 className="mt-5 font-semibold text-2xl text-center p-2">

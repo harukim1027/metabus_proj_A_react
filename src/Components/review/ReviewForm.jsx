@@ -177,14 +177,18 @@ function ReviewForm({ reviewId, handleDidSave }) {
   // console.log('AnimalList', AnimalList);
 
   // 스크롤 기능
-  const [scrollY, setScrollY] = useState(0);
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [selectanimalAssign]);
+
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 1016,
+      top: topLocation,
       behavior: 'smooth',
     });
-    setScrollY(0); // ScrollY 의 값을 초기화
   };
 
   const [location, setLocation] = useState(0);
@@ -198,34 +202,22 @@ function ReviewForm({ reviewId, handleDidSave }) {
       top: location,
       behavior: 'smooth',
     });
-    setScrollY(0); // ScrollY 의 값을 초기화
   };
 
   // const handleFollow = () => {
   //   setScrollY(window.pageYOffset);
   // };
 
-  // useEffect(() => {
-  //   const watch = () => {
-  //     window.addEventListener('scroll', handleFollow);
-  //   };
-  //   watch();
-  //   return () => {
-  //     window.removeEventListener('scroll', handleFollow);
-  //   };
-  // });
-  // console.log('window Scroll From Top:', scrollY);
-
   useEffect(() => {
     gotoTop();
-  }, []);
+  }, [topLocation]);
 
   //-------------
 
   return (
     <>
       {/* review_header : 배경 흰색 */}
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
             <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl text-6xl font-extrabold">

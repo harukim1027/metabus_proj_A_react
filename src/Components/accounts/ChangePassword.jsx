@@ -36,9 +36,29 @@ function ChangePassword() {
 
   console.log('findUser: ', findUser);
   console.log('userList: ', userList);
+
+  // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [userList]);
+
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: topLocation,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    gotoTop();
+  }, [topLocation]);
+
   return (
     <>
-      <div>
+      <div id="topLoc">
         <div className="header rounded-xl px-20 pt-6 pb-8 mb-4">
           <h2 className="text-center text-4xl py-5 pb-5 font-bold  mb-3">
             🐯 비밀번호 변경하기
