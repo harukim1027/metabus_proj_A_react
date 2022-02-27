@@ -187,8 +187,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
   };
 
   const gotoForm = () => {
+    let location = document.querySelector('form').offsetTop;
+    console.log('location: ', location);
     window.scrollTo({
-      top: 1700,
+      top: location,
       behavior: 'smooth',
     });
     setScrollY(0); // ScrollY 의 값을 초기화
@@ -339,11 +341,8 @@ function ReviewForm({ reviewId, handleDidSave }) {
           </div>
         </div>
       </div>
-      {/* 컨테이너 끝 */}
 
-      {/*  */}
-
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="form">
         <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <p className="text-center text-blue-900 font-bold text-xl mb-5">
             ⬇ 선택하신 크루원 정보가 표시됩니다. ⬇

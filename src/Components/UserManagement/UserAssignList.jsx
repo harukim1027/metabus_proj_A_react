@@ -51,10 +51,42 @@ function UserAssignList({ userId }) {
     fetchNotices(event.selected + 1);
   };
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
+
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
+  // console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, [AssignStatusData]);
+
+  //-------------
+
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-xl shadow-md px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote className="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
             <span className="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
               <span className="relative text-white">" 입양신청 현황 "</span>
@@ -65,7 +97,7 @@ function UserAssignList({ userId }) {
           {error && '로딩 중 에러가 발생했습니다.'}
 
           <div className="mb-5">
-            <table className="mb-5 mt-10 border text-center min-w-full divide-y divide-gray-200">
+            <table className="mb-5 mt-10 border text-center min-w-full divide-y divide-gray-200 whitespace-nowrap">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/4">
@@ -74,10 +106,10 @@ function UserAssignList({ userId }) {
                   <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/4">
                     동물 등록번호
                   </th>
-                  <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/4">
+                  <th className="px-6 py-3 text-center text-lg font-bold text-gray-500 uppercase tracking-wider w-1/4">
                     신청날짜
                   </th>
-                  <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/4">
+                  <th className="px-6 py-3 text-center text-lg font-bold text-gray-500 uppercase tracking-wider w-1/4">
                     진행상태
                   </th>
                 </tr>
@@ -90,21 +122,21 @@ function UserAssignList({ userId }) {
                     }
                     className=" cursor-pointer"
                   >
-                    <td className="py-4">
-                      <div className="text-xl font-medium text-gray-900">
+                    <td className="px-6 py-4">
+                      <div className="text-md font-medium text-blue-900">
                         {assign.assignment_no}
                       </div>
                     </td>
 
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
+                    <td className="px-6 py-4">
+                      <div className="inline-flex text-lg leading-5 font-semibold rounded-full bg-red-100 text-red-900">
                         {assign.animal.animal_reg_num}
                       </div>
                     </td>
 
-                    <td className="text-lg py-4">{assign.created_at}</td>
+                    <td className="text-sm px-6 py-4">{assign.created_at}</td>
 
-                    <td className="text-lg py-4">{assign.status}</td>
+                    <td className="text-sm px-6 py-4">{assign.status}</td>
                   </tr>
                 ))}
               </tbody>
