@@ -33,7 +33,7 @@ function InquiryList() {
       const params = {
         page: newPage,
         query: newQuery,
-        author: auth.is_staff === 1 ? '' : auth.userID,
+        author: auth.is_staff ? '' : auth.userID,
       };
       const { data } = await refetchAll({ params });
       setPage(newPage);
@@ -153,7 +153,7 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider xs:w-10 xs:text-sm sm:w-32 sm:text-xl"
+                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider xs:w-10 xs:text-sm sm:w-32 sm:text-lg"
                   >
                     No
                   </th>
@@ -165,7 +165,7 @@ function InquiryList() {
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-xl font-bold text-gray-500 uppercase tracking-wider w-1/3"
+                    className="py-3 text-center xs:text-sm sm:text-lg font-bold text-gray-500 uppercase tracking-wider w-1/3"
                   >
                     제목
                   </th>
@@ -177,7 +177,7 @@ function InquiryList() {
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-xl font-bold text-gray-500 uppercase tracking-wider"
+                    className="py-3 text-center xs:text-sm sm:text-md font-bold text-gray-500 uppercase tracking-wider"
                   >
                     답변 상태
                   </th>

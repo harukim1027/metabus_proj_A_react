@@ -126,37 +126,36 @@ function InquiryDetail({ inquiryId }) {
           <div>
             <div className="my-5 text-right">
               <div>
+                {(auth.userID === inquiry?.user || auth.is_staff) && (
+                  <button
+                    onClick={() => handleDelete()}
+                    className="ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                  >
+                    삭제
+                  </button>
+                )}
+                {auth.isLoggedIn && auth.is_staff && (
+                  <Link
+                    to={`/admin/inquiry/${inquiryId}/edit/`}
+                    className="ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                  >
+                    답변
+                  </Link>
+                )}
                 {auth.is_staff ? (
                   <Link
                     to="/inquiry/"
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     목록
                   </Link>
                 ) : (
                   <Link
                     to="/mypage/myinquiry/"
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     목록
                   </Link>
-                )}
-
-                {auth.isLoggedIn && auth.is_staff && (
-                  <Link
-                    to={`/admin/inquiry/${inquiryId}/edit/`}
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
-                  >
-                    답변 등록
-                  </Link>
-                )}
-                {(auth.userID === inquiry?.user || auth.is_staff) && (
-                  <button
-                    onClick={() => handleDelete()}
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded mr-5"
-                  >
-                    삭제
-                  </button>
                 )}
 
                 {/* 저장 에러  */}
