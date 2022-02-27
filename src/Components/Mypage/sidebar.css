@@ -6,7 +6,7 @@
 }
 
 .sidebar {
-  background-color: rgba(255, 255, 255, 0.795);
+  background-color: rgba(255, 255, 255, 0.863);
   left: 0;
   transition: 0.4s ease;
   /* height: 100%; */
@@ -15,6 +15,7 @@
   font-family: 'Hahmlet', serif;
   box-sizing: border-box;
   border-radius: 5px;
+  border: rgb(255, 255, 255);
 }
 .button {
   position: relative;
