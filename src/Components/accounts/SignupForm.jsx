@@ -105,20 +105,6 @@ function SignupForm() {
 
   return (
     <>
-      {/* 로딩 에러 */}
-      {loading && <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>}
-      {error && (
-        <>
-          <p className="text-red-400">
-            &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
-          </p>
-        </>
-      )}
-      {error?.response?.status === 401 && (
-        <div className="text-red-400">
-          조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
-        </div>
-      )}
       <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="mx-10 notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
@@ -392,7 +378,7 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <h5 className="xl:text-m lg:text-m md:text-m sm:text-s xs:text-xs  ml-2 mb-10 text-blue-400">
+              <h5 className="mt-1 xl:text-m lg:text-m md:text-m sm:text-s xs:text-xs  ml-2 mb-10 text-blue-400">
                 이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
               </h5>
 
@@ -439,7 +425,7 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <h5 className="ml-5 text-xs mb-5 text-blue-400">
+              <h5 className="mt-1 ml-5 xl:text-m lg:text-m md:text-m sm:text-s xs:text-xs mb-5 text-blue-400">
                 입력하신 비밀번호를 다시 입력해주세요 !
               </h5>
 
