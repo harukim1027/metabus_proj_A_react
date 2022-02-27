@@ -4,6 +4,7 @@ import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect, useState } from 'react';
 import LoadingIndicator from 'LoadingIndicator';
+import { useNavigate } from 'react-router-dom';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -12,6 +13,7 @@ const INIT_FIELD_VALUES = {
 
 function InquiryForm({ inquiryId, handleDidSave }) {
   const { auth } = useAuth();
+  const navigate = useNavigate();
 
   // get 요청
   const [{ data: inquiry, loading: getLoading, error: getError }] = useApiAxios(
@@ -205,6 +207,15 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                   onClick={(e) => handleSubmit(e)}
                 >
                   저장
+                </button>
+
+                <button
+                  onClick={() => {
+                    navigate('/inquiry/');
+                  }}
+                  className=" ml-3 bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                >
+                  취소
                 </button>
                 <div className="p-5">
                   {saveLoading && (
