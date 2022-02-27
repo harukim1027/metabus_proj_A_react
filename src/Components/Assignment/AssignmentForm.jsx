@@ -154,54 +154,52 @@ function AssignmentForm({ handleDidSave }) {
   };
 
   // 스크롤 기능
-  const [scrollY, setScrollY] = useState(0);
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [AnimalList]);
+
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
-      top: 1016,
+      top: topLocation,
       behavior: 'smooth',
     });
-    setScrollY(0); // ScrollY 의 값을 초기화
   };
-
-  const gotoSearched = () => {
-    window.scrollTo({
-      top: 1654,
-      behavior: 'smooth',
-    });
-    setScrollY(0); // ScrollY 의 값을 초기화
-  };
-
-  const gotoForm = () => {
-    window.scrollTo({
-      top: 2254,
-      behavior: 'smooth',
-    });
-    setScrollY(0); // ScrollY 의 값을 초기화
-  };
-
-  // 아래 주석부분은 스크롤 위치 확인용
-  // const handleFollow = () => {
-  //   setScrollY(window.pageYOffset);
-  // };
-
-  // useEffect(() => {
-  //   const watch = () => {
-  //     window.addEventListener('scroll', handleFollow);
-  //   };
-  //   watch();
-  //   return () => {
-  //     window.removeEventListener('scroll', handleFollow);
-  //   };
-  // });
-  // console.log('window Scroll From Top:', scrollY);
-  // ------
 
   useEffect(() => {
     gotoTop();
-  }, []);
+  }, [topLocation]);
 
-  //----여기까지 스크롤-----
+  const [searchLoc, setSearchLoc] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setSearchLoc(document.querySelector('#searched').offsetTop);
+  }, [AnimalList]);
+
+  const gotoSearched = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: searchLoc,
+      behavior: 'smooth',
+    });
+  };
+
+  const [formLoc, setFormLoc] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setFormLoc(document.querySelector('#form').offsetTop);
+  }, [AnimalList]);
+
+  const gotoForm = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: formLoc,
+      behavior: 'smooth',
+    });
+  };
+  //-------------
 
   console.log('---------------');
   console.log('AnimalList: ', AnimalList);
@@ -211,7 +209,7 @@ function AssignmentForm({ handleDidSave }) {
 
   return (
     <>
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-full xs:w-full">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
             <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-6xl font-extrabold">
@@ -348,7 +346,11 @@ function AssignmentForm({ handleDidSave }) {
                     className="hover:scale-110 duration-500 w-40"
                     readOnly
                   >
-                    <img src="/searchicon2.png" alt="button"></img>
+                    <img
+                      src="/searchicon2.png"
+                      alt="button"
+                      id="searched"
+                    ></img>
                   </button>
                 </div>
                 {/* 저장 에러  */}
@@ -426,7 +428,10 @@ function AssignmentForm({ handleDidSave }) {
       {/* 컨테이너 끝 */}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-3/4 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
+        <div
+          className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-3/4 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10"
+          id="form"
+        >
           <p className="text-center text-blue-900 font-bold text-xl my-10">
             ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
           </p>

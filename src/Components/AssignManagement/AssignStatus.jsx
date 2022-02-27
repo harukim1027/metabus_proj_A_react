@@ -80,7 +80,7 @@ function AssignStatus({ assignId, handleDidSave, assignData }) {
             name="status"
             value={fieldValues.status}
             onChange={handleFieldChange}
-            className="border-2 border-sky-400 rounded p-1 ml-2"
+            className="border-2 border-gray-400 rounded px-5 py-2"
             defaultValue="신청"
           >
             <option value="신청">신청</option>
@@ -90,7 +90,9 @@ function AssignStatus({ assignId, handleDidSave, assignData }) {
             <option value="입양 완료">입양 완료</option>
             <option value="거절">거절</option>
           </select>
-          <button className="bg-blue-300 rounded-lg p-2">저장</button>
+          <button className="bg-gray-300 hover:bg-gray-800 hover:text-white rounded-md p-3 ml-3">
+            저장
+          </button>
         </form>
       </div>
     </>

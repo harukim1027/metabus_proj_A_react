@@ -59,9 +59,30 @@ function AssignDetail({ assignId }) {
     }
   };
 
+  // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, [assignData]);
+
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: topLocation,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    gotoTop();
+  }, [topLocation]);
+
+  //-------------
+
   return (
     <>
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="assignmanagement_header rounded-xl shadow-md overflow-hidden md:px-20 sm:px-0 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
@@ -175,20 +196,22 @@ function AssignDetail({ assignId }) {
                     auth.is_staff && setClicked(!clicked);
                   }}
                 >
-                  {assignData?.status}
+                  {assignData?.status} (수정하려면 클릭)
                 </td>
-                {clicked && assignData && (
-                  <AssignStatus
-                    assignId={assignId}
-                    assignData={assignData}
-                    handleDidSave={(savedPost) => {
-                      savedPost && window.location.reload();
-                      savedPost && setClicked(0);
-                    }}
-                  />
-                )}
               </tr>
             </table>
+            {clicked && assignData && (
+              <div className="flex justify-center">
+                <AssignStatus
+                  assignId={assignId}
+                  assignData={assignData}
+                  handleDidSave={(savedPost) => {
+                    savedPost && window.location.reload();
+                    savedPost && setClicked(0);
+                  }}
+                />
+              </div>
+            )}
           </div>
 
           <div className="flex justify-center content-center">

@@ -26,38 +26,6 @@ const INIT_FIELD_VALUES = {
 function SignupForm() {
   const navigate = useNavigate();
 
-  // 스크롤 기능
-  const [scrollY, setScrollY] = useState(0);
-  const gotoTop = () => {
-    // 클릭하면 스크롤이 위로 올라가는 함수
-    window.scrollTo({
-      top: 1016,
-      behavior: 'smooth',
-    });
-    setScrollY(0); // ScrollY 의 값을 초기화
-  };
-
-  const handleFollow = () => {
-    setScrollY(window.pageYOffset);
-  };
-
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', handleFollow);
-    };
-    watch();
-    return () => {
-      window.removeEventListener('scroll', handleFollow);
-    };
-  });
-  // console.log('window Scroll From Top:', scrollY);
-
-  useEffect(() => {
-    gotoTop();
-  }, []);
-
-  //-------------
-
   // 회원가입 폼 생성을 위한 api 데이터 post 요청 -> 버튼 밑에 위치
   const [{ loading, error, errorMessages }, requestToken] = useApiAxios(
     {
@@ -114,17 +82,30 @@ function SignupForm() {
     });
   };
 
+  // 스크롤 기능
+  const [topLocation, setTopLocation] = useState(0);
+  console.log('topLocation: ', topLocation);
+  useEffect(() => {
+    setTopLocation(document.querySelector('#topLoc').offsetTop);
+  }, []);
+
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: topLocation,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    gotoTop();
+  }, [topLocation]);
+
+  //-------------
+
   return (
     <>
-      {/* 로딩 에러 */}
-      {loading && '로딩 중 ...'}
-      {error && '로딩 중 에러가 발생했습니다.'}
-      {error?.response?.status === 401 && (
-        <div className="text-red-400">
-          조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
-        </div>
-      )}
-      <div className="header flex flex-wrap justify-center">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="mx-10 notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
