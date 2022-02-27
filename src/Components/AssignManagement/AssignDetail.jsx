@@ -64,7 +64,7 @@ function AssignDetail({ assignId }) {
       <div className="header flex flex-wrap justify-center">
         <div className="assignmanagement_header rounded-xl shadow-md overflow-hidden md:px-20 sm:px-0 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
+            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 신청자 정보 "</span>
             </span>
           </blockquote>
@@ -229,7 +229,7 @@ function AssignDetail({ assignId }) {
         <div className="assignmanagement_header rounded-xl shadow-md md:px-20 sm:px-0 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           {/* <div className=" pt-6 mb-3"> */}
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span className="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
+            <span className="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span className="relative text-white">" 동물 정보 "</span>
             </span>
           </blockquote>
@@ -292,7 +292,7 @@ function AssignDetail({ assignId }) {
                 <td>{assignData?.animal.end_date}</td>
               </tr>
             </table>
-            <div>
+            <div className="flex justify-center">
               <img src={assignData?.animal.image} alt="" />
             </div>
           </div>
@@ -303,7 +303,7 @@ function AssignDetail({ assignId }) {
                 onClick={() => handleDelete()}
                 className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
               >
-                삭제
+                삭제하기
               </button>
             )}
 
@@ -315,7 +315,7 @@ function AssignDetail({ assignId }) {
               }}
               className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
             >
-              목록
+              목록으로
             </button>
           </div>
         </div>
