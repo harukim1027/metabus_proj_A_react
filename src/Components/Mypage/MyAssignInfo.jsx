@@ -192,8 +192,9 @@ function MyAssignInfo() {
                 pageRangeDisplayed={itemsPerPage}
                 pageCount={pageCount}
                 renderOnZeroPageCount={null}
-                className="pagination_assignList"
+                className="pagination_assignList "
               />
+              <br />
             </div>
           </div>
         </div>
