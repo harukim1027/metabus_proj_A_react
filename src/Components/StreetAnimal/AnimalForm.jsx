@@ -411,10 +411,11 @@ function AnimalForm({ animalId, handleDidSave }) {
                     onChange={handleFieldChange}
                     type="text"
                     className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
+                    defaultValue="입양 대기"
                   >
                     <option value="입양 대기">입양 대기</option>
                     <option value="입양 매칭 중">입양 매칭 중</option>
-                    <option value="입양 완료">입양 완료</option>
+                    <option value="입양 완료!">입양 완료!</option>
                   </select>
 
                   <div className="pointer-events-none absolute top-4 right-3 flex items-center px-2 text-gray-700">

@@ -14,8 +14,8 @@ function ReviewSummary({ review }) {
           )}
           <div className="px-6 py-4">
             <h2 className="font-bold text-m mb-2">
-              {review.title.length > 8
-                ? review.title.substring(0, 8) + '...'
+              {review.title.length > 7
+                ? review.title.substring(0, 7) + '...'
                 : review.title}
             </h2>
             <h3 className="text-gray-700 text-base">

@@ -22,6 +22,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
   const [image4, setImage4] = useState('');
   const [image5, setImage5] = useState('');
   const [filtAssign, setFiltAssign] = useState([]);
+  const [clicked, setClicked] = useState(0);
 
   const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
     {
@@ -32,7 +33,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       manual: !reviewId,
     },
   );
-  console.log(review);
+  console.log('review: ', review);
 
   const [selectanimalAssign, setSelectanimalAssign] = useState(
     review?.adoptassignment.assignment_no,
@@ -128,7 +129,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
     reader.readAsDataURL(fileData);
     return new Promise((resolve) => {
       reader.onload = () => {
-        setImage1(reader.result);
+        setImage2(reader.result);
         resolve();
         handleFieldChange(e);
       };
@@ -140,7 +141,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
     reader.readAsDataURL(fileData);
     return new Promise((resolve) => {
       reader.onload = () => {
-        setImage1(reader.result);
+        setImage3(reader.result);
         resolve();
         handleFieldChange(e);
       };
@@ -152,7 +153,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
     reader.readAsDataURL(fileData);
     return new Promise((resolve) => {
       reader.onload = () => {
-        setImage1(reader.result);
+        setImage4(reader.result);
         resolve();
         handleFieldChange(e);
       };
@@ -164,7 +165,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
     reader.readAsDataURL(fileData);
     return new Promise((resolve) => {
       reader.onload = () => {
-        setImage1(reader.result);
+        setImage5(reader.result);
         resolve();
         handleFieldChange(e);
       };
@@ -300,6 +301,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                             onClick={() => {
                               setSelectanimalAssign(ani.assignment_no);
                               gotoForm();
+                              setClicked(1);
                             }}
                           >
                             <div className="flex justify-center overflow-hidden">
@@ -364,7 +366,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
           {filtAssign
             ?.filter((filt) => filt.assignment_no === selectanimalAssign)
             .map((a) => (
-              <div className="flex flex-wrap justify-center">
+              <div className="flex flex-wrap justify-center" id="filtAssignDiv">
                 <div className="flex-none place-items-center">
                   <img src={a.animal.image} alt="" className="w-72" />
                 </div>
@@ -401,7 +403,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
               </div>
             ))}
 
-          {!selectanimalAssign && review && (
+          {review && clicked === 0 && (
             <div className="flex flex-wrap justify-center">
               <div className="flex-none place-items-center">
                 <img
@@ -505,7 +507,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   ))}
                 </div>
 
-                {/* 이미지1 첨부 인풋박스 */}
+                {/* 이미지 첨부 인풋박스 */}
                 <div className="mt-3 ml-3 mb-3 w-full">
                   <span className=" block uppercase tracking-wide text-blue-900 text-m font-bold mb-2 ">
                     이미지 첨부
@@ -567,7 +569,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                           accept=".png, .jpg, .jpeg, .jfif"
                           name="image2"
                           onChange={(e) => {
-                            imgpreview1(e, e.target.files[0]);
+                            imgpreview2(e, e.target.files[0]);
                           }}
                         />
                         {!fieldValues.image2 && (
@@ -610,7 +612,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                           accept=".png, .jpg, .jpeg, .jfif"
                           name="image3"
                           onChange={(e) => {
-                            imgpreview1(e, e.target.files[0]);
+                            imgpreview3(e, e.target.files[0]);
                           }}
                         />
                         {!fieldValues.image3 && (
