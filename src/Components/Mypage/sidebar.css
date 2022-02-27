@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
 
 .container {
   background-color: #e3ecf1;
@@ -11,18 +12,18 @@
   /* height: 100%; */
   z-index: 99;
   font-family: 'Jua', sans-serif;
+  font-family: 'Hahmlet', serif;
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 .button {
   position: relative;
   left: 210px;
   top: 10px;
-  width: 43px;
-  height: 43px;
+  width: 60px;
+  height: 60px;
   z-index: 99;
   transition: 0.8s ease;
   border-radius: 40px;
   overflow: hidden;
-  background-color: #ff4674;
 }
