@@ -55,7 +55,7 @@ const Sidebar = ({ width = 280, children }) => {
             <img
               src="/sidecloseicon3.png"
               alt="button"
-              className="hover:scale-110 duration-200"
+              className=" duration-200 "
             ></img>
           </>
         ) : (
@@ -63,7 +63,7 @@ const Sidebar = ({ width = 280, children }) => {
             <img
               src="/sidemenuicon3.png"
               alt="button"
-              className="hover:scale-110 duration-200"
+              className="duration-200"
             ></img>
           </>
         )}
@@ -104,7 +104,7 @@ const Sidebar = ({ width = 280, children }) => {
               onClick={() => navigate(`/mypage/myposts/`)}
               className="cursor-pointer"
             >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s font-bold hover:bg-orange-300">
+              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s font-bold hover:bg-purple-300">
                 내 작성글
               </span>
             </div>
