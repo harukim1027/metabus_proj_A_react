@@ -140,8 +140,8 @@ function SignupForm() {
                     name="userID"
                     value={fieldValues.userID}
                     onChange={handleFieldChange}
-                    placeholder="사용하실 ID를 입력해주세요."
-                    className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
+                    placeholder="ID를 입력해주세요."
+                    className="rounded-md xl:text-m lg:text-m md:text-m sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
@@ -187,8 +187,8 @@ function SignupForm() {
                     name="nickname"
                     value={fieldValues.nickname}
                     onChange={handleFieldChange}
-                    placeholder="사용하실 닉네임을 입력해주세요."
-                    className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
+                    placeholder="닉네임을 입력해주세요."
+                    className="rounded-md xl:text-m lg:text-m md:text-m sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
@@ -234,7 +234,7 @@ function SignupForm() {
                     name="name"
                     value={fieldValues.name}
                     onChange={handleFieldChange}
-                    placeholder="사용자 이름을 입력해주세요."
+                    placeholder="이름을 입력해주세요."
                     className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {errorMessages.name?.map((message, index) => (
