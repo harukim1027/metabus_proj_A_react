@@ -6,6 +6,7 @@ import Button from 'Button';
 import { useEffect, useState } from 'react';
 import produce from 'immer';
 import LoadingIndicator from 'LoadingIndicator';
+import { useNavigate } from 'react-router-dom';
 
 const INIT_FIELD_VALUES = {
   animal_reg_num: '',
@@ -26,6 +27,7 @@ const INIT_FIELD_VALUES = {
 function AnimalForm({ animalId, handleDidSave }) {
   const { auth } = useAuth();
   const [image, setImage] = useState('');
+  const navigate = useNavigate();
 
   const imgpreview = (e, fileData) => {
     const reader = new FileReader();
@@ -487,6 +489,15 @@ function AnimalForm({ animalId, handleDidSave }) {
                   onSubmit={handleSubmit}
                 >
                   저장
+                </button>
+
+                <button
+                  onClick={() => {
+                    navigate('/admin/animal/');
+                  }}
+                  className=" ml-3 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded mt-6"
+                >
+                  취소
                 </button>
               </div>
 

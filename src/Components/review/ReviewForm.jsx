@@ -8,6 +8,7 @@ import produce from 'immer';
 import './Review.css';
 import '../../App.css';
 import LoadingIndicator from 'LoadingIndicator';
+import { useNavigate } from 'react-router-dom';
 
 const INIT_FIELD_VALUES = {
   title: '',
@@ -16,6 +17,7 @@ const INIT_FIELD_VALUES = {
 
 function ReviewForm({ reviewId, handleDidSave }) {
   const { auth } = useAuth();
+  const navigate = useNavigate();
   const [image1, setImage1] = useState('');
   const [image2, setImage2] = useState('');
   const [image3, setImage3] = useState('');
@@ -735,6 +737,15 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     onSubmit={handleSubmit}
                   >
                     저장
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      navigate('/review/');
+                    }}
+                    className=" ml-3 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
+                  >
+                    취소
                   </button>
 
                   <div className="p-5">
