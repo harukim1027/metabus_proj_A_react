@@ -203,7 +203,9 @@ function InquiryList() {
                     <td className="py-4">
                       <div className="text-lg font-medium text-gray-900">
                         <span className="px-2 inline-flex text-s leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
-                          {inquiry.title}
+                          {inquiry.title.length > 8
+                            ? inquiry.title.substring(0, 8) + '...'
+                            : inquiry.title}
                         </span>
                       </div>
                     </td>
