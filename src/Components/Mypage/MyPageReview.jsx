@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 import ReactPaginate from 'react-paginate';
+import LoadingIndicator from 'LoadingIndicator';
 
 function MyPageReview() {
   const { auth } = useAuth();
@@ -85,16 +86,16 @@ function MyPageReview() {
         <div className="justify-center mx-20">
           <div className="align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="mypage_header rounded-xl shadow-md">
-              <blockquote className="mt-5 text-4xl mb-3 font-semibold italic text-center text-slate-900">
-                <span className="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-orange-300 relative inline-block">
-                  <span className="relative text-white">" 내 입양후기 "</span>
+              <blockquote className="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
+                <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
+                  <span class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl relative text-white">
+                    " 내 입양후기 "
+                  </span>
                 </span>
               </blockquote>
               {/* 로딩 에러 */}
               {loading && (
-                <>
-                  <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
-                </>
+                <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
               )}
               {error && (
                 <>
@@ -114,25 +115,25 @@ function MyPageReview() {
                     <tr>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                       >
                         글 번호
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                       >
                         제목
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                       >
                         작성자
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                       >
                         작성일자
                       </th>
@@ -146,26 +147,26 @@ function MyPageReview() {
                           .filter((a) => a.user.userID === auth.userID)
                           .map((review) => (
                             <tr key={review.review_no}>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs ">
                                 <div className="ml-4">
                                   <div className="text-sm font-medium text-gray-900">
                                     {review.review_no}
                                   </div>
                                 </div>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap ">
+                              <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
                                 <span className="px-2 rounded-full bg-green-100 text-green-800 font-semibold">
                                   <Link to={`/review/${review.review_no}/`}>
                                     {review.title}
                                   </Link>
                                 </span>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
                                 <Link to={`/review/${review.review_no}/`}>
                                   {review.user.nickname}
                                 </Link>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
                                 {review.created_at}
                               </td>
                             </tr>

@@ -84,7 +84,7 @@ function MyAssignInfo() {
           <div className="align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div className="mypage_header rounded-xl shadow-md">
               <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
-                <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-orange-300 relative inline-block">
+                <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
                   <span class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl relative text-white">
                     " 내 입양신청 "
                   </span>
@@ -161,8 +161,8 @@ function MyAssignInfo() {
                         <td
                           className={
                             assign.status === '입양 완료'
-                              ? 'text-orange-300 font-bold px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs'
-                              : 'px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs'
+                              ? 'text-orange-300 font-bold px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-s'
+                              : 'px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-s'
                           }
                         >
                           {assign.status}
