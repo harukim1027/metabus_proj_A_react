@@ -190,14 +190,14 @@ function ReviewDetail({ reviewId }) {
                       className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                       to="/review/"
                     >
-                      목록으로
+                      목록
                     </Link>
                     {auth.userID === review.user.userID && (
                       <Link
                         className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                         to={`/review/${reviewId}/edit/`}
                       >
-                        수정하기
+                        수정
                       </Link>
                     )}
                     {(auth.userID === review.user.userID || auth.is_staff) && (
@@ -205,7 +205,7 @@ function ReviewDetail({ reviewId }) {
                         className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                         onClick={() => handleDelete()}
                       >
-                        삭제하기
+                        삭제
                       </button>
                     )}
 

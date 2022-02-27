@@ -9,7 +9,7 @@ import LoadingIndicator from 'LoadingIndicator';
 
 const INIT_FIELD_VALUES = {
   animal_reg_num: '',
-  category: '강아지',
+  category: '동물 종',
   size: '소형',
   sex: '암컷',
   age: '',
@@ -50,6 +50,13 @@ function AnimalForm({ animalId, handleDidSave }) {
     },
     { manual: !animalId },
   );
+
+  // 카테고리를 api로 새로 받는다?
+  // const [{data: category, loading, error}, refetchCategory] = useApiAxios(
+  //   {
+  //     url: ``
+  //   }
+  // )
 
   // 저장
   const [
@@ -166,8 +173,9 @@ function AnimalForm({ animalId, handleDidSave }) {
                     value={fieldValues.category}
                     onChange={handleFieldChange}
                     className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
-                    defaultValue="강아지"
+                    defaultValue="동물 종"
                   >
+                    <option value="동물 종">동물 종</option>
                     <option value="강아지">강아지</option>
                     <option value="고양이">고양이</option>
                   </select>
@@ -181,6 +189,11 @@ function AnimalForm({ animalId, handleDidSave }) {
                       <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                     </svg>
                   </div>
+                  {saveErrorMessages.category?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      동물 종을 선택해주세요.
+                    </p>
+                  ))}
                 </div>
               </div>
 
@@ -195,12 +208,12 @@ function AnimalForm({ animalId, handleDidSave }) {
                   type="text"
                   className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
                 />
+                {saveErrorMessages.animal_reg_num?.map((message, index) => (
+                  <p key={index} className="text-xs text-red-400">
+                    등록번호를 입력해주세요.
+                  </p>
+                ))}
               </div>
-              {saveErrorMessages.animal_reg_num?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
 
               <div className="my-10 items-center">
                 <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
@@ -230,11 +243,6 @@ function AnimalForm({ animalId, handleDidSave }) {
                   </div>
                 </div>
               </div>
-              {saveErrorMessages.size?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
 
               <div className="flex justify-between">
                 <div className="my-10 items-center">
@@ -266,60 +274,70 @@ function AnimalForm({ animalId, handleDidSave }) {
                 </div>
 
                 <div className="my-10 items-center">
-                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                    나이 입력
-                  </span>
-                  <input
-                    name="age"
-                    value={fieldValues.age}
-                    onChange={handleFieldChange}
-                    type="number"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
-                  />
+                  <div>
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                      나이 입력
+                    </span>
+                    <input
+                      name="age"
+                      value={fieldValues.age}
+                      onChange={handleFieldChange}
+                      type="number"
+                      className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
+                    />
+                    {saveErrorMessages.age?.map((message, index) => (
+                      <p key={index} className="block text-xs text-red-400">
+                        나이를 자연수로 입력해주세요. (최소 1살)
+                      </p>
+                    ))}
+                  </div>
                 </div>
-                {saveErrorMessages.age?.map((message, index) => (
-                  <p key={index} className="text-xs text-red-400">
-                    {message}
-                  </p>
-                ))}
               </div>
 
               <div className="flex justify-between">
                 <div className="my-10 items-center">
-                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                    발견 날짜 입력
-                  </span>
-                  <input
-                    name="date_of_discovery"
-                    value={fieldValues.date_of_discovery}
-                    onChange={handleFieldChange}
-                    type="datetime-local"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
-                  />
+                  <div>
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                      발견 날짜 입력
+                    </span>
+                    <input
+                      name="date_of_discovery"
+                      value={fieldValues.date_of_discovery}
+                      onChange={handleFieldChange}
+                      type="datetime-local"
+                      className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
+                    />
+                  </div>
+                  {saveErrorMessages.date_of_discovery?.map(
+                    (message, index) => (
+                      <p key={index} className="text-xs text-red-400">
+                        날짜를 선택해주세요.
+                      </p>
+                    ),
+                  )}
                 </div>
-                {saveErrorMessages.date_of_discovery?.map((message, index) => (
-                  <p key={index} className="text-xs text-red-400">
-                    {message}
-                  </p>
-                ))}
 
                 <div className="my-10 items-center">
-                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                    발견 장소 입력
-                  </span>
-                  <input
-                    name="place_of_discovery"
-                    value={fieldValues.place_of_discovery}
-                    onChange={handleFieldChange}
-                    type="text"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
-                  />
+                  <div>
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                      발견 장소 입력
+                    </span>
+                    <input
+                      name="place_of_discovery"
+                      value={fieldValues.place_of_discovery}
+                      onChange={handleFieldChange}
+                      type="text"
+                      className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
+                    />
+                  </div>
+                  {saveErrorMessages.place_of_discovery?.map(
+                    (message, index) => (
+                      <p key={index} className="text-xs text-red-400">
+                        발견장소를 입력해주세요.
+                      </p>
+                    ),
+                  )}
                 </div>
-                {saveErrorMessages.place_of_discovery?.map((message, index) => (
-                  <p key={index} className="text-xs text-red-400">
-                    {message}
-                  </p>
-                ))}
               </div>
 
               <div className="my-10 items-center">
@@ -336,46 +354,50 @@ function AnimalForm({ animalId, handleDidSave }) {
               </div>
               {saveErrorMessages.info?.map((message, index) => (
                 <p key={index} className="text-xs text-red-400">
-                  {message}
+                  특징은 비어있을 수 없습니다.
                 </p>
               ))}
 
               <div className="flex justify-between">
                 <div className="my-10 items-center">
-                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                    보호 시작날짜 입력
-                  </span>
-                  <input
-                    name="start_date"
-                    value={fieldValues.start_date}
-                    onChange={handleFieldChange}
-                    type="date"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
-                  />
+                  <div>
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                      보호 시작날짜 입력
+                    </span>
+                    <input
+                      name="start_date"
+                      value={fieldValues.start_date}
+                      onChange={handleFieldChange}
+                      type="date"
+                      className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
+                    />
+                  </div>
+                  {saveErrorMessages.start_date?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      날짜를 선택해주세요.
+                    </p>
+                  ))}
                 </div>
-                {saveErrorMessages.start_date?.map((message, index) => (
-                  <p key={index} className="text-xs text-red-400">
-                    {message}
-                  </p>
-                ))}
 
                 <div className="my-10 items-center">
-                  <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
-                    보호 종료날짜 입력
-                  </span>
-                  <input
-                    name="end_date"
-                    value={fieldValues.end_date}
-                    onChange={handleFieldChange}
-                    type="date"
-                    className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
-                  />
+                  <div>
+                    <span className="block tracking-wide text-gray-700 text-xl font-bold mb-2 ">
+                      보호 종료날짜 입력
+                    </span>
+                    <input
+                      name="end_date"
+                      value={fieldValues.end_date}
+                      onChange={handleFieldChange}
+                      type="date"
+                      className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
+                    />
+                  </div>
+                  {saveErrorMessages.end_date?.map((message, index) => (
+                    <p key={index} className="text-xs text-red-400">
+                      날짜를 선택해주세요.
+                    </p>
+                  ))}
                 </div>
-                {saveErrorMessages.end_date?.map((message, index) => (
-                  <p key={index} className="text-xs text-red-400">
-                    {message}
-                  </p>
-                ))}
               </div>
 
               <div className="my-10 items-center">
@@ -449,18 +471,17 @@ function AnimalForm({ animalId, handleDidSave }) {
                     </button>
                   </li>
                 </ul>
+                {saveErrorMessages.image?.map((message, index) => (
+                  <p key={index} className="text-xs text-red-400">
+                    {message}
+                  </p>
+                ))}
               </div>
-
-              {saveErrorMessages.image?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
-                  {message}
-                </p>
-              ))}
 
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded mt-6"
+                  className="bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded mt-6"
                   onClick={(e) => handleSubmit(e)}
                   onSubmit={handleSubmit}
                 >

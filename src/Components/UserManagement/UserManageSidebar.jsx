@@ -90,7 +90,7 @@ function UserManageSidebar({ userId }) {
                       onClick={() => navigate(`/admin/usermanage/`)}
                       className="flex items-center gap-4 text-lg text-gray-700 font-semibold px-4 py-3 rounded-lg cursor-pointer"
                     >
-                      목록으로
+                      목록
                     </div>
                   </li>
                 </li>

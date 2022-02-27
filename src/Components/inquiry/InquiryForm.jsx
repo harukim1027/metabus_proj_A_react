@@ -221,7 +221,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                   className=" bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                   onClick={(e) => handleSubmit(e)}
                 >
-                  저장하기
+                  저장
                 </button>
                 <div className="p-5">
                   {saveLoading && (

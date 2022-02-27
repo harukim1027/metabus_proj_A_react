@@ -186,9 +186,13 @@ function ReviewForm({ reviewId, handleDidSave }) {
     setScrollY(0); // ScrollY 의 값을 초기화
   };
 
+  const [location, setLocation] = useState(0);
+  console.log('location: ', location);
+  useEffect(() => {
+    setLocation(document.querySelector('#form').offsetTop);
+  }, [selectanimalAssign]);
+
   const gotoForm = () => {
-    let location = document.querySelector('form').offsetTop;
-    console.log('location: ', location);
     window.scrollTo({
       top: location,
       behavior: 'smooth',
@@ -728,7 +732,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     onClick={(e) => handleSubmit(e)}
                     onSubmit={handleSubmit}
                   >
-                    저장하기
+                    저장
                   </button>
 
                   <div className="p-5">
