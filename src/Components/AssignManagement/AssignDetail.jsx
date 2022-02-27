@@ -62,10 +62,9 @@ function AssignDetail({ assignId }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="assignmanagement_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
-          {/* <div className=" pt-6 mb-3"> */}
+        <div className="assignmanagement_header rounded-xl shadow-md overflow-hidden md:px-20 sm:px-0 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 신청자 정보 "</span>
             </span>
           </blockquote>
@@ -80,85 +79,85 @@ function AssignDetail({ assignId }) {
 
           <div className="my-5 overflow-hidden">
             <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
-              <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+              <tr className="sm:w-full">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   신청 번호
                 </th>
                 <td>{assignData?.assignment_no}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   신청일
                 </th>
                 <td>{assignData?.created_at}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   신청시 기입한 이름
                 </th>
                 <td>{assignData?.adopter_name}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   회원명
                 </th>
                 <td>{assignData?.user.name}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   회원 연락처
                 </th>
                 <td>{assignData?.user.phone_number}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   회원 e-mail
                 </th>
                 <td>{assignData?.user.email}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   월 수입
                 </th>
                 <td>{assignData?.monthly_income}만</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   주거 형태
                 </th>
                 <td>{assignData?.residential_type}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   애완동물 유무
                 </th>
                 <td>{assignData?.have_pet_or_not ? '있음' : '없음'}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   만남 희망 장소
                 </th>
                 <td>{assignData?.place_to_meet}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   만남 희망일
                 </th>
                 <td>{assignData?.date_to_meet}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   진행 상태
                 </th>
                 <td
@@ -219,7 +218,7 @@ function AssignDetail({ assignId }) {
       </div>
 
       <div className="header flex flex-wrap justify-center">
-        <div className="bg-white rounded-xl shadow-md overflow-hidden w-2/3">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <div className="flex justify-center py-6 mb-3">
             <h2>💕입양 신청 중💕</h2>
           </div>
@@ -227,10 +226,10 @@ function AssignDetail({ assignId }) {
       </div>
 
       <div className="header flex flex-wrap justify-center">
-        <div className="assignmanagement_header rounded-xl shadow-md px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="assignmanagement_header rounded-xl shadow-md md:px-20 sm:px-0 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           {/* <div className=" pt-6 mb-3"> */}
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span className="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
+            <span className="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span className="relative text-white">" 동물 정보 "</span>
             </span>
           </blockquote>
@@ -238,56 +237,56 @@ function AssignDetail({ assignId }) {
           <div className="my-5 overflow-hidden">
             <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   등록번호
                 </th>
                 <td>{assignData?.animal.animal_reg_num}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   종류
                 </th>
                 <td>{assignData?.animal.category.name}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   사이즈
                 </th>
                 <td>{assignData?.animal.size}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   성별
                 </th>
                 <td>{assignData?.animal.sex}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   나이
                 </th>
                 <td>{assignData?.animal.age}세</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   동물 정보
                 </th>
                 <td>{assignData?.animal.info}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   보호 시작일
                 </th>
                 <td>{assignData?.animal.start_date}</td>
               </tr>
 
               <tr>
-                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
+                <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-72">
                   보호 종료일
                 </th>
                 <td>{assignData?.animal.end_date}</td>
