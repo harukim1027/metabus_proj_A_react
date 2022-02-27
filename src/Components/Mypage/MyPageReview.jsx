@@ -187,6 +187,7 @@ function MyPageReview() {
               renderOnZeroPageCount={null}
               className="pagination_notice"
             />
+            <br />
           </div>
         </div>
       </div>
