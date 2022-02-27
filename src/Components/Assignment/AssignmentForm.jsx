@@ -218,12 +218,20 @@ function AssignmentForm({ handleDidSave }) {
               <span className="relative text-white">" 크루원 모집 "</span>
             </span>
           </blockquote>
-          {getLoading && <LoadingIndicator>로딩 중입니다.</LoadingIndicator>}
-          {/* 로딩 에러 */}
-          {getLoading && '로딩 중 ...'}
-          {getError && '로딩 중 에러가 발생했습니다.'}
+          {getLoading && (
+            <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
+          )}
+          {getError && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
           {getError?.response?.status === 401 && (
-            <div className="text-red-400">조회에 실패했습니다.</div>
+            <div className="text-red-400">
+              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+            </div>
           )}
 
           {/* 동물 검색하는 부분 */}
@@ -277,11 +285,7 @@ function AssignmentForm({ handleDidSave }) {
                   <option value="중형">중형</option>
                   <option value="대형">대형</option>
                 </select>
-                {errorMessages.userID?.map((message, index) => (
-                  <p key={index} className="text-m text-red-400">
-                    {message}
-                  </p>
-                ))}
+
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
                   <svg
                     className="fill-current h-5 w-5"
@@ -309,11 +313,7 @@ function AssignmentForm({ handleDidSave }) {
                   <option value="암컷">암컷</option>
                   <option value="수컷">수컷</option>
                 </select>
-                {errorMessages.userID?.map((message, index) => (
-                  <p key={index} className="text-m text-red-400">
-                    {message}
-                  </p>
-                ))}
+
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
                   <svg
                     className="fill-current h-5 w-5"
@@ -531,7 +531,7 @@ function AssignmentForm({ handleDidSave }) {
               </button>
               {saveErrorMessages.adopter_name?.map((message, index) => (
                 <p key={index} className="text-md text-red-400">
-                  {message}
+                  이름을 입력해주세요.
                 </p>
               ))}
             </div>
@@ -568,7 +568,7 @@ function AssignmentForm({ handleDidSave }) {
               </span>
               {saveErrorMessages.monthly_income?.map((message, index) => (
                 <p key={index} className="text-md text-red-400">
-                  {message}
+                  월 수입을 입력해주세요.
                 </p>
               ))}
             </div>

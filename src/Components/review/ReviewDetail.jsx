@@ -186,20 +186,6 @@ function ReviewDetail({ reviewId }) {
                   <hr className="mt-3 mb-3" />
 
                   <div className="my-5 text-right">
-                    <Link
-                      className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
-                      to="/review/"
-                    >
-                      목록
-                    </Link>
-                    {auth.userID === review.user.userID && (
-                      <Link
-                        className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
-                        to={`/review/${reviewId}/edit/`}
-                      >
-                        수정
-                      </Link>
-                    )}
                     {(auth.userID === review.user.userID || auth.is_staff) && (
                       <button
                         className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
@@ -208,6 +194,20 @@ function ReviewDetail({ reviewId }) {
                         삭제
                       </button>
                     )}
+                    {auth.userID === review.user.userID && (
+                      <Link
+                        className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
+                        to={`/review/${reviewId}/edit/`}
+                      >
+                        수정
+                      </Link>
+                    )}
+                    <Link
+                      className="ml-3 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
+                      to="/review/"
+                    >
+                      목록
+                    </Link>
 
                     {deleteLoading && (
                       <LoadingIndicator>삭제 중 ...</LoadingIndicator>

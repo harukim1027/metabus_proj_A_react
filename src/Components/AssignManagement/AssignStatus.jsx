@@ -58,8 +58,18 @@ function AssignStatus({ assignId, handleDidSave, assignData }) {
     <>
       <div>
         {/* 로딩 에러 */}
-        {saveLoading && '로딩 중 ...'}
-        {saveError && '로딩 중 에러가 발생했습니다.'}
+        {saveLoading && (
+          <>
+            <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
+          </>
+        )}
+        {saveError && (
+          <>
+            <p className="text-red-400">
+              &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+            </p>
+          </>
+        )}
         {saveError?.response?.status === 401 && (
           <div className="text-red-400">
             조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.

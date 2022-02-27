@@ -69,8 +69,18 @@ function AssignDetail({ assignId }) {
             </span>
           </blockquote>
           {/* 로딩 에러 */}
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
+          {loading && (
+            <>
+              <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
+            </>
+          )}
+          {error && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
           {error?.response?.status === 401 && (
             <div className="text-red-400">
               조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
@@ -301,7 +311,7 @@ function AssignDetail({ assignId }) {
             {auth.is_staff && (
               <button
                 onClick={() => handleDelete()}
-                className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                className="ml-3 flex-shrink-0 bg-purple-700 hover:bg-purple-900 border-purple-700 hover:border-purple-900 text-sm border-4 text-white py-1 px-2 rounded"
               >
                 삭제
               </button>
@@ -313,7 +323,7 @@ function AssignDetail({ assignId }) {
                   ? navigate(`/admin/assignmanage/`)
                   : navigate(`/mypage/assigninfo/`);
               }}
-              className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+              className="ml-3 flex-shrink-0 bg-purple-700 hover:bg-purple-900 border-purple-700 hover:border-purple-900 text-sm border-4 text-white py-1 px-2 rounded"
             >
               목록
             </button>

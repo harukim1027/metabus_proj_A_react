@@ -169,8 +169,8 @@ function NoticeList() {
                         onClick={() => navigate(`/notice/${notice.notice_no}/`)}
                       >
                         <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          {notice.title.length > 20
-                            ? notice.title.substr(0, 19) + '...'
+                          {notice.title.length > 8
+                            ? notice.title.substr(0, 8) + '...'
                             : notice.title}
                         </span>
                       </div>

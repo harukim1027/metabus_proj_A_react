@@ -184,7 +184,7 @@ function AssignCheck(props) {
                       onClick={() => navigate('/assignment/new/')}
                       disabled
                     >
-                      신청하기
+                      신청
                     </Button>
                   )}
                 </div>
