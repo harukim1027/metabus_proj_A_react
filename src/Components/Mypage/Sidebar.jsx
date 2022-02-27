@@ -89,7 +89,7 @@ const Sidebar = ({ width = 280, children }) => {
             <div
               onClick={() => navigate(`/mypage/assigninfo/`)}
               className="cursor-pointer
-              hover:bg-orange-300
+              hover:bg-blue-400
               
               "
             >
