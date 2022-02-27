@@ -10,8 +10,6 @@ function UserManagementDetail({ userId }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
-  const [assignArray, setAssignArray] = useState([]);
-
   const [{ data: userData, loading, error }, refetch] = useApiAxios(
     {
       url: `/accounts/api/users/${userId}/`,
@@ -33,13 +31,6 @@ function UserManagementDetail({ userId }) {
     },
     { manual: true },
   );
-
-  useEffect(() => {
-    const userAssign = assignList?.results.filter(
-      (assignment) => assignment.user.userID === userData?.userID,
-    );
-    setAssignArray(userAssign);
-  }, [assignList, userData]);
 
   const [{ loading: deleteLoading, error: deleteError }, deleteUser] =
     useApiAxios(
@@ -66,10 +57,42 @@ function UserManagementDetail({ userId }) {
     refetch1();
   }, []);
 
+  // 스크롤 기능
+  const [scrollY, setScrollY] = useState(0);
+  const gotoTop = () => {
+    // 클릭하면 스크롤이 위로 올라가는 함수
+    window.scrollTo({
+      top: 1016,
+      behavior: 'smooth',
+    });
+    setScrollY(0); // ScrollY 의 값을 초기화
+  };
+
+  // const handleFollow = () => {
+  //   setScrollY(window.pageYOffset);
+  // };
+
+  // useEffect(() => {
+  //   const watch = () => {
+  //     window.addEventListener('scroll', handleFollow);
+  //   };
+  //   watch();
+  //   return () => {
+  //     window.removeEventListener('scroll', handleFollow);
+  //   };
+  // });
+  // console.log('window Scroll From Top:', scrollY);
+
+  useEffect(() => {
+    gotoTop();
+  }, [userData]);
+
+  //-------------
+
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="userManage_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="userManage_header rounded-xl shadow-md px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span className="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block">
               <span className="relative text-white">" 회원 정보 "</span>
@@ -81,50 +104,50 @@ function UserManagementDetail({ userId }) {
           {error &&
             `로딩 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
 
-          <div className="my-5 overflow-hidden">
+          <div className="my-5">
             {userData && (
               <>
-                <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
+                <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200 whitespace-nowrap bg-white">
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       유저아이디
                     </th>
-                    <td>{userData?.userID}</td>
+                    <td className="px-6">{userData?.userID}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       이름
                     </th>
-                    <td>{userData?.name}</td>
+                    <td className="px-6">{userData?.name}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       닉네임
                     </th>
-                    <td>{userData?.nickname}</td>
+                    <td className="px-6">{userData?.nickname}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       연락처
                     </th>
-                    <td>{userData?.phone_number}</td>
+                    <td className="px-6">{userData?.phone_number}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       이메일
                     </th>
-                    <td>{userData?.email}</td>
+                    <td className="px-6">{userData?.email}</td>
                   </tr>
 
                   <tr>
                     <th className="border border-slate-200 bg-gray-50 px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-72">
                       거주지역
                     </th>
-                    <td>{userData?.region}</td>
+                    <td className="px-6">{userData?.region}</td>
                   </tr>
                 </table>
               </>

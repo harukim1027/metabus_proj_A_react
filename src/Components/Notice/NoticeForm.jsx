@@ -588,7 +588,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
               </div>
               <div className="text-center">
                 <button className=" bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-1 px-2 rounded">
-                  저장하기
+                  저장
                 </button>
                 <div>
                   {saveLoading && (

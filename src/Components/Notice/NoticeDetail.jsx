@@ -225,7 +225,7 @@ function NoticeDetail({ noticeId }) {
                   className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   onClick={() => navigate('/notice/')}
                 >
-                  목록으로
+                  목록
                 </button>
                 {auth.is_staff && (
                   <button
@@ -235,7 +235,7 @@ function NoticeDetail({ noticeId }) {
                     }}
                     className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
-                    수정하기
+                    수정
                   </button>
                 )}
                 {auth.is_staff && (
@@ -243,7 +243,7 @@ function NoticeDetail({ noticeId }) {
                     onClick={() => handleDelete()}
                     className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
-                    삭제하기
+                    삭제
                   </button>
                 )}
               </div>

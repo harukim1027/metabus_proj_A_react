@@ -131,14 +131,14 @@ function InquiryDetail({ inquiryId }) {
                     to="/inquiry/"
                     className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
-                    목록으로
+                    목록
                   </Link>
                 ) : (
                   <Link
                     to="/mypage/myinquiry/"
                     className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
-                    목록으로
+                    목록
                   </Link>
                 )}
 
@@ -147,7 +147,7 @@ function InquiryDetail({ inquiryId }) {
                     to={`/admin/inquiry/${inquiryId}/edit/`}
                     className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
-                    답변하기
+                    답변 등록
                   </Link>
                 )}
                 {(auth.userID === inquiry?.user || auth.is_staff) && (
@@ -155,7 +155,7 @@ function InquiryDetail({ inquiryId }) {
                     onClick={() => handleDelete()}
                     className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded mr-5"
                   >
-                    삭제하기
+                    삭제
                   </button>
                 )}
 

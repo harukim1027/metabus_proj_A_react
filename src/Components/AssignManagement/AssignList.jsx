@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { useAuth } from 'contexts/AuthContext';
+import LoadingIndicator from 'LoadingIndicator';
 
 function AssignList() {
   const navigate = useNavigate();
@@ -50,9 +51,13 @@ function AssignList() {
     setQuery(e.target.value);
   };
 
+  const handleBTNPress = () => {
+    fetchAssign(1, query);
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      refetch();
+      fetchAssign(1, query);
     }
   };
 
@@ -91,20 +96,13 @@ function AssignList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-xl shadow-md px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote class="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
             <span class="my-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
               <span class="relative text-white">" 입양신청 목록 "</span>
             </span>
           </blockquote>
           {/* 로딩 에러 */}
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
-          {error?.response?.status === 401 && (
-            <div className="text-red-400">
-              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
-            </div>
-          )}
 
           <div className="ml-3 mb-6 mt-3">
             <div className="text-right">
@@ -114,23 +112,20 @@ function AssignList() {
                 onChange={getQuery}
                 onKeyPress={handleKeyPress}
                 className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
-                placeholder="제목을 검색하세요."
+                placeholder="신청자명, 닉네임, ID, 신청번호, 동물 등록번호"
               />
-              {errorMessages.query?.map((message, index) => (
-                <p key={index} className="text-m text-red-400">
-                  {message}
-                </p>
-              ))}
               <button
-                onClick={() => handleKeyPress()}
-                className="relative ml-2 mr-4 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white px-3 py-2 rounded"
+                onClick={handleBTNPress}
+                className="relative ml-2 mr-4 flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-xl border-4 text-white px-3 py-2 rounded"
                 readOnly
               >
                 검색
               </button>
             </div>
+            {loading && <LoadingIndicator>'조회 중 ...'</LoadingIndicator>}
+            {error && '조회 중 오류가 발생했습니다. 조회된 정보가 없습니다.'}
           </div>
-          <div className="mb-5 overflow-hidden">
+          <div className="mb-5">
             {assignList && (
               // 테이블로 표현한 방식 (assignment와 다르게 해볼 예정)
               <>
@@ -139,31 +134,31 @@ function AssignList() {
                     <tr>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="px-3 py-3 text-center text-lg font-bold text-gray-500 tracking-wider"
                       >
                         No
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="py-3 text-center text-lg font-bold text-gray-500 tracking-wider"
                       >
                         신청자명
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="py-3 text-center text-lg font-bold text-gray-500 tracking-wider"
                       >
                         신청한 동물 번호
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="py-3 text-center text-lg font-bold text-gray-500 tracking-wider"
                       >
                         입양 희망 날짜
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
+                        className="py-3 text-center text-lg font-bold text-gray-500 uppercase tracking-wider"
                       >
                         상태
                       </th>
@@ -180,46 +175,34 @@ function AssignList() {
                         }
                       >
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="ml-4">
-                            <div className="text-xl font-medium text-gray-900">
-                              {assign.assignment_no}
-                            </div>
+                          <div className="text-xl font-medium text-gray-900">
+                            {assign.assignment_no}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {assign.adopter_name}
-                              </span>
-                            </div>
+                          <div className="text-sm font-medium text-gray-900">
+                            <span className="px-2 inline-flex text-lg leading-5 font-semibold rounded-full">
+                              {assign.adopter_name}
+                            </span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {assign.animal.animal_reg_num}
-                              </span>
-                            </div>
+                          <div className="text-sm font-medium text-gray-900">
+                            <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-blue-100">
+                              {assign.animal.animal_reg_num}
+                            </span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {assign.animal.animal_reg_num}
-                              </span>
-                            </div>
+                          <div className="text-sm font-medium text-gray-900">
+                            <span className="">{assign.date_to_meet}</span>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                {assign.status}
-                              </span>
-                            </div>
+                          <div className="text-sm font-medium text-gray-900">
+                            <span className="px-2 inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-blue-800">
+                              {assign.status}
+                            </span>
                           </div>
                         </td>
                       </tr>
@@ -237,7 +220,7 @@ function AssignList() {
             pageRangeDisplayed={itemsPerPage}
             pageCount={pageCount}
             renderOnZeroPageCount={null}
-            className="pagination_notice"
+            className="pagination_assignList"
           />
         </div>
       </div>

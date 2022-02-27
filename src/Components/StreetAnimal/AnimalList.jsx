@@ -30,7 +30,7 @@ function AnimalList() {
     { manual: true },
   );
 
-  const fetchNotices = useCallback(
+  const fetchAnimal = useCallback(
     async (newPage, newQuery = query) => {
       const params = {
         page: newPage,
@@ -45,20 +45,24 @@ function AnimalList() {
   );
 
   useEffect(() => {
-    fetchNotices(1);
+    fetchAnimal(1);
   }, []);
 
   const handlePageClick = (event) => {
-    fetchNotices(event.selected + 1);
+    fetchAnimal(event.selected + 1);
   };
 
   const getQuery = (e) => {
     setQuery(e.target.value);
   };
 
+  const handleBTNPress = () => {
+    fetchAnimal(1, query);
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      fetchNotices(1, query);
+      fetchAnimal(1, query);
     }
   };
 
@@ -125,7 +129,7 @@ function AnimalList() {
                 className="relative rounded p-3 text-m mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
               />
               <button
-                onClick={() => handleKeyPress()}
+                onClick={handleBTNPress}
                 className="relative ml-2 mr-4 flex-shrink-0 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-xl border-4 text-white px-3 py-2 rounded"
                 readOnly
               >
