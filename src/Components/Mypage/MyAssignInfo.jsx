@@ -1,25 +1,48 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Mypage.css';
+import 'css/pagination_assignList.css';
+import ReactPaginate from 'react-paginate';
 
 function MyAssignInfo() {
   const { auth } = useAuth();
   const navigate = useNavigate();
+  // 페이징
+  const [, setCurrentItems] = useState(null);
+  const [pageCount, setPageCount] = useState(1);
+  const [page, setPage] = useState(1);
+  const [query, setQuery] = useState('');
+  const itemsPerPage = 2;
 
   const [{ data: MyAssignData, loading, error }, refetch] = useApiAxios(
     {
-      url: `/adopt_assignment/api/assignment/?query=${auth.userID}`,
+      url: `/adopt_assignment/api/assignment/`,
       method: 'GET',
     },
     { manual: true },
   );
 
-  useEffect(() => {
-    refetch();
+  const fetchAssign = useCallback(async (newPage, newQuery = query) => {
+    const params = {
+      page: newPage,
+      query: auth.userID,
+    };
+    const { data } = await refetch({ params });
+    setPage(newPage);
+    setPageCount(Math.ceil(data.count / itemsPerPage));
+    setCurrentItems(data?.results);
   }, []);
+
+  useEffect(() => {
+    fetchAssign(1);
+  }, []);
+
+  const handlePageClick = (event) => {
+    fetchAssign(event.selected + 1);
+  };
 
   // 스크롤 기능
   const [scrollY, setScrollY] = useState(0);
@@ -143,6 +166,16 @@ function MyAssignInfo() {
                   </tbody>
                 </table>
               </div>
+              <ReactPaginate
+                previousLabel="<"
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={itemsPerPage}
+                pageCount={pageCount}
+                renderOnZeroPageCount={null}
+                className="pagination_assignList"
+              />
             </div>
           </div>
         </div>

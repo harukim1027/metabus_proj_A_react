@@ -141,14 +141,6 @@ function InquiryDetail({ inquiryId }) {
                     목록으로
                   </Link>
                 )}
-                {!auth.is_staff && (
-                  <Link
-                    to={`/inquiry/${inquiryId}/edit/`}
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
-                  >
-                    수정하기
-                  </Link>
-                )}
 
                 {auth.isLoggedIn && auth.is_staff && (
                   <Link
@@ -158,12 +150,15 @@ function InquiryDetail({ inquiryId }) {
                     답변하기
                   </Link>
                 )}
-                <button
-                  onClick={() => handleDelete()}
-                  className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded mr-5"
-                >
-                  삭제하기
-                </button>
+                {(auth.userID === inquiry?.user || auth.is_staff) && (
+                  <button
+                    onClick={() => handleDelete()}
+                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded mr-5"
+                  >
+                    삭제하기
+                  </button>
+                )}
+
                 {/* 저장 에러  */}
                 <div>
                   {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}

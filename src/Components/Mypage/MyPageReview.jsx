@@ -14,45 +14,6 @@ function MyPageReview() {
   const [page, setPage] = useState(1);
   const itemsPerPage = 2;
 
-  const fetchInquiry = useCallback(
-    async (newPage, newQuery = query) => {
-      const params = {
-        page: newPage,
-        query: newQuery,
-      };
-      const { data } = await refetch({ params });
-      setPage(newPage);
-      setPageCount(Math.ceil(data.count / itemsPerPage));
-      setCurrentItems(data?.results);
-    },
-    [query],
-  );
-
-  useEffect(() => {
-    fetchInquiry(1);
-  }, []);
-
-  const handlePageClick = (event) => {
-    fetchInquiry(event.selected + 1);
-  };
-
-  const getQuery = (e) => {
-    setQuery(e.target.value);
-  };
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setQuery(value);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      refetch();
-      fetchInquiry(1, query);
-      console.log('ENTER');
-    }
-  };
-
   // get 요청
   const [{ data: reviewList, loading, error }, refetch] = useApiAxios(
     {
@@ -64,9 +25,27 @@ function MyPageReview() {
     },
   );
 
+  const fetchReview = useCallback(
+    async (newPage, newQuery = query) => {
+      const params = {
+        page: newPage,
+        query: auth.userID,
+      };
+      const { data } = await refetch({ params });
+      setPage(newPage);
+      setPageCount(Math.ceil(data.count / itemsPerPage));
+      setCurrentItems(data?.results);
+    },
+    [query],
+  );
+
   useEffect(() => {
-    refetch();
+    fetchReview(1);
   }, []);
+
+  const handlePageClick = (event) => {
+    fetchReview(event.selected + 1);
+  };
 
   // 스크롤 기능
   const [scrollY, setScrollY] = useState(0);
