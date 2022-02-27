@@ -33,7 +33,7 @@ function TopNav() {
       <div className="flex text-xl place-content-between">
         <div></div>
         {!auth.isLoggedIn && (
-          <div>
+          <div className="">
             {/* 로그인  */}
             <button className="icon_size3">
               <NavLink to="/accounts/login/">

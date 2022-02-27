@@ -218,12 +218,20 @@ function AssignmentForm({ handleDidSave }) {
               <span className="relative text-white">" 크루원 모집 "</span>
             </span>
           </blockquote>
-          {getLoading && <LoadingIndicator>로딩 중입니다.</LoadingIndicator>}
-          {/* 로딩 에러 */}
-          {getLoading && '로딩 중 ...'}
-          {getError && '로딩 중 에러가 발생했습니다.'}
+          {getLoading && (
+            <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
+          )}
+          {getError && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
           {getError?.response?.status === 401 && (
-            <div className="text-red-400">조회에 실패했습니다.</div>
+            <div className="text-red-400">
+              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+            </div>
           )}
 
           {/* 동물 검색하는 부분 */}
