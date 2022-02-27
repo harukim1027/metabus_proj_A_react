@@ -301,7 +301,7 @@ function AssignDetail({ assignId }) {
             {auth.is_staff && (
               <button
                 onClick={() => handleDelete()}
-                className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
+                className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
               >
                 삭제
               </button>
@@ -313,7 +313,7 @@ function AssignDetail({ assignId }) {
                   ? navigate(`/admin/assignmanage/`)
                   : navigate(`/mypage/assigninfo/`);
               }}
-              className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
+              className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
             >
               목록
             </button>
