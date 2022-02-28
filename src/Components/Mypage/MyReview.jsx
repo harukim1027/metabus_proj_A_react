@@ -5,7 +5,7 @@ import { useAuth } from 'contexts/AuthContext';
 import ReactPaginate from 'react-paginate';
 import LoadingIndicator from 'LoadingIndicator';
 
-function MyPageReview() {
+function MyReview() {
   const { auth } = useAuth();
   const navigate = useNavigate();
   // 페이징
@@ -180,4 +180,4 @@ function MyPageReview() {
   );
 }
 
-export default MyPageReview;
+export default MyReview;

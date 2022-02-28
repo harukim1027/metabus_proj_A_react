@@ -1,5 +1,5 @@
 import TopNav from 'Components/Main/TopNavi';
-import MyPageReview from 'Components/Mypage/MyPageReview';
+import MyReview from 'Components/Mypage/MyReview';
 import Sidebar from 'Components/Mypage/Sidebar';
 
 function PageMyPageReview() {
@@ -9,7 +9,7 @@ function PageMyPageReview() {
       <div className="flex">
         <Sidebar />
         <div className="flex-1">
-          <MyPageReview />
+          <MyReview />
         </div>
       </div>
     </>
