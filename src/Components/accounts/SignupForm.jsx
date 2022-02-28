@@ -81,7 +81,7 @@ function SignupForm() {
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, []);
@@ -103,7 +103,7 @@ function SignupForm() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-10 notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-full xs:w-full">
           <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block">
               <span class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl relative text-white">
@@ -127,7 +127,7 @@ function SignupForm() {
                     value={fieldValues.userID}
                     onChange={handleFieldChange}
                     placeholder="ID를 입력해주세요."
-                    className="rounded-md xl:text-md lg:text-md md:text-md sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
+                    className="rounded-md xl:text-md lg:text-md md:text-md sm:text-s xs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-full xs:w-full"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
@@ -174,7 +174,7 @@ function SignupForm() {
                     value={fieldValues.nickname}
                     onChange={handleFieldChange}
                     placeholder="닉네임을 입력해주세요."
-                    className="rounded-md xl:text-md lg:text-md md:text-md sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
+                    className="rounded-md xl:text-md lg:text-md md:text-md sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-full xs:w-full"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
