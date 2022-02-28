@@ -32,10 +32,6 @@ function ReviewList() {
 
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
 
-  useEffect(() => {
-    refetch();
-  }, []);
-
   const moveCategory = () => {
     fieldValues.category === '전체' && navigate(`/review/`);
     fieldValues.category === '강아지' && navigate(`/review/dog/`);
@@ -112,59 +108,61 @@ function ReviewList() {
               <span class="relative text-white">" 입양 후기 "</span>
             </span>
           </blockquote>
-          {loading && (
-            <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
-          )}
-          {error && (
-            <>
-              <p className="text-red-400">
-                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
-              </p>
-            </>
-          )}
-          {error?.response?.status === 401 && (
-            <div className="text-red-400">조회에 실패했습니다.</div>
-          )}
 
           {/* 검색 필드 + CSS */}
           {/* 검색, 카테고리, 글 작성 버튼 위치 고정하기 (xs랑 sm 범위에서만) */}
           <div className="mb-6 mt-10">
-            <div className=" xs:flex-none xl:flex xl:justify-between">
-              <div className="ml-3">
-                <form
-                  onSubmit={() => moveCategory()}
-                  className="flex justify-center"
-                >
-                  <select
-                    name="category"
-                    value={fieldValues.category}
-                    onChange={handleFieldChange}
-                    className="text-xl border-2 border-purple-400 rounded p-2 w-60 text-center"
-                    defaultValue="전체"
+            <div>
+              <div className=" xs:flex-none xl:flex xl:justify-between">
+                <div className="ml-3">
+                  <form
+                    onSubmit={() => moveCategory()}
+                    className="flex justify-center"
                   >
-                    <option value="전체">전체</option>
-                    <option value="강아지">강아지</option>
-                    <option value="고양이">고양이</option>
-                  </select>
-                </form>
+                    <select
+                      name="category"
+                      value={fieldValues.category}
+                      onChange={handleFieldChange}
+                      className="text-xl border-2 border-purple-400 rounded p-2 w-60 text-center"
+                      defaultValue="전체"
+                    >
+                      <option value="전체">전체</option>
+                      <option value="강아지">강아지</option>
+                      <option value="고양이">고양이</option>
+                    </select>
+                  </form>
+                </div>
+                <div className="flex justify-center xs:mt-5 xl:mt-0">
+                  <input
+                    type="text"
+                    name="query"
+                    onChange={getQuery}
+                    onKeyPress={handleKeyPress}
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mr-4 border-2 xs:w-full sm:w-72 xs:text-sm xl:text-xl"
+                    placeholder="제목을 검색하세요."
+                  />
+                  <button
+                    onClick={handleBTNPress}
+                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-white px-3 py-2 border-2 w-24 xs:text-sm xl:text-xl"
+                    readOnly
+                  >
+                    검색
+                  </button>
+                </div>
               </div>
-              <div className="flex justify-center xs:mt-5 xl:mt-0">
-                <input
-                  type="text"
-                  name="query"
-                  onChange={getQuery}
-                  onKeyPress={handleKeyPress}
-                  className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
-                  placeholder="제목을 검색하세요."
-                />
-                <button
-                  onClick={handleBTNPress}
-                  className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-xl text-white w-24 px-3 py-2 border-2"
-                  readOnly
-                >
-                  검색
-                </button>
-              </div>
+            </div>
+            <div className="flex xl:justify-end xs:justify-center">
+              {loading && (
+                <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
+              )}
+              {error && (
+                <>
+                  <p className="text-red-400">
+                    &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. ! (조회된 정보가
+                    없습니다.)
+                  </p>
+                </>
+              )}
             </div>
           </div>
 
