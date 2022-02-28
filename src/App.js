@@ -43,7 +43,7 @@ import PageReviewIndexCat from 'Pages/PageReview/PageReviewIndexCat';
 // mypage
 import PageMyinfo from 'Pages/PageMypage/PageMyinfo';
 import PageMyAssignInfo from 'Pages/PageMypage/PageMyAssignInfo';
-import PageMyPageReview from 'Pages/PageMypage/PageMyPageReview';
+import PageMyReview from 'Pages/PageMypage/PageMyReview';
 import PageMyInquiry from 'Pages/PageMypage/PageMyInquiry';
 import PageFindId from 'Pages/PageAccounts/PageFindId';
 import PageChangePassword from 'Pages/PageAccounts/PageChangePassword';
@@ -166,7 +166,7 @@ function App() {
                 path="/mypage/assigninfo/"
                 element={<PageMyAssignInfo />}
               />
-              <Route path="/mypage/myposts/" element={<PageMyPageReview />} />
+              <Route path="/mypage/myposts/" element={<PageMyReview />} />
               <Route path="/mypage/myinquiry/" element={<PageMyInquiry />} />
 
               {/* review */}
