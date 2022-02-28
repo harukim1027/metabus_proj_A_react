@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
+.header {
+  font-family: 'Hahmlet', serif;
+  background-color: #dbf1f6;
+}
+
+.introduce_header {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.assign_explanation {
+  width: auto;
+  height: auto;
+}
+
+.assign_photo {
+  width: 130px;
+  height: 200px;
+}
