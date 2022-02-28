@@ -169,10 +169,8 @@ function InquiryList() {
                     onClick={() => navigate(`/inquiry/${inquiry.inquiry_no}/`)}
                     className="cursor-pointer"
                   >
-                    <td className="py-4">
-                      <div className="text-sm font-medium text-gray-900">
-                        {inquiry.inquiry_no}
-                      </div>
+                    <td className="py-4 text-sm font-medium text-gray-900">
+                      {inquiry.inquiry_no}
                     </td>
                     <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs whitespace-nowrap">
                       {inquiry.user}

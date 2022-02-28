@@ -95,32 +95,31 @@ function MyAssignInfo() {
           )}
 
           {/* table 시작 */}
-          <div className="mb-5 overflow-hidden border-b border-gray-200">
+          <div className="mb-5 overflow-hidden">
             <table className="mb-5 mr-5 mt-3 border text-center min-w-full divide-y divide-gray-200">
-              {' '}
               <thead className="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
-                    신청 번호
+                    No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     동물 번호
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     신청 날짜
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     진행 상태
                   </th>
@@ -128,39 +127,49 @@ function MyAssignInfo() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {MyAssignData?.results.map((assign) => (
-                  <tr
-                    onClick={() =>
-                      navigate(`/assignment/${assign.assignment_no}/`)
-                    }
-                    className="cursor-pointer"
-                  >
-                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs ">
+                  <tr>
+                    <td
+                      className="px-6 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs cursor-pointer"
+                      onClick={() =>
+                        navigate(`/assignment/${assign.assignment_no}/`)
+                      }
+                    >
                       {assign.assignment_no}
                     </td>
 
-                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs">
-                      {assign.animal.animal_reg_num}
+                    <td
+                      className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs cursor-pointer"
+                      onClick={() =>
+                        navigate(`/assignment/${assign.assignment_no}/`)
+                      }
+                    >
+                      <span className="">{assign.animal.animal_reg_num}</span>
                     </td>
 
-                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs">
+                    <td
+                      className="py-4 xs:text-xs sm:text-sm cursor-pointer"
+                      onClick={() =>
+                        navigate(`/assignment/${assign.assignment_no}/`)
+                      }
+                    >
                       {assign.created_at}
                     </td>
 
                     <td
                       className={
                         assign.status === '입양 완료'
-                          ? 'text-orange-300 font-bold px-6 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm'
-                          : 'px-6 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm'
+                          ? 'text-orange-300 px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs whitespace-nowrap'
+                          : 'px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs whitespace-nowrap'
                       }
                     >
                       {assign.status}
                       {assign.status === '입양 완료' && (
                         <button
-                          className="icon_size2 ml-6"
+                          className="w-5 ml-5"
                           onClick={() => navigate('/review/new/')}
                         >
                           <img
-                            className="transition transform hover:-translate-y-1"
+                            className="transition transform hover:-translate-y-2"
                             src="/pen2.png"
                             alt="button"
                           ></img>
