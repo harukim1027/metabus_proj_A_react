@@ -151,12 +151,12 @@ function ReviewList() {
                   name="query"
                   onChange={getQuery}
                   onKeyPress={handleKeyPress}
-                  className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
+                  className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mr-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-xl"
                   placeholder="제목을 검색하세요."
                 />
                 <button
                   onClick={handleBTNPress}
-                  className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-xl text-white w-24 px-3 py-2 border-2"
+                  className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-white px-3 py-2 border-2 w-24 xs:text-sm sm:text-xl"
                   readOnly
                 >
                   검색
@@ -183,7 +183,7 @@ function ReviewList() {
             <div className="flex justify-end">
               <button
                 onClick={() => navigate('/review/new/')}
-                className="ml-10 hover:scale-110 xs:w-14 sm:w-20"
+                className="ml-10 hover:scale-110 xs:w-10 sm:w-14"
                 readOnly
               >
                 <img src="/pen2.png" alt="button"></img>
