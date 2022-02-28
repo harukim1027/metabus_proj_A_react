@@ -109,7 +109,7 @@ function NoticeDetail({ noticeId }) {
                     {notice.content}
                   </h4>
                   <hr className="mt-3 mb-3" />
-                  <span className="mt-3 text-md font-bold text-gray-500">
+                  <span className="mt-3 text-base font-bold text-gray-500">
                     첨부파일
                   </span>
                   <div className="bg-white px-4 py-5 sm:grid sm:gap-4 sm:px-6">

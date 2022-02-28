@@ -6,6 +6,7 @@ import ReactPaginate from 'react-paginate';
 import '../../App.css';
 import './Notice.css';
 import 'css/pagination_notice.css';
+import LoadingIndicator from 'LoadingIndicator';
 
 function NoticeList() {
   const [query, setQuery] = useState(null);
@@ -89,56 +90,54 @@ function NoticeList() {
             </span>
           </blockquote>
 
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
-
-          <div className="ml-3 mb-6 mt-3">
-            <div className="text-right">
-              {auth.is_staff && (
-                <button
-                  onClick={() => navigate('/admin/notice/new/')}
-                  className=" icon_size float-left ml-10 hover:scale-110"
-                  readOnly
-                >
-                  <img src="/pen.png" alt="button"></img>
-                </button>
-              )}
-              <input
-                type="text"
-                name="query"
-                onChange={getQuery}
-                onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
-                placeholder="제목을 검색하세요."
-              />
-              <button
-                onClick={handleBTNPress}
-                className="relative ml-2 mr-4 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl border-4 text-white px-3 py-2 rounded"
-                readOnly
-              >
-                검색
-              </button>
+          <div className="mb-6 mt-10">
+            <div className="  xs:flex-none xl:flex xl:justify-between">
+              <div></div>
+              <div className="xs:mt-5 xl:mt-0">
+                <div className="flex justify-center">
+                  <input
+                    type="text"
+                    name="query"
+                    onChange={getQuery}
+                    onKeyPress={handleKeyPress}
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
+                    placeholder="제목을 검색하세요."
+                  />
+                  <button
+                    onClick={handleBTNPress}
+                    className="rounded bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl text-white w-24 px-3 py-2 border-2"
+                    readOnly
+                  >
+                    검색
+                  </button>
+                </div>
+                <div className="flex justify-center">
+                  {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
+                  {error && <h2 className="">검색된 정보가 없습니다.</h2>}
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="mb-5">
             <table className="mb-5 border text-center divide-y divide-gray-200 w-full">
               <thead className="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-44"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 tracking-wider w-96"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center lg:text-xl md:text-md sm:text-sm xs:text-xs font-bold text-gray-500 tracking-wider w-44"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     작성일
                   </th>
@@ -150,8 +149,8 @@ function NoticeList() {
                     onClick={() => navigate(`/notice/${notice.notice_no}/`)}
                     className=" cursor-pointer"
                   >
-                    <td className="py-4">
-                      <div className="text-xl font-medium text-gray-900">
+                    <td className="py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs ">
+                      <div className="text-sm font-medium text-gray-900">
                         {notice.notice_no}
                       </div>
                     </td>
@@ -164,13 +163,24 @@ function NoticeList() {
                         </span>
                       </div>
                     </td>
-                    <td className="text-md py-4 lg:text-md md:text-md sm:text-sm xs:text-xs">
+                    <td className="py-4 sm:text-sm xs:text-xs">
                       {notice.created_at}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            {auth.is_staff && (
+              <div className="flex justify-end mr-5">
+                <button
+                  onClick={() => navigate('/admin/notice/new/')}
+                  className=" ml-10 hover:scale-110 xs:w-10 sm:w-14"
+                  readOnly
+                >
+                  <img src="/pen2.png" alt="button"></img>
+                </button>
+              </div>
+            )}
           </div>
           <ReactPaginate
             previousLabel="<"

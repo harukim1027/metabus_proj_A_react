@@ -110,7 +110,7 @@ function UserReviewList({ userId }) {
                       onClick={() => navigate(`/review/${review.review_no}/`)}
                     >
                       <td className="px-6 py-4">
-                        <div className="text-md font-medium text-gray-900">
+                        <div className="text-base font-medium text-gray-900">
                           {review.review_no}
                         </div>
                       </td>

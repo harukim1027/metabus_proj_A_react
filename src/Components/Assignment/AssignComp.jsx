@@ -112,7 +112,7 @@ function AssignComp({ assignId, assignData }) {
             </ul>
           </div>
           <div className="flex justify-center my-5 mt-5">
-            <h2 className="font-semibold xs:text-md sm:text-lg lg:text-2xl">
+            <h2 className="font-semibold xs:text-base sm:text-lg lg:text-2xl">
               진행 상황은 마이 페이지에서 확인하실 수 있어요!
             </h2>
           </div>

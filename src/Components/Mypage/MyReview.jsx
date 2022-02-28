@@ -102,27 +102,27 @@ function MyReview() {
                 <tr>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
-                    글 번호
+                    No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     작성자
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
-                    작성일자
+                    작성일
                   </th>
                 </tr>
               </thead>
@@ -139,8 +139,8 @@ function MyReview() {
                             navigate(`/review/${review.review_no}/`)
                           }
                         >
-                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs ">
-                            <div className="ml-4">
+                          <td className="py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs ">
+                            <div>
                               <div className="text-sm font-medium text-gray-900">
                                 {review.review_no}
                               </div>
@@ -153,10 +153,10 @@ function MyReview() {
                                 : review.title}
                             </span>
                           </td>
-                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
+                          <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs whitespace-nowrap">
                             {review.user.nickname}
                           </td>
-                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
+                          <td className="py-4 sm:text-sm xs:text-xs">
                             {review.created_at}
                           </td>
                         </tr>

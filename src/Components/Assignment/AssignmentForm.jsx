@@ -242,7 +242,7 @@ function AssignmentForm({ handleDidSave }) {
           <div className="ml-3 mt-3">
             <div className="w-full px-3 mb-10">
               {/* 크루 선택 (개/고양이) */}
-              <span className="block tracking-wide text-gray-700 font-bold mb-2 xs:text-md sm:text-lg md:text-2xl">
+              <span className="block tracking-wide text-gray-700 font-bold mb-2 xs:text-base sm:text-lg md:text-2xl">
                 크루원 타입
               </span>
               <div className="relative">
@@ -268,7 +268,7 @@ function AssignmentForm({ handleDidSave }) {
               </div>
               <br />
               {/* 크루원 덩치 선택 */}
-              <span className="block uppercase tracking-wide text-gray-700 font-bold mb-2 xs:text-md sm:text-lg md:text-2xl">
+              <span className="block uppercase tracking-wide text-gray-700 font-bold mb-2 xs:text-base sm:text-lg md:text-2xl">
                 크루원 덩치
               </span>
               <div className="relative">
@@ -297,7 +297,7 @@ function AssignmentForm({ handleDidSave }) {
 
               <br />
               {/* 크루원 성별 선택 */}
-              <span className="block uppercase tracking-wide text-gray-700 font-bold mb-2 xs:text-md sm:text-lg md:text-2xl">
+              <span className="block uppercase tracking-wide text-gray-700 font-bold mb-2 xs:text-base sm:text-lg md:text-2xl">
                 크루원 성별
               </span>
               <div className="relative">
@@ -512,7 +512,7 @@ function AssignmentForm({ handleDidSave }) {
             <hr />
             {/* 신청자 이름 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 신청자 이름
               </span>
               <input
@@ -532,7 +532,7 @@ function AssignmentForm({ handleDidSave }) {
                 회원 정보와 동일
               </button>
               {saveErrorMessages.adopter_name?.map((message, index) => (
-                <p key={index} className="text-md text-red-400">
+                <p key={index} className="text-base text-red-400">
                   이름을 입력해주세요.
                 </p>
               ))}
@@ -540,7 +540,7 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 신청자 월 수입 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 월 수입
                 <button onClick={() => setHelp(!help)} className="inline">
                   <img src="/outline_help.png" alt="help"></img>
@@ -548,7 +548,7 @@ function AssignmentForm({ handleDidSave }) {
                 {help && (
                   <div className="mt-1 justify-center">
                     <p className="bg-yellow-100 text-red-300">* 알림 *</p>
-                    <p className="bg-yellow-100 text-md text-blue-300">
+                    <p className="bg-yellow-100 text-base text-blue-300">
                       반려동물도 정기적으로 건강 관리가 필요하며, 그에 따른
                       비용을 고려해야 합니다.
                     </p>
@@ -569,7 +569,7 @@ function AssignmentForm({ handleDidSave }) {
                 만 원
               </span>
               {saveErrorMessages.monthly_income?.map((message, index) => (
-                <p key={index} className="text-md text-red-400">
+                <p key={index} className="text-base text-red-400">
                   월 수입을 입력해주세요.
                 </p>
               ))}
@@ -577,7 +577,7 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 주거형태 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 주거 형태
               </span>
               <div className="relative">
@@ -608,7 +608,7 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 반려동물 유무 */}
             <div className="my-5 w-full">
-              <span className="block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 반려동물 키움 여부
                 <input
                   type="checkbox"
@@ -618,17 +618,17 @@ function AssignmentForm({ handleDidSave }) {
                   className="ml-5"
                 />
               </span>
-              <p className=" xs:text-sm sm:text-md md:text-lg">
+              <p className=" xs:text-sm sm:text-base md:text-lg">
                 확인용 절차입니다.
               </p>
             </div>
 
             {/* 거주지 사진 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 거주지 사진
               </span>
-              <p className="text-md text-blue-900 mb-1">
+              <p className="text-base text-blue-900 mb-1">
                 ( 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다! )
               </p>
 
@@ -636,7 +636,7 @@ function AssignmentForm({ handleDidSave }) {
                 {/* 거주지 파일 첨부 인풋박스 ul태그 시작 부분*/}
                 <ul>
                   {/* 거주지 파일 input 박스 1  */}
-                  <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                  <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence1"
@@ -653,14 +653,14 @@ function AssignmentForm({ handleDidSave }) {
                   </li>
                   {saveErrorMessages.picture_of_residence1?.map(
                     (message, index) => (
-                      <p key={index} className="text-md text-red-400 ml-3">
+                      <p key={index} className="text-base text-red-400 ml-3">
                         {message}
                       </p>
                     ),
                   )}
 
                   {/* 거주지 파일 input 박스 2 */}
-                  <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                  <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence2"
@@ -677,14 +677,14 @@ function AssignmentForm({ handleDidSave }) {
                   </li>
                   {saveErrorMessages.picture_of_residence2?.map(
                     (message, index) => (
-                      <p key={index} className="text-md text-red-400 ml-3">
+                      <p key={index} className="text-base text-red-400 ml-3">
                         {message}
                       </p>
                     ),
                   )}
 
                   {/* 거주지 파일 input 박스 3 */}
-                  <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                  <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence3"
@@ -701,7 +701,7 @@ function AssignmentForm({ handleDidSave }) {
                   </li>
                   {saveErrorMessages.picture_of_residence3?.map(
                     (message, index) => (
-                      <p key={index} className="text-md text-red-400 ml-3">
+                      <p key={index} className="text-base text-red-400 ml-3">
                         {message}
                       </p>
                     ),
@@ -712,7 +712,7 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 만남 희망 장소 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 만남 희망 장소
               </span>
               <div className="relative">
@@ -752,7 +752,7 @@ function AssignmentForm({ handleDidSave }) {
             {/* 만남 희망 날짜 */}
             <div className="my-5 w-full">
               <div className="relative">
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
+                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                   만남 희망 날짜
                 </span>
 
@@ -763,7 +763,7 @@ function AssignmentForm({ handleDidSave }) {
                   className="appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg md:w-2/3 xl:w-3/4"
                 />
                 {saveErrorMessages.date_to_meet?.map((message, index) => (
-                  <p key={index} className="text-md text-red-400">
+                  <p key={index} className="text-base text-red-400">
                     {message}
                   </p>
                 ))}

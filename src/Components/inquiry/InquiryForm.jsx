@@ -129,7 +129,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               {auth.isLoggedIn && !auth.is_staff && (
                 <>
                   <div className="ml-3 mb-3 w-full">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                       제목
                     </span>
                     <input
@@ -141,7 +141,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                       className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6"
                     />
                     {saveErrorMessages.title?.map((message, index) => (
-                      <p key={index} className="text-md text-red-400">
+                      <p key={index} className="text-base text-red-400">
                         제목을 입력해주세요.
                       </p>
                     ))}
@@ -149,7 +149,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
 
                   {/* 내용 입력 인풋박스 */}
                   <div className="ml-3 mb-3 w-full ">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                       내용
                     </span>
                     <textarea
@@ -160,7 +160,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                       className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                     />
                     {saveErrorMessages.content?.map((message, index) => (
-                      <p key={index} className="text-md text-red-400">
+                      <p key={index} className="text-base text-red-400">
                         내용을 입력해주세요.
                       </p>
                     ))}
@@ -169,7 +169,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               )}
               {auth.isLoggedIn && auth.is_staff && inquiry && (
                 <div className="ml-3 mb-3 w-full">
-                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                     제목
                   </span>
                   <h1
