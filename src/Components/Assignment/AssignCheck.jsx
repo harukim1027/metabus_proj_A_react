@@ -120,7 +120,7 @@ function AssignCheck(props) {
                           {' '}
                           <img
                             src="/assigncheck3.png"
-                            alt="assigncheck3"
+                            alt="assigncheck"
                             className="xs:w-full"
                           />
                         </div>
