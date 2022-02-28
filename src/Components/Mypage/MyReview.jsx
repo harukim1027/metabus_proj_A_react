@@ -102,7 +102,7 @@ function MyReview() {
                 <tr>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
@@ -122,7 +122,7 @@ function MyReview() {
                     scope="col"
                     className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
-                    작성일자
+                    작성일
                   </th>
                 </tr>
               </thead>
