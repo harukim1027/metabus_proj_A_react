@@ -182,9 +182,9 @@ function InquiryList() {
 
                     <td className="py-4">
                       <div className="text-lg font-medium text-gray-900">
-                        <span className="px-2 inline-flex text-sm leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
-                          {inquiry.title.length > 8
-                            ? inquiry.title.substring(0, 8) + '...'
+                        <span className="px-2 inline-flex xs:text-sm md:text-md lg:text-lg text-sm leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
+                          {inquiry.title.length > 20
+                            ? inquiry.title.substring(0, 20) + '...'
                             : inquiry.title}
                         </span>
                       </div>

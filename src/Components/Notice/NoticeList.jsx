@@ -157,7 +157,7 @@ function NoticeList() {
                     </td>
                     <td className="py-4">
                       <div className="font-medium text-gray-900">
-                        <span className="inline-flex xs:text-sm md:text-lg lg:text-xl leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        <span className="inline-flex xs:text-sm md:text-md lg:text-lg leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                           {notice.title.length > 20
                             ? notice.title.substring(0, 20) + '...'
                             : notice.title}
