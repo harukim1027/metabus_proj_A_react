@@ -196,7 +196,8 @@ function AssignDetail({ assignId }) {
                     auth.is_staff && setClicked(!clicked);
                   }}
                 >
-                  {assignData?.status} (수정하려면 클릭)
+                  {assignData?.status}{' '}
+                  {auth.is_staff && <span>(수정하려면 클릭)</span>}
                 </td>
               </tr>
             </table>
@@ -266,7 +267,16 @@ function AssignDetail({ assignId }) {
               <span className="relative text-white">" 동물 정보 "</span>
             </span>
           </blockquote>
-
+          <div
+            className="flex justify-center"
+            onClick={() =>
+              navigate(`/admin/animal/${assignData?.animal.animal_no}/`)
+            }
+          >
+            <button className="bg-red-400 p-2 rounded-lg">
+              동물 정보로 이동하기
+            </button>
+          </div>
           <div className="my-5 overflow-hidden">
             <table className="mb-5 mr-5 mt-6 border text-center min-w-full divide-y divide-gray-200">
               <tr>
