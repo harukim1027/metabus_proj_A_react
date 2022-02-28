@@ -68,7 +68,7 @@ function MyAssignInfo() {
 
   return (
     <>
-      <div className="header justify-center mx-20 " id="topLoc">
+      <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="mypage_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
@@ -128,17 +128,18 @@ function MyAssignInfo() {
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {MyAssignData?.results.map((assign) => (
-                  <tr>
+                  <tr
+                    onClick={() =>
+                      navigate(`/assignment/${assign.assignment_no}/`)
+                    }
+                    className="cursor-pointer"
+                  >
                     <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs ">
-                      <Link to={`/assignment/${assign.assignment_no}/`}>
-                        {assign.assignment_no}
-                      </Link>
+                      {assign.assignment_no}
                     </td>
 
                     <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
-                      <Link to={`/admin/animal/${assign.animal.animal_no}`}>
-                        {assign.animal.animal_reg_num}
-                      </Link>
+                      {assign.animal.animal_reg_num}
                     </td>
 
                     <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">

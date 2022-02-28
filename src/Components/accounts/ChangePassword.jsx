@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import useFieldValues from 'hooks/useFieldValues';
 import { ToastContainer, toast } from 'react-toastify';
 import LoadingIndicator from 'LoadingIndicator';
-
+import { useNavigate } from 'react-router-dom';
 const INIT_FIELD_VALUES = {
   userID: '',
   name: '',
@@ -14,6 +14,7 @@ const INIT_FIELD_VALUES = {
 function ChangePassword() {
   const [findUser, setFindUser] = useState({});
   const { fieldValues, handleFieldChange } = useFieldValues(INIT_FIELD_VALUES);
+  const navigate = useNavigate();
 
   const [
     { data: userList, loading, error: saveError, errorMessages },
@@ -236,6 +237,7 @@ function ChangePassword() {
                                     window.open(
                                       'http://localhost:8000/accounts/password_reset/',
                                       '_blank',
+                                      navigate('/accounts/login/'),
                                     )
                                   }
                                   className="text-xl hover:bg-blue-200 hover:text-white font-semibold"

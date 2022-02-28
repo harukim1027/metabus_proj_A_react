@@ -190,7 +190,7 @@ function AssignmentForm({ handleDidSave }) {
   console.log('topLocation: ', topLocation);
   useEffect(() => {
     setFormLoc(document.querySelector('#form').offsetTop);
-  }, [selanimal]);
+  }, [filtAnimal]);
 
   const gotoForm = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
