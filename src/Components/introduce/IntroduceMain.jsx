@@ -30,11 +30,11 @@ function IntroduceMain() {
       <div className="header flex justify-center " id="topLoc">
         <div className="flex flex-wrap justify-center overflow-hidden md:px-10 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
           <div className="introduce_header shadow-md flex flex-wrap justify-center w-full">
-            <div className="assign_explanation">
+            <div className="mt-10 assign_explanation flex flex-wrap justify-center">
               <img
                 src="/introduce.png"
                 alt="introduce"
-                className="xs:w-full sm:w-2/3 lg:w-3/4  xl:w-full"
+                className="xs:w-full sm:w-full lg:w-3/4  xl:w-full"
               />
             </div>
             <hr className="pb-6" />
