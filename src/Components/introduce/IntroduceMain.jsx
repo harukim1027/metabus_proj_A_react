@@ -19,6 +19,12 @@ function IntroduceMain() {
     });
   };
 
+  const goTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   useEffect(() => {
     gotoTop();
   }, [topLocation]);
@@ -41,6 +47,14 @@ function IntroduceMain() {
             <br />
           </div>
         </div>
+      </div>
+      <div className="flex justify-center">
+        <button
+          className="bg-white hover:bg-gray-500 hover:text-white rounded-lg p-2 text-lg"
+          onClick={() => goTop()}
+        >
+          위로 이동
+        </button>
       </div>
     </>
   );
