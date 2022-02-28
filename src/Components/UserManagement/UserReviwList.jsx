@@ -117,7 +117,7 @@ function UserReviewList({ userId }) {
 
                       <td className="px-6 py-4">
                         <div className="text-lg font-medium text-gray-900">
-                          <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-purple-800">
+                          <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-purple-100">
                             {review.title.length > 15
                               ? review.title.substring(0, 15) + '...'
                               : review.title}

@@ -131,7 +131,7 @@ function UserInquiryList({ userId }) {
 
                     <td className="px-6 py-4">
                       <div className="font-medium text-gray-900">
-                        <span className="inline-flex text-lg leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-900">
+                        <span className="inline-flex text-lg leading-5 font-semibold rounded-full bg-yellow-100">
                           {inquiry.title.length > 15
                             ? inquiry.title.substring(0, 15) + '...'
                             : inquiry.title}
