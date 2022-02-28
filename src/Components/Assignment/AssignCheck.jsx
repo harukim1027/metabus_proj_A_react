@@ -66,7 +66,7 @@ function AssignCheck(props) {
     <>
       <div className="header flex justify-center " id="topLoc">
         <div className="flex flex-wrap justify-center overflow-hidden md:px-10 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
-          <div className="accounts_header shadow-md flex flex-wrap justify-center w-full">
+          <div className="assignments_header shadow-md flex flex-wrap justify-center w-full">
             <main className="" role="main">
               <h1 className="mt-5 font-semibold text-2xl text-center">
                 🐼 크루 신청하기
@@ -94,7 +94,7 @@ function AssignCheck(props) {
 
               <div className="w-full">
                 <div className="flex justify-center w-full">
-                  <div className="xs:w-2/3 sm:w-2/3 lg:w-3/4 xl:w-full">
+                  <div className="xs:w-2/3 sm:w-2/3 lg:w-3/4 xl:w-5/6">
                     <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 xs:text-lg md:text-2xl font-bold mb-2">
                       입양 절차
                     </span>
@@ -103,12 +103,12 @@ function AssignCheck(props) {
                       <img
                         src="/assigncheck.png"
                         alt="dog crew"
-                        className="xs:w-2/3 sm:w-2/3 lg:w-3/4  xl:w-full"
+                        className="w-full"
                       />
                     </div>
 
                     <div className=" xs:text-md md:text-lg lg:text-xl text-right mb-3 mt-8 font-bold text-gray-700 mr-5">
-                      <label>입양 절차를 숙지했습니다 </label>
+                      <label>입양 절차를 숙지했습니다&nbsp; </label>
                       <input
                         type="checkbox"
                         checked={contract_check ? 'checked' : null}
@@ -122,21 +122,21 @@ function AssignCheck(props) {
                 <hr className="pb-6" />
 
                 <div className="flex justify-center w-full">
-                  <div className="xs:w-2/3 sm:w-2/3 lg:w-3/4 xl:w-full">
+                  <div className="xs:w-2/3 sm:w-2/3 lg:w-3/4 xl:w-5/6">
                     <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 xs:text-lg md:text-2xl font-bold mb-2">
                       입양 전 주의 사항
                     </span>
-
-                    <div className="assign_explanation2">
-                      <img
-                        src="/list.png"
-                        alt="dog crew"
-                        className="xs:w-2/3 sm:w-2/3 lg:w-3/4  xl:w-full"
-                      />
+                    <div className=" flex justify-center">
+                      <div className="assign_explanation2 ">
+                        <img
+                          src="/list.png"
+                          alt="dog crew"
+                          className="w-full"
+                        />
+                      </div>
                     </div>
-
                     <div className="xs:text-md md:text-lg lg:text-xl text-right pb-5 font-bold text-gray-700 mr-5">
-                      <label>입양 전 주의사항을 숙지했습니다 </label>
+                      <label>입양 전 주의사항을 숙지했습니다&nbsp; </label>
                       <input
                         type="checkbox"
                         checked={contract_check ? 'checked' : null}
@@ -144,23 +144,22 @@ function AssignCheck(props) {
                         required
                       />
                     </div>
+                    <div className="pb-3 text-right">
+                      <label className=" xs:text-md md:text-lg lg:text-xl bg-yellow-100 font-bold mr-5">
+                        모두 동의합니다&nbsp;
+                        <input
+                          checked={all_check ? 'checked' : null}
+                          type="checkbox"
+                          onClick={() => {
+                            set_all_check(!all_check);
+                          }}
+                        />
+                      </label>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex justify-end xs:w-5/6 lg:w-11/12 xl:w-full">
-                  <div className="pb-3 text-right">
-                    <label className=" xs:text-md md:text-lg lg:text-xl xl:text-2xl bg-yellow-100 font-bold">
-                      모두 동의합니다
-                      <input
-                        checked={all_check ? 'checked' : null}
-                        type="checkbox"
-                        onClick={() => {
-                          set_all_check(!all_check);
-                        }}
-                      />
-                    </label>
-                  </div>
-                </div>
+                <div className="flex justify-end xs:w-5/6 lg:w-11/12"></div>
 
                 <hr />
                 <div className="text-xl text-red-400 text-center">
