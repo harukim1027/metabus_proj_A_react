@@ -89,7 +89,7 @@ function InquiryList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
           <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 1:1 문의 "</span>
@@ -133,33 +133,33 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 py-3 text-center font-bold text-gray-500 uppercase tracking-wider xs:w-10 xs:text-sm sm:w-32 sm:text-lg"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider w-44 xs:text-xs sm:text-lg"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
-                    아이디
+                    작성자
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-lg font-bold text-gray-500 uppercase tracking-wider w-1/3"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-base font-bold text-gray-500 uppercase tracking-wider"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     문의일
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-base font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
-                    답변 상태
+                    답변
                   </th>
                 </tr>
               </thead>
@@ -170,58 +170,41 @@ function InquiryList() {
                     className="cursor-pointer"
                   >
                     <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
+                      <div className="text-sm font-medium text-gray-900">
                         {inquiry.inquiry_no}
                       </div>
                     </td>
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        {inquiry.user}
-                      </div>
+                    <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs whitespace-nowrap">
+                      {inquiry.user}
                     </td>
 
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        <span className="px-2 inline-flex xs:text-sm md:text-md lg:text-lg text-sm leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
-                          {inquiry.title.length > 20
-                            ? inquiry.title.substring(0, 20) + '...'
-                            : inquiry.title}
-                        </span>
-                      </div>
+                    <td className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs">
+                      <span className="bg-yellow-100 rounded-full">
+                        {inquiry.title.length > 15
+                          ? inquiry.title.substring(0, 15) + '...'
+                          : inquiry.title}
+                      </span>
                     </td>
-                    <td className="py-4">
-                      <div className="py-4 xs:text-xs lg:text-base">
-                        {inquiry.created_at}
-                      </div>
-                    </td>
+                    <td className="py-4 text-xs">{inquiry.created_at}</td>
 
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 py-2 whitespace-nowrap">
                       <div className="flex justify-center">
-                        <div className="ml-4">
-                          <div className="text-xl font-medium text-gray-900">
-                            {/* <h2>{inquiry.status}</h2> */}
-                            {inquiry.admin_answer.length > 0 ? (
-                              <div className="text-xs">
-                                <img
-                                  src="/check.png"
-                                  width="15"
-                                  className="ml-4"
-                                  alt=""
-                                />
-                                답변 완료
+                        <div className="text-base font-medium text-gray-900">
+                          {inquiry.admin_answer.length > 0 ? (
+                            <>
+                              <div className="text-xs flex justify-center">
+                                <img src="/check.png" width="15" alt="" />
                               </div>
-                            ) : (
-                              <div className="text-xs">
-                                <img
-                                  src="/nocheck.png"
-                                  width="15"
-                                  className="ml-4"
-                                  alt=""
-                                />
-                                답변 대기
+                              <span className="text-xs">답변 완료</span>
+                            </>
+                          ) : (
+                            <>
+                              <div className="text-xs flex justify-center">
+                                <img src="/nocheck.png" width="15" alt="" />
                               </div>
-                            )}
-                          </div>
+                              <span className="text-xs">답변 대기</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </td>

@@ -210,7 +210,7 @@ function AssignmentForm({ handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-full xs:w-full">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
             <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-6xl font-extrabold">
               <span className="relative text-white">" 크루원 모집 "</span>
@@ -428,7 +428,7 @@ function AssignmentForm({ handleDidSave }) {
       {/* 컨테이너 끝 */}
 
       <div className="header flex flex-wrap justify-center" id="form">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-3/4 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-5/6 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
           <p className="text-center text-blue-900 font-bold text-xl my-10">
             ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
           </p>
@@ -498,7 +498,7 @@ function AssignmentForm({ handleDidSave }) {
       {/* 신청하는 폼 */}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-3/4 md:px-20 lg:w-2/3 pb-10 my-10">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-5/6 md:px-20 lg:w-2/3 pb-10 my-10">
           <form
             className="assignments_header sm:px-20 md:px-0 py-10"
             onSubmit={handleSubmit}
