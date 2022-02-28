@@ -94,7 +94,7 @@ function UserInquiryList({ userId }) {
                     scope="col"
                     className="px-3 py-3 text-center text-xl font-bold text-gray-500 tracking-wider"
                   >
-                    번호
+                    No
                   </th>
                   <th
                     scope="col"
@@ -132,8 +132,8 @@ function UserInquiryList({ userId }) {
                     <td className="px-6 py-4">
                       <div className="font-medium text-gray-900">
                         <span className="inline-flex text-lg leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-900">
-                          {inquiry.title.length > 10
-                            ? inquiry.title.substring(0, 10) + '...'
+                          {inquiry.title.length > 15
+                            ? inquiry.title.substring(0, 15) + '...'
                             : inquiry.title}
                         </span>
                       </div>
@@ -142,31 +142,22 @@ function UserInquiryList({ userId }) {
                     <td className="text-sm px-6 py-4">{inquiry.created_at}</td>
                     <td className="px-6 py-4">
                       <div className="flex justify-center">
-                        <div className="ml-4">
-                          <div className="text-xl font-medium text-gray-900">
-                            {/* <h2>{inquiry.status}</h2> */}
-                            {inquiry.admin_answer.length > 0 ? (
-                              <div className="text-xs">
-                                <img
-                                  src="/check.png"
-                                  width="15"
-                                  className="mx-auto"
-                                  alt=""
-                                />
-                                답변 완료
+                        <div className="text-base font-medium text-gray-900">
+                          {inquiry.admin_answer.length > 0 ? (
+                            <>
+                              <div className="text-xs flex justify-center">
+                                <img src="/check.png" width="15" alt="" />
                               </div>
-                            ) : (
-                              <div className="text-xs">
-                                <img
-                                  src="/nocheck.png"
-                                  width="15"
-                                  className="mx-auto"
-                                  alt=""
-                                />
-                                답변 대기
+                              <span className="text-xs">답변 완료</span>
+                            </>
+                          ) : (
+                            <>
+                              <div className="text-xs flex justify-center">
+                                <img src="/nocheck.png" width="15" alt="" />
                               </div>
-                            )}
-                          </div>
+                              <span className="text-xs">답변 대기</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </td>

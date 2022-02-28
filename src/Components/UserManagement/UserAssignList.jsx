@@ -90,7 +90,7 @@ function UserAssignList({ userId }) {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/4">
-                    번호
+                    No
                   </th>
                   <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/4">
                     동물 등록번호
@@ -118,14 +118,14 @@ function UserAssignList({ userId }) {
                     </td>
 
                     <td className="px-6 py-4">
-                      <div className="inline-flex text-lg leading-5 font-semibold rounded-full bg-red-100 text-red-900">
+                      <div className="inline-flex text-lg leading-5 font-semibold rounded-full bg-blue-100">
                         {assign.animal.animal_reg_num}
                       </div>
                     </td>
 
-                    <td className="text-sm px-6 py-4">{assign.created_at}</td>
+                    <td className="text-base px-6 py-4">{assign.created_at}</td>
 
-                    <td className="text-sm px-6 py-4">{assign.status}</td>
+                    <td className="text-lg px-6 py-4">{assign.status}</td>
                   </tr>
                 ))}
               </tbody>
