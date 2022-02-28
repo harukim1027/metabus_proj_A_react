@@ -30,16 +30,20 @@ function MainScreen() {
           <TopNav />
         </div>
 
-        <div className="flex justify-center mt-20">
-          <div className="crew_header hover:scale-110 duration-500">
-            <button onClick={() => navigate('/review/dog/')}>
-              <img src="/dog5.png" alt="dog crew"></img>
-            </button>
+        <div className="xs:flex-none sm:flex sm:justify-center w-full">
+          <div className="xs:flex xs:justify-center">
+            <div className="crew_header hover:scale-110 duration-500 ">
+              <button onClick={() => navigate('/review/dog/')}>
+                <img className="xs:w-full" src="/dog5.png" alt="dog crew"></img>
+              </button>
+            </div>
           </div>
-          <div className="crew_header hover:scale-110 duration-500">
-            <button onClick={() => navigate('/review/cat/')}>
-              <img src="/cat4.png" alt="dog crew"></img>
-            </button>
+          <div className="xs:flex xs:justify-center">
+            <div className="crew_header hover:scale-110 duration-500 xs:flex xs:justify-center">
+              <button onClick={() => navigate('/review/cat/')}>
+                <img src="/cat4.png" className="xs:w-full" alt="dog crew"></img>
+              </button>
+            </div>
           </div>
         </div>
       </div>

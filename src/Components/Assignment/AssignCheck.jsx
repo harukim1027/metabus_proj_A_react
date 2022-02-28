@@ -100,11 +100,31 @@ function AssignCheck(props) {
                     </span>
 
                     <div className="assign_explanation">
-                      <img
-                        src="/assigncheck.png"
-                        alt="dog crew"
-                        className="w-full"
-                      />
+                      <div className="xs:flex xs:flex-wrap xs:justify-center md:flex-none md:grid md:grid-cols-3">
+                        <div className="inline-block">
+                          <img
+                            src="/assigncheck1.png"
+                            alt="assigncheck1"
+                            className="xs:w-full "
+                          />
+                        </div>
+                        <div className="inline-block">
+                          {' '}
+                          <img
+                            src="/assigncheck2.png"
+                            alt="assigncheck2"
+                            className="xs:w-full"
+                          />
+                        </div>
+                        <div className="inline-block">
+                          {' '}
+                          <img
+                            src="/assigncheck3.png"
+                            alt="assigncheck"
+                            className="xs:w-full"
+                          />
+                        </div>
+                      </div>
                     </div>
 
                     <div className=" xs:text-md md:text-lg lg:text-xl text-right mb-3 mt-8 font-bold text-gray-700 mr-5">
