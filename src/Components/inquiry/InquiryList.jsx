@@ -98,40 +98,31 @@ function InquiryList() {
           {/* 로딩 에러 */}
           {loading && '로딩 중 ...'}
 
-          <div className="ml-3 mb-6 mt-3">
-            <div className="text-right">
-              {!auth.is_staff && (
-                <button
-                  onClick={() => navigate('/inquiry/new/')}
-                  className=" icon_size float-left ml-10 hover:scale-110"
-                  readOnly
-                >
-                  <img src="/pen.png" alt="button"></img>
-                </button>
-              )}
-              <input
-                type="text"
-                name="query"
-                placeholder="검색어를 입력해주세요."
-                onChange={getQuery}
-                onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
-              />
-              {errorMessages.query?.map((message, index) => (
-                <p key={index} className="text-md text-red-400">
-                  {message}
-                </p>
-              ))}
-              <button
-                type="submit"
-                className="relative ml-2 mr-4 flex-shrink-0 bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-xl border-4 text-white px-3 py-2 rounded"
-                onClick={handleBTNPress}
-              >
-                검색
-              </button>
-              <div>
-                {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
-                {error && '검색된 정보가 없습니다.'}
+          <div className="mb-6 mt-10">
+            <div className="  xs:flex-none xl:flex xl:justify-between">
+              <div></div>
+              <div className="xs:mt-5 xl:mt-0">
+                <div className="flex justify-center">
+                  <input
+                    type="text"
+                    name="query"
+                    onChange={getQuery}
+                    onKeyPress={handleKeyPress}
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
+                    placeholder="제목을 검색하세요."
+                  />
+                  <button
+                    onClick={handleBTNPress}
+                    className="rounded bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-xl text-white w-24 px-3 py-2 border-2"
+                    readOnly
+                  >
+                    검색
+                  </button>
+                </div>
+                <div className="flex justify-center">
+                  {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
+                  {error && <h2 className="">검색된 정보가 없습니다.</h2>}
+                </div>
               </div>
             </div>
           </div>
@@ -238,6 +229,17 @@ function InquiryList() {
                 ))}
               </tbody>
             </table>
+            {!auth.is_staff && (
+              <div className="flex justify-end mr-5">
+                <button
+                  onClick={() => navigate('/inquiry/new/')}
+                  className="ml-10 hover:scale-110 xs:w-10 sm:w-14"
+                  readOnly
+                >
+                  <img src="/pen2.png" alt="button"></img>
+                </button>
+              </div>
+            )}
           </div>
           <ReactPaginate
             previousLabel="<"
