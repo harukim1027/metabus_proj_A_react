@@ -102,7 +102,7 @@ function ChangePassword() {
                     placeholder="이름을 입력해주세요."
                   />
                   {errorMessages.userID?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       {message}
                     </p>
                   ))}
@@ -123,7 +123,7 @@ function ChangePassword() {
                     placeholder="이름을 입력해주세요."
                   />
                   {errorMessages.name?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       {message}
                     </p>
                   ))}
@@ -165,7 +165,7 @@ function ChangePassword() {
                   </div>
 
                   {errorMessages.password_quiz?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       {message}
                     </p>
                   ))}
@@ -188,7 +188,7 @@ function ChangePassword() {
                   />
 
                   {errorMessages.password_quiz_answer?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       {message}
                     </p>
                   ))}
@@ -227,7 +227,7 @@ function ChangePassword() {
                           <>
                             <div className="mt-5 mb-5" key={user.userID}>
                               <hr />
-                              <span className="mt-3 mb-2 block uppercase tracking-wide text-blue-900 text-s font-medium">
+                              <span className="mt-3 mb-2 block uppercase tracking-wide text-blue-900 text-sm font-medium">
                                 " {user.name} "님의 비밀번호 변경 링크입니다.
                               </span>
                               <p className="animate-bounce text-4xl">⬇</p>

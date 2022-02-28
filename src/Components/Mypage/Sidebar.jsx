@@ -79,7 +79,7 @@ const Sidebar = ({ width = 280, children }) => {
               onClick={() => navigate(`/mypage/userinfo/`)}
               className="cursor-pointer hover:bg-blue-800"
             >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s font-bold">
+              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-sm font-bold">
                 내 정보
               </span>
             </div>
@@ -90,7 +90,7 @@ const Sidebar = ({ width = 280, children }) => {
               onClick={() => navigate(`/mypage/assigninfo/`)}
               className="cursor-pointer hover:bg-blue-400"
             >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s font-bold">
+              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-sm font-bold">
                 내 입양신청
               </span>
             </div>
@@ -101,7 +101,7 @@ const Sidebar = ({ width = 280, children }) => {
               onClick={() => navigate(`/mypage/myposts/`)}
               className="cursor-pointer hover:bg-purple-300"
             >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s font-bold">
+              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-sm font-bold">
                 내 작성글
               </span>
             </div>
@@ -113,7 +113,7 @@ const Sidebar = ({ width = 280, children }) => {
               onClick={() => navigate(`/mypage/myinquiry/`)}
               className="cursor-pointer hover:bg-yellow-300"
             >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s font-bold">
+              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-sm font-bold">
                 내 문의사항
               </span>
             </div>

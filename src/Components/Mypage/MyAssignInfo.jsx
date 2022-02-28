@@ -102,25 +102,25 @@ function MyAssignInfo() {
                 <tr>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                   >
                     신청 번호
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                   >
                     동물 번호
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                   >
                     신청 날짜
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                   >
                     진행 상태
                   </th>
@@ -134,23 +134,23 @@ function MyAssignInfo() {
                     }
                     className="cursor-pointer"
                   >
-                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs ">
+                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs ">
                       {assign.assignment_no}
                     </td>
 
-                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
+                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
                       {assign.animal.animal_reg_num}
                     </td>
 
-                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
+                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
                       {assign.created_at}
                     </td>
 
                     <td
                       className={
                         assign.status === '입양 완료'
-                          ? 'text-orange-300 font-bold px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-s'
-                          : 'px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-s'
+                          ? 'text-orange-300 font-bold px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-sm'
+                          : 'px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-sm'
                       }
                     >
                       {assign.status}

@@ -105,7 +105,7 @@ function UserManagementIndex() {
                 placeholder="아이디,이름,닉네임으로 검색"
                 onChange={getQuery}
                 onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-m mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
+                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
               />
               <button
                 type="submit"

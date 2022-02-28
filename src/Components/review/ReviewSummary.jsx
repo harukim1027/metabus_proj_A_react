@@ -13,7 +13,7 @@ function ReviewSummary({ review }) {
             </div>
           )}
           <div className="px-6 py-4">
-            <h2 className="font-bold text-m mb-2">
+            <h2 className="font-bold text-md mb-2">
               {review.title.length > 7
                 ? review.title.substring(0, 7) + '...'
                 : review.title}
