@@ -146,8 +146,8 @@ function MyReview() {
                               </div>
                             </div>
                           </td>
-                          <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs">
-                            <span className=" xs:text-sm  px-2 rounded-full bg-green-100 text-green-800 font-semibold">
+                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
+                            <span className="px-2 rounded-full xs:text-sm md:text-md lg:text-lg bg-green-100 text-green-800 font-semibold">
                               {review.title.length > 20
                                 ? review.title.substring(0, 20) + '...'
                                 : review.title}
