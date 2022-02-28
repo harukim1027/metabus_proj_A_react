@@ -142,31 +142,31 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider xs:w-10 xs:text-sm sm:w-32 sm:text-lg"
+                    className="py-3 text-center font-bold text-gray-500 tracking-wider sm:w-32 xs:w-10 md:text-base sm:text-lg xs:text-sm"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider w-44 xs:text-xs sm:text-lg"
+                    className="py-3 text-center font-bold text-gray-500 tracking-wider w-44 md:text-base sm:text-lg xs:text-xs whitespace-nowrap"
                   >
                     아이디
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-lg font-bold text-gray-500 uppercase tracking-wider w-1/3"
+                    className="py-3 text-center font-bold text-gray-500 tracking-wider w-1/3 md:text-base sm:text-lg xs:text-xs"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-md font-bold text-gray-500 uppercase tracking-wider"
+                    className="py-3 text-center font-bold text-gray-500 tracking-wider md:text-base sm:text-lg xs:text-xs"
                   >
                     문의일
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-md font-bold text-gray-500 uppercase tracking-wider"
+                    className="py-3 text-center font-bold text-gray-500 tracking-wider md:text-base sm:text-lg xs:text-xs"
                   >
                     답변 상태
                   </th>
@@ -178,36 +178,36 @@ function InquiryList() {
                     onClick={() => navigate(`/inquiry/${inquiry.inquiry_no}/`)}
                     className="cursor-pointer"
                   >
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        {inquiry.inquiry_no}
-                      </div>
+                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-sm sm:text-sm xs:text-xs">
+                      {/* <div className="text-lg font-medium text-gray-900"> */}
+                      {inquiry.inquiry_no}
+                      {/* </div> */}
                     </td>
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        {inquiry.user}
-                      </div>
+                    <td className="py-4 xl:text-xl lg:text-xl md:text-sm sm:text-sm xs:text-xs">
+                      {/* <div className="text-lg font-medium text-gray-900"> */}
+                      {inquiry.user}
+                      {/* </div> */}
                     </td>
 
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        <span className="px-2 inline-flex text-sm leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
-                          {inquiry.title.length > 8
-                            ? inquiry.title.substring(0, 8) + '...'
-                            : inquiry.title}
-                        </span>
-                      </div>
+                    <td className="py-4 xl:text-xl lg:text-xl md:text-sm sm:text-sm xs:text-xs">
+                      {/* <div className="text-lg font-medium text-gray-900"> */}
+                      <span className="px-2 inline-flex text-sm leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
+                        {inquiry.title.length > 8
+                          ? inquiry.title.substring(0, 8) + '...'
+                          : inquiry.title}
+                      </span>
+                      {/* </div> */}
                     </td>
-                    <td className="py-4">
-                      <div className="py-4 xs:text-xs lg:text-md">
-                        {inquiry.created_at}
-                      </div>
+                    <td className="py-4 xl:text-base lg:text-sm md:text-sm sm:text-sm xs:text-xs">
+                      {/* <div className="py-4 xs:text-xs lg:text-md"> */}
+                      {inquiry.created_at}
+                      {/* </div> */}
                     </td>
 
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex justify-center">
                         <div className="ml-4">
-                          <div className="text-xl font-medium text-gray-900">
+                          <div className="md:text-sm text-xl font-medium text-gray-900">
                             {/* <h2>{inquiry.status}</h2> */}
                             {inquiry.admin_answer.length > 0 ? (
                               <div className="text-xs">

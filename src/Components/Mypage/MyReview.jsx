@@ -102,25 +102,25 @@ function MyReview() {
                 <tr>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 tracking-wider w-72"
                   >
-                    글 번호
+                    No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 tracking-wider w-72"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 tracking-wider w-72"
                   >
                     작성자
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 tracking-wider w-72"
                   >
                     작성일자
                   </th>
@@ -140,11 +140,7 @@ function MyReview() {
                           }
                         >
                           <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs ">
-                            <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
-                                {review.review_no}
-                              </div>
-                            </div>
+                            {review.review_no}
                           </td>
                           <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
                             <span className="px-2 rounded-full bg-green-100 text-green-800 font-semibold">
@@ -174,7 +170,7 @@ function MyReview() {
             pageRangeDisplayed={itemsPerPage}
             pageCount={pageCount}
             renderOnZeroPageCount={null}
-            className="pagination_notice"
+            className="pagination_review"
           />
         </div>
       </div>

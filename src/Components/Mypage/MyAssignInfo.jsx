@@ -102,25 +102,25 @@ function MyAssignInfo() {
                 <tr>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 tracking-wider w-72"
                   >
-                    신청 번호
+                    No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 tracking-wider w-72"
                   >
                     동물 번호
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 tracking-wider w-72"
                   >
                     신청 날짜
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 tracking-wider w-72"
                   >
                     진행 상태
                   </th>
