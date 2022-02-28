@@ -474,7 +474,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                   />
                   {saveErrorMessages.title?.map((message, index) => (
                     <p key={index} className="text-md text-red-400">
-                      제목을 입력해주세요.
+                      제목을 한글로 입력해주세요.
                     </p>
                   ))}
                   <br />

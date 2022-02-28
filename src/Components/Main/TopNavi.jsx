@@ -112,7 +112,7 @@ function TopNav() {
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
       {/* 탑메뉴바 */}
-      <div className="py-4 bg-white grid grid-cols-4 text-center xs:text-xl sm:text-2xl font-bold">
+      <div className="py-4 bg-white grid grid-cols-4 text-center xs:text-lg sm:text-2xl font-bold">
         <MyLink to="/introduce/">
           <div className="hover:text-white hover:bg-orange-300 ">소개</div>
         </MyLink>
