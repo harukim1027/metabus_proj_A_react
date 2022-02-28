@@ -1,6 +1,4 @@
 import { useApiAxios } from 'api/base';
-import Button from 'Button';
-
 import useFieldValues from 'hooks/useFieldValues';
 import LoadingIndicator from 'LoadingIndicator';
 import { useEffect, useState } from 'react';
@@ -8,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import '../../App.css';
 import './accounts.css';
-import Captcha from './Captcha';
 
 const INIT_FIELD_VALUES = {
   userID: '',
