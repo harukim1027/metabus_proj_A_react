@@ -108,7 +108,7 @@ function NoticeList() {
                 name="query"
                 onChange={getQuery}
                 onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
+                className="relative rounded p-3 text-base mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
                 placeholder="제목을 검색하세요."
               />
               <button
@@ -138,7 +138,7 @@ function NoticeList() {
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center lg:text-xl md:text-md sm:text-sm xs:text-xs font-bold text-gray-500 tracking-wider w-44"
+                    className="px-6 py-3 text-center lg:text-xl md:text-base sm:text-sm xs:text-xs font-bold text-gray-500 tracking-wider w-44"
                   >
                     작성일
                   </th>
@@ -164,7 +164,7 @@ function NoticeList() {
                         </span>
                       </div>
                     </td>
-                    <td className="text-md py-4 lg:text-md md:text-md sm:text-sm xs:text-xs">
+                    <td className="text-base py-4 lg:text-base md:text-base sm:text-sm xs:text-xs">
                       {notice.created_at}
                     </td>
                   </tr>

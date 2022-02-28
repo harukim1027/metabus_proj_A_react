@@ -127,7 +127,7 @@ function AssignCheck(props) {
                       </div>
                     </div>
 
-                    <div className=" xs:text-md md:text-lg lg:text-xl text-right mb-3 mt-8 font-bold text-gray-700 mr-5">
+                    <div className=" xs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-bold text-gray-700 mr-5">
                       <label>입양 절차를 숙지했습니다&nbsp; </label>
                       <input
                         type="checkbox"
@@ -155,7 +155,7 @@ function AssignCheck(props) {
                         />
                       </div>
                     </div>
-                    <div className="xs:text-md md:text-lg lg:text-xl text-right pb-5 font-bold text-gray-700 mr-5">
+                    <div className="xs:text-base md:text-lg lg:text-xl text-right pb-5 font-bold text-gray-700 mr-5">
                       <label>입양 전 주의사항을 숙지했습니다&nbsp; </label>
                       <input
                         type="checkbox"
@@ -165,7 +165,7 @@ function AssignCheck(props) {
                       />
                     </div>
                     <div className="pb-3 text-right">
-                      <label className=" xs:text-md md:text-lg lg:text-xl bg-yellow-100 font-bold mr-5">
+                      <label className=" xs:text-base md:text-lg lg:text-xl bg-yellow-100 font-bold mr-5">
                         모두 동의합니다&nbsp;
                         <input
                           checked={all_check ? 'checked' : null}

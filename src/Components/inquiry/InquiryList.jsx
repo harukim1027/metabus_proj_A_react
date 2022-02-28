@@ -151,13 +151,13 @@ function InquiryList() {
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-md font-bold text-gray-500 uppercase tracking-wider"
+                    className="py-3 text-center xs:text-sm sm:text-base font-bold text-gray-500 uppercase tracking-wider"
                   >
                     문의일
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-md font-bold text-gray-500 uppercase tracking-wider"
+                    className="py-3 text-center xs:text-sm sm:text-base font-bold text-gray-500 uppercase tracking-wider"
                   >
                     답변 상태
                   </th>
@@ -190,7 +190,7 @@ function InquiryList() {
                       </div>
                     </td>
                     <td className="py-4">
-                      <div className="py-4 xs:text-xs lg:text-md">
+                      <div className="py-4 xs:text-xs lg:text-base">
                         {inquiry.created_at}
                       </div>
                     </td>

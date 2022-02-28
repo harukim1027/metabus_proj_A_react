@@ -112,7 +112,7 @@ function UserAssignList({ userId }) {
                     className=" cursor-pointer"
                   >
                     <td className="px-6 py-4">
-                      <div className="text-md font-medium text-blue-900">
+                      <div className="text-base font-medium text-blue-900">
                         {assign.assignment_no}
                       </div>
                     </td>

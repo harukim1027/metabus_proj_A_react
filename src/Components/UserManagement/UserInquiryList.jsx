@@ -124,7 +124,7 @@ function UserInquiryList({ userId }) {
                     onClick={() => navigate(`/inquiry/${inquiry.inquiry_no}/`)}
                   >
                     <td className="px-6 py-4">
-                      <div className="text-md font-medium text-gray-900">
+                      <div className="text-base font-medium text-gray-900">
                         {inquiry.inquiry_no}
                       </div>
                     </td>
