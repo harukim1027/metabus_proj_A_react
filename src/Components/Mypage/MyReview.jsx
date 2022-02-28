@@ -96,31 +96,31 @@ function MyReview() {
               조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
             </div>
           )}
-          <div className="mb-5 overflow-hidden border-b border-gray-200">
+          <div className="mb-5 overflow-hidden">
             <table className="mt-3 mb-5 mr-5 border text-center min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                   >
                     글 번호
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                   >
                     작성자
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
+                    className="xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider w-72"
                   >
                     작성일자
                   </th>
@@ -133,27 +133,30 @@ function MyReview() {
                     {reviewList.results
                       .filter((a) => a.user.userID === auth.userID)
                       .map((review) => (
-                        <tr key={review.review_no}>
-                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs ">
+                        <tr
+                          key={review.review_no}
+                          onClick={() =>
+                            navigate(`/review/${review.review_no}/`)
+                          }
+                        >
+                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs ">
                             <div className="ml-4">
                               <div className="text-sm font-medium text-gray-900">
                                 {review.review_no}
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
+                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
                             <span className="px-2 rounded-full bg-green-100 text-green-800 font-semibold">
-                              <Link to={`/review/${review.review_no}/`}>
-                                {review.title}
-                              </Link>
+                              {review.title.length > 8
+                                ? review.title.substring(0, 8) + '...'
+                                : review.title}
                             </span>
                           </td>
-                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
-                            <Link to={`/review/${review.review_no}/`}>
-                              {review.user.nickname}
-                            </Link>
+                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
+                            {review.user.nickname}
                           </td>
-                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-m sm:text-s xs:text-xs">
+                          <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-md sm:text-sm xs:text-xs">
                             {review.created_at}
                           </td>
                         </tr>
@@ -163,18 +166,17 @@ function MyReview() {
               </tbody>
             </table>
           </div>
+          <ReactPaginate
+            previousLabel="<"
+            breakLabel="..."
+            nextLabel=">"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={itemsPerPage}
+            pageCount={pageCount}
+            renderOnZeroPageCount={null}
+            className="pagination_notice"
+          />
         </div>
-        <ReactPaginate
-          previousLabel="<"
-          breakLabel="..."
-          nextLabel=">"
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={itemsPerPage}
-          pageCount={pageCount}
-          renderOnZeroPageCount={null}
-          className="pagination_notice"
-        />
-        <br />
       </div>
     </>
   );

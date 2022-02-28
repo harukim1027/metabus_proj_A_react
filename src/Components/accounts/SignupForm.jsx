@@ -120,7 +120,7 @@ function SignupForm() {
             <form onSubmit={handleSubmit} className=" w-2/3">
               <div className="flex justify-center">
                 <div className="w-full mb-10 items-stretch">
-                  <span className="mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m font-bold">
+                  <span className="mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md font-bold">
                     사용자 ID
                   </span>
 
@@ -130,11 +130,11 @@ function SignupForm() {
                     value={fieldValues.userID}
                     onChange={handleFieldChange}
                     placeholder="ID를 입력해주세요."
-                    className="rounded-md xl:text-m lg:text-m md:text-m sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
+                    className="rounded-md xl:text-md lg:text-md md:text-md sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  text-white px-1 py-2 rounded md:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  text-white px-1 py-2 rounded md:ml-2"
                     readOnly
                     onClick={(e) => clickButton(e)}
                   >
@@ -159,7 +159,7 @@ function SignupForm() {
                       </h2>
                     )}
                   {errorMessages.userID?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       {message}
                     </p>
                   ))}
@@ -168,7 +168,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full mb-10 items-stretch">
-                  <span className="mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-bold">
+                  <span className="mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-bold">
                     닉네임
                   </span>
                   <input
@@ -177,11 +177,11 @@ function SignupForm() {
                     value={fieldValues.nickname}
                     onChange={handleFieldChange}
                     placeholder="닉네임을 입력해주세요."
-                    className="rounded-md xl:text-m lg:text-m md:text-m sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
+                    className="rounded-md xl:text-md lg:text-md md:text-md sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  text-white px-1 py-2 rounded md:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  text-white px-1 py-2 rounded md:ml-2"
                     onClick={(e) => clickButton(e)}
                     readOnly
                   >
@@ -206,7 +206,7 @@ function SignupForm() {
                       </p>
                     )}
                   {errorMessages.nickname?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       사용할 수 없는 닉네임입니다. 다른 닉네임을 입력해주세요.
                     </p>
                   ))}
@@ -215,7 +215,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full mb-10">
-                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-extrabold text-slate-700 pb-2">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-extrabold text-slate-700 pb-2">
                     사용자 이름
                   </span>
                   <input
@@ -224,10 +224,10 @@ function SignupForm() {
                     value={fieldValues.name}
                     onChange={handleFieldChange}
                     placeholder="이름을 입력해주세요."
-                    className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
+                    className="rounded-md xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-3/4 sm:w-full xs:w-full"
                   />
                   {errorMessages.name?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       사용할 수 없는 이름입니다. 다른 이름을 입력해주세요.
                     </p>
                   ))}
@@ -236,7 +236,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full mb-10">
-                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-extrabold text-slate-700 pb-2">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-extrabold text-slate-700 pb-2">
                     연락처
                   </span>
                   <input
@@ -245,10 +245,10 @@ function SignupForm() {
                     value={fieldValues.phone_number}
                     onChange={handleFieldChange}
                     placeholder="입력형식 예) 010-0000-0000"
-                    className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
+                    className="rounded-md xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.phone_number?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       연락처를 정확하게 입력해주세요.
                     </p>
                   ))}
@@ -257,7 +257,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full mb-10">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-extrabold text-slate-700">
                     이메일
                   </span>
                   <input
@@ -266,10 +266,10 @@ function SignupForm() {
                     value={fieldValues.email}
                     onChange={handleFieldChange}
                     placeholder="입력형식 예 ) user@email.com"
-                    className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
+                    className="rounded-md xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.email?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       이미 사용중인 이메일 입니다. 다른 이메일을 입력해주세요 .
                     </p>
                   ))}
@@ -278,7 +278,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full mb-10">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-extrabold text-slate-700">
                     거주지역
                   </span>
                   <div className="relative">
@@ -286,7 +286,7 @@ function SignupForm() {
                       name="region"
                       value={fieldValues.region}
                       onChange={handleFieldChange}
-                      className="block appearance-none rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
+                      className="block appearance-none rounded-md xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                     >
                       <option value="서울">서울</option>
                       <option value="인천">인천</option>
@@ -312,7 +312,7 @@ function SignupForm() {
                   </div>
 
                   {errorMessages.region?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       거주지역을 다시 선택해주세요.
                     </p>
                   ))}
@@ -321,7 +321,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full mb-10">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-extrabold text-slate-700">
                     비밀번호 퀴즈
                   </span>
                   <div className="relative">
@@ -329,7 +329,7 @@ function SignupForm() {
                       name="password_quiz"
                       value={fieldValues.password_quiz}
                       onChange={handleFieldChange}
-                      className="block appearance-none rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
+                      className="block appearance-none rounded-md xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                     >
                       <option value="내 보물 1호는?">내 보물 1호는?</option>
                       <option value="처음 키운 반려동물 이름은?">
@@ -350,7 +350,7 @@ function SignupForm() {
                     </div>
                   </div>
                   {errorMessages.password_quiz?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       퀴즈를 다시 선택해주세요.
                     </p>
                   ))}
@@ -359,7 +359,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-extrabold text-slate-700">
                     비밀번호 퀴즈 정답
                   </span>
                   <input
@@ -368,17 +368,17 @@ function SignupForm() {
                     value={fieldValues.password_quiz_answer}
                     onChange={handleFieldChange}
                     placeholder="퀴즈 정답을 입력해주세요."
-                    className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
+                    className="rounded-md xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
 
                   {errorMessages.password_quiz_answer?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       퀴즈 정답을 정확히 입력해주세요.
                     </p>
                   ))}
                 </div>
               </div>
-              <h5 className="mt-1 xl:text-lg lg:text-lg md:text-m sm:text-s xs:text-xs  ml-2 mb-10 text-blue-400">
+              <h5 className="mt-1 xl:text-lg lg:text-lg md:text-md sm:text-s xs:text-xs  ml-2 mb-10 text-blue-400">
                 이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
               </h5>
 
@@ -386,7 +386,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full mb-10">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-extrabold text-slate-700">
                     비밀번호
                   </span>
                   <input
@@ -395,10 +395,10 @@ function SignupForm() {
                     value={fieldValues.password}
                     onChange={handleFieldChange}
                     placeholder="******************"
-                    className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
+                    className="rounded-md xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.password?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       입력형식이 맞지 않습니다. 다시 입력해주세요.
                     </p>
                   ))}
@@ -407,7 +407,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  font-extrabold text-slate-700">
                     비밀번호 확인
                   </span>
                   <input
@@ -416,16 +416,16 @@ function SignupForm() {
                     value={fieldValues.password2}
                     onChange={handleFieldChange}
                     placeholder="******************"
-                    className="rounded-md xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-m  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
+                    className="rounded-md xl:text-xl lg:text-xl md:text-md sm:text-md xs:text-md  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.password2?.map((message, index) => (
-                    <p key={index} className="text-m text-red-400">
+                    <p key={index} className="text-md text-red-400">
                       위에 입력한 비밀번호와 맞지 않습니다. 다시 입력해주세요.
                     </p>
                   ))}
                 </div>
               </div>
-              <h5 className="mt-1 ml-5 xl:text-lg lg:text-lg md:text-m sm:text-s xs:text-xs mb-10 text-blue-400">
+              <h5 className="mt-1 ml-5 xl:text-lg lg:text-lg md:text-md sm:text-s xs:text-xs mb-10 text-blue-400">
                 입력하신 비밀번호를 다시 입력해주세요 !
               </h5>
 

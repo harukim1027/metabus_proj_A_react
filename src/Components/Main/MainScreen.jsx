@@ -1,15 +1,11 @@
-import { Link, NavLink } from 'react-router-dom';
 import TopNav from './TopNavi';
 import '../../App.css';
-import ReviewList from 'Components/review/ReviewList';
-import CrewList from './CrewList';
 import './MainCrew.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function MainScreen() {
   const navigate = useNavigate();
-  const [category, setCategory] = useState('');
 
   // 스크롤 기능
 

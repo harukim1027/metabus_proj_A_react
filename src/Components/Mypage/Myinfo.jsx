@@ -70,56 +70,56 @@ function Myinfo() {
           <div className="mb-5 overflow-hidden border-b border-gray-200">
             <table className="mb-5 mr-5 mt-3 border text-center min-w-full divide-y divide-gray-200">
               <tr>
-                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider">
+                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-sm border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider">
                   이름
                 </th>
                 <td>{userData?.name}</td>
               </tr>
 
               <tr>
-                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider">
+                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-sm border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider">
                   아이디
                 </th>
                 <td>{userData?.userID}</td>
               </tr>
 
               <tr>
-                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider">
+                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-sm border border-slate-200 bg-gray-50 px-4 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider">
                   닉네임
                 </th>
                 <td>{userData?.nickname}</td>
               </tr>
 
               <tr>
-                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
+                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-sm border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
                   이메일
                 </th>
                 <td>{userData?.email}</td>
               </tr>
 
               <tr>
-                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
+                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-sm border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
                   연락처
                 </th>
                 <td>{userData?.phone_number}</td>
               </tr>
 
               <tr>
-                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
+                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-sm border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
                   거주지
                 </th>
                 <td>{userData?.region}</td>
               </tr>
 
               <tr>
-                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
+                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-sm border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
                   비밀번호 퀴즈
                 </th>
                 <td>{userData?.password_quiz}</td>
               </tr>
 
               <tr>
-                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-s border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
+                <th className="xl:text-xl lg:text-xl md:text-m sm:text-m xs:text-sm border border-slate-200 bg-gray-50 px-4 py-3 text-center font-bold text-gray-500 uppercase tracking-wider">
                   퀴즈 정답
                 </th>
                 <td>{userData?.password_quiz_answer}</td>

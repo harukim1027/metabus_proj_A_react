@@ -65,7 +65,7 @@ function FindId() {
           {' '}
           🐹 아이디 찾기{' '}
         </h2>
-        <span className="text-center block uppercase tracking-wide text-red-400 text-s font-bold mb-3">
+        <span className="text-center block uppercase tracking-wide text-red-400 text-sm font-bold mb-3">
           아이디를 찾기 위해서는 회원님의 이름과 이메일이 필요합니다 ❕
         </span>
 
@@ -99,7 +99,7 @@ function FindId() {
                 placeholder="이름을 입력해주세요."
               />
               {errorMessages.name?.map((message, index) => (
-                <p key={index} className="text-m text-red-400">
+                <p key={index} className="text-md text-red-400">
                   {message}
                 </p>
               ))}
@@ -119,7 +119,7 @@ function FindId() {
                 placeholder="이메일을 입력해주세요."
               />
               {errorMessages.email?.map((message, index) => (
-                <p key={index} className="text-m text-red-400">
+                <p key={index} className="text-md text-red-400">
                   {message}
                 </p>
               ))}
@@ -159,7 +159,7 @@ function FindId() {
                     .map((user) => (
                       <>
                         <div className="mt-5 mb-5">
-                          <span className="mb-2 block uppercase tracking-wide text-gray-700 text-m font-bold">
+                          <span className="mb-2 block uppercase tracking-wide text-gray-700 text-md font-bold">
                             {user.name}님의 아이디는
                           </span>
                           <span className="bg-gray-100 text-xl text-gray-700  font-bold">
@@ -168,7 +168,7 @@ function FindId() {
                           <div className="text-right mr-5 mt-5">
                             <a
                               href="/accounts/login/"
-                              className=" text-right text-m hover:bg-blue-200 hover:text-white font-semibold"
+                              className=" text-right text-md hover:bg-blue-200 hover:text-white font-semibold"
                             >
                               <span class="h-3 w-3 text-gray-700">
                                 <span class=" animate-ping absolute inline-flex h-5 w-5 rounded-full bg-sky-400 opacity-75"></span>

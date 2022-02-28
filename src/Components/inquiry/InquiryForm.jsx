@@ -129,7 +129,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               {auth.isLoggedIn && !auth.is_staff && (
                 <>
                   <div className="ml-3 mb-3 w-full">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
                       제목
                     </span>
                     <input
@@ -149,7 +149,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
 
                   {/* 내용 입력 인풋박스 */}
                   <div className="ml-3 mb-3 w-full ">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
                       내용
                     </span>
                     <textarea
@@ -169,7 +169,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               )}
               {auth.isLoggedIn && auth.is_staff && inquiry && (
                 <div className="ml-3 mb-3 w-full">
-                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-m font-bold mb-2">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
                     제목
                   </span>
                   <h1

@@ -548,7 +548,7 @@ function AssignmentForm({ handleDidSave }) {
                 {help && (
                   <div className="mt-1 justify-center">
                     <p className="bg-yellow-100 text-red-300">* 알림 *</p>
-                    <p className="bg-yellow-100 text-m text-blue-300">
+                    <p className="bg-yellow-100 text-md text-blue-300">
                       반려동물도 정기적으로 건강 관리가 필요하며, 그에 따른
                       비용을 고려해야 합니다.
                     </p>
@@ -628,7 +628,7 @@ function AssignmentForm({ handleDidSave }) {
               <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-md sm:text-lg md:text-2xl font-bold mb-2">
                 거주지 사진
               </span>
-              <p className="text-m text-blue-900 mb-1">
+              <p className="text-md text-blue-900 mb-1">
                 ( 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다! )
               </p>
 

@@ -115,10 +115,10 @@ function InquiryList() {
                 placeholder="검색어를 입력해주세요."
                 onChange={getQuery}
                 onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-m mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
+                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
               />
               {errorMessages.query?.map((message, index) => (
-                <p key={index} className="text-m text-red-400">
+                <p key={index} className="text-md text-red-400">
                   {message}
                 </p>
               ))}
@@ -191,7 +191,7 @@ function InquiryList() {
 
                     <td className="py-4">
                       <div className="text-lg font-medium text-gray-900">
-                        <span className="px-2 inline-flex text-s leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
+                        <span className="px-2 inline-flex text-sm leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
                           {inquiry.title.length > 8
                             ? inquiry.title.substring(0, 8) + '...'
                             : inquiry.title}

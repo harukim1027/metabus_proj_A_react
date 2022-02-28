@@ -156,7 +156,7 @@ function ReviewList() {
                 name="query"
                 onChange={getQuery}
                 onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-m mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
+                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
                 placeholder="제목을 검색하세요."
               />
               <button
