@@ -182,7 +182,7 @@ function ReviewList() {
             <div className="flex justify-end">
               <button
                 onClick={() => navigate('/review/new/')}
-                className="ml-10 hover:scale-110 xs:w-10 sm:w-14"
+                className="hover:scale-110 xs:w-10 sm:w-14"
                 readOnly
               >
                 <img src="/pen2.png" alt="button"></img>

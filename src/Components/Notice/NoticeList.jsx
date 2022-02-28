@@ -174,7 +174,7 @@ function NoticeList() {
               <div className="flex justify-end mr-5">
                 <button
                   onClick={() => navigate('/admin/notice/new/')}
-                  className=" ml-10 hover:scale-110 xs:w-10 sm:w-14"
+                  className="hover:scale-110 xs:w-10 sm:w-14"
                   readOnly
                 >
                   <img src="/pen2.png" alt="button"></img>
