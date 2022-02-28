@@ -107,7 +107,7 @@ function ReviewList() {
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
-          <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+          <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 입양 후기 "</span>
             </span>
@@ -187,7 +187,7 @@ function ReviewList() {
                 className="ml-10 hover:scale-110 xs:w-14 sm:w-20"
                 readOnly
               >
-                <img src="/pen.png" alt="button"></img>
+                <img src="/pen2.png" alt="button"></img>
               </button>
             </div>
           )}
