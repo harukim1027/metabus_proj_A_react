@@ -648,7 +648,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                         <input
                           type="file"
                           accept=".png, .jpg, .jpeg, .jfif"
-                          name="image1"
+                          name="image4"
                           onChange={(e) => {
                             imgpreview4(e, e.target.files[0]);
                           }}
@@ -722,7 +722,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                           X
                         </button>
                       </li>
-                      {saveErrorMessages.image1?.map((message, index) => (
+                      {saveErrorMessages.image5?.map((message, index) => (
                         <p key={index} className="text-xs text-red-400">
                           이미지 첨부가 필요합니다!
                         </p>
