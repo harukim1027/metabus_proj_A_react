@@ -60,7 +60,7 @@ function TopNav() {
       {auth.isLoggedIn && (
         <>
           <div className="relative">
-            <span className="rounded-xl bg-white shadow-md border text-center font-bold absolute xs:top-25 sm:top-10 xs:inset-x-0 sm:inset-x-auto sm:left-10">
+            <span className="rounded-xl bg-white shadow-md border text-center font-bold absolute xs:inset-x-0 sm:inset-x-auto sm:left-10 sm:top-10 sm:text-xl">
               &nbsp; &nbsp;오늘도 찾아주셨네요, {auth.nickname} 님 ❕ &nbsp;
               &nbsp;
             </span>
