@@ -83,7 +83,7 @@ function AssignDetail({ assignId }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="assignmanagement_header rounded-xl shadow-md overflow-hidden md:px-20 sm:px-0 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
+        <div className="assignmanagement_header rounded-xl shadow-md overflow-hidden md:px-20 sm:px-0 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 신청자 정보 "</span>
@@ -251,7 +251,7 @@ function AssignDetail({ assignId }) {
       </div>
 
       <div className="header flex flex-wrap justify-center">
-        <div className="bg-white rounded-xl shadow-md overflow-hidden lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <div className="flex justify-center py-6 mb-3">
             <h2>💕입양 신청 중💕</h2>
           </div>
@@ -259,7 +259,7 @@ function AssignDetail({ assignId }) {
       </div>
 
       <div className="header flex flex-wrap justify-center">
-        <div className="assignmanagement_header rounded-xl shadow-md md:px-20 sm:px-0 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
+        <div className="assignmanagement_header rounded-xl shadow-md md:px-20 sm:px-0 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           {/* <div className=" pt-6 mb-3"> */}
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span className="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">

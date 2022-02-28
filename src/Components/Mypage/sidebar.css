@@ -16,10 +16,11 @@
   box-sizing: border-box;
   border-radius: 5px;
   border: rgb(255, 255, 255);
+  padding-top: 80px;
 }
 .button {
   position: relative;
-  left: 210px;
+  left: 68px;
   top: 10px;
   width: 60px;
   height: 60px;

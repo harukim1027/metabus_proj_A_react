@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import styles from './sidebar.css';
 
-const Sidebar = ({ width = 280, children }) => {
+const Sidebar = () => {
   const [isOpen, setOpen] = useState(false);
   const [xPosition, setX] = useState(200);
   const side = useRef();
@@ -40,15 +40,69 @@ const Sidebar = ({ width = 280, children }) => {
   });
 
   return (
-    <div
-      ref={side}
-      className="sidebar absolute"
-      style={{
-        width: '200px',
-        height: '330px',
-        transform: `translatex(${-xPosition}px)`,
-      }}
-    >
+    <>
+      <div
+        ref={side}
+        className="sidebar absolute"
+        style={{
+          width: '200px',
+          height: '345px',
+          transform: `translatex(${-xPosition}px)`,
+        }}
+      >
+        <div className="mb-5">
+          <ul>
+            <li className="bg-gray-100 py-2 text-2xl text-center ">
+              {auth.userID}
+            </li>
+            <hr />
+            <li className="mx-5 my-3 ">
+              <div
+                onClick={() => navigate(`/mypage/userinfo/`)}
+                className="cursor-pointer hover:bg-blue-800"
+              >
+                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
+                  내 정보
+                </span>
+              </div>
+            </li>
+            <hr />
+            <li className="mx-5 my-3">
+              <div
+                onClick={() => navigate(`/mypage/assigninfo/`)}
+                className="cursor-pointer hover:bg-blue-400"
+              >
+                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
+                  내 입양신청
+                </span>
+              </div>
+            </li>
+            <hr />
+            <li className="mx-5 my-3">
+              <div
+                onClick={() => navigate(`/mypage/myposts/`)}
+                className="cursor-pointer hover:bg-purple-300"
+              >
+                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
+                  내 작성글
+                </span>
+              </div>
+            </li>
+            <hr />
+
+            <li className="mx-5 my-3">
+              <div
+                onClick={() => navigate(`/mypage/myinquiry/`)}
+                className="cursor-pointer hover:bg-yellow-300"
+              >
+                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
+                  내 문의사항
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
       <button onClick={() => toggleMenu()} className="button">
         {isOpen ? (
           <>
@@ -68,59 +122,7 @@ const Sidebar = ({ width = 280, children }) => {
           </>
         )}
       </button>
-      <div className="mb-5">
-        <h2 className="bg-gray-100  mb-5 text-2xl text-center">
-          {auth.userID} <hr />
-        </h2>
-
-        <ul>
-          <li className="mx-5 mb-3 ">
-            <div
-              onClick={() => navigate(`/mypage/userinfo/`)}
-              className="cursor-pointer hover:bg-blue-800"
-            >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
-                내 정보
-              </span>
-            </div>
-          </li>
-          <hr />
-          <li className="mx-5 mb-3 mt-3">
-            <div
-              onClick={() => navigate(`/mypage/assigninfo/`)}
-              className="cursor-pointer hover:bg-blue-400"
-            >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
-                내 입양신청
-              </span>
-            </div>
-          </li>
-          <hr />
-          <li className="mx-5 mb-3 mt-3">
-            <div
-              onClick={() => navigate(`/mypage/myposts/`)}
-              className="cursor-pointer hover:bg-purple-300"
-            >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
-                내 작성글
-              </span>
-            </div>
-          </li>
-          <hr />
-
-          <li className="mx-5 mb-5 mt-3">
-            <div
-              onClick={() => navigate(`/mypage/myinquiry/`)}
-              className="cursor-pointer hover:bg-yellow-300"
-            >
-              <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
-                내 문의사항
-              </span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+    </>
   );
 };
 

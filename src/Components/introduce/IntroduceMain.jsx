@@ -28,7 +28,7 @@ function IntroduceMain() {
   return (
     <>
       <div className="header flex justify-center" id="topLoc">
-        <div className="flex flex-wrap justify-center overflow-hidden md:px-10 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
+        <div className="flex flex-wrap justify-center overflow-hidden md:px-10 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <div className="introduce_header shadow-md flex flex-wrap justify-center w-full">
             <div className="mt-10 assign_explanation flex flex-wrap justify-center">
               <img

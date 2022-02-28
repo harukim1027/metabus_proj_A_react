@@ -220,7 +220,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
     <>
       {/* review_header : 배경 흰색 */}
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
+        <div className="review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
             <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl text-6xl font-extrabold">
               <span class="relative text-white">
@@ -353,7 +353,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       </div>
 
       <div className="header flex flex-wrap justify-center" id="form">
-        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <p className="text-center text-blue-900 font-bold text-xl mb-5">
             ⬇ 선택하신 크루원 정보가 표시됩니다. ⬇
           </p>
@@ -449,7 +449,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       {/* 리뷰 글 폼 */}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <form
             onSubmit={handleSubmit}
             className="review_header rounded-md sm:px-0 md:px-20 pt-6 pb-8"

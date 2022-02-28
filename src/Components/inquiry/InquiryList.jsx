@@ -89,7 +89,7 @@ function InquiryList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 1:1 문의 "</span>
@@ -99,7 +99,7 @@ function InquiryList() {
           {loading && '로딩 중 ...'}
 
           <div className="mb-6 mt-10">
-            <div className="  xs:flex-none xl:flex xl:justify-between">
+            <div className="xs:flex-none xl:flex xl:justify-between">
               <div></div>
               <div className="xs:mt-5 xl:mt-0">
                 <div className="flex justify-center">
@@ -133,31 +133,31 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     작성자
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     문의일
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     답변
                   </th>
@@ -169,23 +169,25 @@ function InquiryList() {
                     onClick={() => navigate(`/inquiry/${inquiry.inquiry_no}/`)}
                     className="cursor-pointer"
                   >
-                    <td className="py-4 text-sm font-medium text-gray-900">
+                    <td className="py-4 xs:text-sm sm:text-lg font-medium text-gray-900">
                       {inquiry.inquiry_no}
                     </td>
                     <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs whitespace-nowrap">
                       {inquiry.user}
                     </td>
 
-                    <td className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs">
+                    <td className="px-3 py-4 font-semibold lg:text-xl md:text-md xs:text-sm">
                       <span className="bg-yellow-100 rounded-full">
                         {inquiry.title.length > 15
                           ? inquiry.title.substring(0, 15) + '...'
                           : inquiry.title}
                       </span>
                     </td>
-                    <td className="py-4 text-xs">{inquiry.created_at}</td>
+                    <td className="py-4 xs:text-xs sm:text-base">
+                      {inquiry.created_at}
+                    </td>
 
-                    <td className="px-3 py-2 whitespace-nowrap">
+                    <td className="px-3 py-4 whitespace-nowrap">
                       <div className="flex justify-center">
                         <div className="text-base font-medium text-gray-900">
                           {inquiry.admin_answer.length > 0 ? (
