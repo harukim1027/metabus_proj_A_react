@@ -88,7 +88,7 @@ function ChangePassword() {
                 >
                   {/* 아이디 */}
                   <span className="mt-5 after:content-['*'] after:ml-0.5 after:text-red-500  block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                    사용자 아이디{' '}
+                    사용자 아이디
                   </span>
                   <span className=" block uppercase tracking-wide text-blue-700 text-xs font-bold mb-2">
                     : 회원님의 아이디를 입력해주세요.
@@ -99,7 +99,7 @@ function ChangePassword() {
                     value={fieldValues.userID}
                     onChange={handleFieldChange}
                     className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400  px-3 md:mb-0"
-                    placeholder="이름을 입력해주세요."
+                    placeholder="ID를 입력해주세요."
                   />
                   {errorMessages.userID?.map((message, index) => (
                     <p key={index} className="text-base text-red-400">
@@ -109,7 +109,7 @@ function ChangePassword() {
 
                   {/* 이름 */}
                   <span className="mt-5 after:content-['*'] after:ml-0.5 after:text-red-500  block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
-                    사용자 이름{' '}
+                    사용자 이름
                   </span>
                   <span className=" block uppercase tracking-wide text-blue-700 text-xs font-bold mb-2">
                     : 회원님의 이름을 입력해주세요.
