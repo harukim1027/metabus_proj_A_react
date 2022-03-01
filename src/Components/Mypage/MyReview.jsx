@@ -93,7 +93,7 @@ function MyReview() {
           )}
           {error?.response?.status === 401 && (
             <div className="text-red-400">
-              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+              조회에 실패했습니다.조회하고자 하는 정보를 다시 확인해주세요.
             </div>
           )}
           <div className="mb-5 overflow-hidden">

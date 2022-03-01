@@ -142,7 +142,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                     />
                     {saveErrorMessages.title?.map((message, index) => (
                       <p key={index} className="text-base text-red-400">
-                        제목을 입력해주세요.
+                        제목을 다시 입력해주세요.
                       </p>
                     ))}
                   </div>
@@ -161,7 +161,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                     />
                     {saveErrorMessages.content?.map((message, index) => (
                       <p key={index} className="text-base text-red-400">
-                        내용을 입력해주세요.
+                        내용을 다시 입력해주세요.
                       </p>
                     ))}
                   </div>

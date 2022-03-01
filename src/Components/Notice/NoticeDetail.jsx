@@ -71,8 +71,14 @@ function NoticeDetail({ noticeId }) {
             </span>
           </blockquote>
 
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
+          {loading && <LoadingIndicator>로딩 중 ...</LoadingIndicator>}
+          {error && (
+            <>
+              <p className="text-red-400">
+                &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+              </p>
+            </>
+          )}
 
           <div className="flex justify-center">
             <div className="px-4 py-5 xs:w-full sm:w-2/3">

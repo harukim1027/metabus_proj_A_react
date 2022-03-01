@@ -109,9 +109,6 @@ function LoginForm() {
             className="bg-white shadow-md rounded-xl px-20 pt-6 pb-8 mb-4"
             onSubmit={handleSubmit}
           >
-            {/* 로딩 에러 */}
-            {loading && '로딩 중 ...'}
-
             <div className="mt-10 mb-4">
               <label className=" block text-gray-700 text-2xl font-bold mb-2">
                 ID
@@ -143,9 +140,17 @@ function LoginForm() {
               <Button>Log In</Button>
               {/* 저장 에러  */}
               <div className="text-sm">
-                {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
+                {loading && <LoadingIndicator>로그인 중 ...</LoadingIndicator>}
                 {error?.response?.status === 401 && (
                   <div className="text-red-400">로그인에 실패했습니다.</div>
+                )}
+                {error && (
+                  <>
+                    <p className="text-red-400 mt-3">로그인에 실패했습니다.</p>
+                    <p className="text-red-400">
+                      아이디, 비밀번호를 다시 확인해주세요.
+                    </p>
+                  </>
                 )}
               </div>
             </div>
