@@ -89,9 +89,7 @@ function MyAssignInfo() {
             </>
           )}
           {error?.response?.status === 401 && (
-            <div className="text-red-400">
-              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
-            </div>
+            <div className="text-red-400">조회에 실패했습니다.</div>
           )}
 
           {/* table 시작 */}

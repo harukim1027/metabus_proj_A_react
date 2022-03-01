@@ -64,12 +64,6 @@ function ChangePassword() {
           <h2 className="text-center text-4xl py-5 pb-5 font-bold  mb-3">
             🐯 비밀번호 변경하기
           </h2>
-          {/* 저장 에러  */}
-          <div>
-            {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
-            {saveError &&
-              `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
-          </div>
 
           {/* 로딩 에러 */}
           {loading && '로딩 중 ...'}
@@ -103,7 +97,7 @@ function ChangePassword() {
                   />
                   {errorMessages.userID?.map((message, index) => (
                     <p key={index} className="text-base text-red-400">
-                      {message}
+                      회원님의 아이디를 정확히 입력해주세요.{' '}
                     </p>
                   ))}
 
@@ -124,7 +118,7 @@ function ChangePassword() {
                   />
                   {errorMessages.name?.map((message, index) => (
                     <p key={index} className="text-base text-red-400">
-                      {message}
+                      회원님의 이름을 정확히 입력해주세요.{' '}
                     </p>
                   ))}
 
@@ -166,7 +160,7 @@ function ChangePassword() {
 
                   {errorMessages.password_quiz?.map((message, index) => (
                     <p key={index} className="text-base text-red-400">
-                      {message}
+                      회원가입 시 선택한 퀴즈를 선택해주세요.
                     </p>
                   ))}
 
@@ -189,7 +183,7 @@ function ChangePassword() {
 
                   {errorMessages.password_quiz_answer?.map((message, index) => (
                     <p key={index} className="text-base text-red-400">
-                      {message}
+                      정확한 퀴즈의 정답을 입력해주세요.
                     </p>
                   ))}
 
@@ -209,6 +203,14 @@ function ChangePassword() {
                     >
                       비밀번호 찾기
                     </button>
+                    {/* 저장 에러  */}
+                    <div>
+                      {loading && (
+                        <LoadingIndicator>저장 중 ...</LoadingIndicator>
+                      )}
+                      {saveError &&
+                        `저장 중 에러가 발생했습니다. (${saveError.response?.status} ${saveError.response?.statusText})`}
+                    </div>
                   </div>
                 </form>
                 <div className="text-center">

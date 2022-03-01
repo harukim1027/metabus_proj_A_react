@@ -92,11 +92,7 @@ function AssignList() {
             </span>
           </blockquote>
           {/* 로딩 에러 */}
-          {loading && (
-            <>
-              <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
-            </>
-          )}
+          {loading && <LoadingIndicator>로딩 중 ...</LoadingIndicator>}
           {error && (
             <>
               <p className="text-red-400">

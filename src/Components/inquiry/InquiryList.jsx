@@ -95,8 +95,6 @@ function InquiryList() {
               <span class="relative text-white">" 1:1 문의 "</span>
             </span>
           </blockquote>
-          {/* 로딩 에러 */}
-          {loading && '로딩 중 ...'}
 
           <div className="mb-6 mt-10">
             <div className="xs:flex-none xl:flex xl:justify-between">

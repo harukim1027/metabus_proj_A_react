@@ -231,9 +231,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
           {/* 로딩 에러 */}
           {loading && (
-            <>
-              <p className="text-blue-400">&nbsp;&nbsp;로딩 중...</p>
-            </>
+            <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
           )}
           {error && (
             <>
@@ -754,8 +752,13 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     {saveLoading && (
                       <LoadingIndicator>저장 중...</LoadingIndicator>
                     )}
-                    {saveError &&
-                      `저장 중 에러가 발생했습니다. 메세지를 확인해주세요.`}
+                    {saveError && (
+                      <>
+                        <p className="text-red-400">
+                          `저장 중 에러가 발생했습니다. 메세지를 확인해주세요.`
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
               </form>

@@ -138,12 +138,12 @@ function ReviewList() {
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mr-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-base"
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-base"
                     placeholder="번호, 제목, 작성자 ID를 검색하세요."
                   />
                   <button
                     onClick={handleBTNPress}
-                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-white px-3 py-2 border-2 w-24 xs:text-sm sm:text-xl"
+                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-white px-3 py-2 border-2 w-24 xs:text-sm sm:text-xl mr-2"
                     readOnly
                   >
                     검색

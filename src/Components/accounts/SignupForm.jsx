@@ -157,7 +157,7 @@ function SignupForm() {
                     )}
                   {errorMessages.userID?.map((message, index) => (
                     <p key={index} className="text-base text-red-400">
-                      {message}
+                      다른 아이디를 입력해주세요.
                     </p>
                   ))}
                 </div>
@@ -436,6 +436,16 @@ function SignupForm() {
                   {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
                   {error?.response?.status === 401 && (
                     <div className="text-red-400">회원가입에 실패했습니다.</div>
+                  )}
+                  {error && (
+                    <>
+                      <p className="text-red-400 mt-3 font-semibold">
+                        😥 회원가입에 실패했습니다.
+                      </p>
+                      <p className="text-red-400 font-semibold ">
+                        정보를 다시 확인해주세요.
+                      </p>
+                    </>
                   )}
                 </div>
               </div>

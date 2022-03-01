@@ -70,7 +70,7 @@ function InquiryDetail({ inquiryId }) {
             </span>
           </blockquote>
           {/* 로딩 에러 */}
-          {loading && '로딩 중 ...'}
+          {loading && <LoadingIndicator>로딩 중 ...</LoadingIndicator>}
           {error && '로딩 중 에러가 발생했습니다.'}
           {error?.response?.status === 401 && (
             <div className="text-red-400">
@@ -150,8 +150,16 @@ function InquiryDetail({ inquiryId }) {
                 {/* 저장 에러  */}
                 <div>
                   {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
-                  {error &&
-                    `저장 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+                  {error && (
+                    <>
+                      {/* 로딩 에러 */}
+                      <p className="text-red-400">
+                        &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
+                      </p>
+                      `저장 중 에러가 발생했습니다. (${error.response?.status} $
+                      {error.response?.statusText})`
+                    </>
+                  )}
                 </div>
               </div>
             </div>

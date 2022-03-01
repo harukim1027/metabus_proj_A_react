@@ -162,6 +162,19 @@ function ReviewList() {
                   검색
                 </button>
               </div>
+              <div className="flex xl:justify-end xs:justify-center">
+                {loading && (
+                  <LoadingIndicator>&nbsp;&nbsp;조회 중...</LoadingIndicator>
+                )}
+                {error && (
+                  <>
+                    <p className="text-red-400">
+                      &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. ! (조회된
+                      정보가 없습니다.)
+                    </p>
+                  </>
+                )}
+              </div>
             </div>
           </div>
 

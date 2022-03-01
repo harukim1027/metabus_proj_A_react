@@ -725,7 +725,7 @@ function AssignmentForm({ handleDidSave }) {
                   {saveErrorMessages.picture_of_residence1?.map(
                     (message, index) => (
                       <p key={index} className="text-base text-red-400 ml-3">
-                        {message}
+                        파일을 확인해주세요.
                       </p>
                     ),
                   )}
@@ -749,7 +749,7 @@ function AssignmentForm({ handleDidSave }) {
                   {saveErrorMessages.picture_of_residence2?.map(
                     (message, index) => (
                       <p key={index} className="text-base text-red-400 ml-3">
-                        {message}
+                        파일을 확인해주세요.{' '}
                       </p>
                     ),
                   )}
@@ -773,7 +773,7 @@ function AssignmentForm({ handleDidSave }) {
                   {saveErrorMessages.picture_of_residence3?.map(
                     (message, index) => (
                       <p key={index} className="text-base text-red-400 ml-3">
-                        {message}
+                        파일을 확인해주세요.{' '}
                       </p>
                     ),
                   )}
@@ -846,7 +846,7 @@ function AssignmentForm({ handleDidSave }) {
                 />
                 {saveErrorMessages.date_to_meet?.map((message, index) => (
                   <p key={index} className="text-base text-red-400">
-                    {message}
+                    날짜를 다시 선택해주세요.{' '}
                   </p>
                 ))}
                 <p className="text-blue-400 mb-2 mt-1">

@@ -69,8 +69,11 @@ function FindId() {
           아이디를 찾기 위해서는 회원님의 이름과 이메일이 필요합니다 ❕
         </span>
 
-        {/* 로딩 에러 */}
-        {loading && '로딩 중 ...'}
+        {/* 저장 에러  */}
+        <div>
+          {error &&
+            `페이지 이동 중 에러가 발생했습니다. (${error.response?.status} ${error.response?.statusText})`}
+        </div>
         {error && '로딩 중 에러가 발생했습니다.'}
         {error?.response?.status === 401 && (
           <div className="text-red-400">
@@ -100,7 +103,7 @@ function FindId() {
               />
               {errorMessages.name?.map((message, index) => (
                 <p key={index} className="text-base text-red-400">
-                  {message}
+                  회원가입 시 입력한 이름을 정확히 입력해주세요!
                 </p>
               ))}
 
@@ -120,7 +123,7 @@ function FindId() {
               />
               {errorMessages.email?.map((message, index) => (
                 <p key={index} className="text-base text-red-400">
-                  {message}
+                  회원가입 시 입력한 이메일을 정확히 입력해주세요!
                 </p>
               ))}
 
