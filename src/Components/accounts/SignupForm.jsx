@@ -262,7 +262,7 @@ function SignupForm() {
                     name="email"
                     value={fieldValues.email}
                     onChange={handleFieldChange}
-                    placeholder="입력형식 예 ) user@email.com"
+                    placeholder="입력형식 예) user@email.com"
                     className="rounded-md xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.email?.map((message, index) => (

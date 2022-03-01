@@ -559,7 +559,6 @@ function NoticeForm({ noticeId, handleDidSave }) {
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
                         name="file3"
-                        placeholder="선택된 파일 없음"
                         className="text-gray-800 "
                         onChange={handleFieldChange}
                       />
