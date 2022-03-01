@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import '../../App.css';
 import 'css/pagination_userManage.css';
+import LoadingIndicator from 'LoadingIndicator';
 
 function UserManagementIndex() {
   const [query, setQuery] = useState(null);
@@ -95,25 +96,36 @@ function UserManagementIndex() {
             </span>
           </blockquote>
 
-          {loading && '로딩 중 ...'}
-          {error && '로딩 중 에러가 발생했습니다.'}
-
-          <div className="ml-3 mb-6 mt-3">
-            <div className="text-right">
-              <input
-                type="text"
-                placeholder="아이디,이름,닉네임으로 검색"
-                onChange={getQuery}
-                onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
-              />
-              <button
-                type="submit"
-                onClick={handleBTNPress}
-                className="relative ml-2 mr-4 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-xl border-4 text-white px-3 py-2 rounded"
-              >
-                검색
-              </button>
+          <div className="mb-6 mt-10">
+            <div className="xs:flex-none xl:flex xl:justify-between">
+              <div></div>
+              <div className="xs:mt-5 xl:mt-0">
+                <div className="flex justify-center">
+                  <input
+                    type="text"
+                    name="query"
+                    onChange={getQuery}
+                    onKeyPress={handleKeyPress}
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
+                    placeholder="제목을 검색하세요."
+                  />
+                  <button
+                    onClick={handleBTNPress}
+                    className="rounded bg-blue-900 hover:bg-blue-500 border-blue-900 hover:border-blue-500 text-xl text-white w-24 px-3 py-2 border-2"
+                    readOnly
+                  >
+                    검색
+                  </button>
+                </div>
+                <div className="flex justify-center">
+                  {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
+                  {error && (
+                    <h2 className="">
+                      검색 중 에러가 발생했습니다. (검색 결과가 없습니다.)
+                    </h2>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
 

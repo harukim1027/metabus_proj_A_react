@@ -103,13 +103,12 @@ function ReviewList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
-          <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+          <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 입양 후기 "</span>
             </span>
           </blockquote>
-
           {loading && (
             <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
           )}
@@ -123,55 +122,52 @@ function ReviewList() {
           {error?.response?.status === 401 && (
             <div className="text-red-400">조회에 실패했습니다.</div>
           )}
-          <div className="ml-3 mb-6 mt-3">
-            <form onSubmit={() => moveCategory()}>
-              <select
-                name="category"
-                value={fieldValues.category}
-                onChange={handleFieldChange}
-                className="text-xl border-2 border-purple-400 rounded p-2"
-                defaultValue="고양이"
-              >
-                <option value="전체">전체</option>
-                <option value="강아지">강아지</option>
-                <option value="고양이">고양이</option>
-              </select>
-            </form>
-          </div>
 
           {/* 검색 필드 + CSS */}
-          <div className="ml-3 mb-6 mt-3">
-            <div className="text-right">
-              {auth.isLoggedIn && !auth.is_staff && (
+          {/* 검색, 카테고리, 글 작성 버튼 위치 고정하기 (xs랑 sm 범위에서만) */}
+          <div className="mb-6 mt-10">
+            <div className=" xs:flex-none xl:flex xl:justify-between">
+              <div className="ml-3">
+                <form
+                  onSubmit={() => moveCategory()}
+                  className="flex justify-center"
+                >
+                  <select
+                    name="category"
+                    value={fieldValues.category}
+                    onChange={handleFieldChange}
+                    className="text-xl border-2 border-purple-400 rounded p-2 w-60 text-center"
+                    defaultValue="고양이"
+                  >
+                    <option value="전체">전체</option>
+                    <option value="강아지">강아지</option>
+                    <option value="고양이">고양이</option>
+                  </select>
+                </form>
+              </div>
+              <div className="flex justify-center xs:mt-5 xl:mt-0">
+                <input
+                  type="text"
+                  name="query"
+                  onChange={getQuery}
+                  onKeyPress={handleKeyPress}
+                  className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mr-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-xl"
+                  placeholder="제목을 검색하세요."
+                />
                 <button
-                  onClick={() => navigate('/review/new/')}
-                  className=" icon_size float-left ml-10 hover:scale-110"
+                  onClick={handleBTNPress}
+                  className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-white px-3 py-2 border-2 w-24 xs:text-sm sm:text-xl"
                   readOnly
                 >
-                  <img src="/pen.png" alt="button"></img>
+                  검색
                 </button>
-              )}
-              <input
-                type="text"
-                name="query"
-                onChange={getQuery}
-                onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
-                placeholder="제목을 검색하세요."
-              />
-              <button
-                onClick={handleBTNPress}
-                className="relative ml-2 mr-4 flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-xl border-4 text-white px-3 py-2 rounded"
-                readOnly
-              >
-                검색
-              </button>
+              </div>
             </div>
           </div>
 
-          <hr className="mb-3 mt-3" />
+          <hr className="mb-3" />
 
-          <div className="flex flex-wrap justify-center rounded mb-20">
+          <div className="flex flex-wrap justify-center rounded mb-20 mt-10">
             {reviewList?.results
               ?.filter((a) => a.adoptassignment.animal.category === '고양이')
               .map((review) => (
@@ -183,6 +179,17 @@ function ReviewList() {
                 </div>
               ))}
           </div>
+          {auth.isLoggedIn && !auth.is_staff && (
+            <div className="flex justify-end">
+              <button
+                onClick={() => navigate('/review/new/')}
+                className="hover:scale-110 xs:w-10 sm:w-14"
+                readOnly
+              >
+                <img src="/pen2.png" alt="button"></img>
+              </button>
+            </div>
+          )}
           <ReactPaginate
             previousLabel="<"
             breakLabel="..."

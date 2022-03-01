@@ -79,9 +79,6 @@ function AnimalDetail({ animalId }) {
           {loading && (
             <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
           )}
-          {deleteLoading && (
-            <LoadingIndicator>&nbsp;&nbsp;삭제 중 ...</LoadingIndicator>
-          )}
           {error && (
             <>
               <p className="text-red-400">
@@ -215,9 +212,9 @@ function AnimalDetail({ animalId }) {
                 </Link>
 
                 <div>
-                  {loading && <LoadingIndicator>저장 중 ...</LoadingIndicator>}
-                  {error && `저장 중 에러가 발생했습니다.`}
-
+                  {deleteLoading && (
+                    <LoadingIndicator>&nbsp;&nbsp;삭제 중 ...</LoadingIndicator>
+                  )}
                   {deleteError && `삭제 요청 중 에러가 발생했습니다.`}
                 </div>
               </>

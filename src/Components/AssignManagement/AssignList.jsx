@@ -111,22 +111,25 @@ function AssignList() {
           )}
 
           <div className="ml-3 mb-6 mt-3">
-            <div className="text-right">
-              <input
-                type="text"
-                name="query"
-                onChange={getQuery}
-                onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-xl mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/2 px-3 md:mb-0"
-                placeholder="신청자명, 닉네임, ID, 신청번호, 동물 등록번호"
-              />
-              <button
-                onClick={handleBTNPress}
-                className="relative ml-2 mr-4 flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-xl border-4 text-white px-3 py-2 rounded"
-                readOnly
-              >
-                검색
-              </button>
+            <div className="flex justify-between">
+              <div></div>
+              <div className="flex justify-center">
+                <input
+                  type="text"
+                  name="query"
+                  onChange={getQuery}
+                  onKeyPress={handleKeyPress}
+                  className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
+                  placeholder="제목을 검색하세요."
+                />
+                <button
+                  onClick={handleBTNPress}
+                  className="rounded bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-xl text-white w-24 px-3 py-2 border-2"
+                  readOnly
+                >
+                  검색
+                </button>
+              </div>
             </div>
             {loading && <LoadingIndicator>'조회 중 ...'</LoadingIndicator>}
             {error && '조회 중 오류가 발생했습니다. 조회된 정보가 없습니다.'}
@@ -240,7 +243,7 @@ function AssignList() {
     //     name="query"
     //     onChange={getQuery}
     //     onKeyPress={handleKeyPress}
-    //     className="m-2 p-2 border-2 border-purple-400 rounded-lg focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 w-1/2"
+    //     className="m-2 p-2 border-2 border-blue-400 rounded-lg focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 w-1/2"
     //     placeholder="신청번호, 신청자명, 동물 등록번호, 회원 닉네임으로 검색 가능합니다."
     //   />
     //   <button onClick={() => refetch()}>검색</button>

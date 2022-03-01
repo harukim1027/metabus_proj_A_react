@@ -89,7 +89,7 @@ function InquiryList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 1:1 문의 "</span>
@@ -98,40 +98,31 @@ function InquiryList() {
           {/* 로딩 에러 */}
           {loading && '로딩 중 ...'}
 
-          <div className="ml-3 mb-6 mt-3">
-            <div className="text-right">
-              {!auth.is_staff && (
-                <button
-                  onClick={() => navigate('/inquiry/new/')}
-                  className=" icon_size float-left ml-10 hover:scale-110"
-                  readOnly
-                >
-                  <img src="/pen.png" alt="button"></img>
-                </button>
-              )}
-              <input
-                type="text"
-                name="query"
-                placeholder="검색어를 입력해주세요."
-                onChange={getQuery}
-                onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
-              />
-              {errorMessages.query?.map((message, index) => (
-                <p key={index} className="text-md text-red-400">
-                  {message}
-                </p>
-              ))}
-              <button
-                type="submit"
-                className="relative ml-2 mr-4 flex-shrink-0 bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-xl border-4 text-white px-3 py-2 rounded"
-                onClick={handleBTNPress}
-              >
-                검색
-              </button>
-              <div>
-                {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
-                {error && '검색된 정보가 없습니다.'}
+          <div className="mb-6 mt-10">
+            <div className="xs:flex-none xl:flex xl:justify-between">
+              <div></div>
+              <div className="xs:mt-5 xl:mt-0">
+                <div className="flex justify-center">
+                  <input
+                    type="text"
+                    name="query"
+                    onChange={getQuery}
+                    onKeyPress={handleKeyPress}
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
+                    placeholder="제목을 검색하세요."
+                  />
+                  <button
+                    onClick={handleBTNPress}
+                    className="rounded bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-xl text-white w-24 px-3 py-2 border-2"
+                    readOnly
+                  >
+                    검색
+                  </button>
+                </div>
+                <div className="flex justify-center">
+                  {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
+                  {error && <h2 className="">검색된 정보가 없습니다.</h2>}
+                </div>
               </div>
             </div>
           </div>
@@ -142,33 +133,33 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider xs:w-10 xs:text-sm sm:w-32 sm:text-lg"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 uppercase tracking-wider w-44 xs:text-xs sm:text-lg"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
-                    아이디
+                    작성자
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-lg font-bold text-gray-500 uppercase tracking-wider w-1/3"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-md font-bold text-gray-500 uppercase tracking-wider"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     문의일
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center xs:text-sm sm:text-md font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
-                    답변 상태
+                    답변
                   </th>
                 </tr>
               </thead>
@@ -178,59 +169,42 @@ function InquiryList() {
                     onClick={() => navigate(`/inquiry/${inquiry.inquiry_no}/`)}
                     className="cursor-pointer"
                   >
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        {inquiry.inquiry_no}
-                      </div>
+                    <td className="py-4 xs:text-sm sm:text-lg font-medium text-gray-900">
+                      {inquiry.inquiry_no}
                     </td>
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        {inquiry.user}
-                      </div>
+                    <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs whitespace-nowrap">
+                      {inquiry.user}
                     </td>
 
-                    <td className="py-4">
-                      <div className="text-lg font-medium text-gray-900">
-                        <span className="px-2 inline-flex text-sm leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
-                          {inquiry.title.length > 8
-                            ? inquiry.title.substring(0, 8) + '...'
-                            : inquiry.title}
-                        </span>
-                      </div>
+                    <td className="px-3 py-4 font-semibold lg:text-xl md:text-md xs:text-sm">
+                      <span className="bg-yellow-100 rounded-full">
+                        {inquiry.title.length > 15
+                          ? inquiry.title.substring(0, 15) + '...'
+                          : inquiry.title}
+                      </span>
                     </td>
-                    <td className="py-4">
-                      <div className="py-4 xs:text-xs lg:text-md">
-                        {inquiry.created_at}
-                      </div>
+                    <td className="py-4 xs:text-xs sm:text-base">
+                      {inquiry.created_at}
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 py-4 whitespace-nowrap">
                       <div className="flex justify-center">
-                        <div className="ml-4">
-                          <div className="text-xl font-medium text-gray-900">
-                            {/* <h2>{inquiry.status}</h2> */}
-                            {inquiry.admin_answer.length > 0 ? (
-                              <div className="text-xs">
-                                <img
-                                  src="/check.png"
-                                  width="15"
-                                  className="ml-4"
-                                  alt=""
-                                />
-                                답변 완료
+                        <div className="text-base font-medium text-gray-900">
+                          {inquiry.admin_answer.length > 0 ? (
+                            <>
+                              <div className="text-xs flex justify-center">
+                                <img src="/check.png" width="15" alt="" />
                               </div>
-                            ) : (
-                              <div className="text-xs">
-                                <img
-                                  src="/nocheck.png"
-                                  width="15"
-                                  className="ml-4"
-                                  alt=""
-                                />
-                                답변 대기
+                              <span className="text-xs">답변 완료</span>
+                            </>
+                          ) : (
+                            <>
+                              <div className="text-xs flex justify-center">
+                                <img src="/nocheck.png" width="15" alt="" />
                               </div>
-                            )}
-                          </div>
+                              <span className="text-xs">답변 대기</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </td>
@@ -238,6 +212,17 @@ function InquiryList() {
                 ))}
               </tbody>
             </table>
+            {!auth.is_staff && (
+              <div className="flex justify-end mr-5">
+                <button
+                  onClick={() => navigate('/inquiry/new/')}
+                  className="hover:scale-110 xs:w-10 sm:w-14"
+                  readOnly
+                >
+                  <img src="/pen2.png" alt="button"></img>
+                </button>
+              </div>
+            )}
           </div>
           <ReactPaginate
             previousLabel="<"
