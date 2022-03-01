@@ -47,7 +47,7 @@ function AssignStatus({ assignId, handleDidSave, assignData }) {
       data: formData,
     }).then((response) => {
       const savedPost = response.data;
-      console.log(savedPost);
+      console.log('savedPost', savedPost);
       if (handleDidSave) handleDidSave(savedPost);
     });
   };

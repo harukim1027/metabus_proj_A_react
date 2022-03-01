@@ -48,6 +48,20 @@ function AssignDetail({ assignId }) {
     { manual: true },
   );
 
+  const [
+    { loading: changeStatusLoading, error: changeStatusError },
+    patchAnimalStatus,
+  ] = useApiAxios(
+    {
+      url: `/streetanimal/api/animal/${assignData?.animal.animal_no}/`,
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${auth.access}`,
+      },
+    },
+    { manual: true },
+  );
+
   const handleDelete = () => {
     if (window.confirm('정말 삭제 할까요?')) {
       deleteAssign().then(() => {
@@ -209,6 +223,15 @@ function AssignDetail({ assignId }) {
                   handleDidSave={(savedPost) => {
                     savedPost && window.location.reload();
                     savedPost && setClicked(0);
+                    if (savedPost?.status === '입양 완료') {
+                      patchAnimalStatus({
+                        data: { protection_status: '입양 완료!' },
+                      });
+                    } else if (savedPost?.status === '거절') {
+                      patchAnimalStatus({
+                        data: { protection_status: '입양 대기' },
+                      });
+                    }
                   }}
                 />
               </div>
@@ -227,24 +250,24 @@ function AssignDetail({ assignId }) {
               />
             </div>
 
-            <div className="border-2 border-gray-300 rounded-lg shadow-lg inline-block w-1/4 mx-2">
+            <div className="flex flex-col border-2 border-gray-300 rounded-lg shadow-lg w-1/4 mx-2">
               <h2>거주지 사진2</h2>
               <hr className="border-2 border-gray-300" />
               <img
                 src={assignData?.picture_of_residence2}
                 alt=""
                 onClick={() => window.open(assignData?.picture_of_residence2)}
-                className="w-full cursor-pointer"
+                className="w-full cursor-pointer my-auto"
               />
             </div>
-            <div className="border-2 border-gray-300 rounded-lg shadow-lg inline-block w-1/4 mx-2">
+            <div className="flex flex-col border-2 border-gray-300 rounded-lg shadow-lg w-1/4 mx-2">
               <h2>거주지 사진3</h2>
               <hr className="border-2 border-gray-300" />
               <img
                 src={assignData?.picture_of_residence3}
                 alt=""
                 onClick={() => window.open(assignData?.picture_of_residence3)}
-                className="w-full cursor-pointer"
+                className="w-full cursor-pointer my-auto"
               />
             </div>
           </div>
