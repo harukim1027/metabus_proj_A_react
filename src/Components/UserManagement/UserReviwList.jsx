@@ -90,7 +90,7 @@ function UserReviewList({ userId }) {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44">
-                    번호
+                    No
                   </th>
                   <th className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/2">
                     제목
@@ -110,21 +110,23 @@ function UserReviewList({ userId }) {
                       onClick={() => navigate(`/review/${review.review_no}/`)}
                     >
                       <td className="px-6 py-4">
-                        <div className="text-md font-medium text-gray-900">
+                        <div className="text-base font-medium text-gray-900">
                           {review.review_no}
                         </div>
                       </td>
 
                       <td className="px-6 py-4">
                         <div className="text-lg font-medium text-gray-900">
-                          <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-green-100 text-purple-800">
-                            {review.title}
+                          <span className="inline-flex text-xl leading-5 font-semibold rounded-full bg-purple-100">
+                            {review.title.length > 15
+                              ? review.title.substring(0, 15) + '...'
+                              : review.title}
                           </span>
                         </div>
                       </td>
 
                       <td className="px-6 py-4">
-                        <div className="text-sm leading-5 font-medium text-gray-900">
+                        <div className="text-base leading-5 font-medium text-gray-900">
                           {review.created_at}
                         </div>
                       </td>

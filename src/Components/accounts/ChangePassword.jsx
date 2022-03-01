@@ -102,7 +102,7 @@ function ChangePassword() {
                     placeholder="이름을 입력해주세요."
                   />
                   {errorMessages.userID?.map((message, index) => (
-                    <p key={index} className="text-md text-red-400">
+                    <p key={index} className="text-base text-red-400">
                       {message}
                     </p>
                   ))}
@@ -123,7 +123,7 @@ function ChangePassword() {
                     placeholder="이름을 입력해주세요."
                   />
                   {errorMessages.name?.map((message, index) => (
-                    <p key={index} className="text-md text-red-400">
+                    <p key={index} className="text-base text-red-400">
                       {message}
                     </p>
                   ))}
@@ -165,7 +165,7 @@ function ChangePassword() {
                   </div>
 
                   {errorMessages.password_quiz?.map((message, index) => (
-                    <p key={index} className="text-md text-red-400">
+                    <p key={index} className="text-base text-red-400">
                       {message}
                     </p>
                   ))}
@@ -188,7 +188,7 @@ function ChangePassword() {
                   />
 
                   {errorMessages.password_quiz_answer?.map((message, index) => (
-                    <p key={index} className="text-md text-red-400">
+                    <p key={index} className="text-base text-red-400">
                       {message}
                     </p>
                   ))}

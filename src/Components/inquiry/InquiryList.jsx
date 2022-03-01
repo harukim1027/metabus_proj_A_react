@@ -89,7 +89,7 @@ function InquiryList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 1:1 문의 "</span>
@@ -99,7 +99,7 @@ function InquiryList() {
           {loading && '로딩 중 ...'}
 
           <div className="mb-6 mt-10">
-            <div className="  xs:flex-none xl:flex xl:justify-between">
+            <div className="xs:flex-none xl:flex xl:justify-between">
               <div></div>
               <div className="xs:mt-5 xl:mt-0">
                 <div className="flex justify-center">
@@ -133,33 +133,33 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 tracking-wider sm:w-32 xs:w-10 md:text-base sm:text-lg xs:text-sm"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 tracking-wider w-44 md:text-base sm:text-lg xs:text-xs whitespace-nowrap"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
-                    아이디
+                    작성자
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 tracking-wider w-1/3 md:text-base sm:text-lg xs:text-xs"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 tracking-wider md:text-base sm:text-lg xs:text-xs"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     문의일
                   </th>
                   <th
                     scope="col"
-                    className="py-3 text-center font-bold text-gray-500 tracking-wider md:text-base sm:text-lg xs:text-xs"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
-                    답변 상태
+                    답변
                   </th>
                 </tr>
               </thead>
@@ -169,59 +169,42 @@ function InquiryList() {
                     onClick={() => navigate(`/inquiry/${inquiry.inquiry_no}/`)}
                     className="cursor-pointer"
                   >
-                    <td className="px-6 py-4 xl:text-xl lg:text-xl md:text-sm sm:text-sm xs:text-xs">
-                      {/* <div className="text-lg font-medium text-gray-900"> */}
+                    <td className="py-4 xs:text-sm sm:text-lg font-medium text-gray-900">
                       {inquiry.inquiry_no}
-                      {/* </div> */}
                     </td>
-                    <td className="py-4 xl:text-xl lg:text-xl md:text-sm sm:text-sm xs:text-xs">
-                      {/* <div className="text-lg font-medium text-gray-900"> */}
+                    <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs whitespace-nowrap">
                       {inquiry.user}
-                      {/* </div> */}
                     </td>
 
-                    <td className="py-4 xl:text-xl lg:text-xl md:text-sm sm:text-sm xs:text-xs">
-                      {/* <div className="text-lg font-medium text-gray-900"> */}
-                      <span className="px-2 inline-flex text-sm leading-5 cursor-pointer font-semibold rounded-full bg-green-100 text-green-800">
-                        {inquiry.title.length > 8
-                          ? inquiry.title.substring(0, 8) + '...'
+                    <td className="px-3 py-4 font-semibold lg:text-xl md:text-md xs:text-sm">
+                      <span className="bg-yellow-100 rounded-full">
+                        {inquiry.title.length > 15
+                          ? inquiry.title.substring(0, 15) + '...'
                           : inquiry.title}
                       </span>
-                      {/* </div> */}
                     </td>
-                    <td className="py-4 xl:text-base lg:text-sm md:text-sm sm:text-sm xs:text-xs">
-                      {/* <div className="py-4 xs:text-xs lg:text-md"> */}
+                    <td className="py-4 xs:text-xs sm:text-base">
                       {inquiry.created_at}
-                      {/* </div> */}
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 py-4 whitespace-nowrap">
                       <div className="flex justify-center">
-                        <div className="ml-4">
-                          <div className="md:text-sm text-xl font-medium text-gray-900">
-                            {/* <h2>{inquiry.status}</h2> */}
-                            {inquiry.admin_answer.length > 0 ? (
-                              <div className="text-xs">
-                                <img
-                                  src="/check.png"
-                                  width="15"
-                                  className="ml-4"
-                                  alt=""
-                                />
-                                답변 완료
+                        <div className="text-base font-medium text-gray-900">
+                          {inquiry.admin_answer.length > 0 ? (
+                            <>
+                              <div className="text-xs flex justify-center">
+                                <img src="/check.png" width="15" alt="" />
                               </div>
-                            ) : (
-                              <div className="text-xs">
-                                <img
-                                  src="/nocheck.png"
-                                  width="15"
-                                  className="ml-4"
-                                  alt=""
-                                />
-                                답변 대기
+                              <span className="text-xs">답변 완료</span>
+                            </>
+                          ) : (
+                            <>
+                              <div className="text-xs flex justify-center">
+                                <img src="/nocheck.png" width="15" alt="" />
                               </div>
-                            )}
-                          </div>
+                              <span className="text-xs">답변 대기</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </td>
@@ -233,7 +216,7 @@ function InquiryList() {
               <div className="flex justify-end mr-5">
                 <button
                   onClick={() => navigate('/inquiry/new/')}
-                  className="ml-10 hover:scale-110 xs:w-10 sm:w-14"
+                  className="hover:scale-110 xs:w-10 sm:w-14"
                   readOnly
                 >
                   <img src="/pen2.png" alt="button"></img>

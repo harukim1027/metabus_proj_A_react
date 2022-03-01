@@ -103,7 +103,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
           <blockquote className="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
             <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block text-6xl font-extrabold">
@@ -129,7 +129,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               {auth.isLoggedIn && !auth.is_staff && (
                 <>
                   <div className="ml-3 mb-3 w-full">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                       제목
                     </span>
                     <input
@@ -141,7 +141,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                       className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6"
                     />
                     {saveErrorMessages.title?.map((message, index) => (
-                      <p key={index} className="text-md text-red-400">
+                      <p key={index} className="text-base text-red-400">
                         제목을 입력해주세요.
                       </p>
                     ))}
@@ -149,7 +149,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
 
                   {/* 내용 입력 인풋박스 */}
                   <div className="ml-3 mb-3 w-full ">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                       내용
                     </span>
                     <textarea
@@ -160,7 +160,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                       className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                     />
                     {saveErrorMessages.content?.map((message, index) => (
-                      <p key={index} className="text-md text-red-400">
+                      <p key={index} className="text-base text-red-400">
                         내용을 입력해주세요.
                       </p>
                     ))}
@@ -169,7 +169,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               )}
               {auth.isLoggedIn && auth.is_staff && inquiry && (
                 <div className="ml-3 mb-3 w-full">
-                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                     제목
                   </span>
                   <h1

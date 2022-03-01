@@ -140,7 +140,7 @@ function AnimalForm({ animalId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="animal_header rounded-md shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="animal_header rounded-md shadow-md px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote className="mt-5 text-6xl font-semibold italic text-center text-slate-900">
             <span className="mt-3 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">
               <span className="relative text-white">

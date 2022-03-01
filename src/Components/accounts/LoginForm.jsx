@@ -15,7 +15,7 @@ function LoginForm() {
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, []);
@@ -169,7 +169,7 @@ function LoginForm() {
 
             <hr />
             {/* 회원가입 링크 이동 */}
-            <p className="text-right mt-5  mb-2 text-red-300 text-md font-semibold">
+            <p className="text-right mt-5  mb-2 text-red-300 text-base font-semibold">
               아직 METABUS의 회원이 아니신가요 ?
             </p>
             <div className="text-right border:bg-pink-200">

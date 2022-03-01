@@ -91,7 +91,7 @@ function AnimalList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3">
+        <div className="notice_header rounded-xl shadow-md px-20 pt-5 pb-10 my-10 w-2/3">
           <blockquote class="mt-5 text-6xl mb-3 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-red-400 relative inline-block">
               <span class="relative text-white">" 유기동물 관리 "</span>
@@ -109,58 +109,60 @@ function AnimalList() {
             </>
           )}
 
-          <div className="ml-3 mb-6 mt-3">
-            <div className="text-right">
-              <button
-                onClick={() => navigate('/admin/animal/new/')}
-                className=" icon_size float-left ml-10 hover:scale-110"
-                readOnly
-              >
-                <img src="/pen.png" alt="button"></img>
-              </button>
-
-              <input
-                type="text"
-                placeholder="등록번호로 검색하세요."
-                onChange={getQuery}
-                onKeyPress={handleKeyPress}
-                className="relative rounded p-3 text-md mb-3 bg-gray-100 focus:outline-none focus:border focus:border-gray-400 md:w-1/3 px-3 md:mb-0"
-              />
-              <button
-                onClick={handleBTNPress}
-                className="relative ml-2 mr-4 flex-shrink-0 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-xl border-4 text-white px-3 py-2 rounded"
-                readOnly
-              >
-                검색
-              </button>
+          <div className="mb-6 mt-10">
+            <div className="xs:flex-none xl:flex xl:justify-between">
+              <div></div>
+              <div className="xs:mt-5 xl:mt-0">
+                <div className="flex justify-center">
+                  <input
+                    type="text"
+                    name="query"
+                    onChange={getQuery}
+                    onKeyPress={handleKeyPress}
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
+                    placeholder="제목을 검색하세요."
+                  />
+                  <button
+                    onClick={handleBTNPress}
+                    className="rounded bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-xl text-white w-24 px-3 py-2 border-2"
+                    readOnly
+                  >
+                    검색
+                  </button>
+                </div>
+                <div className="flex justify-center">
+                  {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
+                  {error && <h2 className="">검색된 정보가 없습니다.</h2>}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="mb-5 overflow-hidden">
-            <table className="border text-center min-w-full divide-y divide-gray-200">
+          <div className="mb-5">
+            <table className="border text-center min-w-full divide-y divide-gray-200 whitespace-nowrap">
               <thead className="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                   >
                     동물 종
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-1/2"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                   >
                     등록번호
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider w-44"
+                    className="px-6 py-3 text-center text-xl font-bold text-gray-500 uppercase tracking-wider"
                   >
                     입양 상태
                   </th>
@@ -177,13 +179,13 @@ function AnimalList() {
                       className="cursor-pointer"
                     >
                       <td className="px-6 py-4">
-                        <div className="text-md font-medium text-gray-900">
+                        <div className="text-base font-medium text-gray-900">
                           {animal.animal_no}
                         </div>
                       </td>
 
                       <td className="px-6 py-4">
-                        <div className="text-md font-medium text-gray-900">
+                        <div className="text-base font-medium text-gray-900">
                           {animal.category.name}
                         </div>
                       </td>
@@ -203,6 +205,17 @@ function AnimalList() {
                   ))}
               </tbody>
             </table>
+            {auth.is_staff && (
+              <div className="flex justify-end mr-5">
+                <button
+                  onClick={() => navigate('/admin/animal/new/')}
+                  className="hover:scale-110 xs:w-10 sm:w-14"
+                  readOnly
+                >
+                  <img src="/pen2.png" alt="button"></img>
+                </button>
+              </div>
+            )}
           </div>
           <ReactPaginate
             previousLabel="<"

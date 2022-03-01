@@ -102,7 +102,7 @@ function ReviewList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3  xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-xl shadow-md overflow-hidden px-20 pt-5 pb-10 my-10 w-2/3  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 입양 후기 "</span>
@@ -138,12 +138,12 @@ function ReviewList() {
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mr-4 border-2 xs:w-full sm:w-72 xs:text-sm xl:text-xl"
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mr-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-xl"
                     placeholder="제목을 검색하세요."
                   />
                   <button
                     onClick={handleBTNPress}
-                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-white px-3 py-2 border-2 w-24 xs:text-sm xl:text-xl"
+                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-white px-3 py-2 border-2 w-24 xs:text-sm sm:text-xl"
                     readOnly
                   >
                     검색
@@ -182,7 +182,7 @@ function ReviewList() {
             <div className="flex justify-end">
               <button
                 onClick={() => navigate('/review/new/')}
-                className="ml-10 hover:scale-110 xs:w-14 sm:w-20"
+                className="hover:scale-110 xs:w-10 sm:w-14"
                 readOnly
               >
                 <img src="/pen2.png" alt="button"></img>

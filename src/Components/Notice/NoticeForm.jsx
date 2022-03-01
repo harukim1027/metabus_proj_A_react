@@ -180,7 +180,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 xl:w-2/3 lg:w-2/3 md:w-3/4 sm:w-w-full xs:w-full">
+        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
           <blockquote className="mt-3 mb-10 font-semibold italic text-center text-slate-900">
             <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl font-extrabold">
@@ -213,7 +213,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   className="rounded-md text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
                 />
                 {saveErrorMessages.title?.map((message, index) => (
-                  <p key={index} className="text-md text-red-400">
+                  <p key={index} className="text-base text-red-400">
                     제목을 입력해주세요.
                   </p>
                 ))}
@@ -232,7 +232,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   className="rounded-md text-lg  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                 />
                 {saveErrorMessages.content?.map((message, index) => (
-                  <p key={index} className="text-md text-red-400">
+                  <p key={index} className="text-base text-red-400">
                     내용을 입력해주세요.
                   </p>
                 ))}
@@ -252,7 +252,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                   <ul>
                     {/* 개별 이미지 input 박스 1*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
+                    <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -298,7 +298,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 2*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                    <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -344,7 +344,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 3*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                    <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -390,7 +390,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 4*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                    <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -436,7 +436,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                     ))}
 
                     {/* 개별 이미지 input 박스 5*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                    <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".png, .jpg, .jpeg, .jfif"
@@ -497,8 +497,8 @@ function NoticeForm({ noticeId, handleDidSave }) {
                 <div className="flex justify-center bg-white py-5 w-full">
                   {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                   <ul>
-                    {/* 개별 이미지 input 박스 1*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
+                    {/* 개별 파일 input 박스 1*/}
+                    <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
@@ -526,7 +526,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {/* 개별 파일 input 박스 2*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                    <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"
@@ -554,7 +554,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {/* 개별 파일 input 박스 3*/}
-                    <li className="flex justify-between items-center text-md px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                    <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mx-5 sm:mx-0">
                       <input
                         type="file"
                         accept=".docx, .hwp, .xlsx, .pdf"

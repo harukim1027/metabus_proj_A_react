@@ -60,7 +60,7 @@ function TopNav() {
       {auth.isLoggedIn && (
         <>
           <div className="relative">
-            <span className="rounded-xl bg-white shadow-md border text-center font-bold absolute xs:top-25 sm:top-10 xs:inset-x-0 sm:inset-x-auto sm:left-10">
+            <span className="rounded-xl bg-white shadow-md border text-center font-bold absolute xs:inset-x-0 sm:inset-x-auto sm:left-10 sm:top-10 sm:text-xl">
               &nbsp; &nbsp;오늘도 찾아주셨네요, {auth.nickname} 님 ❕ &nbsp;
               &nbsp;
             </span>
@@ -112,12 +112,12 @@ function TopNav() {
         <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
       {/* 탑메뉴바 */}
-      <div className="py-4 bg-white grid grid-cols-4 text-center xs:text-lg sm:text-2xl font-bold">
+      <div className="py-4 bg-white grid grid-cols-4 text-center xs:text-base sm:text-2xl md:text-3xl font-bold">
         <MyLink to="/introduce/">
-          <div className="hover:text-white hover:bg-orange-300 ">소개</div>
+          <div className="hover:text-white hover:bg-orange-300">소개</div>
         </MyLink>
         <MyLink to="/notice/">
-          <div className="hover:text-white hover:bg-green-400 ">공지사항</div>
+          <div className="hover:text-white hover:bg-green-400">공지사항</div>
         </MyLink>
         {auth.is_staff ? (
           <MyLink to="/inquiry/">

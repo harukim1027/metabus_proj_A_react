@@ -134,7 +134,7 @@ function UserManagementDetail({ userId }) {
           <div className="my-5 text-right">
             <button
               onClick={handleDelete}
-              className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
+              className="ml-3 flex-shrink-0 bg-blue-900 hover:bg-blue-500 border-blue-900 hover:border-blue-500 text-sm border-4 text-white py-1 px-2 rounded"
             >
               삭제
             </button>
@@ -143,7 +143,7 @@ function UserManagementDetail({ userId }) {
               onClick={() => {
                 navigate('/admin/usermanage/');
               }}
-              className="ml-3 flex-shrink-0 bg-blue-700 hover:bg-blue-900 border-blue-700 hover:border-blue-900 text-sm border-4 text-white py-1 px-2 rounded"
+              className="ml-3 flex-shrink-0 bg-blue-900 hover:bg-blue-500 border-blue-900 hover:border-blue-500 text-sm border-4 text-white py-1 px-2 rounded"
             >
               목록
             </button>
