@@ -221,7 +221,7 @@ function AssignDetail({ assignId }) {
                   assignId={assignId}
                   assignData={assignData}
                   handleDidSave={(savedPost) => {
-                    // savedPost && window.location.reload();
+                    savedPost && window.location.reload();
                     savedPost && setClicked(0);
                     if (savedPost?.status === '입양 완료') {
                       patchAnimalStatus({
