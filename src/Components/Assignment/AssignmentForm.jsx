@@ -726,6 +726,9 @@ function AssignmentForm({ handleDidSave }) {
                   <option value="서울 강동구청 반려동물팀">
                     서울 강동구청 반려동물팀
                   </option>
+                  <option value="인천 광역시 수의사회">
+                    인천 광역시 수의사회
+                  </option>
                   <option value="대전 동물 보호 센터">
                     대전 동물 보호 센터
                   </option>
@@ -736,6 +739,14 @@ function AssignmentForm({ handleDidSave }) {
                     대구 유기동물 보호 협회
                   </option>
                   <option value="부산 동물보호센터">부산 동물보호센터</option>
+                  <option value="광주 동물 보호소">광주 동물 보호소</option>
+                  <option value="울산 유기동물 보호센터">
+                    울산 유기동물 보호센터
+                  </option>
+                  <option value="제주 동물 보호센터">제주 동물 보호센터</option>
+                  <option value="속초시 유기동물 보호소">
+                    속초시 유기동물 보호소
+                  </option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 xs:right-3 sm:right-1/2 md:right-1/3 xl:right-1/4 flex items-center px-2 text-gray-700">
                   <svg
