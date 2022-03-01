@@ -379,47 +379,118 @@ function AssignmentForm({ handleDidSave }) {
                 ''
               )}
               <div className="flex flex-wrap justify-center">
-                {filtAnimal.map((a) => (
-                  <div
-                    className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
-                    onClick={() => {
-                      setSelanimal(a.animal_no);
-                      gotoForm();
-                    }}
-                  >
-                    <div className="flex justify-center overflow-hidden">
-                      <img
-                        src={a.image}
-                        alt="동물 이미지"
-                        className="assign_photo object-cover"
-                      />
-                      <hr />
-                      <div className="assign_table flex justify-center">
-                        <ul className="mt-6 assign_table_bg border-gray-200 w-60">
-                          <li className="pl-3 pr-5 py-4 flex items-center justify-between text-sm  border-t-2">
-                            <span className="bg-blue-100 font-bold">나이</span>
-                            <span> {a.age} 살</span>
-                          </li>
+                {filtAnimal
+                  ?.sort((a, b) =>
+                    a.end_date < b.end_date
+                      ? -1
+                      : a.end_date > b.end_date
+                      ? 1
+                      : 0,
+                  )
+                  .slice(0, Math.floor(filtAnimal.length / 2))
+                  .sort(() => Math.random() - 0.5)
+                  .slice(0, 3)
+                  .map((a) => (
+                    <div
+                      className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
+                      onClick={() => {
+                        setSelanimal(a.animal_no);
+                        gotoForm();
+                      }}
+                    >
+                      <div className="flex justify-center overflow-hidden">
+                        <img
+                          src={a.image}
+                          alt="동물 이미지"
+                          className="assign_photo object-cover"
+                        />
+                        <hr />
+                        <div className="assign_table flex justify-center">
+                          <ul className="mt-6 assign_table_bg border-gray-200 w-60">
+                            <li className="pl-3 pr-5 py-4 flex items-center justify-between text-sm  border-t-2">
+                              <span className="bg-blue-100 font-bold">
+                                나이
+                              </span>
+                              <span> {a.age} 살</span>
+                            </li>
 
-                          <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
-                            <span className="bg-blue-100 font-bold">
-                              발견 장소
-                            </span>
-                            <span>
-                              {a.place_of_discovery.length > 9
-                                ? a.place_of_discovery.substr(0, 8) + '...'
-                                : a.place_of_discovery}
-                            </span>
-                          </li>
-                          <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-y-2">
-                            <span className="bg-blue-100 font-bold">특징</span>
-                            <span>{a.info}</span>
-                          </li>
-                        </ul>
+                            <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
+                              <span className="bg-blue-100 font-bold">
+                                발견 장소
+                              </span>
+                              <span>
+                                {a.place_of_discovery.length > 9
+                                  ? a.place_of_discovery.substr(0, 8) + '...'
+                                  : a.place_of_discovery}
+                              </span>
+                            </li>
+                            <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-y-2">
+                              <span className="bg-blue-100 font-bold">
+                                특징
+                              </span>
+                              <span>{a.info}</span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                {filtAnimal
+                  ?.sort((a, b) =>
+                    a.end_date < b.end_date
+                      ? -1
+                      : a.end_date > b.end_date
+                      ? 1
+                      : 0,
+                  )
+                  .slice(Math.ceil(filtAnimal.length / 2) * -1)
+                  .sort(() => Math.random() - 0.5)
+                  .slice(0, 2)
+                  .map((a) => (
+                    <div
+                      className="inline-block assign_table rounded-md shadow-md cursor-pointer hover:scale-110 overflow-hidden mx-4 my-4 w-96"
+                      onClick={() => {
+                        setSelanimal(a.animal_no);
+                        gotoForm();
+                      }}
+                    >
+                      <div className="flex justify-center overflow-hidden">
+                        <img
+                          src={a.image}
+                          alt="동물 이미지"
+                          className="assign_photo object-cover"
+                        />
+                        <hr />
+                        <div className="assign_table flex justify-center">
+                          <ul className="mt-6 assign_table_bg border-gray-200 w-60">
+                            <li className="pl-3 pr-5 py-4 flex items-center justify-between text-sm  border-t-2">
+                              <span className="bg-blue-100 font-bold">
+                                나이
+                              </span>
+                              <span> {a.age} 살</span>
+                            </li>
+
+                            <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-t-2">
+                              <span className="bg-blue-100 font-bold">
+                                발견 장소
+                              </span>
+                              <span>
+                                {a.place_of_discovery.length > 9
+                                  ? a.place_of_discovery.substr(0, 8) + '...'
+                                  : a.place_of_discovery}
+                              </span>
+                            </li>
+                            <li className="pl-3 pr-5 py-3 flex items-center justify-between text-sm  border-y-2">
+                              <span className="bg-blue-100 font-bold">
+                                특징
+                              </span>
+                              <span>{a.info}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
