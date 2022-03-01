@@ -195,7 +195,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                     name="admin_answer"
                     value={fieldValues.admin_answer}
                     onChange={handleFieldChange}
-                    placeholder="내용을 입력해주세요."
+                    placeholder="답변을 입력해주세요."
                     className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                   />
                 </div>

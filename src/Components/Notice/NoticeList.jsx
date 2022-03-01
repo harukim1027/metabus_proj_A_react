@@ -101,7 +101,7 @@ function NoticeList() {
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
                     className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
-                    placeholder="제목을 검색하세요."
+                    placeholder="번호 또는 제목을 검색하세요."
                   />
                   <button
                     onClick={handleBTNPress}

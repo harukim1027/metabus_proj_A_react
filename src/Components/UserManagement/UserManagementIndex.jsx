@@ -106,8 +106,8 @@ function UserManagementIndex() {
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
-                    placeholder="제목을 검색하세요."
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-base px-3 py-2 mr-4 border-2"
+                    placeholder="ID, 이름, nickname으로 검색하세요."
                   />
                   <button
                     onClick={handleBTNPress}
