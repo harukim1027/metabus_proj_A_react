@@ -101,27 +101,27 @@ function AssignCheck(props) {
 
                     <div className="assign_explanation">
                       <div className=" xs:justify-center md:flex-none md:grid md:grid-cols-3">
-                        <div className="inline-block">
+                        <div className="flex justify-center">
                           <img
                             src="/assigncheck1.png"
                             alt="assigncheck1"
-                            className="xs:w-full "
+                            className="xs:w-2/3 md:w-full"
                           />
                         </div>
-                        <div className="inline-block">
+                        <div className="flex justify-center">
                           {' '}
                           <img
                             src="/assigncheck2.png"
                             alt="assigncheck2"
-                            className="xs:w-full "
+                            className="xs:w-2/3 md:w-full"
                           />
                         </div>
-                        <div className="inline-block">
+                        <div className="flex justify-center">
                           {' '}
                           <img
                             src="/assigncheck3.png"
                             alt="assigncheck"
-                            className="xs:w-full "
+                            className="xs:w-2/3 md:w-full"
                           />
                         </div>
                       </div>
