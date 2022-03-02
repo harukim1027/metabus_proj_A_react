@@ -7,7 +7,10 @@ function PageMyinfo() {
     <>
       <TopNav />
       <div>
-        <Sidebar />
+        <div className="">
+          <Sidebar />
+        </div>
+
         <div>
           <Myinfo />
         </div>
