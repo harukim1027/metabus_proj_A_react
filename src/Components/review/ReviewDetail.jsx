@@ -66,7 +66,7 @@ function ReviewDetail({ reviewId }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="review_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 review_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-3 mb-10 font-semibold italic text-center text-slate-900">
             <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl text-6xl ">
               <span class="relative text-white">" 입양후기 "</span>
@@ -104,8 +104,8 @@ function ReviewDetail({ reviewId }) {
 
                   {/* 입양한 동물 정보 박스 */}
                   <div className="flex justify-center">
-                    <div className="inline-block assign_table rounded-md shadow-md overflow-hidden mx-4 my-4 w-96 h-full">
-                      <div className="flex justify-center">
+                    <div className="inline-block rounded-md shadow-md overflow-hidden mx-4 my-4 w-96 h-full">
+                      <div className="sm:flex sm:justify-center">
                         <div className="overflow-hidden">
                           <img
                             src={review.adoptassignment.animal.image}
