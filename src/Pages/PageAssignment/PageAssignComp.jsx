@@ -4,6 +4,7 @@ import TopNav from 'Components/Main/TopNavi';
 import { useAuth } from 'contexts/AuthContext';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Forbidden from 'Components/ErrorPage/Forbidden403';
 
 function PageAssignComp() {
   const { assignId } = useParams();
@@ -22,9 +23,13 @@ function PageAssignComp() {
 
   return (
     <>
-      <TopNav />
-      {assignData?.user.userID === auth.userID && (
-        <AssignComp assginId={assignId} assignData={assignData} />
+      {assignData?.user.userID === auth.userID ? (
+        <>
+          <TopNav />
+          <AssignComp assginId={assignId} assignData={assignData} />
+        </>
+      ) : (
+        <Forbidden />
       )}
     </>
   );
