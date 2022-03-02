@@ -68,7 +68,7 @@ function CheckSignup(props) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="accounts_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 accounts_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <main className="" role="main">
             <h1 className="mt-5 font-semibold text-2xl text-center p-2">
               🐼 약관동의
