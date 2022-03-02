@@ -100,7 +100,7 @@ function AssignCheck(props) {
                     </span>
 
                     <div className="assign_explanation">
-                      <div className="xs:flex xs:flex-wrap xs:justify-center md:flex-none md:grid md:grid-cols-3">
+                      <div className=" xs:justify-center md:flex-none md:grid md:grid-cols-3">
                         <div className="inline-block">
                           <img
                             src="/assigncheck1.png"
@@ -113,7 +113,7 @@ function AssignCheck(props) {
                           <img
                             src="/assigncheck2.png"
                             alt="assigncheck2"
-                            className="xs:w-full"
+                            className="xs:w-full "
                           />
                         </div>
                         <div className="inline-block">
@@ -121,7 +121,7 @@ function AssignCheck(props) {
                           <img
                             src="/assigncheck3.png"
                             alt="assigncheck"
-                            className="xs:w-full"
+                            className="xs:w-full "
                           />
                         </div>
                       </div>
