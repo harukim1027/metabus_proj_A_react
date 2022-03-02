@@ -70,12 +70,17 @@ function SignupForm() {
   };
 
   // 중복값 대조를 위한 상탯값 지정
-  const [nameValue, setNameValue] = useState({ userID: '', nickname: '' });
+  const [nameValue, setNameValue] = useState({
+    userID: '',
+    nickname: '',
+    email: '',
+  });
   const clickButton = (e) => {
     e.preventDefault(); //form 안에 submit 역할을 하는 버튼을 눌렀어도 실행하지 않도록 막음
     setNameValue({
       userID: fieldValues.userID,
       nickname: fieldValues.nickname,
+      email: fieldValues.email,
     });
   };
 
@@ -103,7 +108,7 @@ function SignupForm() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-900 relative inline-block">
               <span class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl relative text-white">
@@ -127,11 +132,11 @@ function SignupForm() {
                     value={fieldValues.userID}
                     onChange={handleFieldChange}
                     placeholder="ID를 입력해주세요."
-                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-full xs:w-full"
+                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded md:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
                     readOnly
                     onClick={(e) => clickButton(e)}
                   >
@@ -174,11 +179,12 @@ function SignupForm() {
                     value={fieldValues.nickname}
                     onChange={handleFieldChange}
                     placeholder="닉네임을 입력해주세요."
-                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-full xs:w-full"
+                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
+                  {/* 중복확인 */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded md:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
                     onClick={(e) => clickButton(e)}
                     readOnly
                   >
@@ -241,7 +247,7 @@ function SignupForm() {
                     name="phone_number"
                     value={fieldValues.phone_number}
                     onChange={handleFieldChange}
-                    placeholder="입력형식 예) 010-0000-0000"
+                    placeholder="예) 010-0000-0000"
                     className="rounded-md xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.phone_number?.map((message, index) => (
@@ -262,9 +268,35 @@ function SignupForm() {
                     name="email"
                     value={fieldValues.email}
                     onChange={handleFieldChange}
-                    placeholder="입력형식 예) user@email.com"
-                    className="rounded-md xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
+                    placeholder="예) user@email.com"
+                    className="rounded-md xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-5/6 sm:w-2/3 xs:w-2/3"
                   />
+                  {/* 중복확인 */}
+                  <button
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
+                    onClick={(e) => clickButton(e)}
+                    readOnly
+                  >
+                    중복확인
+                  </button>
+                  {nameValue.email !== '' &&
+                    userList &&
+                    userList.results?.filter(
+                      (user) => user.email === nameValue.email,
+                    ).length > 0 && (
+                      <p className="text-sm text-red-400">
+                        동일한 이메일이 존재합니다. 다른 이메일을 입력해주세요.
+                      </p>
+                    )}
+                  {nameValue.email !== '' &&
+                    userList &&
+                    userList.results?.filter(
+                      (user) => user.email === nameValue.email,
+                    ).length === 0 && (
+                      <p className="text-sm text-green-400">
+                        사용가능한 이메일입니다.
+                      </p>
+                    )}
                   {errorMessages.email?.map((message, index) => (
                     <p key={index} className="text-base text-red-400">
                       이미 사용중인 이메일 입니다. 다른 이메일을 입력해주세요 .
@@ -391,7 +423,7 @@ function SignupForm() {
                     name="password"
                     value={fieldValues.password}
                     onChange={handleFieldChange}
-                    placeholder="******************"
+                    placeholder="***********"
                     className="rounded-md xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.password?.map((message, index) => (
@@ -412,7 +444,7 @@ function SignupForm() {
                     name="password2"
                     value={fieldValues.password2}
                     onChange={handleFieldChange}
-                    placeholder="******************"
+                    placeholder="***********"
                     className="rounded-md xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 w-full"
                   />
                   {errorMessages.password2?.map((message, index) => (

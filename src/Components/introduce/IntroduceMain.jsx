@@ -53,7 +53,7 @@ function IntroduceMain() {
           className="bg-white hover:bg-gray-500 hover:text-white rounded-lg p-2 text-lg"
           onClick={() => goTop()}
         >
-          위로 이동
+          홈으로 이동
         </button>
       </div>
     </>
