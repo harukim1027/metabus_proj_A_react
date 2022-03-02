@@ -325,7 +325,7 @@ function AssignmentForm({ handleDidSave }) {
 
               {/* 버튼 클릭 부분 */}
               <div className="mt-5">
-                <p className="text-center text-blue-900 font-bold text-xl mb-5">
+                <p className="text-center text-blue-900 font-bold md:text-xl  xs:text-m mb-5">
                   ① 하단의 검색 버튼을 눌러주세요 ⬇
                 </p>
                 <div className="flex justify-center px-3 mb-6 md:mb-0 p-5">
@@ -343,7 +343,7 @@ function AssignmentForm({ handleDidSave }) {
                       gotoSearched();
                       setClickedSearch(1);
                     }}
-                    className="hover:scale-110 duration-500 sm:w-40 xs:w-32"
+                    className="hover:scale-110 duration-500 sm:w-40 xs:w-28"
                     readOnly
                     id="searched"
                   >
@@ -369,7 +369,7 @@ function AssignmentForm({ handleDidSave }) {
             <div>
               {/* 필터가 됐을 시에 노출 문구  */}
               {filtAnimal.length !== 0 ? (
-                <p className="text-center text-blue-900 font-bold text-xl mb-5">
+                <p className="text-center text-blue-900 font-bold md:text-xl xs:text-m mb-5">
                   ② 원하시는 크루원을 아래에서 선택해주세요 ⬇
                 </p>
               ) : (
@@ -497,7 +497,7 @@ function AssignmentForm({ handleDidSave }) {
 
       <div className="header flex flex-wrap justify-center" id="form">
         <div className="assignments_header rounded-xl shadow-md overflow-hidden  sm:w-full sm:mx-5 xs:w-full xs:mx-5 md:w-5/6 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
-          <p className="text-center text-blue-900 font-bold text-xl my-10">
+          <p className="text-center text-blue-900 font-bold md:text-xl xs:text-m my-10">
             ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
           </p>
           {AnimalList?.filter((animal) => animal.animal_no === selanimal).map(
@@ -572,9 +572,14 @@ function AssignmentForm({ handleDidSave }) {
             onSubmit={handleSubmit}
           >
             {fieldValues.animal && (
-              <p className="text-center text-blue-900 font-bold mb-10 mt-3 text-xl">
-                ③ 크루원을 선택하셨으면, 신청자님의 정보를 입력해주세요!
-              </p>
+              <>
+                <p className="text-center text-blue-900 font-bold mb-2 mt-3 md:text-xl xs:text-m">
+                  ③ 크루원을 선택하셨으면,
+                </p>
+                <p className="text-center text-blue-900 font-bold mb-5 md:text-xl xs:text-m">
+                  신청자님의 정보를 입력해주세요!
+                </p>
+              </>
             )}
 
             <hr />
@@ -696,7 +701,7 @@ function AssignmentForm({ handleDidSave }) {
               <span className="mx-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 거주지 사진
               </span>
-              <p className="mx-5 text-base text-blue-900 mb-1">
+              <p className="mx-5 text-base text-blue-900 mb-1 md:text-m xs:text-sm text-gray-400">
                 ( 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다! )
               </p>
 
@@ -853,9 +858,9 @@ function AssignmentForm({ handleDidSave }) {
             </div>
 
             {/* 신청버튼 */}
-            <div className="flex justify-center my-10">
+            <div className="flex justify-center my-5">
               <button
-                className="hover:scale-110 duration-500 sm:w-40 xs:w-32"
+                className="hover:scale-110 duration-500 sm:w-40 xs:w-28"
                 readOnly
               >
                 <img src="/assignicon2.png" alt="button"></img>
@@ -870,7 +875,7 @@ function AssignmentForm({ handleDidSave }) {
         </div>
       </div>
 
-      <DebugStates fieldValues={fieldValues} />
+      {/* <DebugStates fieldValues={fieldValues} /> */}
     </>
   );
 }
