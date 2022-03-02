@@ -78,7 +78,7 @@ function AssignCheck(props) {
                     <br />
                     <blockquote class=" xs:text-xl md:text-2xl lg:text-3xl font-semibold italic text-center text-slate-900">
                       <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
-                        <span class="relative text-white">
+                        <span class="relative text-white font-bold">
                           " 입양 절차, 입양 전 주의사항 "
                         </span>
                       </span>

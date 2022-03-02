@@ -210,9 +210,9 @@ function AssignmentForm({ handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full sm:mx-5 xs:w-full xs:mx-5">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
-            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-6xl font-extrabold">
+            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-4xl font-extrabold">
               <span className="relative text-white">" 크루원 모집 "</span>
             </span>
           </blockquote>
@@ -234,7 +234,7 @@ function AssignmentForm({ handleDidSave }) {
 
           {/* 동물 검색하는 부분 */}
 
-          <span className="mb-6 block tracking-wide text-gray-700 text-4xl font-bold text-center">
+          <span className="mb-6 block tracking-wide text-gray-700 xs:text-xl text-4xl font-bold text-center">
             🐶 크루원 선택 하기 🐱
           </span>
           <hr className="mb-3 mt-3" readOnly />
