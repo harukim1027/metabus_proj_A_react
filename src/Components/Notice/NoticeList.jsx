@@ -7,7 +7,6 @@ import '../../App.css';
 import './Notice.css';
 import 'css/pagination_notice.css';
 import LoadingIndicator from 'LoadingIndicator';
-
 function NoticeList() {
   const [query, setQuery] = useState(null);
   const { auth } = useAuth();
@@ -17,12 +16,10 @@ function NoticeList() {
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
   const itemsPerPage = 2;
-
   const [{ data: noticeList, loading, error }, refetch] = useApiAxios(
     `/notice/api/notices/`,
     { manual: true },
   );
-
   const fetchNotices = useCallback(
     async (newPage, newQuery = query) => {
       const params = {
@@ -36,36 +33,29 @@ function NoticeList() {
     },
     [query],
   );
-
   useEffect(() => {
     fetchNotices(1);
   }, []);
-
   const handlePageClick = (event) => {
     fetchNotices(event.selected + 1);
   };
-
   const getQuery = (e) => {
     setQuery(e.target.value);
   };
-
   const handleBTNPress = () => {
     fetchNotices(1, query);
   };
-
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       fetchNotices(1, query);
     }
   };
-
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
   console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, [noticeList]);
-
   const gotoTop = () => {
     // 클릭하면 스크롤이 위로 올라가는 함수
     window.scrollTo({
@@ -73,13 +63,10 @@ function NoticeList() {
       behavior: 'smooth',
     });
   };
-
   useEffect(() => {
     gotoTop();
   }, [noticeList]);
-
   //-------------
-
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
@@ -89,7 +76,6 @@ function NoticeList() {
               <span class="relative text-white">" 공지사항 "</span>
             </span>
           </blockquote>
-
           <div className="mb-6 mt-10">
             <div className="  xs:flex-none xl:flex xl:justify-between">
               <div></div>
@@ -100,25 +86,31 @@ function NoticeList() {
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xl px-3 py-2 mr-4 border-2"
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-base"
                     placeholder="번호 또는 제목을 검색하세요."
                   />
                   <button
                     onClick={handleBTNPress}
-                    className="rounded bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xl text-white w-24 px-3 py-2 border-2"
+                    className="rounded bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-white px-3 py-2 border-2 w-24 xs:text-sm sm:text-xl mr-2"
                     readOnly
                   >
                     검색
                   </button>
                 </div>
                 <div className="flex justify-center">
-                  {loading && <LoadingIndicator>검색 중 ...</LoadingIndicator>}
-                  {error && <h2 className="">검색된 정보가 없습니다.</h2>}
+                  {loading && <LoadingIndicator>로딩 중 ...</LoadingIndicator>}
+                  {error && (
+                    <>
+                      <p className="text-red-400 mt-1">
+                        &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. ! (조회된
+                        정보가 없습니다.)
+                      </p>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-
           <div className="mb-5">
             <table className="mb-5 border text-center divide-y divide-gray-200 w-full">
               <thead className="bg-gray-50">
@@ -197,5 +189,4 @@ function NoticeList() {
     </>
   );
 }
-
 export default NoticeList;
