@@ -13,11 +13,11 @@ function PageInquiryDetail() {
         <TopNav />
 
         {(!auth.is_staff && (
-          <div className="flex">
-            <div className="flex-none">
+          <div>
+            <div>
               <Sidebar />
             </div>
-            <div className="flex-1">
+            <div>
               <InquiryDetail inquiryId={inquiryId} />
             </div>
           </div>

@@ -98,8 +98,8 @@ function LoginForm() {
   };
 
   return (
-    <div className="header" id="topLoc">
-      <h2 className="text-center xs:text-3xl md:text-4xl py-5 pb-5 font-bold mt-5 mb-3">
+    <div className="header mx-5" id="topLoc">
+      <h2 className="text-center  xs:text-3xl md:text-4xl py-5 pb-5 font-bold mt-5 mb-3">
         🐹 로그인
       </h2>
 
@@ -132,7 +132,7 @@ function LoginForm() {
                 name="password"
                 value={fieldValues.password}
                 onChange={handleFieldChange}
-                placeholder="**************"
+                placeholder="***********"
                 className="text-xl shadow appearance-none border border-red-500 rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>

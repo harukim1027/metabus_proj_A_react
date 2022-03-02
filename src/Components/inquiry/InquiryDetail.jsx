@@ -63,9 +63,9 @@ function InquiryDetail({ inquiryId }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
-          <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
-            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block">
+        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+          <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
+            <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 1:1 문의 "</span>
             </span>
           </blockquote>
@@ -96,7 +96,7 @@ function InquiryDetail({ inquiryId }) {
                   <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500">
                     문의 내용
                   </h2>
-                  <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500">
+                  <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500 xs:text-base sm:text-2xl">
                     {inquiry.content}
                   </h2>
 
@@ -105,7 +105,7 @@ function InquiryDetail({ inquiryId }) {
                   <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500">
                     답변
                   </h2>
-                  <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500">
+                  <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500 xs:text-base sm:text-2xl">
                     {inquiry.admin_answer}
                   </h2>
                 </>
@@ -113,7 +113,7 @@ function InquiryDetail({ inquiryId }) {
             </div>
           </div>
           <div>
-            <div className="my-5 text-right">
+            <div className="my-5 text-right mr-5">
               <div>
                 {(auth.userID === inquiry?.user || auth.is_staff) && (
                   <button
