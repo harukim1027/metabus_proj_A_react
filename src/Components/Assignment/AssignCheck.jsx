@@ -65,7 +65,7 @@ function AssignCheck(props) {
   return (
     <>
       <div className="header flex justify-center " id="topLoc">
-        <div className="flex flex-wrap justify-center overflow-hidden md:px-10 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 rounded-xl flex flex-wrap justify-center overflow-hidden md:px-10 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <div className="assignments_header shadow-md flex flex-wrap justify-center w-full">
             <main className="" role="main">
               <h1 className="mt-5 font-semibold text-2xl text-center">

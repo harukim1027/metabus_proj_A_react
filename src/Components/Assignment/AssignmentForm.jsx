@@ -343,7 +343,7 @@ function AssignmentForm({ handleDidSave }) {
                       gotoSearched();
                       setClickedSearch(1);
                     }}
-                    className="hover:scale-110 duration-500 w-40"
+                    className="hover:scale-110 duration-500 sm:w-40 xs:w-32"
                     readOnly
                     id="searched"
                   >
@@ -496,7 +496,7 @@ function AssignmentForm({ handleDidSave }) {
       {/* 컨테이너 끝 */}
 
       <div className="header flex flex-wrap justify-center" id="form">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-5/6 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden  sm:w-full sm:mx-5 xs:w-full xs:mx-5 md:w-5/6 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
           <p className="text-center text-blue-900 font-bold text-xl my-10">
             ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
           </p>
@@ -566,7 +566,7 @@ function AssignmentForm({ handleDidSave }) {
       {/* 신청하는 폼 */}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="assignments_header rounded-xl shadow-md overflow-hidden xs:w-full sm:w-full md:w-5/6 md:px-20 lg:w-2/3 pb-10 my-10">
+        <div className="assignments_header rounded-xl shadow-md overflow-hidden  sm:w-full sm:mx-5 xs:w-full xs:mx-5 md:w-5/6 md:px-20 lg:w-2/3 pb-10 my-10">
           <form
             className="assignments_header sm:px-20 md:px-0 py-10"
             onSubmit={handleSubmit}
@@ -580,7 +580,7 @@ function AssignmentForm({ handleDidSave }) {
             <hr />
             {/* 신청자 이름 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2 mx-5">
                 신청자 이름
               </span>
               <input
@@ -589,7 +589,7 @@ function AssignmentForm({ handleDidSave }) {
                 value={fieldValues.adopter_name}
                 onChange={handleFieldChange}
                 placeholder="신청자 이름을 입력해주세요."
-                className="rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg md:w-1/2 lg:w-2/3 xl:w-3/4"
+                className="sm:mx-5 xs:mx-5 rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3  xs:text-sm sm:w-1/2 sm:text-lg md:w-1/2 lg:w-2/3 xl:w-3/4"
               />
 
               <button
@@ -608,7 +608,7 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 신청자 월 수입 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="mx-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 월 수입
                 <button onClick={() => setHelp(!help)} className="inline">
                   <img src="/outline_help.png" alt="help"></img>
@@ -631,7 +631,7 @@ function AssignmentForm({ handleDidSave }) {
                 name="monthly_income"
                 value={fieldValues.monthly_income}
                 onChange={handleFieldChange}
-                className="rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg lg:w-2/3 xl:w-3/4"
+                className="mx-5 rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:text-sm sm:w-1/2 sm:text-lg lg:w-2/3 xl:w-3/4"
               />
               <span className="xs:ml-0 xs:mt-3 sm:ml-3 sm:mt-0 text-xl">
                 만 원
@@ -645,7 +645,7 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 주거형태 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="mx-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 주거 형태
               </span>
               <div className="relative">
@@ -653,7 +653,7 @@ function AssignmentForm({ handleDidSave }) {
                   name="residential_type"
                   value={fieldValues.residential_type}
                   onChange={handleFieldChange}
-                  className=" appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg lg:w-2/3 xl:w-3/4"
+                  className="mx-5 appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-2/3 xs:text-sm sm:w-1/2 sm:text-lg lg:w-2/3 xl:w-3/4"
                   defaultValue="아파트"
                 >
                   <option value="아파트">아파트</option>
@@ -662,7 +662,7 @@ function AssignmentForm({ handleDidSave }) {
                   <option value="원룸">원룸</option>
                   <option value="오피스텔">오피스텔</option>
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 xs:right-3 sm:right-1/2 lg:right-1/3 xl:right-1/4 flex items-center px-2 text-gray-700">
+                <div className="pointer-events-none absolute inset-y-0 xs:right-1/3 sm:right-1/2 lg:right-1/3 xl:right-1/4 flex items-center px-2 text-gray-700">
                   <svg
                     className="fill-current h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -676,7 +676,7 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 반려동물 유무 */}
             <div className="my-5 w-full">
-              <span className="block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="mx-5 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 반려동물 키움 여부
                 <input
                   type="checkbox"
@@ -686,21 +686,21 @@ function AssignmentForm({ handleDidSave }) {
                   className="ml-5"
                 />
               </span>
-              <p className=" xs:text-sm sm:text-base md:text-lg">
+              <p className="mx-5 xs:text-sm sm:text-base md:text-lg text-gray-400">
                 확인용 절차입니다.
               </p>
             </div>
 
             {/* 거주지 사진 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="mx-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 거주지 사진
               </span>
-              <p className="text-base text-blue-900 mb-1">
+              <p className="mx-5 text-base text-blue-900 mb-1">
                 ( 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다! )
               </p>
 
-              <div className="flex justify-start bg-white py-5 w-full">
+              <div className="mx-5 flex justify-start bg-white py-5 w-full">
                 {/* 거주지 파일 첨부 인풋박스 ul태그 시작 부분*/}
                 <ul>
                   {/* 거주지 파일 input 박스 1  */}
@@ -780,7 +780,7 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 만남 희망 장소 */}
             <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
+              <span className="mx-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 만남 희망 장소
               </span>
               <div className="relative">
@@ -788,7 +788,7 @@ function AssignmentForm({ handleDidSave }) {
                   name="place_to_meet"
                   value={fieldValues.place_to_meet}
                   onChange={handleFieldChange}
-                  className=" appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg md:w-2/3 xl:w-3/4"
+                  className="mx-5 appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-2/3 xs:text-sm sm:w-1/2 sm:text-lg md:w-2/3 xl:w-3/4"
                   defaultValue="서울 강동구청 반려동물팀"
                 >
                   <option value="서울 강동구청 반려동물팀">
@@ -816,7 +816,7 @@ function AssignmentForm({ handleDidSave }) {
                     속초시 유기동물 보호소
                   </option>
                 </select>
-                <div className="pointer-events-none absolute inset-y-0 xs:right-3 sm:right-1/2 md:right-1/3 xl:right-1/4 flex items-center px-2 text-gray-700">
+                <div className="pointer-events-none absolute inset-y-0 xs:right-1/3 sm:right-1/2 md:right-1/3 xl:right-1/4 flex items-center px-2 text-gray-700">
                   <svg
                     className="fill-current h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -831,7 +831,7 @@ function AssignmentForm({ handleDidSave }) {
             {/* 만남 희망 날짜 */}
             <div className="my-5 w-full">
               <div className="relative">
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
+                <span className="mx-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                   만남 희망 날짜
                 </span>
 
@@ -839,14 +839,14 @@ function AssignmentForm({ handleDidSave }) {
                   type="date"
                   name="date_to_meet"
                   onChange={handleFieldChange}
-                  className="appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-full xs:text-sm sm:w-1/2 sm:text-lg md:w-2/3 xl:w-3/4"
+                  className="mx-5 appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-2/3 xs:text-sm sm:w-1/2 sm:text-lg md:w-2/3 xl:w-3/4"
                 />
                 {saveErrorMessages.date_to_meet?.map((message, index) => (
                   <p key={index} className="text-base text-red-400">
                     날짜를 다시 선택해주세요.{' '}
                   </p>
                 ))}
-                <p className="text-blue-400 mb-2 mt-1">
+                <p className="mx-5 text-blue-400 mb-2 mt-1">
                   센터 방문 날짜를 선택해주세요!
                 </p>
               </div>
@@ -854,7 +854,10 @@ function AssignmentForm({ handleDidSave }) {
 
             {/* 신청버튼 */}
             <div className="flex justify-center my-10">
-              <button className="hover:scale-110 duration-500 w-40" readOnly>
+              <button
+                className="hover:scale-110 duration-500 sm:w-40 xs:w-32"
+                readOnly
+              >
                 <img src="/assignicon2.png" alt="button"></img>
               </button>
             </div>
