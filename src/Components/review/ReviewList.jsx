@@ -108,6 +108,19 @@ function ReviewList() {
               <span class="relative text-white">" 입양 후기 "</span>
             </span>
           </blockquote>
+          <div className="flex xl:justify-end xs:justify-center">
+            {loading && (
+              <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
+            )}
+            {error && (
+              <>
+                <p className="text-red-400 mt-1">
+                  &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. ! (조회된 정보가
+                  없습니다.)
+                </p>
+              </>
+            )}
+          </div>
 
           {/* 검색 필드 + CSS */}
           {/* 검색, 카테고리, 글 작성 버튼 위치 고정하기 (xs랑 sm 범위에서만) */}
@@ -150,19 +163,6 @@ function ReviewList() {
                   </button>
                 </div>
               </div>
-            </div>
-            <div className="flex xl:justify-end xs:justify-center">
-              {loading && (
-                <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
-              )}
-              {error && (
-                <>
-                  <p className="text-red-400">
-                    &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. ! (조회된 정보가
-                    없습니다.)
-                  </p>
-                </>
-              )}
             </div>
           </div>
 
