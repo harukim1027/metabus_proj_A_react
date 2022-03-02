@@ -43,17 +43,17 @@ function IntroduceMain() {
                 className="xs:w-full sm:w-full lg:w-3/4  xl:w-full"
               />
             </div>
-            <hr className="pb-6" />
+            <hr className="pb-4" />
             <br />
           </div>
         </div>
       </div>
       <div className="flex justify-center">
         <button
-          className="bg-white hover:bg-gray-500 hover:text-white rounded-lg p-2 text-lg"
+          className="  hover:animate-bounce rounded-lg text-5xl"
           onClick={() => goTop()}
         >
-          홈으로 이동
+          🔝
         </button>
       </div>
     </>
