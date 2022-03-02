@@ -111,7 +111,7 @@ function NoticeDetail({ noticeId }) {
                     <img src={notice.image5} alt="" />
                   </div>
 
-                  <h4 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500">
+                  <h4 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500 whitespace-pre-wrap ">
                     {notice.content}
                   </h4>
                   <hr className="mt-3 mb-3" />
