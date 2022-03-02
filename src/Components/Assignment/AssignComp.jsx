@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function AssignComp({ assignId, assignData }) {
   const navigate = useNavigate();
 
-  console.log('assignData: ', assignData);
+  // console.log('assignData: ', assignData);
 
   // patch  요청
   const [{ loading, error }, changeAPS] = useApiAxios(
@@ -34,7 +34,7 @@ function AssignComp({ assignId, assignData }) {
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, [adaniData]);

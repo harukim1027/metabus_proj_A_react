@@ -35,7 +35,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       manual: !reviewId,
     },
   );
-  console.log('review: ', review);
+  // console.log('review: ', review);
 
   const [selectanimalAssign, setSelectanimalAssign] = useState(
     review?.adoptassignment.assignment_no,
@@ -174,13 +174,13 @@ function ReviewForm({ reviewId, handleDidSave }) {
     });
   };
 
-  console.log('fieldValues', fieldValues);
-  console.log('selectanimalAssign: ', selectanimalAssign);
+  // console.log('fieldValues', fieldValues);
+  // console.log('selectanimalAssign: ', selectanimalAssign);
   // console.log('AnimalList', AnimalList);
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, [review]);
@@ -194,7 +194,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
   };
 
   const [formLoc, setFormLoc] = useState(0);
-  console.log('formLoc: ', formLoc);
+  // console.log('formLoc: ', formLoc);
   useEffect(() => {
     setFormLoc(document.querySelector('#form').offsetTop);
   }, [selectanimalAssign]);

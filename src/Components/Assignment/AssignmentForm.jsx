@@ -137,7 +137,7 @@ function AssignmentForm({ handleDidSave }) {
       data: formData,
     }).then((response) => {
       const savedPost = response.data;
-      console.log(savedPost);
+      // console.log(savedPost);
       if (handleDidSave) handleDidSave(savedPost);
     });
   };
@@ -155,7 +155,7 @@ function AssignmentForm({ handleDidSave }) {
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, [AnimalList]);
@@ -173,7 +173,7 @@ function AssignmentForm({ handleDidSave }) {
   }, [topLocation]);
 
   const [searchLoc, setSearchLoc] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setSearchLoc(document.querySelector('#searched').offsetTop);
   }, [AnimalList]);
@@ -187,7 +187,7 @@ function AssignmentForm({ handleDidSave }) {
   };
 
   const [formLoc, setFormLoc] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setFormLoc(document.querySelector('#form').offsetTop);
   }, [filtAnimal]);
@@ -201,10 +201,10 @@ function AssignmentForm({ handleDidSave }) {
   };
   //-------------
 
-  console.log('---------------');
-  console.log('AnimalList: ', AnimalList);
-  console.log('filter: ', filter);
-  console.log('filtAnimal: ', filtAnimal);
+  // console.log('---------------');
+  // console.log('AnimalList: ', AnimalList);
+  // console.log('filter: ', filter);
+  // console.log('filtAnimal: ', filtAnimal);
   // console.log('selAniData: ', selAniData);
 
   return (

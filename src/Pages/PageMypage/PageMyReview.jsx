@@ -6,9 +6,9 @@ function PageMyPageReview() {
   return (
     <>
       <TopNav />
-      <div className="flex">
+      <div>
         <Sidebar />
-        <div className="flex-1">
+        <div>
           <MyReview />
         </div>
       </div>
