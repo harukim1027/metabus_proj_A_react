@@ -25,32 +25,24 @@ function MainScreen() {
 
   return (
     <>
-      <div className="header">
+      <div className="">
         <div>
           <TopNav />
         </div>
 
-        <div className="xs:flex-none sm:flex sm:justify-center w-full">
+        <div className="xs:flex-none sm:flex sm:justify-center w-full mb-24">
           <button
             onClick={() => navigate('/review/dog/')}
-            className="xs:flex xs:justify-center xs:mt-10 hover:scale-110 duration-500"
+            className="xs:flex xs:justify-center mt-10 mx-auto xs:w-4/5 sm:w-full scale-90 hover:scale-100 duration-500"
           >
-            <img
-              src="/dog5.png"
-              className="xs:w-4/5 sm:w-full"
-              alt="dog crew"
-            ></img>
+            <img src="/dog5.png" className="w-5/6" alt="dog crew"></img>
           </button>
 
           <button
             onClick={() => navigate('/review/cat/')}
-            className="xs:flex xs:justify-center xs:mt-10 hover:scale-110 duration-500"
+            className="xs:flex xs:justify-center mt-10 mx-auto xs:w-4/5 sm:w-full scale-90 hover:scale-100 duration-500"
           >
-            <img
-              src="/cat4.png"
-              className="xs:w-4/5 sm:w-full"
-              alt="dog crew"
-            ></img>
+            <img src="/cat4.png" className="w-5/6" alt="dog crew"></img>
           </button>
         </div>
       </div>
