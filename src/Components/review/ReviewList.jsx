@@ -151,7 +151,7 @@ function ReviewList() {
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-base"
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-2 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-base"
                     placeholder="번호, 제목, 작성자 ID를 검색하세요."
                   />
                   <button
@@ -179,7 +179,7 @@ function ReviewList() {
             ))}
           </div>
           {auth.isLoggedIn && !auth.is_staff && (
-            <div className="flex justify-end">
+            <div className="flex justify-end mr-5">
               <button
                 onClick={() => navigate('/review/new/')}
                 className="hover:scale-110 xs:w-10 sm:w-14"
