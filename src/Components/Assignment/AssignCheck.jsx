@@ -43,7 +43,7 @@ function AssignCheck(props) {
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, []);
@@ -95,7 +95,7 @@ function AssignCheck(props) {
               <div className="w-full">
                 <div className="flex justify-center w-full">
                   <div className="xs:w-2/3 sm:w-2/3 lg:w-3/4 xl:w-5/6">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 xs:text-lg md:text-2xl font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 xs:text-lg xs:ml-10 md:ml-0 md:text-2xl font-bold mb-2">
                       입양 절차
                     </span>
 
@@ -143,7 +143,7 @@ function AssignCheck(props) {
 
                 <div className="flex justify-center w-full">
                   <div className="xs:w-2/3 sm:w-2/3 lg:w-3/4 xl:w-5/6">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 xs:text-lg md:text-2xl font-bold mb-2">
+                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 xs:text-lg xs:ml-10 md:ml-0 md:text-2xl font-bold mb-2">
                       입양 전 주의 사항
                     </span>
                     <div className=" flex justify-center">

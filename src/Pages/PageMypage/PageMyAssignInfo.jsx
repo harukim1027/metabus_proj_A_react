@@ -6,7 +6,7 @@ function PageMyAssignInfo() {
   return (
     <>
       <TopNav />
-      <div className="flex">
+      <div className="">
         <Sidebar />
         <div className="flex-1">
           <MyAssignInfo />

@@ -54,7 +54,7 @@ function UserInquiryList({ userId }) {
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, [UserInquiryData]);
