@@ -220,9 +220,9 @@ function ReviewForm({ reviewId, handleDidSave }) {
     <>
       {/* review_header : 배경 흰색 */}
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
-            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl text-6xl font-extrabold">
+            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block xs:text-2xl sm:text-4xl  font-extrabold">
               <span class="relative text-white">
                 {!reviewId ? ' " 입양 후기 작성 " ' : ' " 입양 후기 수정 " '}
               </span>
@@ -235,7 +235,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
           )}
           {error && (
             <>
-              <p className="text-red-400">
+              <p className="text-red-400 text-center">
                 &nbsp;&nbsp; ! 로딩 중 에러가 발생했습니다. !
               </p>
             </>
@@ -244,7 +244,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
           {/*  */}
 
-          <span className="mb-6 block tracking-wide text-gray-700 text-4xl font-bold text-center">
+          <span className="mb-6 block tracking-wide text-gray-700 md:text-4xl xs:text-2xl font-bold text-center">
             🐶 크루원 선택 하기 🐱
           </span>
           <hr className="mb-3 mt-3" readOnly />
@@ -266,7 +266,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                         ),
                       )
                     }
-                    className="bg-purple-200 p-2 m-2 rounded-lg"
+                    className="bg-purple-200 p-2 m-2 rounded-lg font-bold shadow-md hover:bg-purple-200 hover:text-white"
                   >
                     리뷰할 크루 선택하기
                   </button>
@@ -351,8 +351,8 @@ function ReviewForm({ reviewId, handleDidSave }) {
       </div>
 
       <div className="header flex flex-wrap justify-center" id="form">
-        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
-          <p className="text-center text-blue-900 font-bold text-xl mb-5">
+        <div className="mx-5 notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+          <p className="text-center text-blue-900 font-bold md:text-xl xs:text-lg mb-5">
             ⬇ 선택하신 크루원 정보가 표시됩니다. ⬇
           </p>
           {filtAssign
@@ -447,7 +447,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       {/* 리뷰 글 폼 */}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <form
             onSubmit={handleSubmit}
             className="review_header rounded-md sm:px-0 md:px-20 pt-6 pb-8"
@@ -458,7 +458,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 onSubmit={handleSubmit}
                 className="notice_header rounded-xl px-10 pt-6 pb-8"
               >
-                <div className="ml-3 mb-3 w-full">
+                <div className="mb-3 w-full">
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                     제목
                   </span>
@@ -468,36 +468,36 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     value={fieldValues.title}
                     onChange={handleFieldChange}
                     placeholder="제목을 입력해주세요."
-                    className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
+                    className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 "
                   />
                   {saveErrorMessages.title?.map((message, index) => (
                     <p key={index} className="text-base text-red-400">
                       제목을 한글로 입력해주세요.
                     </p>
                   ))}
-                  <br />
-
-                  {/* 내용 입력 input 박스 */}
-                  <div className="ml-3 mb-3 w-full ">
-                    <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
-                      내용
-                    </span>
-                  </div>
-
-                  <textarea
-                    type="text"
-                    name="content"
-                    value={fieldValues.content}
-                    onChange={handleFieldChange}
-                    placeholder="내용을 입력해주세요."
-                    className="rounded-xl text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
-                  />
-                  {saveErrorMessages.content?.map((message, index) => (
-                    <p key={index} className="text-base text-red-400">
-                      내용을 입력해주세요.
-                    </p>
-                  ))}
                 </div>
+                <br />
+
+                {/* 내용 입력 input 박스 */}
+                <div className="mb-3 w-full ">
+                  <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
+                    내용
+                  </span>
+                </div>
+
+                <textarea
+                  type="text"
+                  name="content"
+                  value={fieldValues.content}
+                  onChange={handleFieldChange}
+                  placeholder="내용을 입력해주세요."
+                  className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
+                />
+                {saveErrorMessages.content?.map((message, index) => (
+                  <p key={index} className="text-base text-red-400">
+                    내용을 입력해주세요.
+                  </p>
+                ))}
 
                 {/* 이미지 첨부 인풋박스 */}
                 <div className="mt-3 ml-3 mb-3 w-full">
@@ -508,7 +508,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     ( 최대 5개까지 이미지를 등록할 수 있습니다. )
                   </h2>
 
-                  <div className="flex justify-center bg-white px-4 py-5 w-full">
+                  <div className="flex justify-center bg-white px-4 py-3 w-full">
                     {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                     <ul>
                       {/* 개별 이미지 input 박스 1*/}
@@ -732,7 +732,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="shadow-md bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-m border-4 font-bold text-white py-1 px-2 rounded"
                     onClick={(e) => handleSubmit(e)}
                     onSubmit={handleSubmit}
                   >
@@ -743,7 +743,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     onClick={() => {
                       navigate(`/review/${reviewId ? reviewId : ''}`);
                     }}
-                    className=" ml-3 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="shadow-md ml-3 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 font-bold text-m border-4 text-white py-1 px-2 rounded"
                   >
                     취소
                   </button>
@@ -767,12 +767,12 @@ function ReviewForm({ reviewId, handleDidSave }) {
         </div>
       </div>
 
-      <DebugStates
+      {/* <DebugStates
         review={review}
         getLoading={getLoading}
         getError={getError}
         fieldValues={fieldValues}
-      />
+      /> */}
     </>
   );
 }
