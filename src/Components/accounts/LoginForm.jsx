@@ -99,7 +99,7 @@ function LoginForm() {
 
   return (
     <div className="header" id="topLoc">
-      <h2 className="text-center text-4xl py-5 pb-5 font-bold mt-5 mb-3">
+      <h2 className="text-center xs:text-3xl md:text-4xl py-5 pb-5 font-bold mt-5 mb-3">
         🐹 로그인
       </h2>
 
@@ -174,7 +174,7 @@ function LoginForm() {
 
             <hr />
             {/* 회원가입 링크 이동 */}
-            <p className="text-m text-right mt-5  mb-2 text-red-300 text-base font-semibold">
+            <p className="xs:text-s md:text-m text-right mt-5  mb-2 text-red-300 text-base font-semibold">
               아직 METABUS의 회원이 아니신가요 ?
             </p>
             <div className="text-right border:bg-pink-200">

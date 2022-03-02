@@ -103,10 +103,10 @@ function InquiryForm({ inquiryId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
           <blockquote className="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
-            <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block text-6xl font-extrabold">
+            <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block xd:text-2xl md:text-4xl font-extrabold">
               <span className="relative text-white">" 내 문의사항 "</span>
             </span>
           </blockquote>
@@ -128,7 +128,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
             >
               {auth.isLoggedIn && !auth.is_staff && (
                 <>
-                  <div className="ml-3 mb-3 w-full">
+                  <div className="mb-3 w-full">
                     <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                       제목
                     </span>
@@ -148,7 +148,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                   </div>
 
                   {/* 내용 입력 인풋박스 */}
-                  <div className="ml-3 mb-3 w-full ">
+                  <div className="mb-3 w-full ">
                     <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-base font-bold mb-2">
                       내용
                     </span>
@@ -204,7 +204,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               <div className="text-center">
                 <button
                   type="submit"
-                  className=" bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                  className="shadow-md font-bold bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-lg border-4 text-white py-1 px-2 rounded"
                   onClick={(e) => handleSubmit(e)}
                 >
                   저장
@@ -214,7 +214,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                   onClick={() => {
                     navigate(`/inquiry/${inquiryId ? inquiryId : ''}`);
                   }}
-                  className=" ml-3 bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                  className="shadow-md font-bold ml-3 bg-yellow-300 hover:bg-yellow-700 border-yellow-300 hover:border-yellow-700 text-lg border-4 text-white py-1 px-2 rounded"
                 >
                   취소
                 </button>

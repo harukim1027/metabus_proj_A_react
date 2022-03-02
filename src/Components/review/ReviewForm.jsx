@@ -732,7 +732,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 <div className="text-center">
                   <button
                     type="submit"
-                    className="shadow-md bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-m border-4 font-bold text-white py-1 px-2 rounded"
+                    className="shadow-md bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-lg border-4 font-bold text-white py-1 px-2 rounded"
                     onClick={(e) => handleSubmit(e)}
                     onSubmit={handleSubmit}
                   >
@@ -743,7 +743,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     onClick={() => {
                       navigate(`/review/${reviewId ? reviewId : ''}`);
                     }}
-                    className="shadow-md ml-3 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 font-bold text-m border-4 text-white py-1 px-2 rounded"
+                    className="shadow-md ml-3 bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 font-bold text-lg border-4 text-white py-1 px-2 rounded"
                   >
                     취소
                   </button>

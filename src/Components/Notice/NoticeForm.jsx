@@ -180,7 +180,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           {/* 폼 작성 시작부분 */}
           <blockquote className="mt-3 mb-10 font-semibold italic text-center text-slate-900">
             <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl font-extrabold">
@@ -197,10 +197,10 @@ function NoticeForm({ noticeId, handleDidSave }) {
           <div className="w-full">
             <form
               onSubmit={handleSubmit}
-              className="notice_header rounded-md sm:px-0 md:px-20 pt-6 pb-8"
+              className="mx-5 notice_header rounded-md sm:px-0 md:px-20 pt-6 pb-8"
             >
               {/* 제목 입력 인풋박스 */}
-              <div className="mb-3 w-full">
+              <div className=" mb-3 w-full">
                 <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                   제목
                 </span>
@@ -585,7 +585,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                 </div>
               </div>
               <div className="text-center">
-                <button className=" bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-1 px-2 rounded">
+                <button className="shadow-md font-bold bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-1 px-2 rounded">
                   저장
                 </button>
 
@@ -593,7 +593,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                   onClick={() => {
                     navigate(`/notice/${noticeId ? noticeId : ''}`);
                   }}
-                  className=" ml-3 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-1 px-2 rounded"
+                  className="shadow-md font-bold ml-3 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-lg border-4 text-white py-1 px-2 rounded"
                 >
                   취소
                 </button>
@@ -610,7 +610,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
           </div>
         </div>
       </div>
-      <DebugStates fieldValues={fieldValues} />
+      {/* <DebugStates fieldValues={fieldValues} /> */}
     </>
   );
 }
