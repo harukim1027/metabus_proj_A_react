@@ -82,7 +82,7 @@ function AssignCheck(props) {
                           " 입양 절차, 입양 전 주의사항 "
                         </span>
                       </span>
-                      <p className="mt-3 mb-3">
+                      <p className="mt-3 mb-3 xs:text-lg md:text-2xl">
                         안내를 반드시 읽고, 동의해주세요 !
                       </p>
                     </blockquote>
