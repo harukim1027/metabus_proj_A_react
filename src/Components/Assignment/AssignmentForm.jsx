@@ -345,12 +345,9 @@ function AssignmentForm({ handleDidSave }) {
                     }}
                     className="hover:scale-110 duration-500 w-40"
                     readOnly
+                    id="searched"
                   >
-                    <img
-                      src="/searchicon2.png"
-                      alt="button"
-                      id="searched"
-                    ></img>
+                    <img src="/searchicon2.png" alt="button"></img>
                   </button>
                 </div>
                 {/* 저장 에러  */}
