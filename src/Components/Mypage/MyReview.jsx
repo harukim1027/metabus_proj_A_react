@@ -171,7 +171,7 @@ function MyReview() {
             pageRangeDisplayed={itemsPerPage}
             pageCount={pageCount}
             renderOnZeroPageCount={null}
-            className="pagination_notice"
+            className="pagination_review"
           />
         </div>
       </div>
