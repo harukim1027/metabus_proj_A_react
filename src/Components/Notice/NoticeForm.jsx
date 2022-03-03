@@ -183,7 +183,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
         <div className="mx-5 notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           {/* 폼 작성 시작부분 */}
           <blockquote className="mt-3 mb-10 font-semibold italic text-center text-slate-900">
-            <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block xxs:text-2xl sm:text-4xl md:text-6xl font-extrabold">
+            <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-500 relative inline-block  xxs:text-2xl sm:text-4xl lg:text-6xl font-extrabold">
               <span className="relative text-white">
                 {!noticeId ? ' " 공지사항 작성 " ' : ' " 공지사항 수정 " '}
               </span>

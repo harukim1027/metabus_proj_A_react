@@ -68,7 +68,7 @@ function ReviewDetail({ reviewId }) {
       <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="mx-5 review_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <blockquote class="mt-3 mb-10 font-semibold italic text-center text-slate-900">
-            <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block xxs:text-2xl sm:text-4xl md:text-6xl text-6xl ">
+            <span class="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block  xxs:text-2xl sm:text-4xl lg:text-6xl ">
               <span class="relative text-white">" 입양후기 "</span>
             </span>
           </blockquote>

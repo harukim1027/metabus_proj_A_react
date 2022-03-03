@@ -222,7 +222,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="mx-5 review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
-            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block xxs:text-2xl sm:text-4xl  font-extrabold">
+            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block  xxs:text-2xl sm:text-4xl lg:text-6xl  font-extrabold">
               <span class="relative text-white">
                 {!reviewId ? ' " 입양 후기 작성 " ' : ' " 입양 후기 수정 " '}
               </span>

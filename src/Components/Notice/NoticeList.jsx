@@ -72,7 +72,7 @@ function NoticeList() {
       <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <blockquote class="mt-5 mb-3 font-semibold italic text-center text-slate-900">
-            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xxs:text-2xl sm:text-4xl md:text-6xl">
+            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block  xxs:text-2xl sm:text-4xl lg:text-6xl">
               <span class="relative text-white">" 공지사항 "</span>
             </span>
           </blockquote>
