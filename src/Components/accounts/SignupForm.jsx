@@ -136,7 +136,7 @@ function SignupForm() {
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
                     readOnly
                     onClick={(e) => clickButton(e)}
                   >
@@ -184,7 +184,7 @@ function SignupForm() {
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   {/* 중복확인 */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
                     onClick={(e) => clickButton(e)}
                     readOnly
                   >
@@ -273,7 +273,7 @@ function SignupForm() {
                   />
                   {/* 중복확인 */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
                     onClick={(e) => clickButton(e)}
                     readOnly
                   >

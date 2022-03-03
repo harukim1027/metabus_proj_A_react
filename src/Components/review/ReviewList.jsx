@@ -137,7 +137,7 @@ function ReviewList() {
                       name="category"
                       value={fieldValues.category}
                       onChange={handleFieldChange}
-                      className="md:text-xl xxs:text-base border-2 border-purple-400 rounded p-2 xxs:w-32 md:w-60 text-center"
+                      className="md:text-xl xxs:text-base border-2 border-purple-400 rounded p-2 xxs:w-32 md:w-60 text-center py-2"
                       defaultValue="전체"
                     >
                       <option value="전체">전체</option>

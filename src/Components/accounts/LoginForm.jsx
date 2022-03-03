@@ -157,11 +157,11 @@ function LoginForm() {
               </div>
             </div>
 
-            <div className="text-right mb-5 border:bg-pink-200">
+            <div className="text-center mb-5 border:bg-pink-200">
               {/* 아이디 찾기 링크 이동 */}
               <a
                 href="/accounts/findid/"
-                className="text-gray-500 mr-10 xxs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
+                className="text-gray-500 mr-5 xxs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
               >
                 &nbsp;아이디 찾기&nbsp;
               </a>
@@ -177,7 +177,7 @@ function LoginForm() {
             <hr />
             {/* 회원가입 링크 이동 */}
             <p className="bg-yellow-100 xxs:text-xs xs:text-xs md:text-base text-center mt-5  mb-2 text-red-300 font-semibold">
-              아직 METABUS의 회원이 아니신가요 ?
+              아직 회원이 아니신가요?
             </p>
             <div className="text-right border:bg-pink-200">
               <a
