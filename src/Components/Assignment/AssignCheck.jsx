@@ -76,13 +76,13 @@ function AssignCheck(props) {
                 <div className="text-center">
                   <div className="font-bold pb-3">
                     <br />
-                    <blockquote class=" xs:text-xl md:text-2xl lg:text-3xl font-semibold italic text-center text-slate-900">
+                    <blockquote class=" xxs:text-m md:text-2xl lg:text-3xl font-semibold italic text-center text-slate-900">
                       <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
                         <span class="relative text-white font-bold">
                           " 입양 절차, 입양 전 주의사항 "
                         </span>
                       </span>
-                      <p className="mt-3 mb-3 xs:text-lg md:text-2xl">
+                      <p className="mt-3 mb-3 xxs:text-m md:text-2xl">
                         안내를 반드시 읽고, 동의해주세요 !
                       </p>
                     </blockquote>
@@ -93,7 +93,7 @@ function AssignCheck(props) {
               </div>
 
               <div className="w-full">
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 xs:text-lg xs:ml-10 md:text-2xl font-bold mb-2">
+                <span className=" after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-black xs:text-xl xs:ml-10 md:text-2xl font-extrabold mb-2">
                   입양 절차
                 </span>
                 <div className="flex justify-center w-full">
@@ -104,28 +104,29 @@ function AssignCheck(props) {
                           <img
                             src="/assigncheck1.png"
                             alt="assigncheck1"
-                            className="xs:w-2/3 md:w-full"
+                            className="xxs:w-2/3 md:w-full"
                           />
                         </div>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center ">
                           <img
                             src="/assigncheck2.png"
                             alt="assigncheck2"
-                            className="xs:w-2/3 md:w-full"
+                            className="xxs:w-2/3 md:w-full"
                           />
                         </div>
                         <div className="flex justify-center">
                           <img
                             src="/assigncheck3.png"
                             alt="assigncheck"
-                            className="xs:w-2/3 md:w-full"
+                            className="xxs:w-2/3 md:w-full"
                           />
                         </div>
                       </div>
                     </div>
-
-                    <div className=" xs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-bold text-gray-700 mr-5">
-                      <label>입양 절차를 숙지했습니다&nbsp; </label>
+                    <div className=" xs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-semibold text-gray-500 mr-5">
+                      <label className="bg-blue-100">
+                        입양 절차를 숙지했습니다
+                      </label>
                       <input
                         type="checkbox"
                         checked={contract_check ? 'checked' : null}
@@ -138,11 +139,11 @@ function AssignCheck(props) {
 
                 <hr className="pb-6 mx-10" />
 
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-gray-700 xs:text-lg xs:ml-10 md:text-2xl font-bold mb-2">
+                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-black xxs:text-xl xs:ml-10 md:text-2xl font-extrabold mb-2">
                   입양 전 주의 사항
                 </span>
                 <div className="flex justify-center w-full">
-                  <div className="xs:w-full sm:w-2/3 lg:w-3/4 xl:w-5/6">
+                  <div className="xxs:w-full sm:w-2/3 lg:w-3/4 xl:w-5/6">
                     <div className=" flex justify-center">
                       <div className="assign_explanation ">
                         <img
@@ -152,8 +153,10 @@ function AssignCheck(props) {
                         />
                       </div>
                     </div>
-                    <div className="xs:text-base md:text-lg lg:text-xl text-right pb-5 font-bold text-gray-700 mr-5">
-                      <label>입양 전 주의사항을 숙지했습니다&nbsp; </label>
+                    <div className="xs:text-base md:text-lg lg:text-xl text-right pb-5 font-bold text-gray-500 mr-5">
+                      <label className="bg-blue-100">
+                        &nbsp;입양 전 주의사항을 숙지했습니다
+                      </label>
                       <input
                         type="checkbox"
                         checked={contract_check ? 'checked' : null}
@@ -185,12 +188,12 @@ function AssignCheck(props) {
                 </div>
                 <div className="text-center my-3 text-2xl">
                   {all_check && (
-                    <Button
+                    <button
                       onClick={() => navigate('/assignment/new/')}
-                      disabled
+                      className="hover:bg-blue-500 py-2 rounded-lg shadow-lg bg-blue-700 font-extrabold xxs:text-xl md:text-3xl text-white"
                     >
-                      신청
-                    </Button>
+                      &nbsp;&nbsp;신청&nbsp;&nbsp;
+                    </button>
                   )}
                 </div>
                 <br />

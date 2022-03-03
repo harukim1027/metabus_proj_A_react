@@ -65,7 +65,7 @@ function NoticeDetail({ noticeId }) {
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
-          <blockquote class="mt-5 text-6xl font-semibold italic text-center text-slate-900">
+          <blockquote class="mt-5 xl:text-6xl md:text-4xl xxs:text-2xl font-semibold italic text-center text-slate-900">
             <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
               <span class="relative text-white">" 공지사항 "</span>
             </span>
@@ -87,8 +87,8 @@ function NoticeDetail({ noticeId }) {
                   <h2
                     className={
                       notice.title.length > 20
-                        ? 'text-xl leading-6 font-bold text-gray-900 tracking-wide'
-                        : 'text-3xl leading-6 font-bold text-gray-900 tracking-wide'
+                        ? 'md:text-xl xxs:text-m leading-6 font-bold text-gray-900 tracking-wide'
+                        : 'md:text-3xl  xxs:text-xl leading-6 font-bold text-gray-900 tracking-wide'
                     }
                   >
                     {notice.title}
@@ -111,7 +111,7 @@ function NoticeDetail({ noticeId }) {
                     <img src={notice.image5} alt="" />
                   </div>
 
-                  <h4 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500 whitespace-pre-wrap ">
+                  <h4 className="mx-5 sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500 whitespace-pre-wrap ">
                     {notice.content}
                   </h4>
                   <hr className="mt-3 mb-3" />

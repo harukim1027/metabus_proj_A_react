@@ -60,7 +60,7 @@ function ChangePassword() {
   return (
     <>
       <div id="topLoc">
-        <div className="header rounded-xl px-20 pt-6 pb-8 mb-4">
+        <div className="mx-5 header rounded-xl px-20 pt-6 pb-8 mb-4">
           <h2 className="text-center xs:text-3xl md:text-4xl py-5 pb-5 font-bold  mb-3">
             🐯 비밀번호 변경하기
           </h2>

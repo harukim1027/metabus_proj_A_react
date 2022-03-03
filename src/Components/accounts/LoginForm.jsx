@@ -120,7 +120,7 @@ function LoginForm() {
                 value={fieldValues.userID}
                 onChange={handleFieldChange}
                 placeholder="userID"
-                className="text-xl shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5"
+                className="text-m shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5"
               />
             </div>
             <div className="mb-6">
@@ -133,20 +133,23 @@ function LoginForm() {
                 value={fieldValues.password}
                 onChange={handleFieldChange}
                 placeholder="***********"
-                className="text-xl shadow appearance-none border border-red-500 rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="text-m shadow appearance-none border border-red-500 rounded w-full py-4 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
-            <div className="text-center text-2xl mb-5">
-              <Button>Log In</Button>
+            <div className="text-center  mb-5">
+              {/* 버튼 */}
+              <button className="shadow-lg xxs:text-2xl md:text-3xl bg-blue-900 hover:bg-blue-700 rounded-xl text-white font-bold py-1 ">
+                &nbsp;&nbsp;Log In&nbsp;&nbsp;
+              </button>
               {/* 저장 에러  */}
               <div className="text-sm">
                 {loading && <LoadingIndicator>로그인 중 ...</LoadingIndicator>}
                 {error?.response?.status === 401 && (
-                  <div className="text-red-400">로그인에 실패했습니다.</div>
+                  <div className="text-red-400">로그인에 실패했습니다!</div>
                 )}
                 {error && (
                   <>
-                    <p className="text-red-400 mt-3">로그인에 실패했습니다.</p>
+                    <p className="text-red-400 mt-5">로그인에 실패했습니다!</p>
                     <p className="text-red-400">
                       아이디, 비밀번호를 다시 확인해주세요.
                     </p>
@@ -159,28 +162,28 @@ function LoginForm() {
               {/* 아이디 찾기 링크 이동 */}
               <a
                 href="/accounts/findid/"
-                className="text-gray-500 mr-10 text-xs hover:bg-pink-200 hover:text-white font-semibold"
+                className="text-gray-500 mr-10 xxs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
               >
-                아이디 찾기
+                &nbsp;아이디 찾기&nbsp;
               </a>
               {/* 비밀번호 찾기 링크 이동 */}
               <a
                 href="/accounts/changepassword/"
-                className="text-gray-500 text-xs hover:bg-pink-200 hover:text-white font-semibold"
+                className="text-gray-500 xxs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
               >
-                비밀번호 찾기
+                &nbsp;비밀번호 찾기&nbsp;
               </a>
             </div>
 
             <hr />
             {/* 회원가입 링크 이동 */}
-            <p className="xs:text-s md:text-m text-right mt-5  mb-2 text-red-300 text-base font-semibold">
+            <p className="bg-yellow-100 xxs:text-xs xs:text-xs md:text-base text-center mt-5  mb-2 text-red-300 font-semibold">
               아직 METABUS의 회원이 아니신가요 ?
             </p>
             <div className="text-right border:bg-pink-200">
               <a
                 href="/accounts/checksignup/"
-                className="text-right  text-xl hover:bg-pink-200 hover:text-white font-semibold"
+                className="text-right xxs:text-base md:text-xl hover:bg-pink-200 hover:text-white font-semibold"
               >
                 회원가입 하러 가기 ❕
               </a>

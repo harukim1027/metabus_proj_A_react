@@ -50,7 +50,7 @@ function IntroduceMain() {
       </div>
       <div className="flex justify-center">
         <button
-          className="  hover:animate-bounce rounded-lg text-5xl"
+          className="mb-5  hover:animate-bounce rounded-lg text-5xl"
           onClick={() => goTop()}
         >
           🔝

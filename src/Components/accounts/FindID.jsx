@@ -82,7 +82,7 @@ function FindId() {
         )}
 
         <div className="flex justify-center">
-          <div className="accounts_header shadow-md rounded-xl">
+          <div className="mx-5 accounts_header shadow-md rounded-xl">
             <form
               className="rounded-xl px-20 pt-6 mb-4"
               onSubmit={handleSubmit}

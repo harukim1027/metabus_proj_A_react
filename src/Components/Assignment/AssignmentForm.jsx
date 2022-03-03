@@ -211,7 +211,7 @@ function AssignmentForm({ handleDidSave }) {
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full sm:mx-5 xs:w-full xs:mx-5">
-          <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
+          <blockquote className="mt-10 mb-6 xxs:text-xl md:text-2xl font-semibold italic text-center text-slate-900">
             <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block text-4xl font-extrabold">
               <span className="relative text-white">" 크루원 모집 "</span>
             </span>
@@ -239,7 +239,7 @@ function AssignmentForm({ handleDidSave }) {
           </span>
           <hr className="mb-3 mt-3" readOnly />
 
-          <div className="ml-3 mt-3">
+          <div className="ml-3 mt-5">
             <div className="w-full px-3 mb-10">
               {/* 크루 선택 (개/고양이) */}
               <span className="block tracking-wide text-gray-700 font-bold mb-2 xs:text-base sm:text-lg md:text-2xl">
@@ -343,7 +343,7 @@ function AssignmentForm({ handleDidSave }) {
                       gotoSearched();
                       setClickedSearch(1);
                     }}
-                    className="hover:scale-110 duration-500 sm:w-40 xs:w-28"
+                    className="hover:scale-110 duration-500 sm:w-32 xxs:w-24"
                     readOnly
                     id="searched"
                   >
@@ -357,7 +357,14 @@ function AssignmentForm({ handleDidSave }) {
                   )}
                 </div>
                 {clickedSearch === 1 && filtAnimal.length === 0 && (
-                  <h2 className="text-center">조회된 동물이 없습니다.</h2>
+                  <>
+                    <h2 className="text-center xxs:text-sm md:text-base">
+                      😅 조회된 동물이 없습니다.
+                    </h2>
+                    <h2 className="text-center xxs:text-sm md:text-base">
+                      다른 조건으로 검색해주세요.
+                    </h2>
+                  </>
                 )}
               </div>
             </div>
@@ -497,7 +504,7 @@ function AssignmentForm({ handleDidSave }) {
 
       <div className="header flex flex-wrap justify-center" id="form">
         <div className="assignments_header rounded-xl shadow-md overflow-hidden  sm:w-full sm:mx-5 xs:w-full xs:mx-5 md:w-5/6 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
-          <p className="text-center text-blue-900 font-bold md:text-xl xs:text-m my-10">
+          <p className="text-center text-blue-900 font-bold md:text-xl xxs:text-m my-10">
             ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
           </p>
           {AnimalList?.filter((animal) => animal.animal_no === selanimal).map(
@@ -584,8 +591,8 @@ function AssignmentForm({ handleDidSave }) {
 
             <hr />
             {/* 신청자 이름 */}
-            <div className="my-5 w-full">
-              <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2 mx-5">
+            <div className="my-5">
+              <span className="ml-5  mb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-base font-bold">
                 신청자 이름
               </span>
               <input
@@ -593,24 +600,27 @@ function AssignmentForm({ handleDidSave }) {
                 name="adopter_name"
                 value={fieldValues.adopter_name}
                 onChange={handleFieldChange}
-                placeholder="신청자 이름을 입력해주세요."
-                className="sm:mx-5 xs:mx-5 rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3  xs:text-sm sm:w-1/2 sm:text-lg md:w-1/2 lg:w-2/3 xl:w-3/4"
+                placeholder="이름을 입력해주세요."
+                className="mx-5 rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xxs:w-1/2"
               />
 
               <button
                 onClick={(e) => putAuthName(e)}
-                className="bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 border-4 text-white py-1 px-2 rounded xs:text-sm xs:ml-0 xs:mt-3 sm:text-lg sm:ml-3 sm:mt-0"
+                className="border-blue-400 bg-blue-400 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  text-white px-1 py-2 rounded ml-2"
                 readOnly
               >
                 회원 정보와 동일
               </button>
               {saveErrorMessages.adopter_name?.map((message, index) => (
-                <p key={index} className="text-base text-red-400">
-                  이름을 입력해주세요.
+                <p
+                  key={index}
+                  className="ml-10 xxs:text-sm md:text-base text-red-400"
+                >
+                  ! 이름을 입력해주세요.
                 </p>
               ))}
             </div>
-
+            <hr className="bg-gray-100" />
             {/* 신청자 월 수입 */}
             <div className="my-5 w-full">
               <span className="mx-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
@@ -636,17 +646,22 @@ function AssignmentForm({ handleDidSave }) {
                 name="monthly_income"
                 value={fieldValues.monthly_income}
                 onChange={handleFieldChange}
-                className="mx-5 rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:text-sm sm:w-1/2 sm:text-lg lg:w-2/3 xl:w-3/4"
+                className="mx-5 rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xxs:w-1/2"
               />
-              <span className="xs:ml-0 xs:mt-3 sm:ml-3 sm:mt-0 text-xl">
-                만 원
+              <span className="xs:ml-0 xs:mt-3 sm:ml-3 sm:mt-0 md:text-xl xxs:text-base">
+                만 (원)
               </span>
               {saveErrorMessages.monthly_income?.map((message, index) => (
-                <p key={index} className="text-base text-red-400">
-                  월 수입을 입력해주세요.
+                <p
+                  key={index}
+                  className="ml-10 xxs:text-sm md:text-base text-red-400"
+                >
+                  ! 월 수입을 입력해주세요.
                 </p>
               ))}
             </div>
+
+            <hr className="bg-gray-100" />
 
             {/* 주거형태 */}
             <div className="my-5 w-full">
@@ -678,6 +693,7 @@ function AssignmentForm({ handleDidSave }) {
                 </div>
               </div>
             </div>
+            <hr className="bg-gray-100" />
 
             {/* 반려동물 유무 */}
             <div className="my-5 w-full">
@@ -695,21 +711,22 @@ function AssignmentForm({ handleDidSave }) {
                 확인용 절차입니다.
               </p>
             </div>
+            <hr className="bg-gray-100" />
 
             {/* 거주지 사진 */}
             <div className="my-5 w-full">
               <span className="mx-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                 거주지 사진
               </span>
-              <p className="mx-5 text-base text-blue-900 mb-1 md:text-m xs:text-sm text-gray-400">
+              <p className="mx-5 text-base mb-1 md:text-m xs:text-sm text-gray-400">
                 ( 세 장의 신청자의 현 거주지 사진 업로드가 필요합니다! )
               </p>
 
-              <div className="mx-5 flex justify-start bg-white py-5 w-full">
+              <div className="mx-5 bg-white py-5">
                 {/* 거주지 파일 첨부 인풋박스 ul태그 시작 부분*/}
                 <ul>
                   {/* 거주지 파일 input 박스 1  */}
-                  <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                  <li className="mx-5 flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence1"
@@ -726,14 +743,17 @@ function AssignmentForm({ handleDidSave }) {
                   </li>
                   {saveErrorMessages.picture_of_residence1?.map(
                     (message, index) => (
-                      <p key={index} className="text-base text-red-400 ml-3">
-                        파일을 확인해주세요.
+                      <p
+                        key={index}
+                        className="mb-3 xxs:text-sm md:text-base text-red-400 ml-3"
+                      >
+                        이미지를 확인해주세요. (3MB 이하만 업로드 가능합니다.){' '}
                       </p>
                     ),
                   )}
 
                   {/* 거주지 파일 input 박스 2 */}
-                  <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                  <li className="mx-5 flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence2"
@@ -750,14 +770,17 @@ function AssignmentForm({ handleDidSave }) {
                   </li>
                   {saveErrorMessages.picture_of_residence2?.map(
                     (message, index) => (
-                      <p key={index} className="text-base text-red-400 ml-3">
-                        파일을 확인해주세요.{' '}
+                      <p
+                        key={index}
+                        className="mb-3 xxs:text-sm md:text-base text-red-400 ml-3"
+                      >
+                        이미지를 확인해주세요. (3MB 이하만 업로드 가능합니다.)
                       </p>
                     ),
                   )}
 
                   {/* 거주지 파일 input 박스 3 */}
-                  <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                  <li className="mx-5 flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
                     <input
                       type="file"
                       name="picture_of_residence3"
@@ -774,14 +797,18 @@ function AssignmentForm({ handleDidSave }) {
                   </li>
                   {saveErrorMessages.picture_of_residence3?.map(
                     (message, index) => (
-                      <p key={index} className="text-base text-red-400 ml-3">
-                        파일을 확인해주세요.{' '}
+                      <p
+                        key={index}
+                        className="mb-3 xxs:text-sm md:text-base text-red-400 ml-3"
+                      >
+                        이미지를 확인해주세요. (3MB 이하만 업로드 가능합니다.){' '}
                       </p>
                     ),
                   )}
                 </ul>
               </div>
             </div>
+            <hr className="bg-gray-100" />
 
             {/* 만남 희망 장소 */}
             <div className="my-5 w-full">
@@ -847,8 +874,8 @@ function AssignmentForm({ handleDidSave }) {
                   className="mx-5 appearance-none rounded-md bg-gray-100 focus:bg-white focus:border-gray-400 p-3 xs:w-2/3 xs:text-sm sm:w-1/2 sm:text-lg md:w-2/3 xl:w-3/4"
                 />
                 {saveErrorMessages.date_to_meet?.map((message, index) => (
-                  <p key={index} className="text-base text-red-400">
-                    날짜를 다시 선택해주세요.{' '}
+                  <p key={index} className="ml-10 text-base text-red-400">
+                    ! 날짜를 다시 선택해주세요.
                   </p>
                 ))}
                 <p className="mx-5 text-blue-400 mb-2 mt-1">
@@ -860,13 +887,13 @@ function AssignmentForm({ handleDidSave }) {
             {/* 신청버튼 */}
             <div className="flex justify-center my-5">
               <button
-                className="hover:scale-110 duration-500 sm:w-40 xs:w-28"
+                className="hover:scale-110 duration-500 sm:w-32 xxs:w-24"
                 readOnly
               >
                 <img src="/assignicon2.png" alt="button"></img>
               </button>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center xxs:text-sm">
               {saveLoading && <LoadingIndicator>저장 중...</LoadingIndicator>}
               {saveError &&
                 `저장 중 에러가 발생했습니다. 신청 양식을 확인해주세요.`}
