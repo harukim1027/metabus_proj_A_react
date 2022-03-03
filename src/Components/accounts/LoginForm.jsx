@@ -99,7 +99,7 @@ function LoginForm() {
 
   return (
     <div className="header mx-5" id="topLoc">
-      <h2 className="text-center  xs:text-3xl md:text-4xl py-5 pb-5 font-bold mt-5 mb-3">
+      <h2 className="text-center  xxs:text-3xl md:text-4xl py-5 pb-5 font-bold mt-5 mb-3">
         🐹 로그인
       </h2>
 
@@ -176,7 +176,7 @@ function LoginForm() {
 
             <hr />
             {/* 회원가입 링크 이동 */}
-            <p className="bg-yellow-100 xxs:text-xs xs:text-xs md:text-base text-center mt-5  mb-2 text-red-300 font-semibold">
+            <p className="bg-yellow-100 xxs:text-xs xxs:text-xs md:text-base text-center mt-5  mb-2 text-red-300 font-semibold">
               아직 회원이 아니신가요?
             </p>
             <div className="text-right border:bg-pink-200">

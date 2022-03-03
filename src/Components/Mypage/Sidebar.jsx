@@ -61,7 +61,7 @@ const Sidebar = () => {
                 onClick={() => navigate(`/mypage/userinfo/`)}
                 className="cursor-pointer hover:bg-blue-800"
               >
-                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
+                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm font-bold">
                   내 정보
                 </span>
               </div>
@@ -72,7 +72,7 @@ const Sidebar = () => {
                 onClick={() => navigate(`/mypage/assigninfo/`)}
                 className="cursor-pointer hover:bg-blue-400"
               >
-                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
+                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm font-bold">
                   내 입양신청
                 </span>
               </div>
@@ -83,7 +83,7 @@ const Sidebar = () => {
                 onClick={() => navigate(`/mypage/myposts/`)}
                 className="cursor-pointer hover:bg-purple-300"
               >
-                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
+                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm font-bold">
                   내 작성글
                 </span>
               </div>
@@ -95,7 +95,7 @@ const Sidebar = () => {
                 onClick={() => navigate(`/mypage/myinquiry/`)}
                 className="cursor-pointer hover:bg-yellow-300"
               >
-                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm font-bold">
+                <span className="text-black hover:text-white xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm font-bold">
                   내 문의사항
                 </span>
               </div>

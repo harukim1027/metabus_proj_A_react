@@ -220,9 +220,9 @@ function ReviewForm({ reviewId, handleDidSave }) {
     <>
       {/* review_header : 배경 흰색 */}
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 review_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <blockquote className="mt-10 mb-6 text-2xl font-semibold italic text-center text-slate-900">
-            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block xs:text-2xl sm:text-4xl  font-extrabold">
+            <span className="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-500 relative inline-block xxs:text-2xl sm:text-4xl  font-extrabold">
               <span class="relative text-white">
                 {!reviewId ? ' " 입양 후기 작성 " ' : ' " 입양 후기 수정 " '}
               </span>
@@ -244,7 +244,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
           {/*  */}
 
-          <span className="mb-6 block tracking-wide text-gray-700 md:text-4xl xs:text-2xl font-bold text-center">
+          <span className="mb-6 block tracking-wide text-gray-700 md:text-4xl xxs:text-2xl font-bold text-center">
             🐶 크루원 선택 하기 🐱
           </span>
           <hr className="mb-3 mt-3" readOnly />
@@ -275,7 +275,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                 {/* 검색한 동물 보여주기 */}
                 {/* 필터가 됐을 시에 노출 문구  */}
                 {filtAssign.length !== 0 ? (
-                  <p className="text-center text-blue-900 font-bold text-xl mb-5 xs:text-lg">
+                  <p className="text-center text-blue-900 font-bold text-xl mb-5 xxs:text-lg">
                     ⬇ 원하시는 크루원을 아래에서 선택해주세요. ⬇
                   </p>
                 ) : (
@@ -351,8 +351,8 @@ function ReviewForm({ reviewId, handleDidSave }) {
       </div>
 
       <div className="header flex flex-wrap justify-center" id="form">
-        <div className="mx-5 notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
-          <p className="text-center text-blue-900 font-bold md:text-xl xs:text-lg mb-5">
+        <div className="mx-5 notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
+          <p className="text-center text-blue-900 font-bold md:text-xl xxs:text-lg mb-5">
             ⬇ 선택하신 크루원 정보가 표시됩니다. ⬇
           </p>
           {filtAssign
@@ -447,7 +447,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       {/* 리뷰 글 폼 */}
 
       <div className="header flex flex-wrap justify-center">
-        <div className="mx-5 notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 notice_header rounded-md shadow-md overflow-hidden pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <form
             onSubmit={handleSubmit}
             className="review_header rounded-md sm:px-0 md:px-20 pt-6 pb-8"
@@ -512,7 +512,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                     {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                     <ul>
                       {/* 개별 이미지 input 박스 1*/}
-                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xxs:mr-5 sm:mr-0">
                         <input
                           type="file"
                           accept=".png, .jpg, .jpeg, .jfif"
@@ -555,7 +555,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
                       {/* 이미지2 첨부 인풋박스 */}
 
-                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xxs:mr-5 sm:mr-0">
                         <input
                           type="file"
                           accept=".png, .jpg, .jpeg, .jfif"
@@ -598,7 +598,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
                       {/* 이미지3 첨부 인풋박스 */}
 
-                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xxs:mr-5 sm:mr-0">
                         <input
                           type="file"
                           accept=".png, .jpg, .jpeg, .jfif"
@@ -642,7 +642,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                       {/* 이미지4 첨부 인풋박스 */}
 
                       {/* 개별 이미지 input 박스 1*/}
-                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xxs:mr-5 sm:mr-0">
                         <input
                           type="file"
                           accept=".png, .jpg, .jpeg, .jfif"
@@ -685,7 +685,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
                       {/* 이미지5 첨부 인풋박스 */}
 
-                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xs:mr-5 sm:mr-0">
+                      <li className="flex justify-between items-center text-base px-4 py-3 border-2 rounded-md xxs:mr-5 sm:mr-0">
                         <input
                           type="file"
                           accept=".png, .jpg, .jpeg, .jfif"

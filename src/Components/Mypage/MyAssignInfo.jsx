@@ -69,10 +69,10 @@ function MyAssignInfo() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 mypage_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
-          <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
+        <div className="mx-5 mypage_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
+          <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xxs:text-xl mb-3 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block">
-              <span class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl relative text-white">
+              <span class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xxs:text-xl relative text-white">
                 " 내 입양신청 "
               </span>
             </span>
@@ -99,25 +99,25 @@ function MyAssignInfo() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     동물 번호
                   </th>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     신청 날짜
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     진행 상태
                   </th>
@@ -127,7 +127,7 @@ function MyAssignInfo() {
                 {MyAssignData?.results.map((assign) => (
                   <tr>
                     <td
-                      className="px-6 py-4 lg:text-xl md:text-base sm:text-sm xs:text-xs cursor-pointer"
+                      className="px-6 py-4 lg:text-xl md:text-base sm:text-sm xxs:text-xs cursor-pointer"
                       onClick={() =>
                         navigate(`/assignment/${assign.assignment_no}/`)
                       }
@@ -136,7 +136,7 @@ function MyAssignInfo() {
                     </td>
 
                     <td
-                      className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs cursor-pointer"
+                      className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xxs:text-xs cursor-pointer"
                       onClick={() =>
                         navigate(`/assignment/${assign.assignment_no}/`)
                       }
@@ -145,7 +145,7 @@ function MyAssignInfo() {
                     </td>
 
                     <td
-                      className="py-4 xs:text-xs sm:text-sm cursor-pointer"
+                      className="py-4 xxs:text-xs sm:text-sm cursor-pointer"
                       onClick={() =>
                         navigate(`/assignment/${assign.assignment_no}/`)
                       }
@@ -156,8 +156,8 @@ function MyAssignInfo() {
                     <td
                       className={
                         assign.status === '입양 완료'
-                          ? 'text-orange-300 px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs whitespace-nowrap'
-                          : 'px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs whitespace-nowrap'
+                          ? 'text-orange-300 px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xxs:text-xs whitespace-nowrap'
+                          : 'px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xxs:text-xs whitespace-nowrap'
                       }
                     >
                       {assign.status}

@@ -70,14 +70,15 @@ function NoticeList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <blockquote class="mt-5 mb-3 font-semibold italic text-center text-slate-900">
-            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
+            <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block xxs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 공지사항 "</span>
             </span>
           </blockquote>
+          <hr />
           <div className="mb-6 mt-10">
-            <div className="  xs:flex-none xl:flex xl:justify-between">
+            <div className="  xxs:flex-none xl:flex xl:justify-between">
               <div></div>
               <div className="xs:mt-5 xl:mt-0">
                 <div className="flex justify-center">
@@ -86,12 +87,12 @@ function NoticeList() {
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-base"
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-4 border-2 xxs:w-full sm:w-72 xxs:text-xs sm:text-base"
                     placeholder="번호 또는 제목을 검색하세요."
                   />
                   <button
                     onClick={handleBTNPress}
-                    className="rounded bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-white px-3 py-2 border-2 w-24 xs:text-sm sm:text-xl mr-2"
+                    className="rounded bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-white px-3 py-2 border-2 w-24 xxs:text-sm sm:text-xl mr-2"
                     readOnly
                   >
                     검색
@@ -117,19 +118,19 @@ function NoticeList() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     작성일
                   </th>
@@ -141,21 +142,21 @@ function NoticeList() {
                     onClick={() => navigate(`/notice/${notice.notice_no}/`)}
                     className=" cursor-pointer"
                   >
-                    <td className="py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs ">
+                    <td className="py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs ">
                       <div className="text-sm font-medium text-gray-900">
                         {notice.notice_no}
                       </div>
                     </td>
                     <td className="py-4">
                       <div className="font-medium text-gray-900">
-                        <span className="inline-flex xs:text-sm md:text-md lg:text-lg leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        <span className="inline-flex xxs:text-sm md:text-md lg:text-lg leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                           {notice.title.length > 20
                             ? notice.title.substring(0, 20) + '...'
                             : notice.title}
                         </span>
                       </div>
                     </td>
-                    <td className="py-4 sm:text-sm xs:text-xs">
+                    <td className="py-4 sm:text-sm xxs:text-xs">
                       {notice.created_at}
                     </td>
                   </tr>
@@ -166,7 +167,7 @@ function NoticeList() {
               <div className="flex justify-end mr-5">
                 <button
                   onClick={() => navigate('/admin/notice/new/')}
-                  className="hover:scale-110 xs:w-10 sm:w-14"
+                  className="hover:scale-110 xxs:w-10 sm:w-14"
                   readOnly
                 >
                   <img src="/pen2.png" alt="button"></img>

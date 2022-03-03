@@ -136,7 +136,6 @@ function App() {
                 path="/admin/notice/:noticeId/edit/"
                 element={<PageNoticeForm />}
               />
-              
             </>
           )}
           {!auth?.is_staff && <Route path="/admin/*" element={<Forbidden />} />}

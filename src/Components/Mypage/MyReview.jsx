@@ -72,10 +72,10 @@ function MyReview() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 mypage_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
-          <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl mb-3 font-semibold italic text-center text-slate-900">
+        <div className="mx-5 mypage_header rounded-xl shadow-md overflow-hidden sm:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
+          <blockquote class="mt-5 xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xxs:text-xl mb-3 font-semibold italic text-center text-slate-900">
             <span class="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block">
-              <span class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-xl relative text-white">
+              <span class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xxs:text-xl relative text-white">
                 " 내 작성글 "
               </span>
             </span>
@@ -102,25 +102,25 @@ function MyReview() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     작성자
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     작성일
                   </th>
@@ -140,20 +140,20 @@ function MyReview() {
                           }
                           className="cursor-pointer"
                         >
-                          <td className="px-6 py-4 lg:text-xl md:text-base sm:text-sm xs:text-xs">
+                          <td className="px-6 py-4 lg:text-xl md:text-base sm:text-sm xxs:text-xs">
                             {review.review_no}
                           </td>
-                          <td className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs">
+                          <td className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xxs:text-xs">
                             <span className="bg-purple-100 rounded-full">
                               {review.title.length > 15
                                 ? review.title.substring(0, 15) + '...'
                                 : review.title}
                             </span>
                           </td>
-                          <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs whitespace-nowrap">
+                          <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-xs whitespace-nowrap">
                             {review.user.nickname}
                           </td>
-                          <td className="py-4 sm:text-sm xs:text-xs">
+                          <td className="py-4 sm:text-sm xxs:text-xs">
                             {review.created_at}
                           </td>
                         </tr>

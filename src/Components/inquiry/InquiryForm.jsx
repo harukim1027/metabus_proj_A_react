@@ -103,7 +103,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           {/* 폼 작성 시작부분 */}
           <blockquote className="mt-3 mb-10 text-2xl font-semibold italic text-center text-slate-900">
             <span className="mt-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-400 relative inline-block xd:text-2xl md:text-4xl font-extrabold">
