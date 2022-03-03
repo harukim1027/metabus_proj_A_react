@@ -115,12 +115,14 @@ function InquiryDetail({ inquiryId }) {
                   <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500 xs:text-base sm:text-2xl">
                     {inquiry.admin_answer}
                   </h2>
-                  {inquiry.admin_answer === '' && (
-                    <p className="text-center xxs:text-xs md:text-xl text-red-400 font-extrabold">
-                      😅 아직 답변이 준비되지 않았어요! <br />
-                      조금만 기다려 주시면 답변을 달아드릴게요!
-                    </p>
-                  )}
+                  <div className="mb-10">
+                    {inquiry.admin_answer === '' && (
+                      <p className="mb-5 text-center xxs:text-xs md:text-base lg:text-lg text-red-400 font-extrabold">
+                        😅 아직 답변이 준비되지 않았어요! <br />
+                        조금만 기다려 주시면 답변을 달아드릴게요!
+                      </p>
+                    )}
+                  </div>
                 </>
               )}
             </div>
@@ -131,7 +133,7 @@ function InquiryDetail({ inquiryId }) {
                 {(auth.userID === inquiry?.user || auth.is_staff) && (
                   <button
                     onClick={() => handleDelete()}
-                    className="ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="mt-10 ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     삭제
                   </button>
@@ -139,7 +141,7 @@ function InquiryDetail({ inquiryId }) {
                 {auth.isLoggedIn && auth.is_staff && (
                   <Link
                     to={`/admin/inquiry/${inquiryId}/edit/`}
-                    className="ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="mt-10 ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     답변
                   </Link>
@@ -147,14 +149,14 @@ function InquiryDetail({ inquiryId }) {
                 {auth.is_staff ? (
                   <Link
                     to="/inquiry/"
-                    className="ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="mt-10 ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     목록
                   </Link>
                 ) : (
                   <Link
                     to="/mypage/myinquiry/"
-                    className="ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="mt-10 ml-3 flex-shrink-0 bg-yellow-500 hover:bg-yellow-700 border-yellow-500 hover:border-yellow-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     목록
                   </Link>

@@ -239,12 +239,12 @@ function InquiryForm({ inquiryId, handleDidSave }) {
         </div>
       </div>
 
-      <DebugStates
+      {/* <DebugStates
         inquiry={inquiry}
         getLoading={getLoading}
         getError={getError}
         fieldValues={fieldValues}
-      />
+      /> */}
     </>
   );
 }
