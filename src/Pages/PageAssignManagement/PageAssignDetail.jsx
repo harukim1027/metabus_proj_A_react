@@ -23,7 +23,7 @@ function PageAssignDetail() {
 
   return (
     <>
-      {assignData?.user.userID === auth.userID ? (
+      {assignData?.user.userID === auth.userID || auth.is_staff ? (
         <>
           <TopNav />
           {assignId && <AssignDetail assignId={assignId} />}
