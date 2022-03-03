@@ -35,7 +35,7 @@ function SignupForm() {
   // 중복입력 대조를 위한 api 데이터 get 요청 -> 상단에 로딩 위치
   const [{ data: userList }, refetch] = useApiAxios(
     {
-      url: `/accounts/api/users/`,
+      url: `/accounts/api/usersnotpaging/`,
       method: 'GET',
     },
     {
@@ -143,19 +143,15 @@ function SignupForm() {
                     중복확인
                   </button>
                   {nameValue.userID !== '' &&
-                    userList &&
-                    userList.results?.filter(
-                      (user) => user.userID === nameValue.userID,
-                    ).length > 0 && (
+                    userList?.filter((user) => user.userID === nameValue.userID)
+                      .length > 0 && (
                       <p className="text-sm text-red-400">
                         동일한 아이디가 존재합니다. 다른 아이디를 입력해주세요.
                       </p>
                     )}
                   {nameValue.userID !== '' &&
-                    userList &&
-                    userList.results?.filter(
-                      (user) => user.userID === nameValue.userID,
-                    ).length === 0 && (
+                    userList?.filter((user) => user.userID === nameValue.userID)
+                      .length === 0 && (
                       <h2 className="text-sm text-green-400">
                         사용가능한 아이디입니다.
                       </h2>
@@ -191,8 +187,7 @@ function SignupForm() {
                     중복확인
                   </button>
                   {nameValue.nickname !== '' &&
-                    userList &&
-                    userList.results?.filter(
+                    userList?.filter(
                       (user) => user.nickname === nameValue.nickname,
                     ).length > 0 && (
                       <p className="text-sm text-red-400">
@@ -200,8 +195,7 @@ function SignupForm() {
                       </p>
                     )}
                   {nameValue.nickname !== '' &&
-                    userList &&
-                    userList.results?.filter(
+                    userList?.filter(
                       (user) => user.nickname === nameValue.nickname,
                     ).length === 0 && (
                       <p className="text-sm text-green-400">
@@ -280,19 +274,15 @@ function SignupForm() {
                     중복확인
                   </button>
                   {nameValue.email !== '' &&
-                    userList &&
-                    userList.results?.filter(
-                      (user) => user.email === nameValue.email,
-                    ).length > 0 && (
+                    userList?.filter((user) => user.email === nameValue.email)
+                      .length > 0 && (
                       <p className="text-sm text-red-400">
                         동일한 이메일이 존재합니다. 다른 이메일을 입력해주세요.
                       </p>
                     )}
                   {nameValue.email !== '' &&
-                    userList &&
-                    userList.results?.filter(
-                      (user) => user.email === nameValue.email,
-                    ).length === 0 && (
+                    userList?.filter((user) => user.email === nameValue.email)
+                      .length === 0 && (
                       <p className="text-sm text-green-400">
                         사용가능한 이메일입니다.
                       </p>
