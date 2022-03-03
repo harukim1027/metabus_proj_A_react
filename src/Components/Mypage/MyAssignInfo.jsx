@@ -16,7 +16,7 @@ function MyAssignInfo() {
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
-  const itemsPerPage = 2;
+  const itemsPerPage = 5;
 
   const [{ data: MyAssignData, loading, error }, refetch] = useApiAxios(
     {

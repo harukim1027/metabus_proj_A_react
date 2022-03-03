@@ -18,7 +18,7 @@ function AnimalList() {
   const [, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(1);
   const [page, setPage] = useState(1);
-  const itemsPerPage = 2;
+  const itemsPerPage = 5;
 
   const [{ data: AnimalList, loading, error }, refetch] = useApiAxios(
     {
