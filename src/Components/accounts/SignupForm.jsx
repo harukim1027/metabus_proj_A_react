@@ -132,7 +132,7 @@ function SignupForm() {
                     value={fieldValues.userID}
                     onChange={handleFieldChange}
                     placeholder="ID를 입력해주세요."
-                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
+                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xxs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button

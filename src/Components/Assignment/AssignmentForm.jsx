@@ -325,7 +325,7 @@ function AssignmentForm({ handleDidSave }) {
 
               {/* 버튼 클릭 부분 */}
               <div className="mt-5">
-                <p className="text-center text-blue-900 font-bold md:text-xl  xs:text-m mb-5">
+                <p className="text-center text-blue-900 font-bold md:text-xl  xxs:text-base mb-5">
                   ① 하단의 검색 버튼을 눌러주세요 ⬇
                 </p>
                 <div className="flex justify-center px-3 mb-6 md:mb-0 p-5">
@@ -376,7 +376,7 @@ function AssignmentForm({ handleDidSave }) {
             <div>
               {/* 필터가 됐을 시에 노출 문구  */}
               {filtAnimal.length !== 0 ? (
-                <p className="text-center text-blue-900 font-bold md:text-xl xs:text-m mb-5">
+                <p className="text-center text-blue-900 font-bold md:text-xl  xxs:text-base mb-5">
                   ② 원하시는 크루원을 아래에서 선택해주세요 ⬇
                 </p>
               ) : (
@@ -504,14 +504,14 @@ function AssignmentForm({ handleDidSave }) {
 
       <div className="header flex flex-wrap justify-center" id="form">
         <div className="assignments_header rounded-xl shadow-md overflow-hidden  sm:w-full sm:mx-5 xs:w-full xs:mx-5 md:w-5/6 md:px-20 lg:w-2/3 xl:w-2/3 pt-5 pb-10 my-10">
-          <p className="text-center text-blue-900 font-bold md:text-xl xxs:text-m my-10">
+          <p className="text-center text-blue-900 font-bold md:text-xl  xxs:text-base my-10">
             ⬇ 선택하신 동물 정보가 표시됩니다. ⬇
           </p>
           {AnimalList?.filter((animal) => animal.animal_no === selanimal).map(
             (a) => (
               <div className="flex flex-wrap justify-center sm:px-20 lg:px-0">
-                <div className="flex-none place-items-center">
-                  <img src={a.image} className="w-72" />
+                <div className="flex-none place-items-center border-2  mb-3">
+                  <img src={a.image} className="w-72 " />
                 </div>
                 <div className="flex-none mx-4 justify-items-center">
                   <div className="flex justify-center">
