@@ -1,7 +1,7 @@
 import { useApiAxios } from 'api/base';
 import useFieldValues from 'hooks/useFieldValues';
 import { useAuth } from 'contexts/AuthContext';
-import DebugStates from 'DebugStates';
+// import DebugStates from 'DebugStates';
 import Button from 'Button';
 import { useEffect, useState } from 'react';
 import produce from 'immer';
@@ -502,13 +502,13 @@ function AnimalForm({ animalId, handleDidSave }) {
         </div>
       </div>
 
-      <DebugStates
+      {/* <DebugStates
         Animal={Animal}
         getLoading={getLoading}
         getError={getError}
         saveErrorMessages={saveErrorMessages}
         fieldValues={fieldValues}
-      />
+      /> */}
     </>
   );
 }
