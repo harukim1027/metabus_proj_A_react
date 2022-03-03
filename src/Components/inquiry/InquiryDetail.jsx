@@ -85,7 +85,7 @@ function InquiryDetail({ inquiryId }) {
               {inquiry && (
                 <>
                   <div>
-                    <p className="xxs:text-base md:text-xl font-bold">
+                    <p className="xxs:text-base md:text-xl font-bold mb-3">
                       문의 제목
                     </p>
                   </div>
@@ -102,11 +102,14 @@ function InquiryDetail({ inquiryId }) {
                   <hr className="mt-3 mb-3" />
 
                   <p className="xxs:text-base md:text-xl font-bold">내용</p>
-                  <textarea className="xxs:py-5 xxs:px-12 md:w-full md:h-1/2 border-2  mt-2 mb-3  text-2xl text-gray-500 xs:text-base sm:text-2xl">
+                  <p
+                    readonly
+                    className="xxs:py-5 xxs:px-12 md:w-full md:h-1/2 border-2  mt-2 mb-3  text-2xl text-gray-500 xs:text-base sm:text-2xl"
+                  >
                     {inquiry.content}
-                  </textarea>
+                  </p>
 
-                  <hr className="my-3 border border-gray-400 text-center" />
+                  <hr className="mt-5 my-3 border border-gray-400 text-center" />
 
                   <p className="xxs:text-base md:text-xl font-bold">답변</p>
                   <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500 xs:text-base sm:text-2xl">

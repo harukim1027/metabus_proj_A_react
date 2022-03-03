@@ -108,6 +108,7 @@ function ReviewList() {
               <span className="relative text-white">" 입양 후기 "</span>
             </span>
           </blockquote>
+          <hr />
           <div className="flex xl:justify-end xxs:justify-center">
             {loading && (
               <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
@@ -136,7 +137,7 @@ function ReviewList() {
                       name="category"
                       value={fieldValues.category}
                       onChange={handleFieldChange}
-                      className="text-xl border-2 border-purple-400 rounded p-2 w-60 text-center"
+                      className="md:text-xl xxs:text-base border-2 border-purple-400 rounded p-2 xxs:w-32 md:w-60 text-center py-2"
                       defaultValue="고양이"
                     >
                       <option value="전체">전체</option>
@@ -151,12 +152,12 @@ function ReviewList() {
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-2 border-2 xxs:w-full sm:w-72 xxs:text-xs sm:text-base"
-                    placeholder="번호, 제목, 작성자 ID를 검색하세요."
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 xxs:w-1/2 md:w-72 text-sm px-3 py-2 mr-4 border-2"
+                    placeholder="제목, 작성자 ID를 검색하세요."
                   />
                   <button
                     onClick={handleBTNPress}
-                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 text-white px-3 py-2 border-2 w-24 xxs:text-sm sm:text-xl mr-2"
+                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 md:text-xl  xxs:text-md text-white md:w-24 xxs:w-16 px-3 border-2"
                     readOnly
                   >
                     검색

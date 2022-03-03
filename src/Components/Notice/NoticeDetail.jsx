@@ -70,7 +70,7 @@ function NoticeDetail({ noticeId }) {
               <span class="relative text-white">" 공지사항 "</span>
             </span>
           </blockquote>
-
+          <hr />
           {loading && <LoadingIndicator>로딩 중 ...</LoadingIndicator>}
           {error && (
             <>
@@ -81,18 +81,20 @@ function NoticeDetail({ noticeId }) {
           )}
 
           <div className="flex justify-center">
-            <div className="px-4 py-5 xxs:w-full sm:w-2/3">
+            <div className="mx-5 py-5 xxs:w-full sm:w-2/3">
               {notice && (
                 <>
-                  <h2
+                  {/* 타이틀 */}
+                  <div
                     className={
                       notice.title.length > 20
                         ? 'md:text-xl xxs:text-m leading-6 font-bold text-gray-900 tracking-wide'
                         : 'md:text-3xl  xxs:text-xl leading-6 font-bold text-gray-900 tracking-wide'
                     }
                   >
-                    {notice.title}
-                  </h2>
+                    <p> {notice.title}</p>
+                  </div>
+
                   <hr className="mt-3 mb-3" />
 
                   <div className="w-full flex justify-center">
@@ -111,9 +113,17 @@ function NoticeDetail({ noticeId }) {
                     <img src={notice.image5} alt="" />
                   </div>
 
-                  <h4 className="mx-5 sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-lg text-gray-500 whitespace-pre-wrap ">
+                  {/* 내용 */}
+                  <p className="xxs:text-base md:text-xl font-bold">내용</p>
+
+                  <p
+                    readonly
+                    className="xxs:py-10 xxs:px-20 md:w-full md:h-1/2  mt-2 mb-3  text-2xl text-gray-500 xs:text-base sm:text-2xl"
+                  >
                     {notice.content}
-                  </h4>
+                  </p>
+
+                  {/* 첨부파일 */}
                   <hr className="mt-3 mb-3" />
                   <span className="mt-3 text-base font-bold text-gray-500">
                     첨부파일
