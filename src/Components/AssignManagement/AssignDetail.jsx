@@ -228,6 +228,10 @@ function AssignDetail({ assignId }) {
                       patchAnimalStatus({
                         data: { protection_status: '입양 대기' },
                       });
+                    } else {
+                      patchAnimalStatus({
+                        data: { protection_status: '입양 매칭 중' },
+                      });
                     }
                   }}
                 />
