@@ -138,7 +138,6 @@ function App() {
               />
             </>
           )}
-          {!auth?.is_staff && <Route path="/admin/*" element={<Forbidden />} />}
 
           {auth?.isLoggedIn && (
             <>
