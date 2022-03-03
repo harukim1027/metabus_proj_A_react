@@ -269,7 +269,7 @@ function SignupForm() {
                     value={fieldValues.email}
                     onChange={handleFieldChange}
                     placeholder="예) user@email.com"
-                    className="rounded-md xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-3/4 md:w-5/6 sm:w-2/3 xs:w-2/3"
+                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
                   />
                   {/* 중복확인 */}
                   <button
@@ -407,7 +407,7 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <h5 className="mt-1 xl:text-lg lg:text-lg md:text-base sm:text-s xs:text-xs  ml-2 mb-10 text-blue-400">
+              <h5 className="mt-1 lg:text-lg  sm:text-sm xxs:text-xs  ml-2 mb-10 text-blue-400">
                 이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
               </h5>
 
@@ -418,6 +418,9 @@ function SignupForm() {
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  font-extrabold text-slate-700">
                     비밀번호
                   </span>
+                  <h5 className="mt-1 lg:text-lg  sm:text-sm xxs:text-xs mb-5 text-blue-900">
+                    ( 비밀번호를 8자 이상 입력해주세요! )
+                  </h5>
                   <input
                     type="password"
                     name="password"
@@ -439,6 +442,9 @@ function SignupForm() {
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  font-extrabold text-slate-700">
                     비밀번호 확인
                   </span>
+                  <h5 className="mt-1 lg:text-lg  sm:text-sm xxs:text-xs mb-5 text-blue-900">
+                    ( 입력하신 비밀번호를 다시 입력해주세요 ! )
+                  </h5>
                   <input
                     type="password"
                     name="password2"
@@ -454,11 +460,8 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <h5 className="mt-1 ml-5 xl:text-lg lg:text-lg md:text-base sm:text-s xs:text-xs mb-10 text-blue-400">
-                입력하신 비밀번호를 다시 입력해주세요 !
-              </h5>
 
-              <div className="text-center  px-1  rounded md:ml-2">
+              <div className="text-center mt-5 px-1  rounded md:ml-2">
                 <button className="shadow-md font-bold py-2 rounded-md border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-2xl lg:text-xl md:text-xl sm:text-xl xs:text-xl  text-white">
                   &nbsp;&nbsp;회원가입&nbsp;&nbsp;
                 </button>

@@ -97,7 +97,7 @@ function AssignCheck(props) {
                   입양 절차
                 </span>
                 <div className="flex justify-center w-full">
-                  <div className="xxs:w-5/6 sm:w-2/3 lg:w-3/4 xl:w-5/6">
+                  <div className="xxs:w-5/6 lg:w-3/4 xl:w-5/6">
                     <div className="assign_explanation">
                       <div className=" xxs:justify-center md:flex-none md:grid md:grid-cols-3">
                         <div className="flex justify-center">
@@ -123,16 +123,16 @@ function AssignCheck(props) {
                         </div>
                       </div>
                     </div>
-                    <div className=" xxs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-semibold text-gray-500 mr-5">
+                    <div className=" xxs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-semibold text-gray-500 mr-10">
                       <label className="bg-blue-100">
-                        입양 절차를 숙지했습니다
+                        &nbsp;입양 절차를 숙지했습니다&nbsp;
+                        <input
+                          type="checkbox"
+                          checked={contract_check ? 'checked' : null}
+                          onClick={isFirstCheckBoxClicked}
+                          required
+                        />
                       </label>
-                      <input
-                        type="checkbox"
-                        checked={contract_check ? 'checked' : null}
-                        onClick={isFirstCheckBoxClicked}
-                        required
-                      />
                     </div>
                   </div>
                 </div>
@@ -155,18 +155,18 @@ function AssignCheck(props) {
                     </div>
                     <div className="xxs:text-base md:text-lg lg:text-xl text-right pb-5 font-bold text-gray-500 mr-5">
                       <label className="bg-blue-100">
-                        &nbsp;입양 전 주의사항을 숙지했습니다
+                        &nbsp;입양 전 주의사항을 숙지했습니다&nbsp;
+                        <input
+                          type="checkbox"
+                          checked={contract_check ? 'checked' : null}
+                          onClick={isSecondCheckBoxClicked}
+                          required
+                        />
                       </label>
-                      <input
-                        type="checkbox"
-                        checked={contract_check ? 'checked' : null}
-                        onClick={isSecondCheckBoxClicked}
-                        required
-                      />
                     </div>
                     <div className="pb-3 text-right">
                       <label className=" xxs:text-base md:text-lg lg:text-xl bg-yellow-100 font-bold mr-5">
-                        모두 동의합니다&nbsp;
+                        &nbsp;모두 동의합니다&nbsp;
                         <input
                           checked={all_check ? 'checked' : null}
                           type="checkbox"
