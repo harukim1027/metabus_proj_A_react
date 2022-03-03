@@ -65,7 +65,7 @@ function AssignCheck(props) {
   return (
     <>
       <div className="header flex justify-center " id="topLoc">
-        <div className="mx-5 flex flex-wrap justify-center overflow-hidden md:px-10 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 flex flex-wrap justify-center overflow-hidden md:px-10 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <div className="assignments_header rounded-xl shadow-md flex flex-wrap justify-center w-full">
             <main className="" role="main">
               <h1 className="mt-5 font-semibold text-2xl text-center">
@@ -93,13 +93,13 @@ function AssignCheck(props) {
               </div>
 
               <div className="w-full">
-                <span className=" after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-black xs:text-xl xs:ml-10 md:text-2xl font-extrabold mb-2">
+                <span className=" after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-black xxs:text-xl xxs:ml-10 md:text-2xl font-extrabold mb-2">
                   입양 절차
                 </span>
                 <div className="flex justify-center w-full">
-                  <div className="xs:w-5/6 sm:w-2/3 lg:w-3/4 xl:w-5/6">
+                  <div className="xxs:w-5/6 sm:w-2/3 lg:w-3/4 xl:w-5/6">
                     <div className="assign_explanation">
-                      <div className=" xs:justify-center md:flex-none md:grid md:grid-cols-3">
+                      <div className=" xxs:justify-center md:flex-none md:grid md:grid-cols-3">
                         <div className="flex justify-center">
                           <img
                             src="/assigncheck1.png"
@@ -123,7 +123,7 @@ function AssignCheck(props) {
                         </div>
                       </div>
                     </div>
-                    <div className=" xs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-semibold text-gray-500 mr-5">
+                    <div className=" xxs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-semibold text-gray-500 mr-5">
                       <label className="bg-blue-100">
                         입양 절차를 숙지했습니다
                       </label>
@@ -139,7 +139,7 @@ function AssignCheck(props) {
 
                 <hr className="pb-6 mx-10" />
 
-                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-black xxs:text-xl xs:ml-10 md:text-2xl font-extrabold mb-2">
+                <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-black xxs:text-xl xxs:ml-10 md:text-2xl font-extrabold mb-2">
                   입양 전 주의 사항
                 </span>
                 <div className="flex justify-center w-full">
@@ -153,7 +153,7 @@ function AssignCheck(props) {
                         />
                       </div>
                     </div>
-                    <div className="xs:text-base md:text-lg lg:text-xl text-right pb-5 font-bold text-gray-500 mr-5">
+                    <div className="xxs:text-base md:text-lg lg:text-xl text-right pb-5 font-bold text-gray-500 mr-5">
                       <label className="bg-blue-100">
                         &nbsp;입양 전 주의사항을 숙지했습니다
                       </label>
@@ -165,7 +165,7 @@ function AssignCheck(props) {
                       />
                     </div>
                     <div className="pb-3 text-right">
-                      <label className=" xs:text-base md:text-lg lg:text-xl bg-yellow-100 font-bold mr-5">
+                      <label className=" xxs:text-base md:text-lg lg:text-xl bg-yellow-100 font-bold mr-5">
                         모두 동의합니다&nbsp;
                         <input
                           checked={all_check ? 'checked' : null}
@@ -179,10 +179,10 @@ function AssignCheck(props) {
                   </div>
                 </div>
 
-                <div className="flex justify-end xs:w-5/6 lg:w-11/12"></div>
+                <div className="flex justify-end xxs:w-5/6 lg:w-11/12"></div>
 
                 <hr />
-                <div className="xs:text-base sm:text-xl text-red-400 text-center">
+                <div className="xxs:text-base sm:text-xl text-red-400 text-center">
                   <br />
                   모두 동의를 해야 입양 신청을 할 수 있어요 ! 🐰
                 </div>

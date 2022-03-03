@@ -110,13 +110,15 @@ function InquiryForm({ inquiryId, handleDidSave }) {
               <span className="relative text-white">" 내 문의사항 "</span>
             </span>
           </blockquote>
-
+          <p className="text-center mb-5 text-gray-500 font-semibold bg-yellow-100">
+            * 1:1 문의를 남겨주시면 개별 답변을드립니다.
+          </p>
           {/* 로딩 에러 */}
-          {getLoading && '로딩 중 ...'}
+          {getLoading && <LoadingIndicator> 로딩 중 ...</LoadingIndicator>}
           {getError && '로딩 중 에러가 발생했습니다.'}
           {getError?.response?.status === 401 && (
             <div className="text-red-400">
-              조회에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
+              저장에 실패했습니다. 입력하신 정보를 다시 확인해주세요.
             </div>
           )}
 
@@ -141,7 +143,10 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                       className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6"
                     />
                     {saveErrorMessages.title?.map((message, index) => (
-                      <p key={index} className="text-base text-red-400">
+                      <p
+                        key={index}
+                        className="text-center text-base text-red-400"
+                      >
                         제목을 다시 입력해주세요.
                       </p>
                     ))}
@@ -160,7 +165,10 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                       className="rounded-md text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 h-60"
                     />
                     {saveErrorMessages.content?.map((message, index) => (
-                      <p key={index} className="text-base text-red-400">
+                      <p
+                        key={index}
+                        className="text-center text-base text-red-400"
+                      >
                         내용을 다시 입력해주세요.
                       </p>
                     ))}
@@ -218,7 +226,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                 >
                   취소
                 </button>
-                <div className="p-5">
+                <div className="p-5 xxs:text-xs">
                   {saveLoading && (
                     <LoadingIndicator>저장 중...</LoadingIndicator>
                   )}
