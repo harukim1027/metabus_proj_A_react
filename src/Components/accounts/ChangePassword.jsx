@@ -237,7 +237,7 @@ function ChangePassword() {
                                 <button
                                   onClick={() =>
                                     window.open(
-                                      'http://localhost:8000/accounts/password_reset/',
+                                      'http://api.yoonapy.com/accounts/password_reset/',
                                       '_blank',
                                       navigate('/accounts/login/'),
                                     )
