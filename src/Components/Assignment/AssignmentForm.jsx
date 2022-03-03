@@ -747,7 +747,7 @@ function AssignmentForm({ handleDidSave }) {
                         key={index}
                         className="mb-3 xxs:text-sm md:text-base text-red-400 ml-3"
                       >
-                        이미지를 확인해주세요. (3MB 이하만 업로드 가능합니다.){' '}
+                        {message}
                       </p>
                     ),
                   )}
@@ -774,7 +774,7 @@ function AssignmentForm({ handleDidSave }) {
                         key={index}
                         className="mb-3 xxs:text-sm md:text-base text-red-400 ml-3"
                       >
-                        이미지를 확인해주세요. (3MB 이하만 업로드 가능합니다.)
+                        {message}
                       </p>
                     ),
                   )}
@@ -801,7 +801,7 @@ function AssignmentForm({ handleDidSave }) {
                         key={index}
                         className="mb-3 xxs:text-sm md:text-base text-red-400 ml-3"
                       >
-                        이미지를 확인해주세요. (3MB 이하만 업로드 가능합니다.){' '}
+                        {message}
                       </p>
                     ),
                   )}
