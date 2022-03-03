@@ -63,7 +63,7 @@ function InquiryDetail({ inquiryId }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
+        <div className="mx-5 notice_header rounded-xl shadow-md md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
             <span class="mt-3 mb-5 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xs:text-2xl sm:text-4xl md:text-6xl">
               <span class="relative text-white">" 1:1 문의 "</span>
@@ -85,12 +85,12 @@ function InquiryDetail({ inquiryId }) {
               {inquiry && (
                 <>
                   <div>
-                    <p className="xxs:text-base md:text-xl font-bold mb-3">
+                    <span className="xxs:text-base md:text-xl font-bold mb-5">
                       문의 제목
-                    </p>
+                    </span>
                   </div>
 
-                  <p
+                  <span
                     className={
                       inquiry.title.length > 20
                         ? 'xxs:text-base xs:text-xl leading-6 font-bold text-gray-900 tracking-wide'
@@ -98,29 +98,33 @@ function InquiryDetail({ inquiryId }) {
                     }
                   >
                     : {inquiry.title}
-                  </p>
-                  <hr className="mt-3 mb-3" />
+                  </span>
+                  <hr className="my-3" />
 
-                  <p className="xxs:text-base md:text-xl font-bold">내용</p>
-                  <p
+                  <span className="xxs:text-base md:text-xl font-bold">
+                    내용
+                  </span>
+                  <h2
                     readonly
-                    className="xxs:py-5 xxs:px-12 md:w-full md:h-1/2 border-2  mt-2 mb-3  text-2xl text-gray-500 xs:text-base sm:text-2xl"
+                    className="xxs:py-5 md:w-full text-2xl text-gray-500 xs:text-base sm:text-2xl"
                   >
                     {inquiry.content}
-                  </p>
+                  </h2>
 
                   <hr className="mt-5 my-3 border border-gray-400 text-center" />
 
-                  <p className="xxs:text-base md:text-xl font-bold">답변</p>
+                  <span className="xxs:text-base md:text-xl font-bold">
+                    답변
+                  </span>
                   <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500 xs:text-base sm:text-2xl">
                     {inquiry.admin_answer}
                   </h2>
                   <div className="mb-10">
                     {inquiry.admin_answer === '' && (
-                      <p className="mb-5 text-center xxs:text-xs md:text-base lg:text-lg text-red-400 font-extrabold">
+                      <span className="mb-5 text-center xxs:text-xs md:text-base lg:text-lg text-red-400 font-extrabold">
                         😅 아직 답변이 준비되지 않았어요! <br />
                         조금만 기다려 주시면 답변을 달아드릴게요!
-                      </p>
+                      </span>
                     )}
                   </div>
                 </>

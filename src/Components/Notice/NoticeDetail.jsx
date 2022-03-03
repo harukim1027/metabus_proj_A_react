@@ -64,7 +64,7 @@ function NoticeDetail({ noticeId }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
+        <div className="mx-5 notice_header rounded-xl shadow-md pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <blockquote class="mt-5  xxs:text-2xl sm:text-4xl lg:text-6xl font-semibold italic text-center text-slate-900">
             <span class="mt-3 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-green-400 relative inline-block">
               <span class="relative text-white">" 공지사항 "</span>
@@ -114,14 +114,11 @@ function NoticeDetail({ noticeId }) {
                   </div>
 
                   {/* 내용 */}
-                  <p className="xxs:text-base md:text-xl font-bold">내용</p>
+                  <h2 className="xxs:text-base md:text-xl font-bold">내용</h2>
 
-                  <p
-                    readonly
-                    className="xxs:py-10 xxs:px-20 md:w-full md:h-1/2  mt-2 mb-3  text-2xl text-gray-500 xs:text-base sm:text-2xl"
-                  >
+                  <span className="xxs:py-10 md:w-full mt-2 mb-3 text-gray-500 xxs:text-sm xs:text-base sm:text-2xl">
                     {notice.content}
-                  </p>
+                  </span>
 
                   {/* 첨부파일 */}
                   <hr className="mt-3 mb-3" />
@@ -238,7 +235,7 @@ function NoticeDetail({ noticeId }) {
                 {auth.is_staff && (
                   <button
                     onClick={() => handleDelete()}
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     삭제
                   </button>
@@ -249,13 +246,13 @@ function NoticeDetail({ noticeId }) {
                       navigate(`/admin/notice/${noticeId}/edit/`);
                       window.location.reload();
                     }}
-                    className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                    className="xxs:ml-1 xs:ml-3 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   >
                     수정
                   </button>
                 )}
                 <button
-                  className="ml-3 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
+                  className="xxs:ml-1 xs:ml-3 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                   onClick={() => navigate('/notice/')}
                 >
                   목록
