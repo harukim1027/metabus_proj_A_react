@@ -117,9 +117,7 @@ function AssignComp({ assignId, assignData }) {
           <div className="flex justify-center my-5">
             <button
               className="shadow bg-green-400 px-5 py-2 rounded-lg hover:bg-green-600 hover:text-white xs:w-5/6 sm:w-1/2 lg:1/4"
-              onClick={() =>
-                navigate(`/assignment/${assignData?.assignment_no}/`)
-              }
+              onClick={() => navigate(`/mypage/assigninfo/`)}
             >
               마이페이지 - 신청 정보
             </button>

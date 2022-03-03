@@ -1,13 +1,36 @@
+import { useApiAxios } from 'api/base';
 import AssignDetail from 'Components/AssignManagement/AssignDetail';
 import TopNav from 'Components/Main/TopNavi';
+import { useAuth } from 'contexts/AuthContext';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Forbidden from 'Components/ErrorPage/Forbidden403';
 
 function PageAssignDetail() {
   const { assignId } = useParams();
+  const { auth } = useAuth();
+  const [{ data: assignData }, refetch] = useApiAxios(
+    {
+      url: `/adopt_assignment/api/assignment/${assignId}/`,
+      method: 'GET',
+    },
+    { manual: true },
+  );
+
+  useEffect(() => {
+    refetch();
+  }, []);
+
   return (
     <>
-      <TopNav />
-      {assignId && <AssignDetail assignId={assignId} />}
+      {assignData?.user.userID === auth.userID ? (
+        <>
+          <TopNav />
+          {assignId && <AssignDetail assignId={assignId} />}
+        </>
+      ) : (
+        <Forbidden />
+      )}
     </>
   );
 }

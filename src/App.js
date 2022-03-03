@@ -48,6 +48,9 @@ import PageMyInquiry from 'Pages/PageMypage/PageMyInquiry';
 import PageFindId from 'Pages/PageAccounts/PageFindId';
 import PageChangePassword from 'Pages/PageAccounts/PageChangePassword';
 import PageIntroduceMain from 'Pages/PageIntroduce/PageIntroduceMain';
+// errorpage
+import NotFound from 'Components/ErrorPage/NotFound404';
+import Forbidden from 'Components/ErrorPage/Forbidden403';
 
 function App() {
   const { auth } = useAuth();
@@ -133,8 +136,10 @@ function App() {
                 path="/admin/notice/:noticeId/edit/"
                 element={<PageNoticeForm />}
               />
+              
             </>
           )}
+          {!auth?.is_staff && <Route path="/admin/*" element={<Forbidden />} />}
 
           {auth?.isLoggedIn && (
             <>
@@ -180,6 +185,7 @@ function App() {
               />
             </>
           )}
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <p className="header mt-10 text-center text-gray-500 text-xs">
           &copy;2022 METABUS Corp. All rights reserved.
