@@ -91,14 +91,14 @@ function InquiryList() {
       <div className="header flex flex-wrap justify-center" id="topLoc">
         <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
           <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
-            <span class="mt-7 mb-5 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xxs:text-2xl sm:text-4xl md:text-6xl">
+            <span class="mt-7 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xxs:text-2xl sm:text-4xl lg:text-6xl">
               <span class="relative text-white">" 1:1 문의 "</span>
             </span>
           </blockquote>
           <hr />
 
           <div className="mb-6 mt-10">
-            <p className="xxs:text-center xxs:text-xs md:text-base md:text-right md:mb-3 text-gray-500 ">
+            <p className="xxs:text-center xxs:text-xs md:text-base md:text-center xl:text-right md:mb-3 text-gray-500 ">
               "번호, 등록번호, 신청자명, ID, 닉네임 중 검색"
             </p>
             <div className="xxs:flex-none xl:flex xl:justify-between">
