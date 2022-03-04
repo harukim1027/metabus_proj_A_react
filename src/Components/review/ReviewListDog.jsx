@@ -102,14 +102,14 @@ function ReviewList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden xxs:px-0 sm:px-20 pt-5 pb-10 my-10 w-2/3  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
+        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden xs:px-0 sm:px-20 pt-5 pb-10 my-10 w-2/3  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote className="mt-5 font-semibold italic text-center text-slate-900">
-            <span className="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block  xxs:text-2xl sm:text-4xl lg:text-6xl">
+            <span className="mt-7 mb-3 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-purple-400 relative inline-block  xs:text-2xl sm:text-4xl lg:text-6xl">
               <span className="relative text-white">" 입양 후기 "</span>
             </span>
           </blockquote>
           <hr />
-          <div className="flex xl:justify-end xxs:justify-center">
+          <div className="flex xl:justify-end xs:justify-center">
             {loading && (
               <LoadingIndicator>&nbsp;&nbsp;로딩 중...</LoadingIndicator>
             )}
@@ -127,7 +127,7 @@ function ReviewList() {
           {/* 검색, 카테고리, 글 작성 버튼 위치 고정하기 (xs랑 sm 범위에서만) */}
           <div className="mb-6 mt-10">
             <div>
-              <div className=" xxs:flex-none xl:flex xl:justify-between">
+              <div className=" xs:flex-none xl:flex xl:justify-between">
                 <div>
                   <form
                     onSubmit={() => moveCategory()}
@@ -137,7 +137,7 @@ function ReviewList() {
                       name="category"
                       value={fieldValues.category}
                       onChange={handleFieldChange}
-                      className="md:text-xl xxs:text-base border-2 border-purple-400 rounded p-2 xxs:w-32 md:w-60 text-center py-2"
+                      className="md:text-xl xs:text-base border-2 border-purple-400 rounded p-2 xs:w-32 md:w-60 text-center py-2"
                       defaultValue="강아지"
                     >
                       <option value="전체">전체</option>
@@ -146,18 +146,18 @@ function ReviewList() {
                     </select>
                   </form>
                 </div>
-                <div className="flex justify-center xxs:mt-5 xl:mt-0">
+                <div className="flex justify-center xs:mt-5 xl:mt-0">
                   <input
                     type="text"
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 xxs:w-1/2 md:w-72 text-sm px-3 py-2 mr-4 border-2"
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 xs:w-1/2 md:w-72 text-sm px-3 py-2 mr-4 border-2"
                     placeholder="제목, 작성자 ID를 검색하세요."
                   />
                   <button
                     onClick={handleBTNPress}
-                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 md:text-xl  xxs:text-md text-white md:w-24 xxs:w-16 px-3 border-2"
+                    className="rounded bg-purple-500 hover:bg-purple-700 border-purple-500 hover:border-purple-700 md:text-xl  xs:text-md text-white md:w-24 xs:w-16 px-3 border-2"
                     readOnly
                   >
                     검색
@@ -185,7 +185,7 @@ function ReviewList() {
             <div className="flex justify-end mr-5">
               <button
                 onClick={() => navigate('/review/new/')}
-                className="hover:scale-110 xxs:w-5 xs:w-10 sm:w-14"
+                className="hover:scale-110 xs:w-5 xs:w-10 sm:w-14"
                 readOnly
               >
                 <img src="/pen2.png" alt="button"></img>

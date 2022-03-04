@@ -99,7 +99,7 @@ function LoginForm() {
 
   return (
     <div className="header mx-5" id="topLoc">
-      <h2 className="text-center  xxs:text-3xl md:text-4xl py-5 pb-5 font-bold mt-5 mb-3">
+      <h2 className="text-center  xs:text-3xl md:text-4xl py-5 pb-5 font-bold mt-5 mb-3">
         🐹 로그인
       </h2>
 
@@ -138,7 +138,7 @@ function LoginForm() {
             </div>
             <div className="text-center  mb-5">
               {/* 버튼 */}
-              <button className="shadow-lg xxs:text-2xl md:text-3xl bg-blue-900 hover:bg-blue-700 rounded-xl text-white font-bold py-1 ">
+              <button className="shadow-lg xs:text-2xl md:text-3xl bg-blue-900 hover:bg-blue-700 rounded-xl text-white font-bold py-1 ">
                 &nbsp;&nbsp;Log In&nbsp;&nbsp;
               </button>
               {/* 저장 에러  */}
@@ -161,14 +161,14 @@ function LoginForm() {
               {/* 아이디 찾기 링크 이동 */}
               <a
                 href="/accounts/findid/"
-                className="text-gray-500 mr-5 xxs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
+                className="text-gray-500 mr-5 xs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
               >
                 &nbsp;아이디 찾기&nbsp;
               </a>
               {/* 비밀번호 찾기 링크 이동 */}
               <a
                 href="/accounts/changepassword/"
-                className="text-gray-500 xxs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
+                className="text-gray-500 xs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
               >
                 &nbsp;비밀번호 찾기&nbsp;
               </a>
@@ -176,13 +176,13 @@ function LoginForm() {
 
             <hr />
             {/* 회원가입 링크 이동 */}
-            <p className="bg-yellow-100 xxs:text-xs xxs:text-xs md:text-base text-center mt-5  mb-2 text-red-300 font-semibold">
+            <p className="bg-yellow-100 xs:text-xs xs:text-xs md:text-base text-center mt-5  mb-2 text-red-300 font-semibold">
               아직 회원이 아니신가요?
             </p>
             <div className="text-right border:bg-pink-200">
               <a
                 href="/accounts/checksignup/"
-                className="text-right xxs:text-base md:text-xl hover:bg-pink-200 hover:text-white font-semibold"
+                className="text-right xs:text-base md:text-xl hover:bg-pink-200 hover:text-white font-semibold"
               >
                 회원가입 하러 가기 ❕
               </a>

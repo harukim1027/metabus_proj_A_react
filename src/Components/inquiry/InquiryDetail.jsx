@@ -85,7 +85,7 @@ function InquiryDetail({ inquiryId }) {
               {inquiry && (
                 <>
                   <div>
-                    <span className="xxs:text-base md:text-xl font-bold mb-5">
+                    <span className="xs:text-base md:text-xl font-bold mb-5">
                       문의 제목
                     </span>
                   </div>
@@ -93,27 +93,27 @@ function InquiryDetail({ inquiryId }) {
                   <span
                     className={
                       inquiry.title.length > 20
-                        ? 'xxs:text-base xs:text-xl leading-6 font-bold text-gray-900 tracking-wide'
-                        : 'xxs:text-base xs:text-xl md:text-3xl leading-6  text-gray-900 tracking-wide'
+                        ? 'xs:text-base xs:text-xl leading-6 font-bold text-gray-900 tracking-wide'
+                        : 'xs:text-base xs:text-xl md:text-3xl leading-6  text-gray-900 tracking-wide'
                     }
                   >
                     : {inquiry.title}
                   </span>
                   <hr className="my-3" />
 
-                  <span className="xxs:text-base md:text-xl font-bold">
+                  <span className="xs:text-base md:text-xl font-bold">
                     내용
                   </span>
                   <h2
                     readonly
-                    className="xxs:py-5 md:w-full text-2xl text-gray-500 xs:text-base sm:text-2xl"
+                    className="xs:py-5 md:w-full text-2xl text-gray-500 xs:text-base sm:text-2xl"
                   >
                     {inquiry.content}
                   </h2>
 
                   <hr className="mt-5 my-3 border border-gray-400 text-center" />
 
-                  <span className="xxs:text-base md:text-xl font-bold">
+                  <span className="xs:text-base md:text-xl font-bold">
                     답변
                   </span>
                   <h2 className="sm:mt-0 sm:col-span-2 mt-2 mb-3 max-w-2xl text-2xl text-gray-500 xs:text-base sm:text-2xl">
@@ -121,7 +121,7 @@ function InquiryDetail({ inquiryId }) {
                   </h2>
                   <div className="mb-10">
                     {inquiry.admin_answer === '' && (
-                      <span className="mb-5 text-center xxs:text-xs md:text-base lg:text-lg text-red-400 font-extrabold">
+                      <span className="mb-5 text-center xs:text-xs md:text-base lg:text-lg text-red-400 font-extrabold">
                         😅 아직 답변이 준비되지 않았어요! <br />
                         조금만 기다려 주시면 답변을 달아드릴게요!
                       </span>
