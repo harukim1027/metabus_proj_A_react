@@ -89,33 +89,33 @@ function InquiryList() {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
+        <div className="mx-5 notice_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10  lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 font-semibold italic text-center text-slate-900">
-            <span class="mt-7 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xxs:text-2xl sm:text-4xl lg:text-6xl">
+            <span class="mt-7 mb-10 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-yellow-300 relative inline-block xs:text-2xl sm:text-4xl lg:text-6xl">
               <span class="relative text-white">" 1:1 문의 "</span>
             </span>
           </blockquote>
           <hr />
 
           <div className="mb-6 mt-10">
-            <p className="xxs:text-center xxs:text-xs md:text-base md:text-center xl:text-right md:mb-3 text-gray-500 ">
+            <p className="xs:text-center xs:text-xs md:text-base md:text-center xl:text-right md:mb-3 text-gray-500 ">
               "번호, 등록번호, 신청자명, ID, 닉네임 중 검색"
             </p>
-            <div className="xxs:flex-none xl:flex xl:justify-between">
+            <div className="xs:flex-none xl:flex xl:justify-between">
               <div></div>
-              <div className="xxs:mt-5 xl:mt-0">
+              <div className="xs:mt-5 xl:mt-0">
                 <div className="flex justify-center">
                   <input
                     type="text"
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 xxs:w-1/2 md:w-72 text-sm px-3 py-2 mr-4 border-2"
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 xs:w-1/2 md:w-72 text-sm px-3 py-2 mr-4 border-2"
                     placeholder="Search ... "
                   />
                   <button
                     onClick={handleBTNPress}
-                    className="rounded bg-yellow-400 hover:bg-yellow-700 border-yellow-400 hover:border-yellow-700 md:text-xl  xxs:text-md text-white md:w-24 xxs:w-16 px-3 border-2"
+                    className="rounded bg-yellow-400 hover:bg-yellow-700 border-yellow-400 hover:border-yellow-700 md:text-xl  xs:text-md text-white md:w-24 xs:w-16 px-3 border-2"
                     readOnly
                   >
                     검색
@@ -133,31 +133,31 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     작성자
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     문의일
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     답변
                   </th>
@@ -169,21 +169,21 @@ function InquiryList() {
                     onClick={() => navigate(`/inquiry/${inquiry.inquiry_no}/`)}
                     className="cursor-pointer"
                   >
-                    <td className="py-4 xxs:text-sm sm:text-lg font-medium text-gray-900">
+                    <td className="py-4 xs:text-sm sm:text-lg font-medium text-gray-900">
                       {inquiry.inquiry_no}
                     </td>
-                    <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xxs:text-sm whitespace-nowrap">
+                    <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm whitespace-nowrap">
                       {inquiry.user}
                     </td>
 
-                    <td className="px-3 py-4 font-semibold lg:text-xl md:text-md xxs:text-sm">
+                    <td className="px-3 py-4 font-semibold lg:text-xl md:text-md xs:text-sm">
                       <span className="bg-yellow-100 rounded-full">
                         {inquiry.title.length > 15
                           ? inquiry.title.substring(0, 15) + '...'
                           : inquiry.title}
                       </span>
                     </td>
-                    <td className="py-4 xxs:text-sm sm:text-base">
+                    <td className="py-4 xs:text-sm sm:text-base">
                       {inquiry.created_at}
                     </td>
 
@@ -216,7 +216,7 @@ function InquiryList() {
               <div className="flex justify-end mr-5">
                 <button
                   onClick={() => navigate('/inquiry/new/')}
-                  className="hover:scale-110 xxs:w-5 xs:w-10 sm:w-14"
+                  className="hover:scale-110 xs:w-5 xs:w-10 sm:w-14"
                   readOnly
                 >
                   <img src="/pen2.png" alt="button"></img>

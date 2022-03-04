@@ -132,11 +132,11 @@ function SignupForm() {
                     value={fieldValues.userID}
                     onChange={handleFieldChange}
                     placeholder="ID를 입력해주세요."
-                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xxs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
+                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
                   />
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
                     readOnly
                     onClick={(e) => clickButton(e)}
                   >
@@ -180,7 +180,7 @@ function SignupForm() {
                   {/* preventDefault를 위한 e 이벤트 객체 지정  */}
                   {/* 중복확인 */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
                     onClick={(e) => clickButton(e)}
                     readOnly
                   >
@@ -254,7 +254,7 @@ function SignupForm() {
 
               <div className="flex justify-center">
                 <div className="w-full mb-10">
-                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  font-extrabold text-slate-700">
+                  <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl xs:text-base  font-extrabold text-slate-700">
                     이메일
                   </span>
                   <input
@@ -263,11 +263,11 @@ function SignupForm() {
                     value={fieldValues.email}
                     onChange={handleFieldChange}
                     placeholder="예) user@email.com"
-                    className="rounded-md xl:text-base lg:text-base md:text-base sm:text-s xs:text-s  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
+                    className="rounded-md xl:text-base lg:text-base md:text-base  xs:text-sm  bg-gray-100 focus:bg-white focus:border-gray-400 p-3 2xl:w-4/5 xl:w-3/4 lg:w-2/3 md:w-2/3 sm:w-2/3 xs:w-2/3"
                   />
                   {/* 중복확인 */}
                   <button
-                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xxs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
+                    className="border-blue-900 bg-blue-900 hover:border-blue-400 hover:bg-blue-400 xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-sm  text-white px-1 py-2 rounded md:ml-2 xs:ml-2 sm:ml-2"
                     onClick={(e) => clickButton(e)}
                     readOnly
                   >
@@ -397,7 +397,7 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <h5 className="mt-1 lg:text-lg  sm:text-sm xxs:text-xs  ml-2 mb-10 text-blue-400">
+              <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xs  ml-2 mb-10 text-blue-400">
                 이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
               </h5>
 
@@ -408,7 +408,7 @@ function SignupForm() {
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  font-extrabold text-slate-700">
                     비밀번호
                   </span>
-                  <h5 className="mt-1 lg:text-lg  sm:text-sm xxs:text-xs mb-5 text-blue-900">
+                  <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xs mb-5 text-blue-900">
                     ( 비밀번호를 8자 이상 입력해주세요! )
                   </h5>
                   <input
@@ -432,7 +432,7 @@ function SignupForm() {
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  font-extrabold text-slate-700">
                     비밀번호 확인
                   </span>
-                  <h5 className="mt-1 lg:text-lg  sm:text-sm xxs:text-xs mb-5 text-blue-900">
+                  <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xs mb-5 text-blue-900">
                     ( 입력하신 비밀번호를 다시 입력해주세요 ! )
                   </h5>
                   <input

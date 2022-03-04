@@ -56,9 +56,9 @@ function AssignComp({ assignId, assignData }) {
   return (
     <>
       <div className="header flex flex-wrap justify-center" id="topLoc">
-        <div className="mx-5 assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xxs:w-full">
+        <div className="mx-5 assignments_header rounded-xl shadow-md overflow-hidden md:px-20 pt-5 pb-10 my-10 lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <blockquote class="mt-5 mb-3 font-semibold italic text-center text-slate-900">
-            <span class="my-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block xxs:text-2xl sm:text-4xl lg:text-6xl">
+            <span class="my-7 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-400 relative inline-block xs:text-2xl sm:text-4xl lg:text-6xl">
               <span class="relative text-white">" 입양신청 완료! "</span>
             </span>
           </blockquote>
@@ -109,14 +109,14 @@ function AssignComp({ assignId, assignData }) {
             </ul>
           </div>
           <div className="flex justify-center my-5 mt-5">
-            <h2 className="font-semibold xxs:text-base sm:text-lg lg:text-2xl">
+            <h2 className="font-semibold xs:text-base sm:text-lg lg:text-2xl">
               진행 상황은 마이 페이지에서 확인하실 수 있어요!
             </h2>
           </div>
           <p className="animate-bounce text-4xl text-center">⬇</p>
           <div className="flex justify-center my-5">
             <button
-              className="shadow bg-green-400 px-5 py-2 rounded-lg hover:bg-green-600 hover:text-white xxs:w-5/6 sm:w-1/2 lg:1/4"
+              className="shadow bg-green-400 px-5 py-2 rounded-lg hover:bg-green-600 hover:text-white xs:w-5/6 sm:w-1/2 lg:1/4"
               onClick={() => navigate(`/mypage/assigninfo/`)}
             >
               마이페이지 - 신청 정보
@@ -124,7 +124,7 @@ function AssignComp({ assignId, assignData }) {
           </div>
           <div className="flex justify-center my-5">
             <button
-              className="shadow bg-gray-300 px-5 py-2 rounded-lg hover:bg-gray-600 hover:text-white xxs:w-5/6 sm:w-1/2 lg:1/4"
+              className="shadow bg-gray-300 px-5 py-2 rounded-lg hover:bg-gray-600 hover:text-white xs:w-5/6 sm:w-1/2 lg:1/4"
               onClick={() => navigate('/')}
             >
               메인 화면
