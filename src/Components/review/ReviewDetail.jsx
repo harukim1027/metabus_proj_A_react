@@ -151,18 +151,26 @@ function ReviewDetail({ reviewId }) {
                     )}
                   </div>
 
-                  <div>
-                    {review.image2 && <img src={review.image2} alt="" />}
+                  <div className="mb-4 flex justify-center">
+                    {review.image2 && (
+                      <img src={review.image2} alt="" className="w-full" />
+                    )}
                   </div>
-                  <div>
-                    {review.image3 && <img src={review.image3} alt="" />}
+                  <div className="mb-4 flex justify-center">
+                    {review.image3 && (
+                      <img src={review.image3} alt="" className="w-full" />
+                    )}
                   </div>
 
-                  <div>
-                    {review.image4 && <img src={review.image4} alt="" />}
+                  <div className="mb-4 flex justify-center">
+                    {review.image4 && (
+                      <img src={review.image4} alt="" className="w-full" />
+                    )}
                   </div>
-                  <div>
-                    {review.image5 && <img src={review.image5} alt="" />}
+                  <div className="mb-4 flex justify-center">
+                    {review.image5 && (
+                      <img src={review.image5} alt="" className="w-full" />
+                    )}
                   </div>
 
                   {/*  */}
