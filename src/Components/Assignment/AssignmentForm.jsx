@@ -866,7 +866,7 @@ function AssignmentForm({ handleDidSave }) {
                 <span className="mx-5 mt-5 after:content-['*'] after:ml-0.5 after:text-red-500 block tracking-wide text-gray-700 xs:text-base sm:text-lg md:text-2xl font-bold mb-2">
                   만남 희망 날짜
                 </span>
-                <p className="xxs:text-sm md:text-base mx-5 text-gray-400 mb-2 mt-1">
+                <p className="xs:text-sm md:text-base mx-5 text-gray-400 mb-2 mt-1">
                   센터 방문 날짜를 선택해주세요!
                 </p>
                 <input
