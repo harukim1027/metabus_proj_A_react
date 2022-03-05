@@ -244,7 +244,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                 <span className="block tracking-wide text-blue-900 text-xl font-bold mb-2 ">
                   이미지 첨부
                 </span>
-                <h2 className="text-gray-500 text-xs">
+                <h2 className="text-gray-500 text-xxs">
                   ( 최대 5개까지 이미지를 등록할 수 있습니다. )
                 </h2>
 
@@ -293,7 +293,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {saveErrorMessages.image1?.map((message, index) => (
-                      <p key={index} className="text-xs text-red-400">
+                      <p key={index} className="text-xxs text-red-400">
                         {message}
                       </p>
                     ))}
@@ -340,7 +340,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {saveErrorMessages.image2?.map((message, index) => (
-                      <p key={index} className="text-xs text-red-400">
+                      <p key={index} className="text-xxs text-red-400">
                         {message}
                       </p>
                     ))}
@@ -387,7 +387,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {saveErrorMessages.image3?.map((message, index) => (
-                      <p key={index} className="text-xs text-red-400">
+                      <p key={index} className="text-xxs text-red-400">
                         {message}
                       </p>
                     ))}
@@ -434,7 +434,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {saveErrorMessages.image4?.map((message, index) => (
-                      <p key={index} className="text-xs text-red-400">
+                      <p key={index} className="text-xxs text-red-400">
                         {message}
                       </p>
                     ))}
@@ -481,7 +481,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                       </button>
                     </li>
                     {saveErrorMessages.image5?.map((message, index) => (
-                      <p key={index} className="text-xs text-red-400">
+                      <p key={index} className="text-xxs text-red-400">
                         {message}
                       </p>
                     ))}
@@ -494,7 +494,7 @@ function NoticeForm({ noticeId, handleDidSave }) {
                 <span className="block tracking-wide text-blue-900 text-xl font-bold mb-2 ">
                   파일 첨부
                 </span>
-                <h2 className="text-gray-500 text-xs">
+                <h2 className="text-gray-500 text-xxs">
                   ( 최대 3개까지 첨부파일을 등록할 수 있습니다. )
                 </h2>
 

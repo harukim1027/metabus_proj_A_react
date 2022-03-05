@@ -501,14 +501,14 @@ function ReviewForm({ reviewId, handleDidSave }) {
 
                 {/* 이미지 첨부 인풋박스 */}
                 <div className="my-5 w-full">
-                  <span className=" block uppercase tracking-wide text-blue-900 text-base font-bold mb-2 ">
+                  <span className=" block tracking-wide text-blue-900 text-base font-bold mb-2 ">
                     이미지 첨부
                   </span>
-                  <h2 className="text-gray-500 text-xs">
+                  <h2 className="text-gray-500 text-xxs text-">
                     ( 최대 5개까지 이미지를 등록할 수 있습니다. )
                   </h2>
 
-                  <div className="mx-5 bg-white py-5">
+                  <div className="bg-white py-5">
                     {/* 이미지 첨부 인풋박스 ul태그 시작 부분*/}
                     <ul>
                       {/* 개별 이미지 input 박스 1*/}
@@ -549,7 +549,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                         </button>
                       </li>
                       {saveErrorMessages.image1?.map((message, index) => (
-                        <p key={index} className="text-xs text-red-400">
+                        <p key={index} className="text-xxs text-red-400">
                           이미지 첨부가 필요합니다!
                         </p>
                       ))}
@@ -593,7 +593,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                         </button>
                       </li>
                       {saveErrorMessages.image2?.map((message, index) => (
-                        <p key={index} className="text-xs text-red-400">
+                        <p key={index} className="text-xxs text-red-400">
                           이미지 첨부가 필요합니다!
                         </p>
                       ))}
@@ -637,7 +637,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                         </button>
                       </li>
                       {saveErrorMessages.image3?.map((message, index) => (
-                        <p key={index} className="text-xs text-red-400">
+                        <p key={index} className="text-xxs text-red-400">
                           이미지 첨부가 필요합니다!
                         </p>
                       ))}
@@ -682,7 +682,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                         </button>
                       </li>
                       {saveErrorMessages.image4?.map((message, index) => (
-                        <p key={index} className="text-xs text-red-400">
+                        <p key={index} className="text-xxs text-red-400">
                           이미지 첨부가 필요합니다!
                         </p>
                       ))}
@@ -726,7 +726,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                         </button>
                       </li>
                       {saveErrorMessages.image5?.map((message, index) => (
-                        <p key={index} className="text-xs text-red-400">
+                        <p key={index} className="text-xxs text-red-400">
                           이미지 첨부가 필요합니다!
                         </p>
                       ))}

@@ -145,17 +145,17 @@ function UserInquiryList({ userId }) {
                         <div className="text-base font-medium text-gray-900">
                           {inquiry.admin_answer.length > 0 ? (
                             <>
-                              <div className="text-xs flex justify-center">
+                              <div className="text-xxs flex justify-center">
                                 <img src="/check.png" width="15" alt="" />
                               </div>
-                              <span className="text-xs">답변 완료</span>
+                              <span className="text-xxs">답변 완료</span>
                             </>
                           ) : (
                             <>
-                              <div className="text-xs flex justify-center">
+                              <div className="text-xxs flex justify-center">
                                 <img src="/nocheck.png" width="15" alt="" />
                               </div>
-                              <span className="text-xs">답변 대기</span>
+                              <span className="text-xxs">답변 대기</span>
                             </>
                           )}
                         </div>

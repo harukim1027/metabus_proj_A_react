@@ -115,7 +115,7 @@ function AssignList() {
                   name="query"
                   onChange={getQuery}
                   onKeyPress={handleKeyPress}
-                  className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xs px-3 py-2 mr-4 border-2"
+                  className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 w-72 text-xxs px-3 py-2 mr-4 border-2"
                   placeholder="(번호, 등록번호, 신청자명, ID, 닉네임) 중 검색"
                 />
                 <button

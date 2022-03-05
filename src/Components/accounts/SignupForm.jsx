@@ -397,7 +397,7 @@ function SignupForm() {
                   ))}
                 </div>
               </div>
-              <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xs  ml-2 mb-10 text-blue-400">
+              <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xxs  ml-2 mb-10 text-blue-400">
                 이 퀴즈의 정답은 비밀번호 찾기 시에 사용됩니다.
               </h5>
 
@@ -408,7 +408,7 @@ function SignupForm() {
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  font-extrabold text-slate-700">
                     비밀번호
                   </span>
-                  <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xs mb-5 text-blue-900">
+                  <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xxs mb-5 text-blue-900">
                     ( 비밀번호를 8자 이상 입력해주세요! )
                   </h5>
                   <input
@@ -432,7 +432,7 @@ function SignupForm() {
                   <span className="pb-2 after:content-['*'] after:ml-0.5 after:text-red-500 block xl:text-xl lg:text-xl md:text-base sm:text-base xs:text-base  font-extrabold text-slate-700">
                     비밀번호 확인
                   </span>
-                  <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xs mb-5 text-blue-900">
+                  <h5 className="mt-1 lg:text-lg  sm:text-sm xs:text-xxs mb-5 text-blue-900">
                     ( 입력하신 비밀번호를 다시 입력해주세요 ! )
                   </h5>
                   <input

@@ -2,7 +2,7 @@ function LoadingIndicator({ children }) {
   return (
     <span>
       <LoadingImage className="w-10 h-10" />
-      <span className="text-xs">
+      <span className="text-xxs">
         {!children && 'Loading ...'}
         {children}
       </span>

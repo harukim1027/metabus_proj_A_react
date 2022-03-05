@@ -226,7 +226,7 @@ function InquiryForm({ inquiryId, handleDidSave }) {
                 >
                   취소
                 </button>
-                <div className="p-5 xs:text-xs">
+                <div className="p-5 xs:text-xxs">
                   {saveLoading && (
                     <LoadingIndicator>저장 중...</LoadingIndicator>
                   )}

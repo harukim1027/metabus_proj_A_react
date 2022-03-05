@@ -121,7 +121,7 @@ function InquiryDetail({ inquiryId }) {
                   </h2>
                   <div className="mb-10">
                     {inquiry.admin_answer === '' && (
-                      <span className="mb-5 text-center xs:text-xs md:text-base lg:text-lg text-red-400 font-extrabold">
+                      <span className="mb-5 text-center xs:text-xxs md:text-base lg:text-lg text-red-400 font-extrabold">
                         😅 아직 답변이 준비되지 않았어요! <br />
                         조금만 기다려 주시면 답변을 달아드릴게요!
                       </span>

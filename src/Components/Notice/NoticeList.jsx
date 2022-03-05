@@ -87,7 +87,7 @@ function NoticeList() {
                     name="query"
                     onChange={getQuery}
                     onKeyPress={handleKeyPress}
-                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-4 border-2 xs:w-full sm:w-72 xs:text-xs sm:text-base"
+                    className="rounded bg-gray-100 focus:outline-none focus:border-gray-400 px-3 py-2 mx-4 border-2 xs:w-full sm:w-72 xs:text-xxs sm:text-base"
                     placeholder="제목을 검색하세요."
                   />
                   <button
@@ -118,19 +118,19 @@ function NoticeList() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     제목
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     작성일
                   </th>
@@ -142,7 +142,7 @@ function NoticeList() {
                     onClick={() => navigate(`/notice/${notice.notice_no}/`)}
                     className=" cursor-pointer"
                   >
-                    <td className="py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs ">
+                    <td className="py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs ">
                       <div className="text-sm font-medium text-gray-900">
                         {notice.notice_no}
                       </div>
@@ -156,7 +156,7 @@ function NoticeList() {
                         </span>
                       </div>
                     </td>
-                    <td className="py-4 sm:text-sm xs:text-xs">
+                    <td className="py-4 sm:text-sm xs:text-xxs">
                       {notice.created_at}
                     </td>
                   </tr>

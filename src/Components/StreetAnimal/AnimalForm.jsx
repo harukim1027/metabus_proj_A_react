@@ -181,7 +181,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     </svg>
                   </div>
                   {saveErrorMessages.category?.map((message, index) => (
-                    <p key={index} className="text-xs text-red-400">
+                    <p key={index} className="text-xxs text-red-400">
                       동물 종을 선택해주세요.
                     </p>
                   ))}
@@ -200,7 +200,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-full p-3 mb-6 appearance-none"
                 />
                 {saveErrorMessages.animal_reg_num?.map((message, index) => (
-                  <p key={index} className="text-xs text-red-400">
+                  <p key={index} className="text-xxs text-red-400">
                     등록번호를 입력해주세요.
                   </p>
                 ))}
@@ -277,7 +277,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                       className="rounded-md text-lg bg-gray-100 focus:bg-white focus:border-gray-400 w-64 p-3 mb-6 appearance-none"
                     />
                     {saveErrorMessages.age?.map((message, index) => (
-                      <p key={index} className="block text-xs text-red-400">
+                      <p key={index} className="block text-xxs text-red-400">
                         나이를 자연수로 입력해주세요. (최소 1살)
                       </p>
                     ))}
@@ -301,7 +301,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   </div>
                   {saveErrorMessages.date_of_discovery?.map(
                     (message, index) => (
-                      <p key={index} className="text-xs text-red-400">
+                      <p key={index} className="text-xxs text-red-400">
                         날짜를 선택해주세요.
                       </p>
                     ),
@@ -323,7 +323,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   </div>
                   {saveErrorMessages.place_of_discovery?.map(
                     (message, index) => (
-                      <p key={index} className="text-xs text-red-400">
+                      <p key={index} className="text-xxs text-red-400">
                         발견장소를 입력해주세요.
                       </p>
                     ),
@@ -344,7 +344,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                 />
               </div>
               {saveErrorMessages.info?.map((message, index) => (
-                <p key={index} className="text-xs text-red-400">
+                <p key={index} className="text-xxs text-red-400">
                   특징은 비어있을 수 없습니다.
                 </p>
               ))}
@@ -364,7 +364,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
                   {saveErrorMessages.start_date?.map((message, index) => (
-                    <p key={index} className="text-xs text-red-400">
+                    <p key={index} className="text-xxs text-red-400">
                       날짜를 선택해주세요.
                     </p>
                   ))}
@@ -384,7 +384,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                     />
                   </div>
                   {saveErrorMessages.end_date?.map((message, index) => (
-                    <p key={index} className="text-xs text-red-400">
+                    <p key={index} className="text-xxs text-red-400">
                       날짜를 선택해주세요.
                     </p>
                   ))}
@@ -464,7 +464,7 @@ function AnimalForm({ animalId, handleDidSave }) {
                   </li>
                 </ul>
                 {saveErrorMessages.image?.map((message, index) => (
-                  <p key={index} className="text-xs text-red-400">
+                  <p key={index} className="text-xxs text-red-400">
                     {message}
                   </p>
                 ))}

@@ -90,7 +90,7 @@ function FindId() {
               <span className="mt-5 after:content-['*'] after:ml-0.5 after:text-red-500  block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                 사용자 이름{' '}
               </span>
-              <span className=" block uppercase tracking-wide text-blue-700 text-xs font-bold mb-2">
+              <span className=" block uppercase tracking-wide text-blue-700 text-xxs font-bold mb-2">
                 : 회원가입 시 입력하신 이름을 입력해주세요.
               </span>
               <input
@@ -110,7 +110,7 @@ function FindId() {
               <span className="after:content-['*'] after:ml-0.5 after:text-red-500  mt-10 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                 사용자 이메일{' '}
               </span>
-              <span className=" block uppercase tracking-wide text-blue-700 text-xs font-bold mb-2">
+              <span className=" block uppercase tracking-wide text-blue-700 text-xxs font-bold mb-2">
                 : 회원가입 시 입력하신 이메일을 입력해주세요.
               </span>
               <input

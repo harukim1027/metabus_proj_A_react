@@ -35,12 +35,12 @@ function ChangePassword() {
     e.preventDefault();
   };
 
-  console.log('findUser: ', findUser);
-  console.log('userList: ', userList);
+  // console.log('findUser: ', findUser);
+  // console.log('userList: ', userList);
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  console.log('topLocation: ', topLocation);
+  // console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, [userList]);
@@ -60,8 +60,8 @@ function ChangePassword() {
   return (
     <>
       <div id="topLoc">
-        <div className="mx-5 header rounded-xl px-20 pt-6 pb-8 mb-4">
-          <h2 className="text-center xs:text-3xl md:text-4xl py-5 pb-5 font-bold  mb-3">
+        <div className="header rounded-xl px-20 pt-6 pb-8 mb-4">
+          <h2 className="text-center text-4xl py-5 pb-5 font-bold  mb-3">
             🐯 비밀번호 변경하기
           </h2>
 
@@ -84,7 +84,7 @@ function ChangePassword() {
                   <span className="mt-5 after:content-['*'] after:ml-0.5 after:text-red-500  block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                     사용자 아이디
                   </span>
-                  <span className=" block uppercase tracking-wide text-blue-700 text-xs font-bold mb-2">
+                  <span className=" block uppercase tracking-wide text-blue-700 text-xxs font-bold mb-2">
                     : 회원님의 아이디를 입력해주세요.
                   </span>
                   <input
@@ -105,7 +105,7 @@ function ChangePassword() {
                   <span className="mt-5 after:content-['*'] after:ml-0.5 after:text-red-500  block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                     사용자 이름
                   </span>
-                  <span className=" block uppercase tracking-wide text-blue-700 text-xs font-bold mb-2">
+                  <span className=" block uppercase tracking-wide text-blue-700 text-xxs font-bold mb-2">
                     : 회원님의 이름을 입력해주세요.
                   </span>
                   <input
@@ -129,7 +129,7 @@ function ChangePassword() {
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500  mt-10 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                     비밀번호 퀴즈
                   </span>
-                  <span className=" block uppercase tracking-wide text-blue-700 text-xs font-bold mb-2">
+                  <span className=" block uppercase tracking-wide text-blue-700 text-xxs font-bold mb-2">
                     : 회원가입시 선택한 퀴즈를 선택해주세요.
                   </span>
                   <div className="relative">
@@ -169,7 +169,7 @@ function ChangePassword() {
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500  mt-10 block uppercase tracking-wide text-gray-700 text-xl font-bold mb-2">
                     비밀번호 퀴즈 정답
                   </span>
-                  <span className=" block uppercase tracking-wide text-blue-700 text-xs font-bold mb-2">
+                  <span className=" block uppercase tracking-wide text-blue-700 text-xxs font-bold mb-2">
                     : 회원가입시 선택한 퀴즈의 정답을 입력해주세요.
                   </span>
                   <input
@@ -237,7 +237,7 @@ function ChangePassword() {
                                 <button
                                   onClick={() =>
                                     window.open(
-                                      'http://api.yoonapy.com/accounts/password_reset/',
+                                      'http://localhost:8000/accounts/password_reset/',
                                       '_blank',
                                       navigate('/accounts/login/'),
                                     )

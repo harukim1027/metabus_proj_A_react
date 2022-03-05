@@ -99,25 +99,25 @@ function MyAssignInfo() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     동물 번호
                   </th>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     신청 날짜
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     진행 상태
                   </th>
@@ -127,7 +127,7 @@ function MyAssignInfo() {
                 {MyAssignData?.results.map((assign) => (
                   <tr>
                     <td
-                      className="px-6 py-4 lg:text-xl md:text-base sm:text-sm xs:text-xs cursor-pointer"
+                      className="px-6 py-4 lg:text-xl md:text-base sm:text-sm xs:text-xxs cursor-pointer"
                       onClick={() =>
                         navigate(`/assignment/${assign.assignment_no}/`)
                       }
@@ -136,7 +136,7 @@ function MyAssignInfo() {
                     </td>
 
                     <td
-                      className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs cursor-pointer"
+                      className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xxs cursor-pointer"
                       onClick={() =>
                         navigate(`/assignment/${assign.assignment_no}/`)
                       }
@@ -145,7 +145,7 @@ function MyAssignInfo() {
                     </td>
 
                     <td
-                      className="py-4 xs:text-xs sm:text-sm cursor-pointer"
+                      className="py-4 xs:text-xxs sm:text-sm cursor-pointer"
                       onClick={() =>
                         navigate(`/assignment/${assign.assignment_no}/`)
                       }
@@ -156,8 +156,8 @@ function MyAssignInfo() {
                     <td
                       className={
                         assign.status === '입양 완료'
-                          ? 'text-orange-300 px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs whitespace-nowrap'
-                          : 'px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xs whitespace-nowrap'
+                          ? 'text-orange-300 px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xxs whitespace-nowrap'
+                          : 'px-3 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xxs whitespace-nowrap'
                       }
                     >
                       {assign.status}

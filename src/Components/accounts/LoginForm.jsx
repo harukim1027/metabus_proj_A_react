@@ -161,14 +161,14 @@ function LoginForm() {
               {/* 아이디 찾기 링크 이동 */}
               <a
                 href="/accounts/findid/"
-                className="text-gray-500 mr-5 xs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
+                className="text-gray-500 mr-5 xs:text-xxs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
               >
                 &nbsp;아이디 찾기&nbsp;
               </a>
               {/* 비밀번호 찾기 링크 이동 */}
               <a
                 href="/accounts/changepassword/"
-                className="text-gray-500 xs:text-xs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
+                className="text-gray-500 xs:text-xxs md:text-base hover:bg-blue-200 hover:text-white font-semibold"
               >
                 &nbsp;비밀번호 찾기&nbsp;
               </a>
@@ -176,7 +176,7 @@ function LoginForm() {
 
             <hr />
             {/* 회원가입 링크 이동 */}
-            <p className="bg-yellow-100 xs:text-xs xs:text-xs md:text-base text-center mt-5  mb-2 text-red-300 font-semibold">
+            <p className="bg-yellow-100 xs:text-xxs xs:text-xxs md:text-base text-center mt-5  mb-2 text-red-300 font-semibold">
               아직 회원이 아니신가요?
             </p>
             <div className="text-right border:bg-pink-200">

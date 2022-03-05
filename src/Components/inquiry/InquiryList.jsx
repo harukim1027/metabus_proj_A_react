@@ -98,7 +98,7 @@ function InquiryList() {
           <hr />
 
           <div className="mb-6 mt-10">
-            <p className="xs:text-center xs:text-xs md:text-base md:text-center xl:text-right md:mb-3 text-gray-500 ">
+            <p className="xs:text-center xs:text-xxs md:text-base md:text-center xl:text-right md:mb-3 text-gray-500 ">
               "번호, 등록번호, 신청자명, ID, 닉네임 중 검색"
             </p>
             <div className="xs:flex-none xl:flex xl:justify-between">
