@@ -72,32 +72,30 @@ function AssignCheck(props) {
                 🐼 크루 신청하기
               </h1>
 
-              <div className="mx-10 ">
-                <div className="text-center">
-                  <div className="font-bold pb-3">
-                    <br />
-                    <blockquote class=" xs:text-m md:text-2xl lg:text-3xl font-semibold italic text-center text-slate-900">
-                      <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
-                        <span class="relative text-white font-bold">
-                          " 입양 절차, 입양 전 주의사항 "
-                        </span>
+              <div className="text-center">
+                <div className="font-bold pb-3">
+                  <br />
+                  <blockquote class=" xs:text-lg md:text-2xl lg:text-3xl font-semibold italic text-center text-slate-900">
+                    <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
+                      <span class="relative text-white font-bold">
+                        " 입양 절차, 입양 전 주의사항 "
                       </span>
-                      <p className="mt-3 mb-3 xs:text-m md:text-2xl">
-                        안내를 반드시 읽고, 동의해주세요 !
-                      </p>
-                    </blockquote>
-                  </div>
+                    </span>
+                    <p className="mt-3 mb-3">
+                      안내를 반드시 읽고, 동의해주세요 !
+                    </p>
+                  </blockquote>
                 </div>
-                <hr />
-                <br />
               </div>
+              <hr />
+              <br />
 
               <div className="w-full">
                 <span className=" after:content-['*'] after:ml-0.5 after:text-red-500 block uppercase tracking-wide text-black xs:text-xl xs:ml-10 md:text-2xl font-extrabold mb-2">
                   입양 절차
                 </span>
                 <div className="flex justify-center w-full">
-                  <div className="xs:w-5/6 lg:w-3/4 xl:w-5/6">
+                  <div className="xs:w-full lg:w-3/4 xl:w-5/6">
                     <div className="assign_explanation">
                       <div className=" xs:justify-center md:flex-none md:grid md:grid-cols-3">
                         <div className="flex justify-center">
@@ -123,7 +121,7 @@ function AssignCheck(props) {
                         </div>
                       </div>
                     </div>
-                    <div className=" xs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-semibold text-gray-500 mr-10">
+                    <div className=" xs:text-base md:text-lg lg:text-xl text-right mb-3 mt-8 font-semibold text-gray-500 mr-5">
                       <label className="bg-blue-100">
                         &nbsp;입양 절차를 숙지했습니다&nbsp;
                         <input
@@ -182,7 +180,7 @@ function AssignCheck(props) {
                 <div className="flex justify-end xs:w-5/6 lg:w-11/12"></div>
 
                 <hr />
-                <div className="xs:text-base sm:text-xl text-red-400 text-center">
+                <div className="xs:text-sm sm:text-xl text-red-400 text-center">
                   <br />
                   모두 동의를 해야 입양 신청을 할 수 있어요 ! 🐰
                 </div>

@@ -133,16 +133,19 @@ function InquiryList() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
+                    className="xs:px-0 sm:px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
                   >
                     No
                   </th>
-                  <th
-                    scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
-                  >
-                    작성자
-                  </th>
+                  {auth.is_staff && (
+                    <th
+                      scope="col"
+                      className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
+                    >
+                      작성자
+                    </th>
+                  )}
+
                   <th
                     scope="col"
                     className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 tracking-wider"
@@ -172,9 +175,11 @@ function InquiryList() {
                     <td className="py-4 xs:text-sm sm:text-lg font-medium text-gray-900">
                       {inquiry.inquiry_no}
                     </td>
-                    <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm whitespace-nowrap">
-                      {inquiry.user}
-                    </td>
+                    {auth.is_staff && (
+                      <td className="px-3 py-4 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-sm whitespace-nowrap">
+                        {inquiry.user}
+                      </td>
+                    )}
 
                     <td className="px-3 py-4 font-semibold lg:text-xl md:text-md xs:text-sm">
                       <span className="bg-yellow-100 rounded-full">
@@ -216,7 +221,7 @@ function InquiryList() {
               <div className="flex justify-end mr-5">
                 <button
                   onClick={() => navigate('/inquiry/new/')}
-                  className="hover:scale-110 xs:w-5 xs:w-10 sm:w-14"
+                  className="hover:scale-110 xs:w-8 sm:w-14"
                   readOnly
                 >
                   <img src="/pen2.png" alt="button"></img>

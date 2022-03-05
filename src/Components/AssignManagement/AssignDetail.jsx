@@ -207,7 +207,7 @@ function AssignDetail({ assignId }) {
                     auth.is_staff && setClicked(!clicked);
                   }}
                 >
-                  {assignData?.status}{' '}
+                  {assignData?.status}
                   {auth.is_staff && <span>(수정하려면 클릭)</span>}
                 </td>
               </tr>
@@ -278,7 +278,10 @@ function AssignDetail({ assignId }) {
       <div className="header flex flex-wrap justify-center">
         <div className="mx-5 bg-white rounded-xl shadow-md overflow-hidden lg:w-2/3 md:w-5/6 sm:w-full xs:w-full">
           <div className="flex justify-center py-6 mb-3">
-            <h2>💕입양 신청 중💕</h2>
+            <h2>
+              💕입양 {assignData?.status === '입양 완료' ? '완료!' : '신청 중'}
+              💕
+            </h2>
           </div>
         </div>
       </div>

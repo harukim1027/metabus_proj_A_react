@@ -102,7 +102,7 @@ function MyReview() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="xs:px-1 sm:px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
                   >
                     No
                   </th>
@@ -140,10 +140,10 @@ function MyReview() {
                           }
                           className="cursor-pointer"
                         >
-                          <td className="px-6 py-4 lg:text-xl md:text-base sm:text-sm xs:text-xxs">
+                          <td className="py-4 lg:text-xl md:text-base sm:text-sm xs:text-xxs">
                             {review.review_no}
                           </td>
-                          <td className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xxs">
+                          <td className="py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xxs">
                             <span className="bg-purple-100 rounded-full">
                               {review.title.length > 15
                                 ? review.title.substring(0, 15) + '...'

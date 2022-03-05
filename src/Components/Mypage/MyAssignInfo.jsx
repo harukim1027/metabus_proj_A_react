@@ -99,13 +99,13 @@ function MyAssignInfo() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                    className="xs:px-1 sm:px-3 xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     No
                   </th>
                   <th
                     scope="col"
-                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider"
+                    className="xl:text-xl lg:text-xl md:text-base sm:text-sm xs:text-xxs border border-slate-200 bg-gray-50 py-3 text-center  font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap"
                   >
                     동물 번호
                   </th>
@@ -127,7 +127,7 @@ function MyAssignInfo() {
                 {MyAssignData?.results.map((assign) => (
                   <tr>
                     <td
-                      className="px-6 py-4 lg:text-xl md:text-base sm:text-sm xs:text-xxs cursor-pointer"
+                      className="py-4 lg:text-xl md:text-base sm:text-sm xs:text-xxs cursor-pointer"
                       onClick={() =>
                         navigate(`/assignment/${assign.assignment_no}/`)
                       }
@@ -136,7 +136,7 @@ function MyAssignInfo() {
                     </td>
 
                     <td
-                      className="px-6 py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xxs cursor-pointer"
+                      className="py-4 font-semibold lg:text-xl md:text-md sm:text-sm xs:text-xxs cursor-pointer"
                       onClick={() =>
                         navigate(`/assignment/${assign.assignment_no}/`)
                       }
