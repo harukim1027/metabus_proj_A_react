@@ -35,12 +35,12 @@ function ChangePassword() {
     e.preventDefault();
   };
 
-  // console.log('findUser: ', findUser);
-  // console.log('userList: ', userList);
+  console.log('findUser: ', findUser);
+  console.log('userList: ', userList);
 
   // 스크롤 기능
   const [topLocation, setTopLocation] = useState(0);
-  // console.log('topLocation: ', topLocation);
+  console.log('topLocation: ', topLocation);
   useEffect(() => {
     setTopLocation(document.querySelector('#topLoc').offsetTop);
   }, [userList]);
@@ -60,8 +60,8 @@ function ChangePassword() {
   return (
     <>
       <div id="topLoc">
-        <div className="header rounded-xl px-20 pt-6 pb-8 mb-4">
-          <h2 className="text-center text-4xl py-5 pb-5 font-bold  mb-3">
+        <div className="mx-5 header rounded-xl sm:px-20 pt-6 pb-8 mb-4">
+          <h2 className="text-center xs:text-3xl md:text-4xl py-5 pb-5 font-bold mb-3">
             🐯 비밀번호 변경하기
           </h2>
 
@@ -77,7 +77,7 @@ function ChangePassword() {
             <div className="accounts_header shadow-md  rounded-xl ">
               <div className="max-w-m">
                 <form
-                  className="rounded-xl px-20 pt-6 mb-4"
+                  className="rounded-xl xs:px-10 sm:px-20 pt-6 mb-4"
                   onSubmit={handleSubmit}
                 >
                   {/* 아이디 */}
@@ -237,7 +237,7 @@ function ChangePassword() {
                                 <button
                                   onClick={() =>
                                     window.open(
-                                      'http://localhost:8000/accounts/password_reset/',
+                                      'http://api.yoonapy.com/accounts/password_reset/',
                                       '_blank',
                                       navigate('/accounts/login/'),
                                     )

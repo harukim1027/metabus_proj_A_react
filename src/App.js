@@ -185,7 +185,7 @@ function App() {
           )}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <p className="header mt-10 text-center text-gray-500 text-xs">
+        <p className="header mt-10 text-center text-gray-500 text-xxs">
           &copy;2022 METABUS Corp. All rights reserved.
         </p>
       </div>
