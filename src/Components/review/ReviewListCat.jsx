@@ -47,6 +47,7 @@ function ReviewList() {
       const params = {
         page: newPage,
         query: newQuery,
+        category: fieldValues.category === '전체' ? '' : fieldValues.category,
       };
       const { data } = await refetch({ params });
       setPage(newPage);
