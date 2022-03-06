@@ -93,8 +93,8 @@ function InquiryDetail({ inquiryId }) {
                   <span
                     className={
                       inquiry.title.length > 20
-                        ? 'xs:text-base xs:text-xl leading-6 font-bold text-gray-900 tracking-wide'
-                        : 'xs:text-base xs:text-xl md:text-3xl leading-6  text-gray-900 tracking-wide'
+                        ? 'xs:text-base sm:text-xl leading-6 font-bold text-gray-900 tracking-wide'
+                        : 'xs:text-base sm:text-xl md:text-3xl leading-6  text-gray-900 tracking-wide'
                     }
                   >
                     : {inquiry.title}
@@ -106,7 +106,7 @@ function InquiryDetail({ inquiryId }) {
                   </span>
                   <h2
                     readonly
-                    className="xs:py-5 md:w-full text-2xl text-gray-500 xs:text-base sm:text-2xl"
+                    className="xs:py-5 md:w-full text-2xl text-gray-500 xs:text-base sm:text-2xl whitespace-pre-wrap"
                   >
                     {inquiry.content}
                   </h2>

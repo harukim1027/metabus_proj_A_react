@@ -116,7 +116,7 @@ function NoticeDetail({ noticeId }) {
                   {/* 내용 */}
                   <h2 className="xs:text-base md:text-xl font-bold">내용</h2>
 
-                  <span className="xs:py-10 md:w-full mt-2 mb-3 text-gray-500 xs:text-sm xs:text-base sm:text-2xl">
+                  <span className="xs:py-10 md:w-full mt-2 mb-3 text-gray-500 xs:text-sm sm:text-base md:text-2xl whitespace-pre-wrap">
                     {notice.content}
                   </span>
 
