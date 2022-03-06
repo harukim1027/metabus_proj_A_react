@@ -237,7 +237,7 @@ function ChangePassword() {
                                 <button
                                   onClick={() =>
                                     window.open(
-                                      'http://api.highlight329.com/accounts/password_reset/',
+                                      'http://api.yoonapy.com/accounts/password_reset/',
                                       '_blank',
                                       navigate('/accounts/login/'),
                                     )
