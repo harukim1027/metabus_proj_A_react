@@ -145,9 +145,12 @@ function NoticeDetail({ noticeId }) {
 
                           {notice.file1 && (
                             <>
-                              <span className="ml-2 flex-1 w-0 truncate">
-                                첨부파일1
-                              </span>
+                              <a
+                                href={notice.file1}
+                                className="ml-2 flex-1 w-0 truncate"
+                              >
+                                {notice.get_file_name1}
+                              </a>
 
                               <div className="ml-4 flex-shrink-0">
                                 <a

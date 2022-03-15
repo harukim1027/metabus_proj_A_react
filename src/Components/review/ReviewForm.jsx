@@ -1,6 +1,6 @@
 import { useApiAxios } from 'api/base';
 import { useAuth } from 'contexts/AuthContext';
-// import DebugStates from 'DebugStates';
+import DebugStates from 'DebugStates';
 import useFieldValues from 'hooks/useFieldValues';
 import { useEffect, useState } from 'react';
 import produce from 'immer';
@@ -15,7 +15,7 @@ const INIT_FIELD_VALUES = {
   content: '',
 };
 
-function ReviewForm({ reviewId, handleDidSave }) {
+function ReviewForm({ review, reviewId, handleDidSave }) {
   const { auth } = useAuth();
   const navigate = useNavigate();
   const [image1, setImage1] = useState('');
@@ -26,19 +26,10 @@ function ReviewForm({ reviewId, handleDidSave }) {
   const [filtAssign, setFiltAssign] = useState([]);
   const [clicked, setClicked] = useState(0);
 
-  const [{ data: review, loading: getLoading, error: getError }] = useApiAxios(
-    {
-      url: `/adopt_review/api/reviews/${reviewId}/`,
-      method: 'GET',
-    },
-    {
-      manual: !reviewId,
-    },
-  );
   // console.log('review: ', review);
 
   const [selectanimalAssign, setSelectanimalAssign] = useState(
-    review?.adoptassignment.assignment_no,
+    review?.adoptassignment?.assignment_no,
   );
 
   const [{ data: assignmentList, loading, error }] = useApiAxios(
@@ -64,7 +55,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
       url: !reviewId
         ? '/adopt_review/api/reviews/'
         : `/adopt_review/api/reviews/${reviewId}/`,
-      method: !reviewId ? 'POST' : 'PUT',
+      method: !reviewId ? 'POST' : 'PATCH',
       headers: {
         Authorization: `Bearer ${auth.access}`,
       },
@@ -91,7 +82,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
         draft.adoptassignment = selectanimalAssign;
       }),
     );
-  }, [auth.userID, setFieldValues, selectanimalAssign]);
+  }, [review, auth]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -522,7 +513,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                             imgpreview1(e, e.target.files[0]);
                           }}
                         />
-                        {!fieldValues.image1 && (
+                        {!image1 && (
                           <div>
                             <img src={review?.image1} alt="" className="h-44" />
                           </div>
@@ -566,7 +557,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                             imgpreview2(e, e.target.files[0]);
                           }}
                         />
-                        {!fieldValues.image2 && (
+                        {!image2 && (
                           <div>
                             <img src={review?.image2} alt="" className="h-44" />
                           </div>
@@ -610,7 +601,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                             imgpreview3(e, e.target.files[0]);
                           }}
                         />
-                        {!fieldValues.image3 && (
+                        {!image3 && (
                           <div>
                             <img src={review?.image3} alt="" className="h-44" />
                           </div>
@@ -655,7 +646,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                             imgpreview4(e, e.target.files[0]);
                           }}
                         />
-                        {!fieldValues.image4 && (
+                        {!image4 && (
                           <div>
                             <img src={review?.image4} alt="" className="h-44" />
                           </div>
@@ -699,7 +690,7 @@ function ReviewForm({ reviewId, handleDidSave }) {
                             imgpreview5(e, e.target.files[0]);
                           }}
                         />
-                        {!fieldValues.image5 && (
+                        {!image5 && (
                           <div>
                             <img src={review?.image5} alt="" className="h-44" />
                           </div>
@@ -772,12 +763,12 @@ function ReviewForm({ reviewId, handleDidSave }) {
         </div>
       </div>
 
-      {/* <DebugStates
+      <DebugStates
         review={review}
-        getLoading={getLoading}
-        getError={getError}
+        // getLoading={getLoading}
+        // getError={getError}
         fieldValues={fieldValues}
-      /> */}
+      />
     </>
   );
 }
