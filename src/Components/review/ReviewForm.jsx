@@ -28,9 +28,8 @@ function ReviewForm({ review, reviewId, handleDidSave }) {
 
   // console.log('review: ', review);
 
-  const [selectanimalAssign, setSelectanimalAssign] = useState(
-    review?.adoptassignment?.assignment_no,
-  );
+  const [selectanimalAssign, setSelectanimalAssign] = useState('');
+  console.log('selectanimalAssign: ', selectanimalAssign);
 
   const [{ data: assignmentList, loading, error }] = useApiAxios(
     {
@@ -71,6 +70,10 @@ function ReviewForm({ review, reviewId, handleDidSave }) {
   // fieldValues.adoptassignment = filtAnimal;
 
   useEffect(() => {
+    setSelectanimalAssign(review?.adoptassignment.assignment_no);
+  }, [review]);
+
+  useEffect(() => {
     setFieldValues(
       produce((draft) => {
         draft.image1 = '';
@@ -82,7 +85,7 @@ function ReviewForm({ review, reviewId, handleDidSave }) {
         draft.adoptassignment = selectanimalAssign;
       }),
     );
-  }, [review, auth]);
+  }, [review, auth, selectanimalAssign]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
