@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
+.container {
+  background-color: #e3ecf1;
+}
+
+.sidebar {
+  background-color: rgba(255, 255, 255, 0.863);
+  left: 0;
+  transition: 0.4s ease;
+  /* height: 100%; */
+  z-index: 99;
+  font-family: 'Jua', sans-serif;
+  font-family: 'Hahmlet', serif;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: rgb(255, 255, 255);
+  padding-top: 80px;
+}
+.button {
+  position: relative;
+  left: 68px;
+  top: 10px;
+  width: 60px;
+  height: 60px;
+  z-index: 99;
+  transition: 0.8s ease;
+  overflow: hidden;
+}

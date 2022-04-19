@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+
+.header {
+  font-family: 'Hahmlet', serif;
+  background-color: #dbf1f6;
+}
+
+.top_nav_header {
+  font-family: 'Hahmlet', serif;
+}
+
+.icon_size {
+  width: 130px;
+  height: 100px;
+  /* margin: 1rem; */
+  margin-right: 2ch;
+}
+
+.icon_size2 {
+  width: 100px;
+  height: 100px;
+  margin-right: 2ch;
+}
+
+.icon_size3 {
+  width: 140px;
+  height: 100px;
+
+  margin-right: 2ch;
+}
+.icon_size4 {
+  width: 130px;
+  height: 100px;
+  margin: 18px;
+  margin-right: 2ch;
+}

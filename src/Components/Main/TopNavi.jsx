@@ -1,37 +1,144 @@
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth } from 'contexts/AuthContext';
+import '../../App.css';
+import './TopNavi.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function TopNav() {
   const navigate = useNavigate();
-
+  const { auth, logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+  };
+  const checkLogin = () => {
+    if (auth.isLoggedIn) {
+      navigate('/assignment/check/');
+    } else {
+      toast.info('크루원 신청을 위해서는 로그인이 필요합니다! 😓 ', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        bodyClassName: 'font-bold text-2xl p-5',
+      });
+      navigate('/accounts/login/');
+    }
+  };
   return (
-    <>
-      <div className="right-0">
-        <button className="inline-block px-2">로그인</button>
-        <button className="inline-block px-2">회원가입</button>
+    <div className="header">
+      <div className="flex text-xl place-content-between">
+        <div></div>
+        {!auth.isLoggedIn && (
+          <div className="">
+            {/* 로그인  */}
+            <button className="icon_size3">
+              <NavLink to="/accounts/login/">
+                <img
+                  src="/loginicon4.png"
+                  alt="button"
+                  className="hover:scale-110 duration-200"
+                ></img>
+              </NavLink>
+            </button>
+            {/* 회원가입 */}
+            <button className="icon_size3">
+              <NavLink to="/accounts/checksignup/">
+                <img
+                  src="/signupicon3.png"
+                  alt="button"
+                  className="hover:scale-110 duration-200"
+                ></img>
+              </NavLink>
+            </button>
+          </div>
+        )}
       </div>
+      {auth.isLoggedIn && (
+        <>
+          <div className="relative">
+            <span className="rounded-xl bg-white shadow-md border text-center font-bold absolute xs:inset-x-0 sm:inset-x-auto sm:left-10 sm:top-10 sm:text-xl">
+              &nbsp; &nbsp;오늘도 찾아주셨네요, {auth.nickname} 님 ❕ &nbsp;
+              &nbsp;
+            </span>
+          </div>
+          <div className="flex text-xl place-content-between">
+            <div></div>
+            <div className="flex">
+              {auth.is_staff ? (
+                // 관리자 페이지
+                <button className="icon_size4">
+                  <NavLink to="/admin/main/">
+                    <img
+                      className="hover:scale-110 duration-200"
+                      src="/manageicon1.png"
+                      alt="manageiconbutton"
+                    ></img>
+                  </NavLink>
+                </button>
+              ) : (
+                // 마이페이지
+                <button className="icon_size4">
+                  <NavLink to="/mypage/userinfo/">
+                    <img
+                      className="mt-5 hover:scale-110 duration-200"
+                      src="/mypageicon1.png"
+                      alt="mypagebutton"
+                    ></img>
+                  </NavLink>
+                </button>
+              )}
+
+              <button className="icon_size4" onClick={handleLogout}>
+                <img
+                  className="hover:scale-110 duration-200"
+                  src="/logouticon1.png"
+                  alt="button"
+                ></img>
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* 대문 */}
       <div
         onClick={() => navigate('/')}
-        className="w-full text-center text-2xl font-extrabold text-white py-20 bg-sky-200 cursor-pointer"
+        className="w-full text-white  cursor-pointer mt-12"
       >
-        <h1>Street Animal Adopter</h1>
+        <img src="/main09.png" alt="Street Animal Adopter"></img>
       </div>
-      <div className="grid grid-cols-3 text-center">
-        <MyLink to="/notice/">공지사항</MyLink>
-        <MyLink to="/adoptassignment/">크루원 신청</MyLink>
-        <MyLink to="/community/">커뮤니티</MyLink>
+      {/* 탑메뉴바 */}
+      <div className="py-4 border bg-white grid grid-cols-4 text-center xs:text-base sm:text-2xl lg:text-3xl font-bold">
+        <MyLink to="/introduce/">
+          <div className=" hover:text-white hover:bg-orange-300">소개</div>
+        </MyLink>
+        <MyLink to="/notice/">
+          <div className="hover:text-white hover:bg-green-400">공지사항</div>
+        </MyLink>
+        {auth.is_staff ? (
+          <MyLink to="/inquiry/">
+            <div className="hover:text-white hover:bg-yellow-300">Q&A </div>
+          </MyLink>
+        ) : (
+          <button
+            className="hover:text-white hover:bg-blue-400 cusor-pointer font-bold"
+            onClick={checkLogin}
+          >
+            크루원 신청
+          </button>
+        )}
+        <MyLink to="/review/">
+          <div className="hover:text-white hover:bg-purple-400 ">커뮤니티</div>
+        </MyLink>
       </div>
-    </>
+    </div>
   );
 }
-
 function MyLink({ to, children }) {
-  return (
-    <NavLink to={to} className={BaseClassName}>
-      {children}
-    </NavLink>
-  );
+  return <NavLink to={to}>{children}</NavLink>;
 }
-const BaseClassName = 'border-2 border-gray-300 py-2';
-
 export default TopNav;
